@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{c8b7c727-277b-4280-8f0d-2415f3633e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Game Engine">
+      <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager">
+      <UniqueIdentifier>{3c5199fc-10c0-4e4f-9d4e-ac97a32ea3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="문서 파일">
+      <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Scene">
+      <UniqueIdentifier>{d596846b-4b0b-498c-baf8-5d2b6fc8f407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Window Info">
+      <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ManagerCreator.h">
+      <Filter>소스 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="IManager.h">
+      <Filter>소스 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerType.h">
+      <Filter>소스 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="IScene.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngine.h">
+      <Filter>소스 파일\Game Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstScene.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowInfomation.h">
+      <Filter>소스 파일\Window Info</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagerCreator.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="IScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>소스 파일\Game Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md">
+      <Filter>문서 파일</Filter>
+    </None>
+  </ItemGroup>
+</Project>
