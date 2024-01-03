@@ -225,7 +225,7 @@ namespace me
 
 	void Matrix2X2::Rotation(float angle)
 	{
-		angle = MathEngine::DEGREE_TO_RADIAN(angle);
+		angle = me::DEGREE_TO_RADIAN(angle);
 
 		Matrix2X2 rotation(cos(angle), sin(angle), -sin(angle), cos(angle));
 

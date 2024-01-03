@@ -128,7 +128,7 @@ namespace me
 			float cosTheta = dotProduct / magnitudeProduct;
 			cosTheta = std::max(-1.0f, std::min(cosTheta, 1.0f)); // 값이 정확한 범위 내에 있는지 확인
 
-			theta = MathEngine::DEGREE_TO_RADIAN(acos(cosTheta));
+			theta = me::DEGREE_TO_RADIAN(acos(cosTheta));
 		}
 		else
 		{

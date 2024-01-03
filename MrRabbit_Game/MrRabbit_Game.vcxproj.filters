@@ -19,6 +19,9 @@
     <Filter Include="소스 파일\Window Info">
       <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Camera">
+      <UniqueIdentifier>{dbf8eabf-432c-49cd-8737-97781e4eac0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ManagerCreator.h">

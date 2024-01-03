@@ -29,6 +29,9 @@
     <Filter Include="소스 파일\Mesh\Transpose">
       <UniqueIdentifier>{7f8dfe5f-77d3-4d86-8bf8-88efd4f40d2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Camera3D">
+      <UniqueIdentifier>{b86af012-ddab-4913-afc1-1488509e012a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\Font.cpp">
@@ -51,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
       <Filter>소스 파일\Mesh\Transpose</Filter>
+    </ClCompile>
+    <ClCompile Include="Camrea3D.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +81,7 @@
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <Filter>소스 파일\Mesh\Gizmos</Filter>
     </ClInclude>
+    <ClInclude Include="Camrea3D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md">
