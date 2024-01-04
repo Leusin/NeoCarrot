@@ -32,6 +32,8 @@ namespace ge
 		void DrawTest();
 #endif
 		void TextColor();
+        void DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, TCHAR* text, ...);
+        void DrawTextColor(int x, int y, const DirectX::XMVECTORF32& xmVector, TCHAR* text, ...);
 
 	private:
 		std::unique_ptr<DirectX::SpriteBatch> _spriteBatch;

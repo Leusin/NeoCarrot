@@ -1,4 +1,6 @@
 #include "Font.h"
+#include <SimpleMath.h>
+#include <tchar.h>
 
 // 현재 경로가 어딘지 확인하기 위해
 #if defined(DEBUG) || defined(_DEBUG)
@@ -59,4 +61,48 @@ void ge::Font::DrawTest()
 
 void ge::Font::TextColor()
 {
+}
+
+void ge::Font::DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, TCHAR* text, ...)
+{
+    TCHAR   _buffer[1024] = L"";
+    va_list vl;
+    va_start(vl, text);
+    _vstprintf(_buffer, 1024, text, vl);
+    va_end(vl);
+
+    // SpriteBatch에 여러 렌더 스테이트를 지정할 수 있다.
+    // 문제는, 그냥 Begin만 하면 뎁스스탠실버퍼 옵션이 D3D11_DEPTH_WRITE_MASK_ZERO가 되는 듯. DSS를 다루지 않는 포반에는 문제가 될 수 있다.
+    // 아래처럼 여기에 옵션을 ALL로 넣어줘서 ZERO가 되는 것을 막을 수도 있고, 다른 쪽 오브젝트를 그릴 때 렌더스테이트를 지정 해 줄 수도 있다.
+    // DX12에서 렌더스테이트등을 그렇게 가져가는 것도 이해는 간다. 별로 맘에 안들었겠지..
+    //_spriteBatch->Begin(DirectX::SpriteSortMode::SpriteSortMode_Deferred, nullptr, nullptr, _depthStencilState/*, m_RasterizerState*/);
+    _spriteBatch->Begin();
+    _spriteFont->DrawString(_spriteBatch.get(),
+                            _buffer,
+                            DirectX::XMFLOAT2((float)x, (float)y),
+                            DirectX::SimpleMath::Vector4(color));
+    _spriteBatch->End();
+}
+
+void ge::Font::DrawTextColor(int x, int y, const DirectX::XMVECTORF32& xmVector, TCHAR* text, ...)
+{
+    TCHAR   _buffer[1024] = L"";
+    va_list vl;
+    va_start(vl, text);
+    _vstprintf(_buffer, 1024, text, vl);
+    va_end(vl);
+
+    DirectX::SimpleMath::Vector4 color;
+
+    color.x = DirectX::XMVectorGetX(xmVector);
+    color.y = DirectX::XMVectorGetY(xmVector);
+    color.z = DirectX::XMVectorGetZ(xmVector);
+    color.w = DirectX::XMVectorGetW(xmVector);
+
+    _spriteBatch->Begin();
+    _spriteFont->DrawString(_spriteBatch.get(),
+                            _buffer,
+                            DirectX::XMFLOAT2((float)x, (float)y),
+                            DirectX::SimpleMath::Vector4(color));
+    _spriteBatch->End();
 }

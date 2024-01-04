@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Matrix2X2.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
