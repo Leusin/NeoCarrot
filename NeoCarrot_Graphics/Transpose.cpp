@@ -1,4 +1,5 @@
 #include "Transpose.h"
+#include <directXMath.h>
 
 ge::Transpose::Transpose()
 {

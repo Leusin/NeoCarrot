@@ -35,12 +35,16 @@ namespace ge
 		LRESULT MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	private:
-		// 윈도우 정보
+		// 윈도우 정보. 
+		// 초기화 및  MassageProc에서 사용한다.
 		WindowInfomation* _windowInfo;
 
-		// 매니저
+#pragma region Manager
+
 		std::unique_ptr<ManagerCreator> _managerCreator;
 		std::vector<std::unique_ptr<IManager>> _managers;
+
+#pragma endregion Manager
 
 		// 그래픽 엔진
 		std::unique_ptr<ge::GraphicsEngine> _graphicsEngine{ nullptr };

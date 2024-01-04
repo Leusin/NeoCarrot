@@ -1,3 +1,11 @@
+/// Camera3D.h
+/// 
+/// TODO 
+///    지금은 그래픽스 엔진에 있지만 추후 게임으로 옮겨지고 그래픽스엔진은 위치만 받을 것이다.
+/// 
+/// 2024-01-04
+
+
 #pragma once
 
 #include <directxmath.h>
@@ -5,10 +13,11 @@
 namespace ge
 {
 
-class Camrea3D
+class Camera3D
 {
-    Camrea3D();
-    ~Camrea3D();
+public:
+    Camera3D();
+    ~Camera3D();
 
     //
     // 인터페이스 함수
@@ -65,7 +74,7 @@ class Camrea3D
     // 이 메서들을 호출해 시야 행렬을 재구축한다.
     void UpdateViewMatrix();
 
-    private:
+private:
     // 월드 기준 카메라 좌표계
     DirectX::XMFLOAT3 _position{0.0f, 0.0f, 0.0f}; // 원점
     DirectX::XMFLOAT3 _right{1.0f, 0.0f, 0.0f};    // x

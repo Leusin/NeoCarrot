@@ -2,7 +2,7 @@
 #include "MyColor.h"
 #include "Font.h"
 
-#include <dxgi.h>
+//#include <dxgi.h>
 #include <d3d11.h>
 #include <cassert>
 

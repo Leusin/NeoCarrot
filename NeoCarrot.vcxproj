@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camrea3D.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Font.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -32,7 +32,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camrea3D.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h" />
     <ClInclude Include="NeoCarrot_Graphics\Font.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -46,6 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Bunny_Math\Bunny_Math.vcxproj">
+      <Project>{05044883-acde-43b4-9566-d4aa2891973d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -119,15 +124,15 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\DirectXTK\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dxgi.lib;d3d11.lib;DirectXTK.lib;Bunny_Math</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,8 +152,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\DirectXTK\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dxgi.lib;d3d11.lib;DirectXTK.lib;Bunny_Math</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -158,15 +163,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)\FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dxgi.lib;d3d11.lib;DirectXTK.lib;Bunny_Math</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -177,7 +182,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -186,8 +191,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)\FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>dxgi.lib;d3d11.lib;DirectXTK.lib;Bunny_Math</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
