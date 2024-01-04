@@ -9,7 +9,14 @@ ge::GameEngine::GameEngine(WindowInfomation* wi)
 	: _windowInfo(wi)
 	, _managerCreator{ std::make_unique<ManagerCreator>()}
 {
+
+#pragma region Manager
+
 	_managers.push_back(_managerCreator->CreateManager(ManagerType::Scene));
+	_managers.push_back(_managerCreator->CreateManager(ManagerType::Resource));
+
+#pragma endregion Manager
+
 }
 
 ge::GameEngine::~GameEngine()

@@ -172,6 +172,7 @@
     <ClInclude Include="IScene.h" />
     <ClInclude Include="ManagerType.h" />
     <ClInclude Include="FirstScene.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="WindowInfomation.h" />
   </ItemGroup>
@@ -181,6 +182,7 @@
     <ClCompile Include="ManagerCreator.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="FirstScene.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
