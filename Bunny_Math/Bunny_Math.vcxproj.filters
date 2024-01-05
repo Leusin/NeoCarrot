@@ -55,5 +55,8 @@
     <None Include="Vector2.inl">
       <Filter>소스 파일</Filter>
     </None>
+    <None Include="Vector3.inl">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

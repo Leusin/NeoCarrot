@@ -4,7 +4,6 @@
 /// 2024-01-05
 
 #pragma once
-#include <cassert>
 
 namespace me
 {
@@ -86,12 +85,12 @@ struct Vector2
     /// <summary>
     /// 두 2 차원 벡터의 내적
     /// </summary>
-    constexpr T Dot(const Vector2& other) const;
+    constexpr T Dot(const Vector2& rhs) const;
 
     /// <summary>
     /// 두 2 차원 벡터의 외적
     /// </summary>
-    constexpr T Cross(const Vector2& other) const;
+    constexpr T Cross(const Vector2& rhs) const;
 
     /// <summary>
     /// 벡터의 구성성분 끼리 곱(Component-wise multiplication)을 수행합니다.
@@ -112,13 +111,14 @@ struct Vector2
     /// <returns>(lhs.x/rhs.x, lhs.y/rhs.y)</returns>
     constexpr Vector2 ComponentWiseDiv(const Vector2& rhs) const;
 };
+
 /// <summary>
 /// Vector2 단항 연산자 - 오버로드
 /// </summary>
 /// <param name="rhs">뺄 오른쪽 피연산자</param>
 /// <returns></returns>
 template <typename T>
-[[nodiscard]] constexpr Vector2<T> operator-(const Vector2<T>& right);
+[[nodiscard]] constexpr Vector2<T> operator-(const Vector2<T>& left);
 
 /// <summary>
 ///  Vector2 이항 연산자 += 오버로드
@@ -234,6 +234,5 @@ template <typename T>
 /// <returns>left 가 right 와 다르다면 참</returns>
 template <typename T>
 [[nodiscard]] constexpr bool operator!=(const Vector2<T>& left, const Vector2<T>& right);
-
 
 } // namespace me

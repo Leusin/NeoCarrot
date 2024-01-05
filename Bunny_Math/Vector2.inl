@@ -1,5 +1,6 @@
 #include "Vector2.h"
 #include <cmath>
+#include <cassert>
 #include <xtr1common>
 
 using namespace me;
@@ -51,14 +52,14 @@ inline constexpr Vector2<T> Vector2<T>::Perpendicular() const
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr T Vector2<T>::Dot(const Vector2& other) const
+inline constexpr T Vector2<T>::Dot(const Vector2& rhs) const
 {
     return x * rhs.x + y * rhs.y;
 }
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr T Vector2<T>::Cross(const Vector2& other) const
+inline constexpr T Vector2<T>::Cross(const Vector2& rhs) const
 {
     return x * rhs.y - y * rhs.x;
 }

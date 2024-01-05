@@ -9,11 +9,11 @@ template <typename T>
 inline Vector2<T> Vector2<T>::Normalize() const
 {
     static_assert(std::is_floating_point_v<T>,
-                  "Vector2::normalized()는 부동소수점 타입만을 지원합니다.\nVector2::normalized() is only supported "
+                  "Vector2::Normalized()는 부동소수점 타입만을 지원합니다.\nVector2::Normalized() is only supported "
                   "for floating point types");
 
     assert(*this != Vector2<T>() &&
-           "Vector2::normalized()는 영벡터를 정규화를 수행할 수 없습니다.\nVector2::normalized() cannot normalize a "
+           "Vector2::Normalized()는 영벡터를 정규화를 수행할 수 없습니다.\nVector2::Normalized() cannot normalize a "
            "zero vector");
 
     return (*this) / Length();
