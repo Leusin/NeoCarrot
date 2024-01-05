@@ -60,7 +60,9 @@
     <ClInclude Include="SceneManager.h">
       <Filter>소스 파일\Manager\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Canera3D.h" />
+    <ClInclude Include="Canera3D.h">
+      <Filter>소스 파일\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -87,7 +89,9 @@
     <ClCompile Include="ResourceType.cpp">
       <Filter>소스 파일\Manager\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Canera3D.cpp" />
+    <ClCompile Include="Canera3D.cpp">
+      <Filter>소스 파일\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">

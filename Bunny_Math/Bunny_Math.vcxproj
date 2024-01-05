@@ -33,7 +33,6 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="MathUtils.h" />
-    <ClInclude Include="Matrix2X2.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>
