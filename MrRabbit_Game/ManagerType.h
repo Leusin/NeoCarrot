@@ -11,14 +11,17 @@ namespace ge
 {
 	enum class ManagerType
 	{
-		Scene,
+		Unknown = -1,
+		Scene = 0,
 		Resource,
 		Input,
 		Entity,
 		Audio,
 		Event,
 		Time,
-		UI
+		UI,
+
+		NumManager,
 	};
 
 }// GameEngine

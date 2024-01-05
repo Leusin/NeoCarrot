@@ -76,7 +76,9 @@ public:
 
 private:
     // 월드 기준 카메라 좌표계
-    DirectX::XMFLOAT3 _position{0.0f, 0.0f, 0.0f}; // 원점
+    // 원점
+    DirectX::XMFLOAT3 _position{0.0f, 0.0f, 0.0f}; 
+    // 기저
     DirectX::XMFLOAT3 _right{1.0f, 0.0f, 0.0f};    // x
     DirectX::XMFLOAT3 _up{0.0f, 1.0f, 0.0f};       // y
     DirectX::XMFLOAT3 _look{0.0f, 0.0f, 1.0f};     // z

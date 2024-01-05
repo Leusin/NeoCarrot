@@ -166,6 +166,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Canera3D.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="ManagerCreator.h" />
@@ -177,12 +178,14 @@
     <ClInclude Include="WindowInfomation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Canera3D.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="ManagerCreator.cpp" />
     <ClCompile Include="IScene.cpp" />
     <ClCompile Include="FirstScene.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ResourceType.cpp" />
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>

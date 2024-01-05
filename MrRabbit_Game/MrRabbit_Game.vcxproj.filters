@@ -22,17 +22,17 @@
     <Filter Include="소스 파일\Camera">
       <UniqueIdentifier>{dbf8eabf-432c-49cd-8737-97781e4eac0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Manager\Creator">
+      <UniqueIdentifier>{d9a4ee4c-8681-4c79-b00e-b76326acec4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\Resource">
+      <UniqueIdentifier>{f7099206-fd76-4710-83fd-078431c0ac5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Manager\Scene">
+      <UniqueIdentifier>{0d8fb69d-943c-42cd-b44b-020103eb87f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ManagerCreator.h">
-      <Filter>소스 파일\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="IManager.h">
-      <Filter>소스 파일\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="ManagerType.h">
-      <Filter>소스 파일\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="IScene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
@@ -42,26 +42,27 @@
     <ClInclude Include="FirstScene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>소스 파일\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="WindowInfomation.h">
       <Filter>소스 파일\Window Info</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>소스 파일\Manager</Filter>
+    <ClInclude Include="IManager.h">
+      <Filter>소스 파일\Manager\Creator</Filter>
     </ClInclude>
+    <ClInclude Include="ManagerCreator.h">
+      <Filter>소스 파일\Manager\Creator</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>소스 파일\Manager\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerType.h">
+      <Filter>소스 파일\Manager\Creator</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>소스 파일\Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Canera3D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="IManager.cpp">
-      <Filter>소스 파일\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="ManagerCreator.cpp">
-      <Filter>소스 파일\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>소스 파일\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="IScene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
@@ -71,9 +72,22 @@
     <ClCompile Include="FirstScene.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>소스 파일\Manager</Filter>
+    <ClCompile Include="IManager.cpp">
+      <Filter>소스 파일\Manager\Creator</Filter>
     </ClCompile>
+    <ClCompile Include="ManagerCreator.cpp">
+      <Filter>소스 파일\Manager\Creator</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>소스 파일\Manager\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceType.cpp">
+      <Filter>소스 파일\Manager\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Canera3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
