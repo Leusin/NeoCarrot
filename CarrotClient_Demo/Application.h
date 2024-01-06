@@ -12,7 +12,7 @@
 
 #include "WindowInfomation.h"
 
-namespace ge 
+namespace game 
 { 
 	class GameEngine; 
 	struct WindowInfomation;
@@ -33,6 +33,6 @@ public:
 private:
 	void InitalizeMainWindow();
 
-	ge::WindowInfomation _winInfo;
-	std::unique_ptr<ge::GameEngine>_gameEngine{ nullptr };
+	game::WindowInfomation _winInfo;
+	std::unique_ptr<game::GameEngine>_gameEngine{ nullptr };
 };
