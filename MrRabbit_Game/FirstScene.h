@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ge
+namespace game
 {
 	class FirstScene
 	{

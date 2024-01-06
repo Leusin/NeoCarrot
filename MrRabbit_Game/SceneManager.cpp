@@ -1,22 +1,22 @@
 #include "SceneManager.h"
 
-ge::SceneManager::SceneManager()
+game::SceneManager::SceneManager()
 	: _nowScene{}
 {
 }
 
-ge::SceneManager::~SceneManager()
+game::SceneManager::~SceneManager()
 {
 }
 
-void ge::SceneManager::Initialize()
+void game::SceneManager::Initialize()
 {
 }
 
-void ge::SceneManager::Update()
+void game::SceneManager::Update()
 {
 }
 
-void ge::SceneManager::Finalize()
+void game::SceneManager::Finalize()
 {
 }

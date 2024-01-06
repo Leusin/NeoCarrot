@@ -8,7 +8,7 @@
 
 #include <windows.h>
 
-namespace ge
+namespace game
 {
 	struct WindowInfomation
 	{

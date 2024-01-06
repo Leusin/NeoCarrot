@@ -7,7 +7,7 @@
 #include <cassert>
 #include <iostream>
 
-std::unique_ptr<ge::IManager> ge::ManagerCreator::CreateManager(ManagerType&& managerType)
+std::unique_ptr<game::IManager> game::ManagerCreator::CreateManager(ManagerType&& managerType)
 {
     printf("ManagerCreator\n");
 	switch (managerType)

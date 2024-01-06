@@ -19,9 +19,6 @@
     <Filter Include="소스 파일\Window Info">
       <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Camera">
-      <UniqueIdentifier>{dbf8eabf-432c-49cd-8737-97781e4eac0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Manager\Creator">
       <UniqueIdentifier>{d9a4ee4c-8681-4c79-b00e-b76326acec4f}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,12 @@
     </Filter>
     <Filter Include="소스 파일\Manager\Scene">
       <UniqueIdentifier>{0d8fb69d-943c-42cd-b44b-020103eb87f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Entity">
+      <UniqueIdentifier>{548c4927-c09a-420a-b434-b6918fb69bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Component">
+      <UniqueIdentifier>{7c54a3f9-4b3c-4950-818e-173e43444fb2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +63,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>소스 파일\Manager\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Canera3D.h">
-      <Filter>소스 파일\Camera</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IScene.cpp">
@@ -88,9 +88,6 @@
     </ClCompile>
     <ClCompile Include="ResourceType.cpp">
       <Filter>소스 파일\Manager\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Canera3D.cpp">
-      <Filter>소스 파일\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

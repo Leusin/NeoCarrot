@@ -1,21 +1,21 @@
 #include "ResourceManager.h"
 
-ge::ResourceManager::ResourceManager()
+game::ResourceManager::ResourceManager()
 {
 }
 
-ge::ResourceManager::~ResourceManager()
+game::ResourceManager::~ResourceManager()
 {
 }
 
-void ge::ResourceManager::Initialize()
+void game::ResourceManager::Initialize()
 {
 }
 
-void ge::ResourceManager::Update()
+void game::ResourceManager::Update()
 {
 }
 
-void ge::ResourceManager::Finalize()
+void game::ResourceManager::Finalize()
 {
 }

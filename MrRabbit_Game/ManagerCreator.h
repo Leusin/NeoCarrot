@@ -13,7 +13,7 @@
 
 #include <memory>
 
-namespace ge
+namespace game
 {
 	class IManager;
 

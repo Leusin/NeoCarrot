@@ -7,7 +7,7 @@
 #pragma once
 #include "IManager.h"
 
-namespace ge
+namespace game
 {
 	class IScene;
 

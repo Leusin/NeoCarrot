@@ -1,24 +1,26 @@
-/// IEntity.h : 추상 클래스 입니다. Entity 가 꼭 구현해야할 메서드를 정의합니다.
+/// Entity.h : 게임 엔진에서 모든 개체(entity)를 나타내는 단위입니다.
+/// Entity이 가지는 구성 요소(component)를 통해 시각적, 물리적, 동작적 특성을 갖습니다.
 ///
-/// Entity는 Component 목록을 맴버로서 가지지며
+/// Entity는 하나 이상의 Component 맴버로서 가지지며
 /// Component 를 관리하는 역할을 맏습니다.
-/// 따라서 Entity 의 메서드는 주로 Component 를 관리합니다.
 ///
 /// 2024-01-06
 
+
 #pragma once
+
 
 namespace game
 {
 class IComponent;
 
-class IEntity
+class Entity
 {
 public:
     /// <summary>
     /// 상속을 위한 가상 소멸자.
     /// </summary>
-    virtual ~IEntity(){};
+    virtual ~Entity(){};
 
 public:
     /// <summary>
@@ -34,6 +36,7 @@ public:
     /// 컴포넌트를 가져옵니다
     /// </summary>
     virtual void        AddComponent(IComponent* component) abstract;
+
 };
 
 } // namespace game

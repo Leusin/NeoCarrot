@@ -8,7 +8,7 @@
 
 #include "IManager.h"
 
-namespace ge
+namespace game
 {
 
 class ResourceManager : public IManager

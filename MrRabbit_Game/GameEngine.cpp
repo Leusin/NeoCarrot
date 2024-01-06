@@ -4,7 +4,7 @@
 #include "GraphicsEngine.h"
 
 
-ge::GameEngine::GameEngine(WindowInfomation* wi)
+game::GameEngine::GameEngine(WindowInfomation* wi)
 	// 먼저 필요한 순서대로 초기화 중이다.
 	: _windowInfo(wi)
 	, _managerCreator{ std::make_unique<ManagerCreator>()}
@@ -19,18 +19,18 @@ ge::GameEngine::GameEngine(WindowInfomation* wi)
 
 }
 
-ge::GameEngine::~GameEngine()
+game::GameEngine::~GameEngine()
 {
 }
 
-void ge::GameEngine::Initialize()
+void game::GameEngine::Initialize()
 {
-	_graphicsEngine = std::make_unique<ge::GraphicsEngine>(_windowInfo->hInstance, _windowInfo->hMainWnd, _windowInfo->clientWidth, _windowInfo->clientHeight);
+	_graphicsEngine = std::make_unique<game::GraphicsEngine>(_windowInfo->hInstance, _windowInfo->hMainWnd, _windowInfo->clientWidth, _windowInfo->clientHeight);
 
 	for(auto & e : _managers) { e->Initialize(); }
 }
 
-void ge::GameEngine::Process()
+void game::GameEngine::Process()
 {
 	MSG msg = { 0 };
 
@@ -61,13 +61,13 @@ void ge::GameEngine::Process()
 	}
 }
 
-void ge::GameEngine::Finalize()
+void game::GameEngine::Finalize()
 {
 	for (auto& e : _managers) { e->Finalize(); }
 	_graphicsEngine->Finalize();
 }
 
-LRESULT ge::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT game::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
 	{

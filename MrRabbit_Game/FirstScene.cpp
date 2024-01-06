@@ -1,9 +1,9 @@
 #include "FirstScene.h"
 
-ge::FirstScene::FirstScene()
+game::FirstScene::FirstScene()
 {
 }
 
-ge::FirstScene::~FirstScene()
+game::FirstScene::~FirstScene()
 {
 }

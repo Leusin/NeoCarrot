@@ -7,7 +7,7 @@
 
 #pragma once
 
-namespace ge
+namespace game
 {
 	enum class ManagerType
 	{

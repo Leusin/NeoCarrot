@@ -25,8 +25,6 @@
     <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일\WinMain</Filter>
     </ClCompile>
-    <ClCompile Include="IEntity.cpp" />
-    <ClCompile Include="IComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -35,8 +33,6 @@
     <ClInclude Include="resource.h">
       <Filter>리소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IEntity.h" />
-    <ClInclude Include="IComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CarrotClient_Demo.rc">
