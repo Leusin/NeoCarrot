@@ -1,5 +1,8 @@
 #include "IEventFunction.h"
 
+namespace core
+{
+
 void IEventFunction::Awake()
 {
 }
@@ -31,3 +34,5 @@ void IEventFunction::OnDisable()
 void IEventFunction::OnDestory()
 {
 }
+
+} // namespace core

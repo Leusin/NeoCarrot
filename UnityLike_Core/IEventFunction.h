@@ -1,17 +1,19 @@
-/// IEventFunction.h: 스크립트 클래스 에서 사용되는 
+/// IEventFunction.h: 스크립트 클래스 에서 사용되는
 /// 특별한 메서드의 집합을 정의한 추상 클래스 입니다.
-/// 
+///
 /// 엔진의 생명주기(life cycle) 이벤트마다
 /// 알맞는 메서드가 차례대로 호출됩니다.
-/// 
-/// IEventFunction을 상속받은 클래스는 
+///
+/// IEventFunction을 상속받은 클래스는
 /// 필요한 메서드를 오버라이딩 하여 사용할 수 있습니다.
-/// 
+///
 /// 2024-01-06
 
 
 #pragma once
 
+namespace core
+{
 
 class IEventFunction
 {
@@ -19,7 +21,6 @@ public:
     virtual ~IEventFunction(){};
 
 public:
-
     /// <summary>
     /// 인스턴스가 생성될 때 호출되는 매서드 입니다.
     ///    사용처: 초기화 작업
@@ -65,3 +66,5 @@ public:
     /// </summary>
     virtual void OnDestory();
 };
+
+} // namespace core
