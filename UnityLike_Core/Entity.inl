@@ -2,7 +2,6 @@
 
 #ifdef _DEBUG
 #include <iostream>
-#include "Entity.h"
 #endif // DEBUG
 
 namespace core

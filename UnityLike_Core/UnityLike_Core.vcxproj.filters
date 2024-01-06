@@ -42,5 +42,8 @@
     <None Include="Entity.inl">
       <Filter>source</Filter>
     </None>
+    <None Include="Object.inl">
+      <Filter>source</Filter>
+    </None>
   </ItemGroup>
 </Project>
