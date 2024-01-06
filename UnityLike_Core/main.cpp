@@ -18,10 +18,10 @@ enum class Layer
 
 int main()
 {
-    shared_ptr<Object<Type, Layer>> obj = 
-        make_shared<Object<Type, Layer>>(0, "me", Type::HERO, Layer::ZERO);
+    //shared_ptr<Object<Type, Layer>> obj = 
+    //    make_shared<Object<Type, Layer>>(0, "me", Type::HERO, Layer::ZERO);
 
-    obj->Destroy();
+    //obj->Destroy();
 
 	return 0;
 }
