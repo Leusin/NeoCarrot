@@ -21,7 +21,7 @@ template <typename enumTag, typename enumLayer, typename enumComponent>
 class Entity : public Object<enumTag, enumLayer>, public IEventFunction
 {
 public:
-    //Entity();
+    Entity(int&& id, const char*&& name, enumTag&& type, enumLayer&& layer);
     ~Entity(){};
 
 public:
@@ -40,4 +40,6 @@ public:
     virtual void AddComponent(IComponent* component){};
 };
 
-} // namespace game
+} // namespace core
+
+#include "Entity.inl"

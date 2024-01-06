@@ -17,12 +17,6 @@
     <ClCompile Include="IComponent.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="IEventFunction.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -43,5 +37,10 @@
     <ClInclude Include="IEventFunction.h">
       <Filter>haeder</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Entity.inl">
+      <Filter>source</Filter>
+    </None>
   </ItemGroup>
 </Project>

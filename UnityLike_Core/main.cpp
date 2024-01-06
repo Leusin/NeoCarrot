@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "Entity.h"
 #include <memory>
 
 using namespace std;
@@ -16,9 +16,14 @@ enum class Layer
     ONE
 };
 
+enum class Component
+{
+    TRANSFORM
+};
+
 int main()
 {
-    //shared_ptr<Object<Type, Layer>> obj = 
+    //shared_ptr<Object<Type, Layer>> entity = 
     //    make_shared<Object<Type, Layer>>(0, "me", Type::HERO, Layer::ZERO);
 
     //obj->Destroy();
