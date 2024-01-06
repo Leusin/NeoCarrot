@@ -21,10 +21,8 @@ template <typename enumTag, typename enumLayer, typename enumComponent>
 class Entity : public Object<enumTag, enumLayer>, public IEventFunction
 {
 public:
-    /// <summary>
-    /// 상속을 위한 가상 소멸자.
-    /// </summary>
-    virtual ~Entity(){};
+    //Entity();
+    ~Entity(){};
 
 public:
     /// <summary>
