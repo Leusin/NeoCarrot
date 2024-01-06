@@ -26,7 +26,7 @@ template <typename enumTagType, typename enumLayer>
 class Object : public std::enable_shared_from_this<Object<enumTagType, enumLayer>>
 {
 /// <summary>
-/// Object 클래스는 직접 생성하지 못하게 하도로록
+/// Object 클래스는 직접 생성하지 못하게 하도록
 /// protected 범위 지정자 에서 선언
 /// </summary>
 protected:
