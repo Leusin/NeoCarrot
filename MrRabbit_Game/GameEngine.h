@@ -1,11 +1,12 @@
 /// GameProcess.cpp : 게임의 흐름을 제어 및 관리합니다.
-/// 대부분 매니저 클래스들을 여기서 가지고 있습니다.
+/// 대부분 매니저 클래스들을 여기에 있습니다.
 /// 
 /// 2023-12-22
-///
 
 
 #pragma once
+
+#define E_TEST
 
 #include "IManager.h"
 #include "ManagerCreator.h"
