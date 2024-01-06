@@ -6,8 +6,23 @@
 
 #include "IManager.h"
 
+#include <vector>
+#include <memory>
+
+namespace core
+{
+template <typename T, typename U>
+class Entity;
+}
+
 namespace game
 {
+enum class Tag
+{
+};
+enum class Layer
+{
+};
 
 class EntityManager : public IManager
 {
@@ -18,6 +33,10 @@ public:
     void Initialize() override;
     void Update() override;
     void Finalize() override;
+
+private:
+   
+    std::vector<std::shared_ptr<core::Entity<Tag, Layer>>> _entities;
 };
 
-}
+} // namespace game

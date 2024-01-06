@@ -60,6 +60,7 @@ public:
     /// 객체의 활성 여부.
     /// </summary>
     bool _isActive{false};
+    bool _isStart{true};
 
     /// <summary>
     /// 오브젝트의 유사한 속성이나
