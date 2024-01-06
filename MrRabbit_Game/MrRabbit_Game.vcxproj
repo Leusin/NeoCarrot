@@ -173,7 +173,7 @@
     <ClInclude Include="ManagerCreator.h" />
     <ClInclude Include="IScene.h" />
     <ClInclude Include="ManagerType.h" />
-    <ClInclude Include="FirstScene.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
@@ -181,10 +181,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="IManager.cpp" />
     <ClCompile Include="ManagerCreator.cpp" />
-    <ClCompile Include="IScene.cpp" />
-    <ClCompile Include="FirstScene.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ResourceType.cpp" />

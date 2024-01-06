@@ -1,28 +1,29 @@
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
-#include "GameEngine.h"
 
+#include "GameEngine.h"
 #include "GraphicsEngine.h"
+#include "SceneManager.h"
 #include "WindowInfomation.h"
 
 game::GameEngine::GameEngine(WindowInfomation* wi) :
 // 필요한 순서대로 초기화 중이다.
 _windowInfo(wi),
-_managerCreator{std::make_unique<ManagerCreator>()}
+_managerCreator{std::make_unique<ManagerCreator>()},
+_sceneManager{std::make_unique<SceneManager>()}
 {
 
 #ifdef _DEBUG
-    std::cout << "GameEngine\n";
+    std::cout << "GameEngine Constructed\n";
 #endif // _DEBUG
-
 
 
 #pragma region Manager
 
-    _managers.push_back(_managerCreator->CreateManager(ManagerType::Scene));
-    _managers.push_back(_managerCreator->CreateManager(ManagerType::Resource));
-    _managers.push_back(_managerCreator->CreateManager(ManagerType::Entity));
+    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Scene));
+    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Resource));
+    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Entity));
 
 #pragma endregion Manager
 }
@@ -42,6 +43,8 @@ void game::GameEngine::Initialize()
     {
         e->Initialize();
     }
+
+    _sceneManager->Initialize();
 }
 
 void game::GameEngine::Process()
@@ -69,6 +72,8 @@ void game::GameEngine::Process()
             {
                 e->Update();
             }
+            
+            _sceneManager->Update();
 
             _graphicsEngine->Update(float());
             _graphicsEngine->BeginRender();
@@ -84,6 +89,7 @@ void game::GameEngine::Finalize()
     {
         e->Finalize();
     }
+    _sceneManager->Finalize();
     _graphicsEngine->Finalize();
 }
 

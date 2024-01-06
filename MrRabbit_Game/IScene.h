@@ -1,12 +1,21 @@
 #pragma once
 
+#include <memory>
+
 namespace game
 {
-	class IScene
-	{
-	public:
-		IScene();
-		virtual ~IScene();
-	};
+class IScene
+{
+public:
+    virtual ~IScene(){};
 
-} // GameEngine
+public:
+    virtual void Initialize() abstract;
+    virtual void Update() abstract;
+    virtual void Finalize() abstract;
+
+public:
+    virtual std::shared_ptr<IScene> NextSene() abstract;
+};
+
+} // namespace game

@@ -5,9 +5,6 @@
 
 
 #pragma once
-
-#define E_TEST
-
 #include "IManager.h"
 #include "ManagerCreator.h"
 
@@ -21,6 +18,7 @@ namespace game
 {
 	class IManger;
 	class ManagerCreator;
+    class SceneManager;
 	struct WindowInfomation;
 
 	class GameEngine
@@ -43,6 +41,7 @@ namespace game
 #pragma region Manager
 
 		std::unique_ptr<ManagerCreator> _managerCreator;
+		std::unique_ptr<SceneManager> _sceneManager;
 		std::vector<std::unique_ptr<IManager>> _managers;
 
 #pragma endregion Manager

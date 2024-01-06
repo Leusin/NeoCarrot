@@ -45,7 +45,7 @@
     <ClInclude Include="GameEngine.h">
       <Filter>소스 파일\Game Engine</Filter>
     </ClInclude>
-    <ClInclude Include="FirstScene.h">
+    <ClInclude Include="TestScene.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
     <ClInclude Include="WindowInfomation.h">
@@ -71,17 +71,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="IScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngine.cpp">
       <Filter>소스 파일\Game Engine</Filter>
     </ClCompile>
-    <ClCompile Include="FirstScene.cpp">
+    <ClCompile Include="TestScene.cpp">
       <Filter>소스 파일\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="IManager.cpp">
-      <Filter>소스 파일\Manager\Creator</Filter>
     </ClCompile>
     <ClCompile Include="ManagerCreator.cpp">
       <Filter>소스 파일\Manager\Creator</Filter>
