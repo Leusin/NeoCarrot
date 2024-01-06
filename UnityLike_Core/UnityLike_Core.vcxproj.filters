@@ -14,12 +14,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="IComponent.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="IEventFunction.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>test</Filter>
     </ClCompile>

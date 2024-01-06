@@ -9,17 +9,18 @@
 
 #pragma once
 
-#include "Object.h"
 #include "IEventFunction.h"
+#include "Object.h"
+#include "IComponent.h"
 
-#include <string>
+#include <memory>
+#include <vector>
 
 
 namespace core
 {
-class IComponent;
 
-template <typename Tag, typename Layer, typename Component>
+template <typename Tag, typename Layer/*, typename ComponentT*/>
 class Entity : public Object<Tag, Layer>, public IEventFunction
 {
 public:
@@ -28,18 +29,21 @@ public:
 
 public:
     /// <summary>
-    /// 인자받은 컴포넌트 타입에 해당하는 컴포넌트를 반환합니다.
-    /// 
-    /// TODO
-    ///    그리고 만을 해당 컴포넌트가 없다면 어떻게 해야 할 지 생각해보기
-    /// 
-    /// </summary>
-    //virtual IComponent* GetComponent(Component&& compoentType);
-
-    /// <summary>
     /// 컴포넌트를 가져옵니다
     /// </summary>
-    //virtual void AddComponent(IComponent* component);
+    //template <typename T>
+    template <typename T, typename... Args>
+    void AddComponent(Args&&... args);
+
+    /// <summary>
+    /// 인자로 전달 받은 컴포넌트 타입에 해당하는
+    /// 컴포넌트를 반환합니다.
+    /// </summary>
+    template <typename T>
+    T* GetComponent();
+
+private:
+    std::vector<std::unique_ptr<IComponent>> _componentList;
 };
 
 } // namespace core

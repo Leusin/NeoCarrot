@@ -21,10 +21,11 @@ namespace core
 template <typename Tag, typename Layer>
 class Object : public std::enable_shared_from_this<Object<Tag, Layer>>
 {
-/// <summary>
-/// Object 클래스는 직접 생성하지 못하게 하도록
-/// protected 범위 지정자 에서 선언
-/// </summary>
+    /// <summary>
+    /// Object 클래스는 직접 생성하지 못하게 하도록
+    /// protected 범위 지정자 에서 선언
+    /// </summary>
+
 protected:
     Object(int id, std::string name, Tag tag, Layer layer);
 
@@ -43,10 +44,10 @@ public:
 
     /// <summary>
     /// 프리팹(Prefab) 기반으로 새로운 게임 오브젝트를 생성합니다.
-    /// 
+    ///
     /// TODO
     ///    해당 함수를 어떻게 구현해볼건지 좀 더 고민
-    /// 
+    ///
     /// </summary>
     //virtual void Instantiate();
 
@@ -58,21 +59,21 @@ public:
     /// <summary>
     /// 객체의 활성 여부.
     /// </summary>
-    bool isActive{false};
+    bool _isActive{false};
 
     /// <summary>
     /// 오브젝트의 유사한 속성이나
     /// 역할을 식별하는데 사용하는 데이터.
     /// </summary>
-    Tag tag;
-    Layer   layer;
+    Tag   _tag;
+    Layer _layer;
 
 private:
     /// <summary>
     /// 객체를 식별 및 검색을 위한 데이터.
     /// </summary>
-    const int         id;
-    const std::string name;
+    const int         _id;
+    const std::string _name;
 };
 
 } // namespace core
