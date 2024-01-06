@@ -8,7 +8,7 @@
 #endif // _DEBUG
 
 
-game::SceneManager::SceneManager() : _currenScene(std::make_shared<TestScene>())
+game::SceneManager::SceneManager() : _currenScene{std::make_shared<TestScene>()}, _status{game::SceneStatus::START}
 {
 #ifdef _DEBUG
     std::cout << "\tSceneManager Constructed\n";

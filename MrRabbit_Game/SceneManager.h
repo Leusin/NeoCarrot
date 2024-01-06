@@ -36,7 +36,7 @@ public:
 
 private:
     std::shared_ptr<IScene> _currenScene{nullptr};
-    SceneStatus             _status;
+    SceneStatus             _status{SceneStatus::UNKNOWN};
 };
 
 } // namespace game
