@@ -9,7 +9,7 @@
 #endif
 
 
-ge::Font::Font(ID3D11Device* device, ID3D11DeviceContext* deviceCtext, ID3D11RasterizerState* rasterizerState, ID3D11DepthStencilState* dethsencil, FontType fontT)
+grahics::Font::Font(ID3D11Device* device, ID3D11DeviceContext* deviceCtext, ID3D11RasterizerState* rasterizerState, ID3D11DepthStencilState* dethsencil, FontType fontT)
 	: _spriteBatch(std::make_unique<DirectX::SpriteBatch>(deviceCtext)), 
 	_rasterizerState(rasterizerState)
 	, _depthStencilState(dethsencil)
@@ -50,7 +50,7 @@ ge::Font::Font(ID3D11Device* device, ID3D11DeviceContext* deviceCtext, ID3D11Ras
 }
 
 #if defined(DEBUG) || defined(_DEBUG)
-void ge::Font::DrawTest()
+void grahics::Font::DrawTest()
 {
 	_spriteBatch->Begin();
 	const wchar_t* text = L"´Ù¶÷Áã½ã´õ ÇåÃÂ¹ÙÄû¿¡ Å¸°íÆÄ\nÅä³¢¿Í ÇÇÄ«Ãò ¶Ç ¹ÙÁö¶ôÂ«»Í ¿øÇÏ¼Ì´ë";
@@ -59,11 +59,11 @@ void ge::Font::DrawTest()
 }
 #endif
 
-void ge::Font::TextColor()
+void grahics::Font::TextColor()
 {
 }
 
-void ge::Font::DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, TCHAR* text, ...)
+void grahics::Font::DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, TCHAR* text, ...)
 {
     TCHAR   _buffer[1024] = L"";
     va_list vl;
@@ -84,7 +84,7 @@ void ge::Font::DrawTextColor(int x, int y, DirectX::XMFLOAT4 color, TCHAR* text,
     _spriteBatch->End();
 }
 
-void ge::Font::DrawTextColor(int x, int y, const DirectX::XMVECTORF32& xmVector, TCHAR* text, ...)
+void grahics::Font::DrawTextColor(int x, int y, const DirectX::XMVECTORF32& xmVector, TCHAR* text, ...)
 {
     TCHAR   _buffer[1024] = L"";
     va_list vl;

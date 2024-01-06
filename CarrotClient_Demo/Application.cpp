@@ -17,7 +17,7 @@ MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 Application::Application(const HINSTANCE& hIns)
 {
 	_winInfo.hInstance = hIns;
-	_gameEngine = std::make_unique<ge::GameEngine>(&_winInfo);
+	_gameEngine = std::make_unique<game::GameEngine>(&_winInfo);
 	app = this;
 	InitalizeMainWindow();
 

@@ -10,7 +10,7 @@
 
 #include <directxmath.h>
 
-namespace ge
+namespace grahics
 {
 
 class Camera3D

@@ -13,7 +13,7 @@ struct ID3DX11Effect;
 struct ID3DX11EffectTechnique;
 struct ID3DX11EffectMatrixVariable;
 
-namespace ge
+namespace grahics
 {
 	class Grid
 	{

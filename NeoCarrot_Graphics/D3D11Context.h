@@ -17,7 +17,7 @@ struct ID3D11DepthStencilView;
 
 struct D3D11_VIEWPORT;
 
-namespace ge
+namespace grahics
 {
 	class D3D11Context
 	{

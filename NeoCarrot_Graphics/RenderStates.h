@@ -9,7 +9,7 @@ struct ID3D11Device;
 struct ID3D11RasterizerState;
 struct ID3D11DepthStencilState;
 
-namespace ge
+namespace grahics
 {
 class RenderStates
 {

@@ -2,7 +2,7 @@
 #include "Constants.h"
 
 using namespace DirectX;
-using namespace ge;
+using namespace grahics;
 
 Camera3D::Camera3D()
 {

@@ -14,7 +14,7 @@
 #include <vector>
 #include <memory>
 
-namespace game { class GraphicsEngine; }
+namespace grahics { class GraphicsEngine; }
 
 namespace game
 {
@@ -47,7 +47,7 @@ namespace game
 #pragma endregion Manager
 
 		// 그래픽 엔진
-		std::unique_ptr<game::GraphicsEngine> _graphicsEngine{ nullptr };
+		std::unique_ptr<grahics::GraphicsEngine> _graphicsEngine{ nullptr };
 	};
 
 } // GameEngene

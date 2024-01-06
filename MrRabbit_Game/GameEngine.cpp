@@ -25,7 +25,10 @@ game::GameEngine::~GameEngine()
 
 void game::GameEngine::Initialize()
 {
-	_graphicsEngine = std::make_unique<game::GraphicsEngine>(_windowInfo->hInstance, _windowInfo->hMainWnd, _windowInfo->clientWidth, _windowInfo->clientHeight);
+    _graphicsEngine = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
+                                                                _windowInfo->hMainWnd,
+                                                                _windowInfo->clientWidth,
+                                                                _windowInfo->clientHeight);
 
 	for(auto & e : _managers) { e->Initialize(); }
 }

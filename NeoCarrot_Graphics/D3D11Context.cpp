@@ -7,7 +7,7 @@
 #include <cassert>
 
 
-ge::D3D11Context::D3D11Context(HINSTANCE hinst, HWND hWnd, int clientWidth, int clientHeight)
+grahics::D3D11Context::D3D11Context(HINSTANCE hinst, HWND hWnd, int clientWidth, int clientHeight)
 	: _screenViewport(new D3D11_VIEWPORT())
 {
 	/// 디바이스와 DC(device context) 생성
@@ -17,7 +17,7 @@ ge::D3D11Context::D3D11Context(HINSTANCE hinst, HWND hWnd, int clientWidth, int 
 	OnResize(clientWidth, clientHeight);
 }
 
-ge::D3D11Context::~D3D11Context()
+grahics::D3D11Context::~D3D11Context()
 {
 	if (_screenViewport)
 	{
@@ -31,37 +31,37 @@ ge::D3D11Context::~D3D11Context()
 	}
 }
 
-ID3D11Device* ge::D3D11Context::Divice()
+ID3D11Device* grahics::D3D11Context::Divice()
 {
     return _d3dDevice.Get();
 }
 
-ID3D11DeviceContext* ge::D3D11Context::DiviceContext()
+ID3D11DeviceContext* grahics::D3D11Context::DiviceContext()
 {
 	return _d3dDiviceContext.Get();
 }
 
-IDXGISwapChain* ge::D3D11Context::SwapChain()
+IDXGISwapChain* grahics::D3D11Context::SwapChain()
 {
 	return _swapChain.Get();
 }
 
-ID3D11Texture2D* ge::D3D11Context::DethStencilBuffer()
+ID3D11Texture2D* grahics::D3D11Context::DethStencilBuffer()
 {
 	return _depthStencilBuffer.Get();
 }
 
-ID3D11RenderTargetView* ge::D3D11Context::RenderTargetView()
+ID3D11RenderTargetView* grahics::D3D11Context::RenderTargetView()
 {
 	return _renderTargetView.Get();
 }
 
-ID3D11DepthStencilView* ge::D3D11Context::DepthStencilView()
+ID3D11DepthStencilView* grahics::D3D11Context::DepthStencilView()
 {
 	return _depthStencilView.Get();
 }
 
-void ge::D3D11Context::OnResize(int clientWidth, int clientHeight)
+void grahics::D3D11Context::OnResize(int clientWidth, int clientHeight)
 {
 	assert(_d3dDiviceContext.Get());
 	assert(_d3dDevice.Get());
@@ -131,7 +131,7 @@ void ge::D3D11Context::OnResize(int clientWidth, int clientHeight)
 	_d3dDiviceContext->RSSetViewports(1, _screenViewport);
 }
 
-void ge::D3D11Context::BeginRender()
+void grahics::D3D11Context::BeginRender()
 {
 	// 후면 버퍼를 지정돤 색으로 지움
 	DiviceContext()->ClearRenderTargetView(RenderTargetView(), reinterpret_cast<const float*>(&myColor::Carrot));
@@ -140,13 +140,13 @@ void ge::D3D11Context::BeginRender()
 	DiviceContext()->ClearDepthStencilView(DepthStencilView(), /*D3D11_CLEAR_DEPTH*/1 | /*D3D11_CLEAR_STENCIL*/2, 1.0f, 0);
 }
 
-void ge::D3D11Context::EndRender()
+void grahics::D3D11Context::EndRender()
 {
 	// 후면 버퍼 제시
 	_swapChain->Present(0, 0);
 }
 
-void ge::D3D11Context::CreateDeviceContext()
+void grahics::D3D11Context::CreateDeviceContext()
 {
 	UINT createDeviceFlags = 0;
 #if defined(DEBUG) || defined(_DEBUG)  
@@ -188,7 +188,7 @@ void ge::D3D11Context::CreateDeviceContext()
 	assert(_4xMsaaQality > 0); // 환된 수준값이 0보다 크도록 강제
 }
 
-void ge::D3D11Context::CreateSwapChain(HWND hWnd, int w, int h)
+void grahics::D3D11Context::CreateSwapChain(HWND hWnd, int w, int h)
 {
 	/// 교환 사슬 설정 
 

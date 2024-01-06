@@ -10,7 +10,7 @@
 
 #include <cassert>
 
-ge::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth, int clientHeight)
+grahics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth, int clientHeight)
 	: _d3d11(std::make_unique<D3D11Context>(hinst, hWnd, clientWidth, clientHeight))
 	, _renderState(std::make_unique<RenderStates>(_d3d11->Divice()))
 	, _font(std::make_unique<Font>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
@@ -24,16 +24,16 @@ ge::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth,
                     DirectX::XMFLOAT3(0.f, 1.f, 0.f));
 }
 
-ge::GraphicsEngine::~GraphicsEngine()
+grahics::GraphicsEngine::~GraphicsEngine()
 {
 }
 
-void ge::GraphicsEngine::Initialize()
+void grahics::GraphicsEngine::Initialize()
 {
 
 }
 
-void ge::GraphicsEngine::Update(float deltaTime)
+void grahics::GraphicsEngine::Update(float deltaTime)
 {
     _camera->UpdateViewMatrix();
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
@@ -41,28 +41,28 @@ void ge::GraphicsEngine::Update(float deltaTime)
     Keybord();
 }
 
-void ge::GraphicsEngine::BeginRender()
+void grahics::GraphicsEngine::BeginRender()
 {
 	_d3d11->BeginRender();
 }
 
-void ge::GraphicsEngine::Render()
+void grahics::GraphicsEngine::Render()
 {
 	_font->DrawTest();
 	_grid->Render();
     DrawStatus();
 }
 
-void ge::GraphicsEngine::EndRender()
+void grahics::GraphicsEngine::EndRender()
 {
 	_d3d11->EndRender();
 }
 
-void ge::GraphicsEngine::Finalize()
+void grahics::GraphicsEngine::Finalize()
 {
 }
 
-void ge::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
+void grahics::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
 {
 	_d3d11->OnResize(clientWidth, clientHeight);
 
@@ -73,7 +73,7 @@ void ge::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
     _camera->SetLens(0.25f, aspectRatio, 1.0f, 1000.0f);
 }
 
-void ge::GraphicsEngine::DrawStatus()
+void grahics::GraphicsEngine::DrawStatus()
 {
     // 피처 레벨
     int xPad   = 44;
@@ -97,7 +97,7 @@ void ge::GraphicsEngine::DrawStatus()
                          _camera->GetLook().z);
 }
 
-void ge::GraphicsEngine::Keybord()
+void grahics::GraphicsEngine::Keybord()
 {
     // 카메라 제어
     float speed = 0.0001f;
@@ -115,19 +115,19 @@ void ge::GraphicsEngine::Keybord()
         _camera->Strafe(10.0f * speed);
 }
 
-void ge::GraphicsEngine::OnMouseDown(WPARAM btnState, int x, int y)
+void grahics::GraphicsEngine::OnMouseDown(WPARAM btnState, int x, int y)
 {
     _lastMousePos = POINT{x, y};
 
     SetCapture(_hWnd);
 }
 
-void ge::GraphicsEngine::OnMouseUp(WPARAM btnState, int x, int y)
+void grahics::GraphicsEngine::OnMouseUp(WPARAM btnState, int x, int y)
 {
     ReleaseCapture();
 }
 
-void ge::GraphicsEngine::OnMouseMove(WPARAM btnState, int x, int y)
+void grahics::GraphicsEngine::OnMouseMove(WPARAM btnState, int x, int y)
 {
     if ((btnState & MK_LBUTTON) != 0)
     {

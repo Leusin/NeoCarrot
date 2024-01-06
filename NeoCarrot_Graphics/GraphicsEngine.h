@@ -15,7 +15,7 @@ struct ID3D11Texture2D;
 struct ID3D11RenderTargetView;
 
 
-namespace ge
+namespace grahics
 {
 class D3D11Context;
 class RenderStates;
