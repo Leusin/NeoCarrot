@@ -25,9 +25,14 @@ namespace core
 template <typename enumTagType, typename enumLayer>
 class Object : public std::enable_shared_from_this<Object<enumTagType, enumLayer>>
 {
-public:
+/// <summary>
+/// Object 클래스는 직접 생성하지 못하게 하도로록
+/// protected 범위 지정자 에서 선언
+/// </summary>
+protected:
     Object(int&& id, std::string&& name, enumTagType&& type, enumLayer&& layer);
 
+public:
     /// <summary>
     /// 상속을 위한 가상 소멸자.
     /// </summary>
