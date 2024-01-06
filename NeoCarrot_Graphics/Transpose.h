@@ -1,6 +1,6 @@
 #pragma once
 
-#include <directXMath.h>
+#include <directxmath.h>
 
 
 namespace grahics
