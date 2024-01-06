@@ -1,4 +1,5 @@
 #include "Entity.h"
+
 #include <memory>
 
 using namespace std;
@@ -23,10 +24,10 @@ enum class Component
 
 int main()
 {
-    //shared_ptr<Object<Type, Layer>> entity = 
-    //    make_shared<Object<Type, Layer>>(0, "me", Type::HERO, Layer::ZERO);
+    /*shared_ptr<Entity<Type, Layer, Component>>
+        entity = make_shared<Entity<Type, Layer, Component>>(0, "me", Type::HERO, Layer::ZERO);
 
-    //obj->Destroy();
+    entity->Destroy();*/
 
-	return 0;
+    return 0;
 }

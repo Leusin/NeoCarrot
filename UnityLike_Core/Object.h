@@ -22,15 +22,15 @@
 namespace core
 {
 
-template <typename enumTagType, typename enumLayer>
-class Object : public std::enable_shared_from_this<Object<enumTagType, enumLayer>>
+template <typename Tag, typename Layer>
+class Object : public std::enable_shared_from_this<Object<Tag, Layer>>
 {
 /// <summary>
 /// Object 클래스는 직접 생성하지 못하게 하도록
 /// protected 범위 지정자 에서 선언
 /// </summary>
 protected:
-    Object(int&& id, std::string&& name, enumTagType&& type, enumLayer&& layer);
+    Object(int id, std::string name, Tag tag, Layer layer);
 
 public:
     /// <summary>
@@ -68,19 +68,19 @@ public:
     /// 오브젝트의 유사한 속성이나
     /// 역할을 식별하는데 사용하는 데이터.
     /// </summary>
-    enumTagType tag;
-    enumLayer   layer;
+    Tag tag;
+    Layer   layer;
 
 private:
     /// <summary>
     /// 객체를 식별 및 검색을 위한 데이터.
     /// </summary>
-    int         id;
-    std::string name;
+    const int         id;
+    const std::string name;
 };
 
-template <typename enumTagType, typename enumLayer>
-inline Object<enumTagType, enumLayer>::Object(int&& id, std::string&& name, enumTagType&& type, enumLayer&& layer) :
+template <typename Tag, typename Layer>
+inline Object<Tag, Layer>::Object(int id, std::string name, Tag type, Layer layer) :
 id(id),
 name(std::move(name)),
 tag(type),
@@ -88,25 +88,27 @@ layer(layer)
 {
     // TEST
 #ifdef _DEBUG
-    printf("Object class\n\t( %d ) %s Object Constructed\n", id, name.c_str());
+    printf("Object Constructed ( %d %s )\n", id, this->name.c_str());
 #endif // DEBUG
 }
 
-template <typename enumTagType, typename enumLayer>
-inline Object<enumTagType, enumLayer>::~Object()
-{
-}
-
-template <typename enumTagType, typename enumLayer>
-inline void Object<enumTagType, enumLayer>::Destroy()
+template <typename Tag, typename Layer>
+inline Object<Tag, Layer>::~Object()
 {
     // TEST
 #ifdef _DEBUG
-    printf("Object class\n\t( %d ) %s Object Destory\n", id, name.c_str());
+    printf("Object Destoryed ( %d %s )\n", id, name.c_str());
 #endif // DEBUG
+}
 
+template <typename Tag, typename Layer>
+inline void Object<Tag, Layer>::Destroy()
+{
+#ifdef _DEBUG
+    printf("Object Destory Calld...\n");
+#endif // DEBUG
     // 스마트 포인터를 통해 자동으로 객체를 삭제
-    std::shared_ptr<Object<enumTagType, enumLayer>> selfSharedPtr = this->shared_from_this();
+    std::shared_ptr<Object<Tag, Layer>> selfSharedPtr = this->shared_from_this();
 }
 
 } // namespace core

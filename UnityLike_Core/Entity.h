@@ -12,17 +12,19 @@
 #include "Object.h"
 #include "IEventFunction.h"
 
+#include <string>
+
 
 namespace core
 {
 class IComponent;
 
-template <typename enumTag, typename enumLayer, typename enumComponent>
-class Entity : public Object<enumTag, enumLayer>, public IEventFunction
+template <typename Tag, typename Layer, typename Component>
+class Entity : public Object<Tag, Layer>, public IEventFunction
 {
 public:
-    Entity(int&& id, const char*&& name, enumTag&& type, enumLayer&& layer);
-    ~Entity(){};
+    Entity(int&& id, const char* name, Tag&& tag, Layer&& layer);
+    ~Entity();
 
 public:
     /// <summary>
@@ -32,12 +34,12 @@ public:
     ///    그리고 만을 해당 컴포넌트가 없다면 어떻게 해야 할 지 생각해보기
     /// 
     /// </summary>
-    virtual IComponent* GetComponent(enumComponent&& compoentType){};
+    //virtual IComponent* GetComponent(Component&& compoentType);
 
     /// <summary>
     /// 컴포넌트를 가져옵니다
     /// </summary>
-    virtual void AddComponent(IComponent* component){};
+    //virtual void AddComponent(IComponent* component);
 };
 
 } // namespace core
