@@ -9,12 +9,16 @@
 
 #pragma once
 
+#include "Object.h"
+#include "IEventFunction.h"
 
-namespace game
+
+namespace core
 {
 class IComponent;
 
-class Entity
+template <typename enumTag, typename enumLayer, typename enumComponent>
+class Entity : public Object<enumTag, enumLayer>, public IEventFunction
 {
 public:
     /// <summary>
@@ -30,13 +34,12 @@ public:
     ///    그리고 만을 해당 컴포넌트가 없다면 어떻게 해야 할 지 생각해보기
     /// 
     /// </summary>
-    virtual IComponent* GetComponent(/*어떤 컴포넌트를 가져올지 확인해야 한다.*/) abstract;
+    virtual IComponent* GetComponent(enumComponent&& compoentType){};
 
     /// <summary>
     /// 컴포넌트를 가져옵니다
     /// </summary>
-    virtual void        AddComponent(IComponent* component) abstract;
-
+    virtual void AddComponent(IComponent* component){};
 };
 
 } // namespace game
