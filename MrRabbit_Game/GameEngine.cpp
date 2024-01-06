@@ -10,22 +10,12 @@
 game::GameEngine::GameEngine(WindowInfomation* wi) :
 // 필요한 순서대로 초기화 중이다.
 _windowInfo(wi),
-_managerCreator{std::make_unique<ManagerCreator>()},
 _sceneManager{std::make_unique<SceneManager>()}
 {
 
 #ifdef _DEBUG
     std::cout << "GameEngine Constructed\n";
 #endif // _DEBUG
-
-
-#pragma region Manager
-
-    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Scene));
-    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Resource));
-    //_managers.push_back(_managerCreator->CreateManager(ManagerType::Entity));
-
-#pragma endregion Manager
 }
 
 game::GameEngine::~GameEngine()
@@ -38,11 +28,6 @@ void game::GameEngine::Initialize()
                                                                 _windowInfo->hMainWnd,
                                                                 _windowInfo->clientWidth,
                                                                 _windowInfo->clientHeight);
-
-    for (auto& e : _managers)
-    {
-        e->Initialize();
-    }
 
     _sceneManager->Initialize();
 }
@@ -64,17 +49,14 @@ void game::GameEngine::Process()
             // 1. 시간 처리
             // 2. 입력 처리
             // 3. 업데이트
+            _sceneManager->Update();
             // 4. 랜더링
             // 4.1. 디버그 데이터 출력
             // 5. 이벤트 처리?
 
-            for (auto& e : _managers)
-            {
-                e->Update();
-            }
-            
-            _sceneManager->Update();
-
+            /// TODO:
+            /// gameEngine 은 Component로서 동작하도록 바꿀 것...
+            /// 아니면 렌더러가 객체가 따로 이곳에서 랜더링 할 것인가..?
             _graphicsEngine->Update(float());
             _graphicsEngine->BeginRender();
             _graphicsEngine->Render();
@@ -85,10 +67,6 @@ void game::GameEngine::Process()
 
 void game::GameEngine::Finalize()
 {
-    for (auto& e : _managers)
-    {
-        e->Finalize();
-    }
     _sceneManager->Finalize();
     _graphicsEngine->Finalize();
 }

@@ -38,13 +38,7 @@ namespace game
 		// 초기화 및  MassageProc에서 사용한다.
 		WindowInfomation* _windowInfo;
 
-#pragma region Manager
-
-		std::unique_ptr<ManagerCreator> _managerCreator;
 		std::unique_ptr<SceneManager> _sceneManager;
-		std::vector<std::unique_ptr<IManager>> _managers;
-
-#pragma endregion Manager
 
 		// 그래픽 엔진
 		std::unique_ptr<grahics::GraphicsEngine> _graphicsEngine{ nullptr };
