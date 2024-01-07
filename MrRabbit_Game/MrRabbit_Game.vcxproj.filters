@@ -37,6 +37,9 @@
     <Filter Include="소스 파일\Manager\Entity">
       <UniqueIdentifier>{6dc13c0b-840c-4426-9e7d-ca6ba96983f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Manager\Time">
+      <UniqueIdentifier>{f771ce0a-4bf5-42d6-8d85-d47cde37a8e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h">
@@ -69,6 +72,7 @@
     <ClInclude Include="EntityManager.h">
       <Filter>소스 파일\Manager\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="TimeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -92,6 +96,7 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>소스 파일\Manager\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
