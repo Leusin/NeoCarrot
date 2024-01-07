@@ -96,4 +96,25 @@ void TimeManager::Tick()
     }
 }
 
+void TimeManager::CalculateFrameStats()
+{
+    _frameCount++;
+
+    // 1초 동안 평균 프레임 수 계산
+    if (TotalTime() - _timeElapsed >= 1.0f)
+    {
+        _fps = static_cast<float>(_frameCount);
+        _mspf = 1000.0f / _fps;
+
+        // 다음 평균 계산을 위한 초기화
+        _frameCount = 0;
+        _timeElapsed += 1.0f;
+    }
+}
+
+float TimeManager::FPS()
+{
+    return _fps;
+}
+
 } // namespace game
