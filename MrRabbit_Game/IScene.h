@@ -11,7 +11,7 @@ public:
 
 public:
     virtual void Initialize() abstract;
-    virtual void Update() abstract;
+    virtual void Update(float deltaTime) abstract;
     virtual void Finalize() abstract;
 
 public:

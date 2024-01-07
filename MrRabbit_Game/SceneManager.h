@@ -5,8 +5,6 @@
 
 
 #pragma once
-#include "IManager.h"
-
 #include <list>
 #include <memory>
 
@@ -24,15 +22,15 @@ enum class SceneStatus
     QUIT,
 };
 
-class SceneManager : public IManager
+class SceneManager
 {
 public:
     SceneManager();
     ~SceneManager();
 
-    void Initialize() override;
-    void Update() override;
-    void Finalize() override;
+    void Initialize();
+    void Update(float deltaTime);
+    void Finalize();
 
 private:
     std::shared_ptr<IScene> _currenScene{nullptr};

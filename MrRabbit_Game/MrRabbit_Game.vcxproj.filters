@@ -72,7 +72,9 @@
     <ClInclude Include="EntityManager.h">
       <Filter>소스 파일\Manager\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="TimeManager.h">
+      <Filter>소스 파일\Manager\Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -96,7 +98,9 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>소스 파일\Manager\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>소스 파일\Manager\Time</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">

@@ -14,7 +14,7 @@ public:
 
 public:
     void Initialize() override;
-    void Update() override;
+    void Update(float deltaTime) override;
     void Finalize() override;
 
     std::shared_ptr<IScene> NextSene() override;

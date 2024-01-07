@@ -26,7 +26,7 @@ void game::SceneManager::Initialize()
 {
 }
 
-void game::SceneManager::Update()
+void game::SceneManager::Update(float deltaTime)
 {
     switch (_status)
     {
@@ -39,7 +39,7 @@ void game::SceneManager::Update()
             _status = SceneStatus::RUN;
             break;
         case game::SceneStatus::RUN:
-            _currenScene->Update();
+            _currenScene->Update(deltaTime);
             _status = SceneStatus::FINAL;
             break;
         case game::SceneStatus::FINAL:

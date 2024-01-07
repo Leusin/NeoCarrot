@@ -169,10 +169,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="IManager.h" />
-    <ClInclude Include="ManagerCreator.h" />
+    <ClInclude Include="IManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="ManagerCreator.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="IScene.h" />
-    <ClInclude Include="ManagerType.h" />
+    <ClInclude Include="ManagerType.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -182,7 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="ManagerCreator.cpp" />
+    <ClCompile Include="ManagerCreator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

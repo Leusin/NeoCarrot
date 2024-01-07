@@ -23,7 +23,7 @@ void game::TestScene::Initialize()
 {
 }
 
-void game::TestScene::Update()
+void game::TestScene::Update(float deltaTime)
 {
 }
 

@@ -55,6 +55,8 @@ public:
     /// </summary>
     void CalculateFrameStats();
 
+    float FPS();
+
 private:
     double _secondsPerCount{0.0};
     double _deltaTime{-1.0};

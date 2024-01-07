@@ -5,7 +5,7 @@
 namespace game
 {
 
-imeManager::TimeManager()
+TimeManager::TimeManager()
 {
     __int64 countsPerSec;
     QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSec);

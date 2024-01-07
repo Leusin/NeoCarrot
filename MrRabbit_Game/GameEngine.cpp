@@ -52,12 +52,17 @@ void game::GameEngine::Process()
             /// TODO: 구현할 것
             // 1. 시간 처리
             _timeManager->Tick();
-            // 2. 입력 처리
-            // 3. 업데이트
-            _sceneManager->Update();
-            // 4. 랜더링
-            // 4.1. 디버그 데이터 출력
-            // 5. 이벤트 처리?
+            _timeManager->CalculateFrameStats();
+            float dt = _timeManager->DeltaTime();
+            if (dt >= 1.f / 60.f)
+            {
+                // 2. 입력 처리
+                // 3. 업데이트
+                _sceneManager->Update(dt);
+                // 4. 랜더링
+                // 4.1. 디버그 데이터 출력
+                // 5. 이벤트 처리?
+            }
 
             /// TODO:
             /// gameEngine 은 Component로서 동작하도록 바꿀 것...

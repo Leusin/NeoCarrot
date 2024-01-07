@@ -24,15 +24,15 @@ enum class Layer
 {
 };
 
-class EntityManager : public IManager
+class EntityManager
 {
 public:
     EntityManager();
     ~EntityManager();
 
-    void Initialize() override;
-    void Update() override;
-    void Finalize() override;
+    void Initialize();
+    void Update(float deltaTime);
+    void Finalize();
 
 private:
    

@@ -28,7 +28,7 @@ void game::EntityManager::Initialize()
     }
 }
 
-void game::EntityManager::Update()
+void game::EntityManager::Update(float deltaTime)
 {
 
     for (auto& e : _entities) 
