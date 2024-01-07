@@ -5,12 +5,14 @@
 #include "GameEngine.h"
 #include "GraphicsEngine.h"
 #include "SceneManager.h"
+#include "TimeManager.h"
 #include "WindowInfomation.h"
 
 game::GameEngine::GameEngine(WindowInfomation* wi) :
 // 필요한 순서대로 초기화 중이다.
 _windowInfo(wi),
-_sceneManager{std::make_unique<SceneManager>()}
+_sceneManager{std::make_unique<SceneManager>()},
+_timeManager{std::make_unique<TimeManager>()}
 {
 
 #ifdef _DEBUG
@@ -36,6 +38,8 @@ void game::GameEngine::Process()
 {
     MSG msg = {0};
 
+    _timeManager->Reset();
+
     while (msg.message != WM_QUIT)
     {
         if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
@@ -47,6 +51,7 @@ void game::GameEngine::Process()
         {
             /// TODO: 구현할 것
             // 1. 시간 처리
+            _timeManager->Tick();
             // 2. 입력 처리
             // 3. 업데이트
             _sceneManager->Update();

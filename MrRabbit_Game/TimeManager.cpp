@@ -1,7 +1,11 @@
 #include "TimeManager.h"
+
 #include <windows.h>
 
-TimeManager::TimeManager()
+namespace game
+{
+
+imeManager::TimeManager()
 {
     __int64 countsPerSec;
     QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSec);
@@ -91,3 +95,5 @@ void TimeManager::Tick()
         _deltaTime = 0.0;
     }
 }
+
+} // namespace game

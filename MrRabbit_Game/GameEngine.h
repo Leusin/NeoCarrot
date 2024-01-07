@@ -19,6 +19,7 @@ namespace game
 	class IManger;
 	class ManagerCreator;
     class SceneManager;
+    class TimeManager;
 	struct WindowInfomation;
 
 	class GameEngine
@@ -39,6 +40,7 @@ namespace game
 		WindowInfomation* _windowInfo;
 
 		std::unique_ptr<SceneManager> _sceneManager;
+        std::unique_ptr<TimeManager>  _timeManager;
 
 		// 그래픽 엔진
 		std::unique_ptr<grahics::GraphicsEngine> _graphicsEngine{ nullptr };
