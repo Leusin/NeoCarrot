@@ -1,93 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="소스 파일\Font">
-      <UniqueIdentifier>{0d896ce9-5391-4fcb-bc7c-332589228e1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="문서 파일">
-      <UniqueIdentifier>{f0701479-2216-46a6-bddf-9d379fee9bd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Engine">
-      <UniqueIdentifier>{88cdd2ce-018b-46c3-a875-0faa155f0bc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\D3D11">
-      <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Render State">
-      <UniqueIdentifier>{f46b7134-2101-4a3e-b10d-dac5aac39d1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Mesh">
-      <UniqueIdentifier>{eb05ede7-1d03-4809-91d4-8d3fd4c2fba9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Mesh\Gizmos">
-      <UniqueIdentifier>{76bbf6be-ff73-401a-a602-dfa5d68b4ac9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Mesh\Transpose">
-      <UniqueIdentifier>{7f8dfe5f-77d3-4d86-8bf8-88efd4f40d2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Camera3D">
+    <Filter Include="Camera3D">
       <UniqueIdentifier>{b86af012-ddab-4913-afc1-1488509e012a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3D11">
+      <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{88cdd2ce-018b-46c3-a875-0faa155f0bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh Obj">
+      <UniqueIdentifier>{eb05ede7-1d03-4809-91d4-8d3fd4c2fba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="enum type">
+      <UniqueIdentifier>{0d896ce9-5391-4fcb-bc7c-332589228e1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{f0701479-2216-46a6-bddf-9d379fee9bd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="struct">
+      <UniqueIdentifier>{7f8dfe5f-77d3-4d86-8bf8-88efd4f40d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXTK">
+      <UniqueIdentifier>{c5a16c50-cafb-4e9a-b604-465cbf71a38a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NeoCarrot_Graphics\Font.cpp">
-      <Filter>소스 파일\Font</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
-      <Filter>소스 파일\Engine</Filter>
+      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
-      <Filter>소스 파일\D3D11</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
-      <Filter>소스 파일\Render State</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
-      <Filter>소스 파일\Mesh\Gizmos</Filter>
+      <Filter>D3D11</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp">
-      <Filter>소스 파일\Mesh\Transpose</Filter>
+      <Filter>struct</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
-      <Filter>소스 파일\Mesh\Transpose</Filter>
+      <Filter>struct</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
-      <Filter>소스 파일\Camera3D</Filter>
+    <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
+      <Filter>Mesh Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
+      <Filter>DirectXTK</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NeoCarrot_Graphics\Font.h">
-      <Filter>소스 파일\Font</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
-      <Filter>소스 파일\Engine</Filter>
+      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
-      <Filter>소스 파일\D3D11</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\MyColor.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\RenderStates.h">
-      <Filter>소스 파일\Render State</Filter>
+      <Filter>D3D11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FontType.h">
-      <Filter>소스 파일\Font</Filter>
+      <Filter>enum type</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
-      <Filter>소스 파일\Mesh\Gizmos</Filter>
+      <Filter>Mesh Obj</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
-      <Filter>소스 파일\Camera3D</Filter>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
+      <Filter>DirectXTK</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md">
-      <Filter>문서 파일</Filter>
+      <Filter>doc</Filter>
     </None>
   </ItemGroup>
 </Project>

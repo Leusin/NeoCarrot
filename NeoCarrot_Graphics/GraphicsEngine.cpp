@@ -1,7 +1,7 @@
 #include "GraphicsEngine.h"
 #include "D3D11Context.h"
-#include "RenderStates.h"
-#include "Font.h"
+#include "D3D11RenderStates.h"
+#include "DXTKFont.h"
 #include "FontType.h"
 #include "Camera3D.h"
 

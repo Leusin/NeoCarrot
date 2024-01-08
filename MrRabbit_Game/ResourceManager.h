@@ -6,20 +6,15 @@
 
 #pragma once
 
-#include "IManager.h"
-
 namespace game
 {
 
-class ResourceManager : public IManager
+class ResourceManager
 {
 public:
     ResourceManager();
     ~ResourceManager();
 
-    void Initialize() override;
-    void Update() override;
-    void Finalize() override;
 };
 
 } // namespace ge

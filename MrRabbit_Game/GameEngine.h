@@ -5,8 +5,6 @@
 
 
 #pragma once
-#include "IManager.h"
-#include "ManagerCreator.h"
 
 #include <windows.h>
 #include <vector>

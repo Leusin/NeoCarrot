@@ -1,6 +1,6 @@
 #include "D3D11Context.h"
 #include "MyColor.h"
-#include "Font.h"
+#include "DXTKFont.h"
 
 //#include <dxgi.h>
 #include <d3d11.h>

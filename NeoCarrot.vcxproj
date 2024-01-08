@@ -21,20 +21,20 @@
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\Font.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h" />
-    <ClInclude Include="NeoCarrot_Graphics\Font.h">
+    <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -42,7 +42,7 @@
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
-    <ClInclude Include="NeoCarrot_Graphics\RenderStates.h" />
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md" />

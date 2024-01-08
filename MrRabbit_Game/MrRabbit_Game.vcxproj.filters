@@ -1,110 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{c8b7c727-277b-4280-8f0d-2415f3633e2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Game Engine">
-      <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager">
-      <UniqueIdentifier>{3c5199fc-10c0-4e4f-9d4e-ac97a32ea3f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="문서 파일">
-      <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Scene">
-      <UniqueIdentifier>{d596846b-4b0b-498c-baf8-5d2b6fc8f407}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Window Info">
+    <Filter Include="Window Info">
       <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Manager\Creator">
-      <UniqueIdentifier>{d9a4ee4c-8681-4c79-b00e-b76326acec4f}</UniqueIdentifier>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{d596846b-4b0b-498c-baf8-5d2b6fc8f407}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Manager\Resource">
-      <UniqueIdentifier>{f7099206-fd76-4710-83fd-078431c0ac5d}</UniqueIdentifier>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Manager\Scene">
-      <UniqueIdentifier>{0d8fb69d-943c-42cd-b44b-020103eb87f6}</UniqueIdentifier>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{3c5199fc-10c0-4e4f-9d4e-ac97a32ea3f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Entity">
-      <UniqueIdentifier>{548c4927-c09a-420a-b434-b6918fb69bb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Component">
-      <UniqueIdentifier>{7c54a3f9-4b3c-4950-818e-173e43444fb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\Entity">
-      <UniqueIdentifier>{6dc13c0b-840c-4426-9e7d-ca6ba96983f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Manager\Time">
-      <UniqueIdentifier>{f771ce0a-4bf5-42d6-8d85-d47cde37a8e1}</UniqueIdentifier>
+    <Filter Include="doc">
+      <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="GameEngine.h">
-      <Filter>소스 파일\Game Engine</Filter>
+      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="WindowInfomation.h">
-      <Filter>소스 파일\Window Info</Filter>
-    </ClInclude>
-    <ClInclude Include="IManager.h">
-      <Filter>소스 파일\Manager\Creator</Filter>
-    </ClInclude>
-    <ClInclude Include="ManagerCreator.h">
-      <Filter>소스 파일\Manager\Creator</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>소스 파일\Manager\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="ManagerType.h">
-      <Filter>소스 파일\Manager\Creator</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>소스 파일\Manager\Scene</Filter>
+      <Filter>Window Info</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>소스 파일\Manager\Entity</Filter>
+      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="TimeManager.h">
-      <Filter>소스 파일\Manager\Time</Filter>
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
-      <Filter>소스 파일\Game Engine</Filter>
+      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ManagerCreator.cpp">
-      <Filter>소스 파일\Manager\Creator</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>소스 파일\Manager\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>소스 파일\Manager\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceType.cpp">
-      <Filter>소스 파일\Manager\Resource</Filter>
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
-      <Filter>소스 파일\Manager\Entity</Filter>
+      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
-      <Filter>소스 파일\Manager\Time</Filter>
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceType.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
-      <Filter>문서 파일</Filter>
+      <Filter>doc</Filter>
     </None>
   </ItemGroup>
 </Project>

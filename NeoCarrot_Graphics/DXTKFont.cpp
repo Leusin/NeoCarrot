@@ -1,4 +1,4 @@
-#include "Font.h"
+#include "DXTKFont.h"
 #include <SimpleMath.h>
 #include <tchar.h>
 

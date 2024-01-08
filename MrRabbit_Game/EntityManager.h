@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include "IManager.h"
-
 #include <vector>
 #include <memory>
 
