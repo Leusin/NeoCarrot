@@ -25,20 +25,20 @@ inline void Swap(float& lhs, float& rhs)
 /// <param name="lhs">비교할 flaot 값 1</param>
 /// <param name="rhs">비교할 float 값 2</param>
 /// <param name="epsilon">오차 허용 범위</param>
-inline bool fuzzyRealEqual(const float& lhs, const float& rhs, const float& epsilon /* = Constant::FLOAT_TOLERANCE*/);
+inline bool FuzzyRealEqual(const float& lhs, const float& rhs, const float& epsilon /* = Constant::FLOAT_TOLERANCE*/);
 
 /// <summary>
 /// 부동 소수값을 비교
 /// </summary>
 /// <param name="lhs">비교할 flaot 값 1</param>
 /// <param name="rhs">비교할 float 값 2</param>
-inline bool isEqual(const float& lhs, const float& rhs);
+inline bool IsEqual(const float& lhs, const float& rhs);
 
 /// 호도법
 // 도(°)에서 라디안(rad)으로
-inline float DEGREE_TO_RADIAN(const float angle);
+inline float DegreeToRadian(const float angle);
 
 // 라디안(rad)에서 도(°)로
-inline float RADIAN_TO_DEGREE(const float angle);
+inline float RadianToDegree(const float angle);
 
 } // namespace me
