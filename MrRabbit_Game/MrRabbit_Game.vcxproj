@@ -168,8 +168,14 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="KeyboardEnum.h" />
+    <ClInclude Include="MouseEnum.h" />
+    <ClInclude Include="EnumArray.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -179,6 +185,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

@@ -16,6 +16,9 @@
     <Filter Include="doc">
       <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h">
@@ -42,6 +45,24 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="EnumArray.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseEnum.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardEnum.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -64,6 +85,15 @@
     </ClCompile>
     <ClCompile Include="ResourceType.cpp">
       <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

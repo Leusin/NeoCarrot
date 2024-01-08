@@ -28,9 +28,6 @@
     <ClCompile Include="Constants.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix2X2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="MathUtils.cpp">
       <Filter>Math</Filter>
     </ClCompile>
