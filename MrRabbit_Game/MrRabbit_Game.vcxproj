@@ -206,6 +206,9 @@
     <ProjectReference Include="..\NeoCarrot.vcxproj">
       <Project>{ece318c0-2f85-4b3f-80b0-b0063b96c918}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\UnityLike_Core\UnityLike_Core.vcxproj">
+      <Project>{f9a014b2-0cd4-473e-81b8-50674696cc65}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
