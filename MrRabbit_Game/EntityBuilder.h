@@ -1,3 +1,8 @@
+/// 종류에 따라 엔티티가 필요로 하는 컴포넌트를 조립해 주는
+/// 빌더 클래래스 입니다.
+/// 
+/// 2024-01-09
+
 #pragma once
 
 #include "EntityEnum.h"
@@ -21,8 +26,8 @@ public:
     EntityBuilder(const size_t&& id, const char* name, Tag&& tag, Layer&& layer);
 
 public:
-    // 제품 조립
     EntityBuilder AddTransform();
+    EntityBuilder AddCamera();
 
     // 제품 반환
     EntityPtr     Build();

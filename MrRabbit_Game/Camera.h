@@ -8,11 +8,11 @@
 namespace game
 {
 
-class Transform : public core::IComponent
+class Camera : public core::IComponent
 {
 public:
-    Transform();
-    ~Transform();
+    Camera();
+    ~Camera();
 };
 
 } // namespace game

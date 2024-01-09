@@ -22,6 +22,9 @@
     <Filter Include="System">
       <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="component">
+      <UniqueIdentifier>{bb20cce0-3124-4500-a94d-95bdaeb5ff36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h">
@@ -69,17 +72,17 @@
     <ClInclude Include="EntityEnum.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>core</Filter>
-    </ClInclude>
     <ClInclude Include="EntityFactory.h">
-      <Filter>core</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="EntityBuilder.h">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +116,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="Components.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
     <ClCompile Include="EntityFactory.cpp">
       <Filter>core</Filter>
     </ClCompile>
@@ -123,7 +123,10 @@
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>core</Filter>
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

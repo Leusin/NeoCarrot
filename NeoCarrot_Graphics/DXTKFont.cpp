@@ -17,7 +17,7 @@ grahics::Font::Font(ID3D11Device* device, ID3D11DeviceContext* deviceCtext, ID3D
 
 // 현재 경로가 어딘지 확인 
 #if defined(DEBUG) || defined(_DEBUG)
-		std::cout << "\tFont 파일 경로: " << std::filesystem::current_path() << std::endl;
+		//std::cout << "\tFont 파일 경로: " << std::filesystem::current_path() << std::endl;
 #endif
 
 	const TCHAR* pathName =  L"../NeoCarrot_Graphics/Font";

@@ -29,9 +29,9 @@ template <typename Tag, typename Layer>
 template <typename T, typename... Args>
 inline void Entity<Tag, Layer >::AddComponent(Args&&... args)
 {
-#ifdef _DEBUG
+#ifdef CORE_Test
     printf("\tEntity AddComponent Called...\n");
-#endif // _DEBUG
+#endif // CORE_Test
 
     _componentList.emplace_back(std::make_unique<T>(std::forward<Args>(args)...));
 }

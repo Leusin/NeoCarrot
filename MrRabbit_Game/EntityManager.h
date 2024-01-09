@@ -1,4 +1,4 @@
-/// Object.h : Entity(Game Obejct)를 관리하는 클래스
+/// Object.h : Entity(Game Obejct)를 관리하는 클래스입니다.
 ///
 /// 2024-01-06
 
