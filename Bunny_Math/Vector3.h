@@ -98,7 +98,7 @@ struct Vector3
 /// <param name="rhs">뺄 오른쪽 피연산자</param>
 /// <returns></returns>
 template <typename T>
-[[nodiscard]] constexpr Vector3<T> operator-(const Vector3<T>& left);
+[[nodiscard]] constexpr Vector3<T> operator-(const Vector3<T>& right);
 
 /// <summary>
 ///  Vector3 이항 연산자 += 오버로드
@@ -216,3 +216,5 @@ template <typename T>
 [[nodiscard]] constexpr bool operator!=(const Vector3<T>& left, const Vector3<T>& right);
 
 } // namespace me
+
+#include "Vector3.inl"

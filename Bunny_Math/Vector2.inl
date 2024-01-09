@@ -1,9 +1,11 @@
-#include "Vector2.h"
+#pragma once
+
 #include <cmath>
 #include <cassert>
 #include <xtr1common>
 
-using namespace me;
+namespace me
+{
 
 ////////////////////////////////////////////////////////////
 template <typename T>
@@ -175,4 +177,5 @@ constexpr bool operator!=(const Vector2<T>& left, const Vector2<T>& right)
 {
     return (left.x != right.x) || (left.y != right.y);
 }
-/*
+
+} // namespace me

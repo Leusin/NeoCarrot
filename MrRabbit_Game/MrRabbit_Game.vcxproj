@@ -100,7 +100,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -140,7 +140,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -250,6 +250,9 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bunny_Math\Bunny_Math.vcxproj">
+      <Project>{05044883-acde-43b4-9566-d4aa2891973d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\NeoCarrot.vcxproj">
       <Project>{ece318c0-2f85-4b3f-80b0-b0063b96c918}</Project>
     </ProjectReference>

@@ -236,3 +236,5 @@ template <typename T>
 [[nodiscard]] constexpr bool operator!=(const Vector2<T>& left, const Vector2<T>& right);
 
 } // namespace me
+
+#include "Vector2.inl"
