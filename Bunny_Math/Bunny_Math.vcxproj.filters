@@ -23,6 +23,9 @@
     <ClInclude Include="Vector3.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Constants.cpp">
@@ -35,6 +38,9 @@
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
   </ItemGroup>

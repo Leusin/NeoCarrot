@@ -10,20 +10,20 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Manager">
+    <Filter Include="component">
+      <UniqueIdentifier>{bb20cce0-3124-4500-a94d-95bdaeb5ff36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entity">
+      <UniqueIdentifier>{f45fbe7c-ff4f-4f06-95cd-858d8af0e6d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager">
       <UniqueIdentifier>{3c5199fc-10c0-4e4f-9d4e-ac97a32ea3f2}</UniqueIdentifier>
     </Filter>
     <Filter Include="doc">
       <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="core">
-      <UniqueIdentifier>{f45fbe7c-ff4f-4f06-95cd-858d8af0e6d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="System">
-      <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="component">
-      <UniqueIdentifier>{bb20cce0-3124-4500-a94d-95bdaeb5ff36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,43 +40,43 @@
       <Filter>Window Info</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="TimeManager.h">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="EnumArray.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="MouseEnum.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="KeyboardEnum.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClInclude>
     <ClInclude Include="EntityEnum.h">
-      <Filter>core</Filter>
+      <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="EntityFactory.h">
-      <Filter>core</Filter>
+      <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="EntityBuilder.h">
-      <Filter>core</Filter>
+      <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>component</Filter>
@@ -93,34 +93,34 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="ResourceType.cpp">
-      <Filter>Manager</Filter>
+      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>System</Filter>
+      <Filter>input</Filter>
     </ClCompile>
     <ClCompile Include="EntityFactory.cpp">
-      <Filter>core</Filter>
+      <Filter>entity</Filter>
     </ClCompile>
     <ClCompile Include="EntityBuilder.cpp">
-      <Filter>core</Filter>
+      <Filter>entity</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>component</Filter>

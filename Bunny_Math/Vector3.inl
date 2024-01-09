@@ -7,7 +7,7 @@ constexpr Vector3<T>::Vector3() = default;
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr me::Vector3<T>::Vector3(T x, T y, T z)
+inline constexpr me::Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
 {
 }
 
