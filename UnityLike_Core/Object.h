@@ -27,15 +27,18 @@ class Object : public std::enable_shared_from_this<Object<Tag, Layer>>
     /// </summary>
 
 protected:
-    Object(int id, std::string name, Tag tag, Layer layer);
+
+    Object(const size_t&& id, std::string&& name, Tag&& tag, Layer&& layer);
 
 public:
+
     /// <summary>
     /// 상속을 위한 가상 소멸자.
     /// </summary>
     ~Object();
 
 public:
+
     /// <summary>
     /// 객체를 소멸시키는데 사용됩니다.
     ///    사용처: 불필요한 객체 삭제, 씬 전환시 이전씬의 객체 정리
@@ -52,10 +55,15 @@ public:
     //virtual void Instantiate();
 
 public:
-    //constexpr int&         GetId() const;
-    //constexpr std::string& GetName() const;
 
-public:
+    /// <summary>
+    /// 객체를 식별 및 검색을 위한 데이터.
+    /// </summary>
+    const size_t      _id;
+    const std::string _name;
+
+//private:
+
     /// <summary>
     /// 객체의 활성 여부.
     /// </summary>
@@ -68,13 +76,6 @@ public:
     /// </summary>
     Tag   _tag;
     Layer _layer;
-
-private:
-    /// <summary>
-    /// 객체를 식별 및 검색을 위한 데이터.
-    /// </summary>
-    const int         _id;
-    const std::string _name;
 };
 
 } // namespace core

@@ -2,6 +2,7 @@
 
 #include "Keyboard.h"
 #include "Mouse.h"
+
 #include <WinUser.h>
 
 namespace game
@@ -22,12 +23,6 @@ enum class InputEvent
 
 InputManager::InputManager() : _mouse{std::make_unique<Mouse>()}, _keybard{std::make_unique<Keyboard>()}
 {
-
 }
-
-void InputManager::Test()
-
-}
-
 
 } // namespace game

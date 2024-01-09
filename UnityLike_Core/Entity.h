@@ -24,7 +24,7 @@ template <typename Tag, typename Layer/*, typename ComponentT*/>
 class Entity : public Object<Tag, Layer>, public IEventFunction
 {
 public:
-    Entity(int&& id, const char* name, Tag&& tag, Layer&& layer);
+    Entity(const size_t&& id, const char* name, Tag&& tag, Layer&& layer);
     ~Entity();
 
 public:

@@ -16,6 +16,9 @@
     <Filter Include="doc">
       <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{f45fbe7c-ff4f-4f06-95cd-858d8af0e6d7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="System">
       <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
     </Filter>
@@ -63,6 +66,21 @@
     <ClInclude Include="InputManager.h">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="EntityEnum.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityFactory.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityBuilder.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -94,6 +112,18 @@
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Components.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityFactory.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityBuilder.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

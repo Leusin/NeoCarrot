@@ -13,6 +13,9 @@
     <ClCompile Include="main.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="IComponent.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IComponent.h">

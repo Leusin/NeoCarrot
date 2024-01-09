@@ -2,13 +2,17 @@
 
 #include "IScene.h"
 #include "TestScene.h"
+#include "EntityManager.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
 
-game::SceneManager::SceneManager() : _currenScene{std::make_shared<TestScene>()}, _status{game::SceneStatus::START}
+game::SceneManager::SceneManager() :
+_entityManager{std::make_unique<EntityManager>()},
+_currenScene{std::make_shared<TestScene>(_entityManager.get())},
+_status{game::SceneStatus::START}
 {
 #ifdef _DEBUG
     std::cout << "\tSceneManager Constructed\n";

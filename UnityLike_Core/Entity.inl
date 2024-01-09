@@ -6,8 +6,8 @@ namespace core
 {
 ////////////////////////////////////////////////////////////
 template <typename Tag, typename Layer>
-inline Entity<Tag, Layer>::Entity(int&& id, const char* name, Tag&& tag, Layer&& layer) :
-Object<Tag, Layer>(id, name, std::forward<Tag>(tag), std::forward<Layer>(layer))
+inline Entity<Tag, Layer>::Entity(const  size_t&& id, const char* name, Tag&& tag, Layer&& layer) :
+Object<Tag, Layer>(std::forward<const size_t>(id), name, std::forward<Tag>(tag), std::forward<Layer>(layer))
 {
     // TEST
 #ifdef CORE_Test
@@ -29,9 +29,9 @@ template <typename Tag, typename Layer>
 template <typename T, typename... Args>
 inline void Entity<Tag, Layer >::AddComponent(Args&&... args)
 {
-#ifdef CORE_Test
+#ifdef _DEBUG
     printf("\tEntity AddComponent Called...\n");
-#endif // CORE_Test
+#endif // _DEBUG
 
     _componentList.emplace_back(std::make_unique<T>(std::forward<Args>(args)...));
 }

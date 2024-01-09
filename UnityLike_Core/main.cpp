@@ -35,7 +35,9 @@ public:
 class TestComponent2 : public IComponent
 {
 public:
-    TestComponent2(int n) : a(n){}
+    TestComponent2(int n) : a(n)
+    {
+    }
 
     int a = 0;
 };

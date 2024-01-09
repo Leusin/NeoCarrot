@@ -1,37 +1,42 @@
 #include "EntityManager.h"
+
 #include "../UnityLike_Core/Entity.h"
+#include "EntityFactory.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
+namespace game
+{
 
-game::EntityManager::EntityManager()
+EntityManager::EntityManager() : _factory{std::make_unique<EntityFactory>()}
 {
 #ifdef _DEBUG
     std::cout << "\tEntityManager Constructed\n";
 #endif // _DEBUG
 }
 
-game::EntityManager::~EntityManager()
+EntityManager::~EntityManager()
 {
 #ifdef _DEBUG
     std::cout << "\tEntityManager Distructed\n";
 #endif // _DEBUG
 }
 
-void game::EntityManager::Initialize()
+void EntityManager::Initialize()
 {
-    for (auto& e : _entities) 
+
+    for (auto& e : _entities)
     {
         e->Awake();
     }
 }
 
-void game::EntityManager::Update(float deltaTime)
+void EntityManager::Update(float deltaTime)
 {
 
-    for (auto& e : _entities) 
+    for (auto& e : _entities)
     {
         if (e->_isStart)
         {
@@ -53,7 +58,54 @@ void game::EntityManager::Update(float deltaTime)
     }
 }
 
-void game::EntityManager::Finalize()
+void EntityManager::Finalize()
 {
-    for (auto& e : _entities)e->Destroy();
+    for (auto& e : _entities)
+        e->Destroy();
 }
+
+EntityPtr EntityManager::CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name)
+{
+    return _factory->CreateEntity(enumTypeEntity, std::forward<const size_t>(id), std::move(name));
+}
+
+EntityPtr EntityManager::CreateEntity(game::Entity enumTypeEntity, const char* name)
+{
+    auto id = _entities.size();
+    return CreateEntity(enumTypeEntity, std::forward<const size_t>(id), std::move(name));
+}
+/*
+/////////////////////////////////////////////////////////////////////////////////
+EntityPtr EntityManager::CreateEntity(const char* name, Tag&& tag, Layer&& layer)
+{
+#ifdef _DEBUG
+    std::cout << "\t\tCreate Entity ( " << name << " ) \n";
+#endif // _DEBUG
+
+    auto id = _entities.size();
+
+    return std::make_shared<core::Entity<Tag, Layer>>(std::forward<const size_t>(id),
+                                                      std::move(name),
+                                                      std::move(tag),
+                                                      std::move(layer));
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+void EntityManager::AddeEntity(EntityPtr& entity)
+{
+#ifdef _DEBUG
+    std::cout << "\t\tAdd Entity ( " << entity->_name << " ) \n";
+#endif // _DEBUG
+
+    _entities.emplace_back(entity);
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+void EntityManager::AddeEntity(const char* name, Tag&& tag, Layer&& layer)
+{
+    auto entity = CreateEntity(std::move(name), std::move(tag), std::move(layer));
+    AddeEntity(entity);
+}
+*/
+
+} // namespace game

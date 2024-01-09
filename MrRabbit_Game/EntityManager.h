@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "EntityEnum.h"
+
 #include <vector>
 #include <memory>
 
@@ -13,14 +15,11 @@ template <typename T, typename U>
 class Entity;
 }
 
+using EntityPtr = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
+
 namespace game
 {
-enum class Tag
-{
-};
-enum class Layer
-{
-};
+class EntityFactory;
 
 class EntityManager
 {
@@ -32,9 +31,13 @@ public:
     void Update(float deltaTime);
     void Finalize();
 
+    EntityPtr CreateEntity(game::Entity enumTypeEntity, const char* name);
+
 private:
-   
+    EntityPtr CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name);
+
     std::vector<std::shared_ptr<core::Entity<Tag, Layer>>> _entities;
+    std::unique_ptr<EntityFactory> _factory;
 };
 
 } // namespace game

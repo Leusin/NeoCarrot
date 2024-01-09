@@ -11,6 +11,7 @@
 namespace game
 {
 class IScene;
+class EntityManager;
 
 enum class SceneStatus
 {
@@ -33,8 +34,9 @@ public:
     void Finalize();
 
 private:
-    std::shared_ptr<IScene> _currenScene{nullptr};
-    SceneStatus             _status{SceneStatus::UNKNOWN};
+    std::unique_ptr<EntityManager> _entityManager;
+    std::shared_ptr<IScene>        _currenScene{nullptr};
+    SceneStatus                    _status{SceneStatus::UNKNOWN};
 };
 
 } // namespace game
