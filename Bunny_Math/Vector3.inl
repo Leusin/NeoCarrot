@@ -1,5 +1,7 @@
-#include "Vector3.h"
-using namespace me;
+#pragma once
+
+namespace me
+{
 
 ////////////////////////////////////////////////////////////
 template <typename T>
@@ -36,7 +38,7 @@ constexpr T Vector3<T>::Cross(const Vector3& rhs) const
 template <typename T>
 inline constexpr Vector3<T> me::Vector3<T>::ComponentWiseMul(const Vector3& rhs) const
 {
-    return Vector3<T>(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+    return Vector3<T>(x * rhs.x, y * rhs.y, z * rhs.z);
 }
 
 ////////////////////////////////////////////////////////////
@@ -45,7 +47,7 @@ inline constexpr Vector3<T> me::Vector3<T>::ComponentWiseDiv(const Vector3& rhs)
 {
     assert(rhs.x != 0 && "Vector3::cwiseDiv() 는 0으로 나눌 수 없습니다.");
     assert(rhs.y != 0 && "Vector3::cwiseDiv() 는 0으로 나눌 수 없습니다.");
-    return Vector3<T>(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+    return Vector3<T>(x / rhs.x, y / rhs.y, z / rhs.z);
 }
 
 ////////////////////////////////////////////////////////////
@@ -86,7 +88,7 @@ constexpr Vector3<T> operator+(const Vector3<T>& left, const Vector3<T>& right)
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-constexpr Vector3<T> operator-(const Vector3<T>& left)
+constexpr Vector3<T> operator-(const Vector3<T>& left, const Vector3<T>& right)
 {
     return Vector3<T>(left.x - right.x, left.y - right.y, left.z - right.z);
 }
@@ -149,3 +151,5 @@ constexpr bool operator!=(const Vector3<T>& left, const Vector3<T>& right)
 {
     return (left.x != right.x) || (left.y != right.y) || (left.z != right.z);
 }
+
+} // namespace me

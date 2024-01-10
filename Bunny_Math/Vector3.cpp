@@ -28,3 +28,5 @@ inline Vector3<T> Vector3<T>::Normalize() const
 }
 
 } // namespace me
+
+#include "Vector3.inl"
