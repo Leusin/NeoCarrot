@@ -1,5 +1,9 @@
 #include "TimeManager.h"
 
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
+
 #include <windows.h>
 
 namespace game
@@ -10,6 +14,10 @@ TimeManager::TimeManager()
     __int64 countsPerSec;
     QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSec);
     _secondsPerCount = 1.0 / (double)countsPerSec;
+
+#ifdef _DEBUG
+    std::cout << "\tTimeManager Constructed\n";
+#endif // _DEBUG
 }
 
 float TimeManager::TotalTime() const
@@ -103,7 +111,7 @@ void TimeManager::CalculateFrameStats()
     // 1초 동안 평균 프레임 수 계산
     if (TotalTime() - _timeElapsed >= 1.0f)
     {
-        _fps = static_cast<float>(_frameCount);
+        _fps  = static_cast<float>(_frameCount);
         _mspf = 1000.0f / _fps;
 
         // 다음 평균 계산을 위한 초기화

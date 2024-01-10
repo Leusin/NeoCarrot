@@ -6,13 +6,15 @@
 #include "GraphicsEngine.h"
 #include "SceneManager.h"
 #include "TimeManager.h"
+#include "InputManager.h"
 #include "WindowInfomation.h"
 
 game::GameEngine::GameEngine(WindowInfomation* wi) :
 // 필요한 순서대로 초기화 중이다.
 _windowInfo(wi),
 _sceneManager{std::make_unique<SceneManager>()},
-_timeManager{std::make_unique<TimeManager>()}
+_timeManager{std::make_unique<TimeManager>()},
+_inputManager{std::make_unique<InputManager>()}
 {
 
 #ifdef _DEBUG

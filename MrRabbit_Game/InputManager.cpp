@@ -1,9 +1,14 @@
 #include "InputManager.h"
-
+/*
 #include "Keyboard.h"
 #include "Mouse.h"
+*/
 
-#include <WinUser.h>
+//#include <WinUser.h>
+
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
 
 namespace game
 {
@@ -21,8 +26,11 @@ enum class InputEvent
 };
 
 
-InputManager::InputManager() : _mouse{std::make_unique<Mouse>()}, _keybard{std::make_unique<Keyboard>()}
+InputManager::InputManager() /*: _mouse{std::make_unique<Mouse>()}, _keybard{std::make_unique<Keyboard>()}*/
 {
+#ifdef _DEBUG
+    std::cout << "\tInputManager Constructed\n";
+#endif // _DEBUG
 }
 
 } // namespace game
