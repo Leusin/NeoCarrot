@@ -51,7 +51,8 @@ EntityBuilder EntityBuilder::AddCameraScript()
     std::cout << "\t\t\t\tAdd CameraScript Component\n";
 #endif // _DEBUG
 
-    _entity->AddComponent<CameraScript>();
+    /*auto aa = _entity->shared_from_this();*/
+    _entity->AddComponent<CameraScript>(/*aa*/);
 
     return *this;
 }

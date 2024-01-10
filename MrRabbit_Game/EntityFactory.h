@@ -24,7 +24,7 @@ public:
     EntityPtr CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name);
 
 private:
-    EntityPtr CreateCarEntity(const size_t&& id, const char* name);
+    EntityPtr CreateCamera(const size_t&& id, const char* name);
 };
 
 }

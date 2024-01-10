@@ -11,14 +11,14 @@ EntityPtr EntityFactory::CreateEntity(game::Entity enumTypeEntity,const size_t&&
     switch (enumTypeEntity)
     {
         case game::Entity::CAMERA:
-            return CreateCarEntity(std::forward<const size_t>(id), std::move(name));
+            return CreateCamera(std::forward<const size_t>(id), std::move(name));
         default: break;
     }
 
     return nullptr;
 }
 
-EntityPtr EntityFactory::CreateCarEntity(const size_t&& id, const char* name)
+EntityPtr EntityFactory::CreateCamera(const size_t&& id, const char* name)
 {
     auto builder = EntityBuilder(
         std::forward<const size_t>(id), 

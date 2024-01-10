@@ -31,10 +31,7 @@ public:
 
     void Initialize();
     void Update(float deltaTime);
-    void BeginRender();
-    void Render();
     void Finalize();
-    void EndRender();
 
     void OnResize(int clientWidth, int clientHeight);
     void DrawStatus();
@@ -58,6 +55,11 @@ private:
 #pragma endregion input
 
 private:
+
+    void BeginRender();
+    void Render();
+    void EndRender();
+
     ///  랜더링 부분
     std::unique_ptr<D3D11Context> _d3d11;
     std::unique_ptr<RenderStates> _renderState;

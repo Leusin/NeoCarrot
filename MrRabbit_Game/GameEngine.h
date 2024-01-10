@@ -41,7 +41,7 @@ namespace game
         std::unique_ptr<TimeManager>  _timeManager;
 
 		// 그래픽 엔진
-		std::unique_ptr<grahics::GraphicsEngine> _graphicsEngine{ nullptr };
+		std::unique_ptr<grahics::GraphicsEngine> _renderer{ nullptr };
 	};
 
 } // GameEngene

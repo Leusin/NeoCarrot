@@ -1,12 +1,13 @@
-#ifdef _DEBUG
-#include <iostream>
-#endif // _DEBUG
-
 #include "GameEngine.h"
+
 #include "GraphicsEngine.h"
 #include "SceneManager.h"
 #include "TimeManager.h"
 #include "WindowInfomation.h"
+
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
 
 game::GameEngine::GameEngine(WindowInfomation* wi) :
 // 필요한 순서대로 초기화 중이다.
@@ -26,7 +27,7 @@ game::GameEngine::~GameEngine()
 
 void game::GameEngine::Initialize()
 {
-    _graphicsEngine = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
+    _renderer = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
                                                                 _windowInfo->hMainWnd,
                                                                 _windowInfo->clientWidth,
                                                                 _windowInfo->clientHeight);
@@ -49,28 +50,17 @@ void game::GameEngine::Process()
         }
         else // Windows 메시지가 없으면 애니메이션/게임 작업을 수행
         {
-            /// TODO: 구현할 것
             // 1. 시간 처리
-            _timeManager->Tick();
-            _timeManager->CalculateFrameStats();
-            float dt = _timeManager->DeltaTime();
-            //if (dt >= 1.f / 60.f)
-            {
-                // 2. 입력 처리
-                // 3. 업데이트
-                _sceneManager->Update(dt);
-                // 4. 랜더링
-                // 4.1. 디버그 데이터 출력
-                // 5. 이벤트 처리?
-            }
+            // 2. 입력 처리(생략)
+            // 3. Scene 업데이트
+            // 4. 랜더러 업데이트
 
-            /// TODO:
-            /// gameEngine 은 Component로서 동작하도록 바꿀 것...
-            /// 아니면 렌더러가 객체가 따로 이곳에서 랜더링 할 것인가..?
-            _graphicsEngine->Update(float());
-            _graphicsEngine->BeginRender();
-            _graphicsEngine->Render();
-            _graphicsEngine->EndRender();
+            _timeManager->Tick();
+            
+            float dt = _timeManager->DeltaTime();
+            _sceneManager->Update(dt);
+            _renderer->Update(dt);
+
         }
     }
 }
@@ -78,7 +68,7 @@ void game::GameEngine::Process()
 void game::GameEngine::Finalize()
 {
     _sceneManager->Finalize();
-    _graphicsEngine->Finalize();
+    _renderer->Finalize();
 }
 
 LRESULT game::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -90,7 +80,7 @@ LRESULT game::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM
 
         case WM_SIZE: // 창 사이즈가 재설정 될 때 호출
         {
-            if (_graphicsEngine.get() == nullptr)
+            if (_renderer.get() == nullptr)
                 break;
 
             _windowInfo->clientWidth  = LOWORD(lParam);
@@ -102,16 +92,16 @@ LRESULT game::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM
             switch (wParam)
             {
                 case SIZE_MINIMIZED: // 창 최소화
-                    _graphicsEngine->OnResize(_resizeWidth, _resizeHeight);
+                    _renderer->OnResize(_resizeWidth, _resizeHeight);
                     break;
                 case SIZE_MAXIMIZED: // 창 최대화
-                    _graphicsEngine->OnResize(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
+                    _renderer->OnResize(GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
                     break;
                 case SIZE_RESTORED:
-                    _graphicsEngine->OnResize(_resizeWidth, _resizeHeight);
+                    _renderer->OnResize(_resizeWidth, _resizeHeight);
                     break;
                 default:
-                    _graphicsEngine->OnResize(_resizeWidth, _resizeHeight);
+                    _renderer->OnResize(_resizeWidth, _resizeHeight);
                     break;
             }
         }

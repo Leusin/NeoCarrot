@@ -39,6 +39,10 @@ void grahics::GraphicsEngine::Update(float deltaTime)
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
     _grid->SetEyePosW(_camera->GetPosition());
     Keybord();
+
+    BeginRender();
+    Render();
+    EndRender();
 }
 
 void grahics::GraphicsEngine::BeginRender()
