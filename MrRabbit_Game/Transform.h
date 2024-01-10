@@ -16,27 +16,19 @@ public:
     ~Transform();
 
     /*
-    
-    	DirectX::XMMATRIX GetWorld();
-		DirectX::XMMATRIX GetView();
-		DirectX::XMMATRIX GetProj();
+    	math::Matrix GetPosition() const;
+		math::Matrix GetRotation() const;
+		math::Matrix GetScale() const;
 		
-		void SetWorld(const DirectX::XMMATRIX& w);
-		void SetView(const DirectX::XMMATRIX& v);
-		void SetProj(const DirectX::XMMATRIX& p);
-
-		// world, view, proj 를 한꺼번에 초기화
-		void SetTM(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
-
-		DirectX::XMMATRIX WorldViewProj();
-		// world, view, proj 곱을 반환
-
+		void SetPostiton(math::Matrix& pos);
+        void SetRotation(math::Matrix& rot);
+        void SetScale(math::Matrix& scl);
     */
 
 private:
-    math::Matrix _world;
-    math::Matrix _view;
-    math::Matrix _proj;
+    math::Matrix _position;
+    math::Matrix _rotation;
+    math::Matrix _scale;
 };
 
 } // namespace game
