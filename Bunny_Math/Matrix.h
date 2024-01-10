@@ -1,31 +1,29 @@
-/// Matrix.h : 4x4 행렬
-/// 2024-01-09
-
 #pragma once
+
+#include <array>
 
 namespace math
 {
- struct  Matrix
+template <typename T>
+struct Vector3;
+
+template <typename T>
+struct Matrix
 {
-    float _11, _12, _13, _14;
-    float _21, _22, _23, _24;
-    float _31, _32, _33, _34;
-    float _41, _42, _43, _44;
+    std::array<std::array<T, 4>, 4> _data;
 
-    // 복사대입
-    // * (벡터 곱, 행렬 곱)
-    // *= (벡터 곱, 행렬 곱)
-    // 오일러각 3개로 회전 행렬 만들기
-    // 쿼터니언 -> 회전 행렬
-    // 회전 행렬
-    // 이동 행렬 생성
-    // 스케일 행렬
+    Matrix();
+    void Identity();
+    void RotateAxis(const Vector3<float>& axis, const float& angle);
+    void RotateAxisNormal(const Vector3<float>& axis, const float& angle);
 
-    // 단위 행렬
-    // 역행렬
-    // 행렬식
-    // 전치 행렬
-    // 역행렬과 
+    void RotateY(const float& angle);
+
+private:
+    const int _rows = 4;
+    const int _columns = 4;
 };
 
-} // namespace me
+} // namespace math
+
+#include "Matrix.inl"

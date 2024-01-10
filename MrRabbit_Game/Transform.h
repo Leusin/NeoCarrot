@@ -16,8 +16,15 @@ public:
     Transform();
     ~Transform();
 
-    math::Vector3<float> GetPosition();
-    math::Vector3<float> GetRight();
+    math::Vector3<float> GetPosition() const;
+    math::Vector3<float> GetRight() const;
+    math::Vector3<float> GetLook() const;
+    math::Vector3<float> GetUp() const;
+
+    void SetPosition(const math::Vector3<float>& val);
+    void SetRight(const math::Vector3<float>& val);
+    void SetLook(const math::Vector3<float>& val);
+    void SetUp(const math::Vector3<float>& val);
 
 private:
     // 위치
@@ -29,12 +36,12 @@ private:
     math::Vector3<float> _look{0.0f, 0.0f, 1.0f};  // z
 
     // 변환 행렬
-    math::Matrix _translation;
-    math::Matrix _rotation;
-    math::Matrix _scale;
+    math::Matrix<float> _translation;
+    math::Matrix<float> _rotation;
+    math::Matrix<float> _scale;
 
     // 최종 변환행렬 
-    math::Matrix _tranceformMatreix;
+    math::Matrix<float> _tranceformMatreix;
 };
 
 } // namespace game

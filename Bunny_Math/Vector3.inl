@@ -1,5 +1,6 @@
-#include "Vector3.h"
 #pragma once
+
+#include "Matrix.h"
 
 namespace math
 {
@@ -10,8 +11,9 @@ constexpr Vector3<T>::Vector3() = default;
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr math::Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
+inline constexpr Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
 {
+
 }
 
 ////////////////////////////////////////////////////////////
@@ -58,6 +60,18 @@ inline void Vector3<T>::MutiplyAdd(const Vector3& v1, const Vector3& v2, const V
     x = v1.x * v2.x + v3.x;
     y = v1.y * v2.y + v3.y;
     z = v1.z * v2.z + v3.z;
+}
+
+////////////////////////////////////////////////////////////
+template <typename T>
+inline Vector3<T> Vector3<T>::Vector3TransformNormal(const Matrix<T>& matrix) const
+{
+    Vector3 result;
+    result.x = x * matrix._data[0][0] + y * matrix._data[1][0] + z * matrix._data[2][0];
+    result.y = x * matrix._data[0][1] + y * matrix._data[1][1] + z * matrix._data[2][1];
+    result.z = x * matrix._data[0][2] + y * matrix._data[1][2] + z * matrix._data[2][2];
+
+    return result;
 }
 
 ////////////////////////////////////////////////////////////

@@ -7,6 +7,10 @@
 
 namespace math
 {
+
+template <typename T>
+struct Matrix;
+
 template <typename T>
 struct Vector3
 {
@@ -92,6 +96,8 @@ struct Vector3
     constexpr Vector3 ComponentWiseDiv(const Vector3& rhs) const;
 
     void MutiplyAdd(const Vector3& v1, const Vector3& v2, const Vector3& v3);
+
+    Vector3<T> Vector3TransformNormal(const Matrix<T>& matrix) const;
 };
 
 /// <summary>
