@@ -31,12 +31,15 @@ public:
     void Update(float deltaTime);
     void Finalize();
 
-    EntityPtr CreateEntity(game::Entity enumTypeEntity, const char* name);
+    void AddEntity(game::Entity enumTypeEntity, const char* name);
 
 private:
     EntityPtr CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name);
+    EntityPtr CreateEntity(game::Entity enumTypeEntity, const char* name);
 
-    std::vector<std::shared_ptr<core::Entity<Tag, Layer>>> _entities;
+    void AddEntity(EntityPtr entityPtr);
+
+    std::vector<EntityPtr>         _entities;
     std::unique_ptr<EntityFactory> _factory;
 };
 

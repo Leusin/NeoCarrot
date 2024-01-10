@@ -20,8 +20,14 @@ EntityPtr EntityFactory::CreateEntity(game::Entity enumTypeEntity,const size_t&&
 
 EntityPtr EntityFactory::CreateCarEntity(const size_t&& id, const char* name)
 {
+    auto builder = EntityBuilder(
+        std::forward<const size_t>(id), 
+        std::move(name), 
+        Tag::CAMERA, 
+        Layer::BACKGROUND);
 
-    auto camera = EntityBuilder(std::forward<const size_t>(id), std::move(name), Tag::CAMERA, Layer::BACKGROUND)
+    auto camera = 
+        builder
         .AddTransform()
         .AddCamera()
         .Build();

@@ -11,11 +11,11 @@ namespace mouse
 
 enum class Button
 {
-    Left,    // 마우스 왼쪽 버튼
-    Right,   // 마우스 오른쪽 버튼
-    Middle,  // 마우스 가운데(스크롤 휠) 버튼
-    Extra1,  // 첫번째 마우스 추가 버튼
-    Extra2,  // 두번째 마우스 추가 버튼
+    LEFT,    // 마우스 왼쪽 버튼
+    RIGHT,   // 마우스 오른쪽 버튼
+    MIDDLE,  // 마우스 가운데(스크롤 휠) 버튼
+    EXTRA1,  // 첫번째 마우스 추가 버튼
+    EXTRA2,  // 두번째 마우스 추가 버튼
 
     BUTTON_COUNT
 };

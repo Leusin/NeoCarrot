@@ -1,6 +1,7 @@
 #pragma once
 
-//#include <memory>
+#include <memory>
+#include "Mouse.h"
 
 namespace game
 {
@@ -14,6 +15,7 @@ class InputManager
 public:
     InputManager();
 
+    void Update(float dt);
     // GetKeyState
     // IsKeyState
 
@@ -22,8 +24,8 @@ public:
 
 
 private:
+    //std::unique_ptr<Mouse>    _mouse{nullptr};
     /*
-    std::unique_ptr<Mouse>    _mouse{nullptr};
     std::unique_ptr<Keyboard> _keybard{nullptr};
     */
 };

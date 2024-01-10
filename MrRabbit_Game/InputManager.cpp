@@ -1,7 +1,7 @@
 #include "InputManager.h"
+
 /*
 #include "Keyboard.h"
-#include "Mouse.h"
 */
 
 //#include <WinUser.h>
@@ -31,6 +31,11 @@ InputManager::InputManager() /*: _mouse{std::make_unique<Mouse>()}, _keybard{std
 #ifdef _DEBUG
     std::cout << "\tInputManager Constructed\n";
 #endif // _DEBUG
+}
+
+void InputManager::Update(float dt)
+{
+    //_mouse->Update(dt);
 }
 
 } // namespace game

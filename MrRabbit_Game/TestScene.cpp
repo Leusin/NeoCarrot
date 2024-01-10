@@ -44,12 +44,7 @@ void game::TestScene::Finalize()
 
 void game::TestScene::CreateEnity()
 {
-    //auto camera1 = _entityManager->CreateEntity("camera", Tag::CAMERA, Layer::BACKGROUND);
-    
-    // vs
-
-    auto camera2 = _entityManager->CreateEntity(Entity::CAMERA, "camera");
-
+    _entityManager->AddEntity(Entity::CAMERA, "camera");
 }
 
 std::shared_ptr<game::IScene> game::TestScene::NextSene()

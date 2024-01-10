@@ -64,6 +64,12 @@ void EntityManager::Finalize()
         e->Destroy();
 }
 
+void EntityManager::AddEntity(game::Entity enumTypeEntity, const char* name)
+{
+    auto entity = CreateEntity(enumTypeEntity, std::move(name));
+    AddEntity(entity);
+}
+
 EntityPtr EntityManager::CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name)
 {
     return _factory->CreateEntity(enumTypeEntity, std::forward<const size_t>(id), std::move(name));
@@ -73,6 +79,10 @@ EntityPtr EntityManager::CreateEntity(game::Entity enumTypeEntity, const char* n
 {
     auto id = _entities.size();
     return CreateEntity(enumTypeEntity, std::forward<const size_t>(id), std::move(name));
+}
+void EntityManager::AddEntity(EntityPtr entityPtr)
+{
+    _entities.emplace_back(entityPtr);
 }
 /*
 /////////////////////////////////////////////////////////////////////////////////
