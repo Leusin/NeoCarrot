@@ -6,8 +6,8 @@
 #pragma once
 
 #include "IComponent.h"
-#include "Vector3.h"
 #include "Matrix.h"
+#include "Vector3.h"
 
 namespace game
 {
@@ -18,21 +18,17 @@ public:
     Camera();
     ~Camera();
 
-    /*
-    DirectX::XMVECTOR GetPositionXM() const;
-    DirectX::XMFLOAT3 GetPosition() const;
-    void SetPosition(float x, float y, float z);
-    void SetPosition(const DirectX::XMFLOAT3 &v);
+    /// 카메라 변환
 
-    DirectX::XMVECTOR GetRightXM() const;
-    DirectX::XMFLOAT3 GetRight() const;
-    DirectX::XMVECTOR GetUpXM() const;
-    DirectX::XMFLOAT3 GetUp() const;
-    DirectX::XMVECTOR GetLookXM() const;
-    DirectX::XMFLOAT3 GetLook() const;
 
-    float GetNearZ() const;
-    float GetFarZ() const;
+    math::Vector3<float> GetPosition() const;
+    void                 SetPosition(float x, float y, float z);
+    void                 SetPosition(const math::Vector3<float>& pos);
+
+    math::Vector3<float> GetRight() const;
+    math::Vector3<float> GetUp() const;
+    math::Vector3<float> GetLook() const;
+
     float GetAspect() const;
     float GetFovY() const;
     float GetFovX() const;
@@ -47,18 +43,15 @@ public:
     void SetLens(float fovY, float aspect, float zn, float zf);
 
     // 카메라 공간 설정
-    void LookAt(DirectX::FXMVECTOR pos, DirectX::FXMVECTOR target, DirectX::FXMVECTOR worldUp);
-    void LookAt(const DirectX::XMFLOAT3 &pos, const DirectX::XMFLOAT3 &target, const DirectX::XMFLOAT3 &up);
+    void LookAt(const math::Vector3<float>& pos, const math::Vector3<float>& target, const math::Vector3<float>& up);
 
-    DirectX::XMMATRIX View() const;
-    DirectX::XMMATRIX Proj() const;
-    DirectX::XMMATRIX ViewProj() const;
-
-    /// 카메라 변환
+    math::Matrix View() const;
+    math::Matrix Proj() const;
+    math::Matrix ViewProj() const;
 
     // 카메라 이동
-    void Strafe(float d); // 횡이동
-    void Walk(float d);   // 축이동
+    void Strafe(float distance); // 횡이동
+    void Walk(float distance);   // 축이동
 
     // 카메라 회전
     void Pitch(float angle);   // 위아래
@@ -69,22 +62,21 @@ public:
     // 매프래임, 카메라 위치 또는 방향 수정 후
     // 이 메서들을 호출해 시야 행렬을 재구축한다.
     void UpdateViewMatrix();
-    */
 
 private:
     // 월드 기준 카메라 좌표계
     // 원점
-    math::Vector3<float> _position{0.0f, 0.0f, 0.0f}; 
+    math::Vector3<float> _position{0.0f, 0.0f, 0.0f};
     // 기저
-    math::Vector3<float> _right{1.0f, 0.0f, 0.0f};    // x
-    math::Vector3<float> _up{0.0f, 1.0f, 0.0f};       // y
-    math::Vector3<float> _look{0.0f, 0.0f, 1.0f};     // z
+    math::Vector3<float> _right{1.0f, 0.0f, 0.0f}; // x
+    math::Vector3<float> _up{0.0f, 1.0f, 0.0f};    // y
+    math::Vector3<float> _look{0.0f, 0.0f, 1.0f};  // z
 
     // 절두체 속성
-    float _nearZ;
-    float _farZ;
-    float _aspect; // 종횡비
-    float _fovY;   // y 시야각
+    float _nearZ{000.1f};
+    float _farZ{1000.f};
+    float _aspect{1.0f};
+    float _fovY{0.25f};
     float _nearWindowHeight;
     float _farWindowHeight;
 

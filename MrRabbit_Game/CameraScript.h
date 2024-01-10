@@ -24,10 +24,10 @@ class Camera;
 class CameraScript : public core::IComponent
 {
 public:
-   /* CameraScript();*/
     CameraScript(EntityPtr entityPtr);
     ~CameraScript();
 
+    void Start() override;
     void Update(float dt) override;
 
 private:

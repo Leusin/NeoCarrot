@@ -8,15 +8,15 @@ bool math::FuzzyRealEqual(const float& lhs, const float& rhs, const float& epsil
 
 bool math::IsEqual(const float& lhs, const float& rhs)
 {
-    return FuzzyRealEqual(lhs, rhs, Constant::FLOAT_TOLERANCE);
+    return FuzzyRealEqual(lhs, rhs, constant::FLOAT_TOLERANCE);
 }
 
 float math::DegreeToRadian(const float angle)
 {
-    return angle * Constant::PI / 180.f;
+    return angle * constant::PI / 180.f;
 }
 
 float math::RadianToDegree(const float angle)
 {
-    return angle * 180.f / Constant::PI;
+    return angle * 180.f / constant::PI;
 }

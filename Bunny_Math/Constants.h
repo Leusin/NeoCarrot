@@ -5,7 +5,7 @@
 
 namespace math
 {
-namespace Constant
+namespace constant
 {
 /// ¿øÁÖÀ²
 

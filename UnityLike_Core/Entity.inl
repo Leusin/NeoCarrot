@@ -35,10 +35,9 @@ inline T* Entity<Tag, Layer>::GetComponent()
 {
     for (auto& component : _componentList)
     {
-        if (std::is_same<decltype(component), T>::value)
-        {
-            return dynamic_cast<T*>(component.get());
-        }
+        //if (std::is_same<decltype(component), T>::value)
+        auto com = dynamic_cast<T*>(component.get());
+        if (com) return com;
     }
 
     return nullptr; // 찾지 못한 경우 nullptr 반환
