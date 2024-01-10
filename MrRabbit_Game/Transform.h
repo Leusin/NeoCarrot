@@ -34,9 +34,9 @@ public:
     */
 
 private:
-    me::Matrix _world;
-    me::Matrix _view;
-    me::Matrix _proj;
+    math::Matrix _world;
+    math::Matrix _view;
+    math::Matrix _proj;
 };
 
 } // namespace game

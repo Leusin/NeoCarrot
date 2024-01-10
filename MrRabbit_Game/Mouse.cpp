@@ -15,7 +15,7 @@ bool Mouse::IsButtonPressed(mouse::Button button) const
     return _mouseMap[button];
 }
 
-me::Vector2<int> Mouse::GetPosition()
+math::Vector2<int> Mouse::GetPosition()
 {
     GetCursorPos(&_mousePos);
     return _mousePos;

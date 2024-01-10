@@ -4,7 +4,7 @@
 #include <cassert>
 #include <xtr1common>
 
-namespace me
+namespace math
 {
 
 ////////////////////////////////////////////////////////////

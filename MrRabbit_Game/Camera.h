@@ -74,11 +74,11 @@ public:
 private:
     // 월드 기준 카메라 좌표계
     // 원점
-    me::Vector3<float> _position{0.0f, 0.0f, 0.0f}; 
+    math::Vector3<float> _position{0.0f, 0.0f, 0.0f}; 
     // 기저
-    me::Vector3<float> _right{1.0f, 0.0f, 0.0f};    // x
-    me::Vector3<float> _up{0.0f, 1.0f, 0.0f};       // y
-    me::Vector3<float> _look{0.0f, 0.0f, 1.0f};     // z
+    math::Vector3<float> _right{1.0f, 0.0f, 0.0f};    // x
+    math::Vector3<float> _up{0.0f, 1.0f, 0.0f};       // y
+    math::Vector3<float> _look{0.0f, 0.0f, 1.0f};     // z
 
     // 절두체 속성
     float _nearZ;
@@ -89,8 +89,8 @@ private:
     float _farWindowHeight;
 
     // 시야행렬 및 투영 행렬
-    me::Matrix _view;
-    me::Matrix _proj;
+    math::Matrix _view;
+    math::Matrix _proj;
 };
 
 } // namespace game

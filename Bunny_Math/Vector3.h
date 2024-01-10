@@ -5,7 +5,7 @@
 
 #pragma once
 
-namespace me
+namespace math
 {
 template <typename T>
 struct Vector3

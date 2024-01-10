@@ -3,7 +3,7 @@
 #include <cassert>
 #include <cmath>
 
-namespace me
+namespace math
 {
 
 ////////////////////////////////////////////////////////////

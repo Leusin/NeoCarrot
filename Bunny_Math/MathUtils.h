@@ -6,7 +6,7 @@
 
 #include <cmath>
 
-namespace me
+namespace math
 {
 
 // 두 변수의 자리를 바꾸는 함수

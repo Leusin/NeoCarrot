@@ -3,7 +3,7 @@
 
 #pragma once
 
-namespace me
+namespace math
 {
  struct  Matrix
 {

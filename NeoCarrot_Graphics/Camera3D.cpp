@@ -111,7 +111,7 @@ float Camera3D::GetFarWindowHeight() const
 
 void Camera3D::SetLens(float fovY, float aspect, float zn, float zf)
 {
-    _fovY = fovY * me::Constant::PI;
+    _fovY = fovY * math::Constant::PI;
     _aspect = aspect;
 
     _nearZ = zn;

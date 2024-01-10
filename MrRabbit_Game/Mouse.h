@@ -35,7 +35,7 @@ public:
     /// <summary>
     /// 현재 마우스 위치를 가져옴
     /// </summary>
-    me::Vector2<int> GetPosition();
+    math::Vector2<int> GetPosition();
 
     /// <summary>
     /// 현재 마우스가 눌려있는지 확인
@@ -62,12 +62,12 @@ private:
     /// <summary>
     /// 현재 마우스의 위치
     /// </summary>
-    me::Vector2<int> _mousePos;
+    math::Vector2<int> _mousePos;
 
     /// <summary>
     /// 마우스가 마지막으로 클릭을 했던 위치
     /// </summary>
-    me::Vector2<int> _lastPressedButton;
+    math::Vector2<int> _lastPressedButton;
 
     /// <summary>
     /// 마우스 버튼이 눌렸는지 안 눌렸는지에 대한 상태를 보관하는 열거형 배열

@@ -2,7 +2,7 @@
 #include <cassert>
 #include <cmath>
 
-namespace me
+namespace math
 {
 
 template <typename T>

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace me
+namespace math
 {
 
 ////////////////////////////////////////////////////////////
@@ -9,7 +9,7 @@ constexpr Vector3<T>::Vector3() = default;
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr me::Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
+inline constexpr math::Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
 {
 }
 
@@ -36,14 +36,14 @@ constexpr T Vector3<T>::Cross(const Vector3& rhs) const
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr Vector3<T> me::Vector3<T>::ComponentWiseMul(const Vector3& rhs) const
+inline constexpr Vector3<T> math::Vector3<T>::ComponentWiseMul(const Vector3& rhs) const
 {
     return Vector3<T>(x * rhs.x, y * rhs.y, z * rhs.z);
 }
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-inline constexpr Vector3<T> me::Vector3<T>::ComponentWiseDiv(const Vector3& rhs) const
+inline constexpr Vector3<T> math::Vector3<T>::ComponentWiseDiv(const Vector3& rhs) const
 {
     assert(rhs.x != 0 && "Vector3::cwiseDiv() 는 0으로 나눌 수 없습니다.");
     assert(rhs.y != 0 && "Vector3::cwiseDiv() 는 0으로 나눌 수 없습니다.");

@@ -1,6 +1,6 @@
 #include "Matrix.h"
 
-namespace me
+namespace math
 {
 
 }

@@ -5,7 +5,7 @@
 
 #pragma once
 
-namespace me
+namespace math
 {
 /// <summary>
 /// 2차원 다루기 위한 템플릿 클래스 구조체
