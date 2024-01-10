@@ -19,10 +19,15 @@ struct Matrix
 
     void RotateY(const float& angle);
 
+    // 인덱스로의 접근을 추가
+    std::array<T, 4>& operator[](int index);
+    const std::array<T, 4>& operator[](int index) const;
+
 private:
     const int _rows = 4;
     const int _columns = 4;
 };
+
 
 } // namespace math
 

@@ -1,4 +1,7 @@
 #pragma once
+
+#include "Matrix.h";
+
 namespace game
 {
 
@@ -9,6 +12,8 @@ struct CameraInfo
     float _fovY{0.25f};
     float _nearWindowHeight;
     float _farWindowHeight;
+
+    math::Matrix<float> _view;
 };
 
  }

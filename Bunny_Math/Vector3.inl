@@ -2,6 +2,9 @@
 
 #include "Matrix.h"
 
+#include <cassert>
+#include <cmath>
+
 namespace math
 {
 
@@ -18,9 +21,30 @@ inline constexpr Vector3<T>::Vector3(T x, T y, T z) : x(x), y(y), z(z)
 
 ////////////////////////////////////////////////////////////
 template <typename T>
+inline T Vector3<T>::Length() const
+{
+    static_assert(std::is_floating_point_v<T>,
+                  "Vector3::Length()는 부동소수점 타입만을 지원합니다.\nVector3::Length() is only supported for "
+                  "floating point types");
+
+    return std::sqrt(x * x + y * y + z * z);
+}
+
+////////////////////////////////////////////////////////////
+template <typename T>
 constexpr T Vector3<T>::LengthSq() const
 {
     return Dot(*this);
+}
+
+////////////////////////////////////////////////////////////
+template <typename T>
+inline Vector3<T> Vector3<T>::Normalize() const
+{
+    assert(*this != Vector3<T>() &&
+           "Vector3::Normalized()는 부동소수점 타입만을 지원합니다.\nVector3::Normalized() cannot normalize a zero "
+           "vector");
+    return (*this) / Length();
 }
 
 ////////////////////////////////////////////////////////////
@@ -32,9 +56,9 @@ constexpr T Vector3<T>::Dot(const Vector3& rhs) const
 
 ////////////////////////////////////////////////////////////
 template <typename T>
-constexpr T Vector3<T>::Cross(const Vector3& rhs) const
+constexpr Vector3<T> Vector3<T>::Cross(const Vector3& rhs) const
 {
-    return Vector3<T>((y * rhs.z) - (z * rhs.y), (z * rhs.x) - (x * rhs.z), (x * rhs.y) - (y * rhs.x));
+    return Vector3<T>{(y * rhs.z) - (z * rhs.y), (z * rhs.x) - (x * rhs.z), (x * rhs.y) - (y * rhs.x)};
 }
 
 ////////////////////////////////////////////////////////////

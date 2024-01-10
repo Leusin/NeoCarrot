@@ -74,7 +74,7 @@ struct Vector3
     /// <summary>
     /// 두 3 차원 벡터의 외적
     /// </summary>
-    constexpr T Cross(const Vector3& rhs) const;
+    constexpr Vector3<T> Cross(const Vector3& rhs) const;
 
     /// <summary>
     /// 벡터의 구성성분 끼리 곱(Component-wise multiplication)을 수행합니다.

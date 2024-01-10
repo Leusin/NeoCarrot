@@ -16,6 +16,30 @@ Transform::Transform()
 Transform::~Transform()
 {
 }
+void Transform::Update(float dt)
+{
+    math::Vector3<float> r = GetRight();
+    math::Vector3<float> u = GetUp();
+    math::Vector3<float> l = GetLook();
+    math::Vector3<float> p = GetPosition();
+	
+	//
+    // 오른쪽, 상향, 시선 벡터 정규직교화
+    //
+
+	l = l.Normalize();
+    u = l.Cross(r);
+    u = u.Normalize();
+    r = u.Cross(l);
+
+	//
+    // 시야 행렬을 채운다
+    //
+
+	SetRight(r);
+    SetUp(u);
+    SetLook(l);
+}
 math::Vector3<float> Transform::GetPosition() const
 {
     return _position;

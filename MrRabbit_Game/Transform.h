@@ -16,6 +16,8 @@ public:
     Transform();
     ~Transform();
 
+    void Update(float dt) override;
+
     math::Vector3<float> GetPosition() const;
     math::Vector3<float> GetRight() const;
     math::Vector3<float> GetLook() const;

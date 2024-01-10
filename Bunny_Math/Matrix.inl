@@ -3,6 +3,7 @@
 #include "Vector3.h"
 
 #include <cmath>
+#include "Matrix.h"
 
 namespace math
 {
@@ -86,6 +87,18 @@ inline void Matrix<T>::RotateY(const float& angle)
     _data[0][2] = sinTheta;
     _data[2][0] = -sinTheta;
     _data[2][2] = cosTheta;
+}
+
+template <typename T>
+inline std::array<T, 4>& Matrix<T>::operator[](int index)
+{
+    return _data[index];
+}
+
+template <typename T>
+inline const std::array<T, 4>& Matrix<T>::operator[](int index) const
+{
+    return _data[index];
 }
 
 } // namespace math

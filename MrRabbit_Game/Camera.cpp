@@ -28,6 +28,38 @@ Camera::~Camera()
 
 void Camera::Update(float dt)
 {
+
+    //
+    // _view 업데이트
+    //
+    math::Vector3<float> r = _transform->GetRight();
+    math::Vector3<float> u = _transform->GetUp();
+    math::Vector3<float> l = _transform->GetLook();
+    math::Vector3<float> p = _transform->GetPosition();
+
+    float x = -p.Dot(r);
+    float y = -p.Dot(u);
+    float z = -p.Dot(l);
+
+    _cInfo._view[0][0] = _transform->GetRight().x;
+    _cInfo._view[1][0] = _transform->GetRight().y;
+    _cInfo._view[2][0] = _transform->GetRight().z;
+    _cInfo._view[3][0] = x;
+
+    _cInfo._view[0][1] = _transform->GetUp().x;
+    _cInfo._view[1][1] = _transform->GetUp().y;
+    _cInfo._view[2][1] = _transform->GetUp().z;
+    _cInfo._view[3][1] = y;
+
+    _cInfo._view[0][2] = _transform->GetLook().x;
+    _cInfo._view[1][2] = _transform->GetLook().y;
+    _cInfo._view[2][2] = _transform->GetLook().z;
+    _cInfo._view[3][2] = z;
+
+    _cInfo._view[0][3] = 0.0f;
+    _cInfo._view[1][3] = 0.0f;
+    _cInfo._view[2][3] = 0.0f;
+    _cInfo._view[3][3] = 1.0f;
 }
 
 void Camera::Strafe(float distance)
