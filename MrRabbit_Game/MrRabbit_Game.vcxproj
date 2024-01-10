@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraScript.h" />
     <ClInclude Include="EntityBuilder.h" />
     <ClInclude Include="EntityEnum.h" />
     <ClInclude Include="EntityFactory.h" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="EntityBuilder.cpp" />
     <ClCompile Include="EntityFactory.cpp" />
     <ClCompile Include="GameEngine.cpp" />

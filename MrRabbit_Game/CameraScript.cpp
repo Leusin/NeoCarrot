@@ -12,7 +12,7 @@ CameraScript::~CameraScript()
 {
 }
 
-void CameraScript::Update()
+void CameraScript::Update(float dt)
 {
 }
 

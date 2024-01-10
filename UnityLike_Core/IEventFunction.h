@@ -37,19 +37,19 @@ public:
     /// 매 프레임마다 호출되는 매서드입니다.
     /// 사용처: 프레임마다 발생하는 로직
     /// </summary>
-    virtual void Update(){};
+    virtual void Update(float dt){};
 
     /// <summary>
     /// 물리 업데이트 주기마다 호출되는 메서드 입니다.
     /// 사용처: 물리적 계산
     /// </summary>
-    virtual void FixedUpdate(){};
+    virtual void FixedUpdate(float dt){};
 
     /// <summary>
     /// 모든 업데이트 주기가 끝난 후 호출되는 메서드 입니다.
     /// 사용처: 다른 Update 메서드들이 끝난 후 실행되는 로직
     /// </summary>
-    virtual void LateUpdate(){};
+    virtual void LateUpdate(float dt){};
 
     /// <summary>
     /// 스크립트가 활성할 때 호출되는 메서드 입니다.

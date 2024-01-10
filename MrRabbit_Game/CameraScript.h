@@ -12,7 +12,7 @@ public:
     CameraScript();
     ~CameraScript();
 
-    void Update() override
+    void Update(float dt) override;
 };
 
 } // namespace game

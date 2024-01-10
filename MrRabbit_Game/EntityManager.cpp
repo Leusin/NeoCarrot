@@ -46,9 +46,9 @@ void EntityManager::Update(float deltaTime)
         }
         else if (e->_isActive && !e->_isStart)
         {
-            e->Update();
-            e->FixedUpdate();
-            e->LateUpdate();
+            e->Update(deltaTime);
+            e->FixedUpdate(deltaTime);
+            e->LateUpdate(deltaTime);
             e->OnEnable();
         }
         else if (!e->_isActive && !e->_isStart)
