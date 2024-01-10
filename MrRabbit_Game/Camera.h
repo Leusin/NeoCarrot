@@ -6,37 +6,45 @@
 #pragma once
 
 #include "IComponent.h"
+#include "CameraInfo.h"
+
 #include "Matrix.h"
 #include "Vector3.h"
+
+#include "EntityEnum.h"
+
+#include <memory>
+
+ namespace core
+{
+template <typename T, typename U>
+class Entity;
+}
+
+using EntityPtr     = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
+using EntityWeakPtr = std::weak_ptr<core::Entity<game::Tag, game::Layer>>;
 
 namespace game
 {
 
+class Transform;
+
 class Camera : public core::IComponent
 {
 public:
-    Camera();
+    Camera(EntityPtr entityPtr);
     ~Camera();
+
+    void Update(float dt) override;
 
     /// 카메라 변환
 
-
-    math::Vector3<float> GetPosition() const;
-    void                 SetPosition(float x, float y, float z);
-    void                 SetPosition(const math::Vector3<float>& pos);
-
-    math::Vector3<float> GetRight() const;
-    math::Vector3<float> GetUp() const;
-    math::Vector3<float> GetLook() const;
-
-    float GetAspect() const;
+    //float GetAspect() const;
     float GetFovY() const;
     float GetFovX() const;
 
-    float GetNearWindowWidth() const;
-    float GetNearWindowHeight() const;
-    float GetFarWindowWidth() const;
-    float GetFarWindowHeight() const;
+    float GetNear() const;
+    float GetFar() const;
 
     /// 절두체 시야 제어
 
@@ -59,30 +67,16 @@ public:
 
     /// 시야 행렬 구축
 
-    // 매프래임, 카메라 위치 또는 방향 수정 후
+    // 매 프래임, 카메라 위치 또는 방향 수정 후
     // 이 메서들을 호출해 시야 행렬을 재구축한다.
-    void UpdateViewMatrix();
+    //void UpdateViewMatrix();
 
 private:
-    // 월드 기준 카메라 좌표계
-    // 원점
-    math::Vector3<float> _position{0.0f, 0.0f, 0.0f};
-    // 기저
-    math::Vector3<float> _right{1.0f, 0.0f, 0.0f}; // x
-    math::Vector3<float> _up{0.0f, 1.0f, 0.0f};    // y
-    math::Vector3<float> _look{0.0f, 0.0f, 1.0f};  // z
 
-    // 절두체 속성
-    float _nearZ{000.1f};
-    float _farZ{1000.f};
-    float _aspect{1.0f};
-    float _fovY{0.25f};
-    float _nearWindowHeight;
-    float _farWindowHeight;
+    Transform* _transform;
 
-    // 시야행렬 및 투영 행렬
-    math::Matrix _view;
-    math::Matrix _proj;
+    CameraInfo _cInfo;
+
 };
 
 } // namespace game

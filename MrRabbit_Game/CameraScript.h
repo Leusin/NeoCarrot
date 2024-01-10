@@ -27,7 +27,7 @@ public:
     CameraScript(EntityPtr entityPtr);
     ~CameraScript();
 
-    void Start() override;
+    //void Start() override;
     void Update(float dt) override;
 
 private:
@@ -38,7 +38,6 @@ private:
     /// waek_ptr 로 받는다
     /// </summary>
     EntityWeakPtr _entity{};
-
     Camera*   _camera{nullptr};
 };
 

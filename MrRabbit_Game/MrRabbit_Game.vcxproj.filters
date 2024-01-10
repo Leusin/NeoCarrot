@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Window Info">
-      <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scene">
-      <UniqueIdentifier>{d596846b-4b0b-498c-baf8-5d2b6fc8f407}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
     </Filter>
@@ -25,19 +19,25 @@
     <Filter Include="doc">
       <UniqueIdentifier>{15484c80-8464-493b-9087-966144789a52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="info">
+      <UniqueIdentifier>{75f2b1d2-93eb-432e-8d7c-8a708651ec6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{d596846b-4b0b-498c-baf8-5d2b6fc8f407}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IScene.h">
-      <Filter>Scene</Filter>
+      <Filter>scene</Filter>
     </ClInclude>
     <ClInclude Include="GameEngine.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
-      <Filter>Scene</Filter>
+      <Filter>scene</Filter>
     </ClInclude>
     <ClInclude Include="WindowInfomation.h">
-      <Filter>Window Info</Filter>
+      <Filter>info</Filter>
     </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>manager</Filter>
@@ -87,13 +87,16 @@
     <ClInclude Include="CameraScript.h">
       <Filter>component</Filter>
     </ClInclude>
+    <ClInclude Include="CameraInfo.h">
+      <Filter>info</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
-      <Filter>Scene</Filter>
+      <Filter>scene</Filter>
     </ClCompile>
     <ClCompile Include="EntityManager.cpp">
       <Filter>manager</Filter>
@@ -133,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="CameraScript.cpp">
       <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraInfo.cpp">
+      <Filter>info</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

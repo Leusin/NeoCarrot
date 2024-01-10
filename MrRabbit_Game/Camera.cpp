@@ -1,6 +1,10 @@
 #include "Camera.h"
 
+#include "Entity.h"
+#include "Transform.h"
 #include "Constants.h"
+
+#include <cassert>
 
 #ifdef _DEBUG
 #include <iostream>
@@ -8,86 +12,26 @@
 
 namespace game
 {
-Camera::Camera()
+Camera::Camera(EntityPtr entityPtr) : 
+    _transform(entityPtr->GetComponent<Transform>())
 {
+    assert(_transform);
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Camera Component\n";
 #endif // _DEBUG
 }
+
 Camera::~Camera()
 {
 }
-math::Vector3<float> Camera::GetPosition() const
-{
-    return _position;
-}
-void Camera::SetPosition(float x, float y, float z)
-{
-    //_position = (x, y, z);
-}
-void Camera::SetPosition(const math::Vector3<float>& pos)
-{
-    _position = pos;
-}
-math::Vector3<float> Camera::GetRight() const
-{
-    return _right;
-}
-math::Vector3<float> Camera::GetUp() const
-{
-    return _up;
-}
-math::Vector3<float> Camera::GetLook() const
-{
-    return _look;
-}
 
-float Camera::GetAspect() const
+void Camera::Update(float dt)
 {
-    return _aspect;
 }
 
 float Camera::GetFovY() const
 {
-    return _fovY;
-}
-
-float Camera::GetFovX() const
-{
-    float halfWidth = 0.5f * GetNearWindowHeight();
-    return 2.0f * atanf(halfWidth / _nearZ);
-}
-
-float Camera::GetNearWindowWidth() const
-{
-    return _aspect * _nearWindowHeight;
-}
-
-float Camera::GetNearWindowHeight() const
-{
-    return _nearWindowHeight;
-}
-
-float Camera::GetFarWindowWidth() const
-{
-    return _aspect * _farWindowHeight;
-}
-
-float Camera::GetFarWindowHeight() const
-{
-    return _farWindowHeight;
-}
-
-void Camera::SetLens(float fovY, float aspect, float zn, float zf)
-{
-    _fovY   = fovY * math::constant::PI;
-    _aspect = aspect;
-
-    _nearZ = zn;
-    _farZ  = zf;
-
-    _nearWindowHeight = 2.0f * _nearZ * tanf(0.5f * _fovY);
-    _farWindowHeight  = 2.0f * _farZ * tanf(0.5f * _fovY);
+    return 0.f;
 }
 
 void Camera::LookAt(const math::Vector3<float>& pos, const math::Vector3<float>& target, const math::Vector3<float>& up)
@@ -113,12 +57,16 @@ math::Matrix Camera::ViewProj() const
 
 void Camera::Strafe(float distance)
 {
-    _position += distance * _look;
+    //_position += distance * _look;
+
+    // Transfom 에서 위치 정보, 회전 정보를 가져온다
+
+    // Set Position 한다.
 }
 
 void Camera::Walk(float distance)
 {
-    _position += distance * _right;
+    //_position += distance * _right;
 }
 
 void Camera::Pitch(float angle)

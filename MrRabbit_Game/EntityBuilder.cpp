@@ -32,7 +32,7 @@ EntityBuilder game::EntityBuilder::AddTransform()
 
 EntityBuilder EntityBuilder::AddCamera()
 {
-    _entity->AddComponent<Camera>();
+    _entity->AddComponent<Camera>(_entity);
 
     return *this;
 }

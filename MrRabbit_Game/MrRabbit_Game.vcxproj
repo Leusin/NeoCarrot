@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraInfo.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="EntityBuilder.h" />
     <ClInclude Include="EntityEnum.h" />
@@ -221,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraInfo.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="EntityBuilder.cpp" />
     <ClCompile Include="EntityFactory.cpp" />
