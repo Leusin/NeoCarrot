@@ -4,6 +4,8 @@
 #include "Transform.h"
 #include "Camera.h"
 
+#include "CameraScript.h"
+
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -39,6 +41,17 @@ EntityBuilder EntityBuilder::AddCamera()
 #endif // _DEBUG
 
     _entity->AddComponent<Camera>();
+
+    return *this;
+}
+
+EntityBuilder EntityBuilder::AddCameraScript()
+{
+#ifdef _DEBUG
+    std::cout << "\t\t\t\tAdd CameraScript Component\n";
+#endif // _DEBUG
+
+    _entity->AddComponent<CameraScript>();
 
     return *this;
 }

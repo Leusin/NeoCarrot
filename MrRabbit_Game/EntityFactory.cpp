@@ -30,6 +30,7 @@ EntityPtr EntityFactory::CreateCarEntity(const size_t&& id, const char* name)
         builder
         .AddTransform()
         .AddCamera()
+        .AddCameraScript()
         .Build();
 
     return camera;

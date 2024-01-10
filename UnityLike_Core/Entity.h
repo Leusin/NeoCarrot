@@ -42,6 +42,22 @@ public:
     template <typename T>
     T* GetComponent();
 
+    //
+    // IEventFunction
+    //
+
+    void Awake() override;
+    void Start() override;
+
+    void Update(float dt) override;
+    void FixedUpdate(float dt) override;
+    void LateUpdate(float dt) override;
+
+    void OnEnable() override;
+    void OnDisable() override;
+    void OnDestroy() override;
+
+
 private:
     std::vector<std::unique_ptr<IComponent>> _componentList;
 };

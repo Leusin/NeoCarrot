@@ -44,7 +44,6 @@ void game::SceneManager::Update(float deltaTime)
             break;
         case game::SceneStatus::RUN:
             _currenScene->Update(deltaTime);
-            _status = SceneStatus::FINAL;
             break;
         case game::SceneStatus::FINAL:
         {

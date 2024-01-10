@@ -54,7 +54,7 @@ void game::GameEngine::Process()
             _timeManager->Tick();
             _timeManager->CalculateFrameStats();
             float dt = _timeManager->DeltaTime();
-            if (dt >= 1.f / 60.f)
+            //if (dt >= 1.f / 60.f)
             {
                 // 2. 입력 처리
                 // 3. 업데이트

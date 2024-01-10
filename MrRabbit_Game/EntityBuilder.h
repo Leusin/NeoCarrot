@@ -29,6 +29,10 @@ public:
     EntityBuilder AddTransform();
     EntityBuilder AddCamera();
 
+    /// 
+
+    EntityBuilder AddCameraScript();
+
     // 제품 반환
     EntityPtr     Build();
 
