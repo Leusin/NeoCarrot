@@ -52,6 +52,15 @@ inline constexpr Vector3<T> math::Vector3<T>::ComponentWiseDiv(const Vector3& rh
 
 ////////////////////////////////////////////////////////////
 template <typename T>
+void MutiplyAdd(const Vector3<T>& v1, const Vector3<T>& v2, const Vector3<T>& v3)
+{
+    x = v1.x * v2x + v3x;
+    y = v1.y * v2y + v3y;
+    z = v1.z * v2z + v3z;
+}
+
+////////////////////////////////////////////////////////////
+template <typename T>
 constexpr Vector3<T> operator-(const Vector3<T>& left)
 {
     return Vector3<T>(-left.x, -left.y, -left.z);

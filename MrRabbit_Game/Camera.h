@@ -6,12 +6,8 @@
 #pragma once
 
 #include "IComponent.h"
-#include "CameraInfo.h"
-
-#include "Matrix.h"
-#include "Vector3.h"
-
 #include "EntityEnum.h"
+#include "CameraInfo.h"
 
 #include <memory>
 
@@ -22,7 +18,6 @@ class Entity;
 }
 
 using EntityPtr     = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
-using EntityWeakPtr = std::weak_ptr<core::Entity<game::Tag, game::Layer>>;
 
 namespace game
 {
@@ -36,26 +31,6 @@ public:
     ~Camera();
 
     void Update(float dt) override;
-
-    /// 카메라 변환
-
-    //float GetAspect() const;
-    float GetFovY() const;
-    float GetFovX() const;
-
-    float GetNear() const;
-    float GetFar() const;
-
-    /// 절두체 시야 제어
-
-    void SetLens(float fovY, float aspect, float zn, float zf);
-
-    // 카메라 공간 설정
-    void LookAt(const math::Vector3<float>& pos, const math::Vector3<float>& target, const math::Vector3<float>& up);
-
-    math::Matrix View() const;
-    math::Matrix Proj() const;
-    math::Matrix ViewProj() const;
 
     // 카메라 이동
     void Strafe(float distance); // 횡이동

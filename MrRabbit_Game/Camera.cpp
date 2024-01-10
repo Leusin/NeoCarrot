@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "Transform.h"
 #include "Constants.h"
+#include "Matrix.h"
+#include "Vector3.h"
 
 #include <cassert>
 
@@ -29,39 +31,12 @@ void Camera::Update(float dt)
 {
 }
 
-float Camera::GetFovY() const
-{
-    return 0.f;
-}
-
-void Camera::LookAt(const math::Vector3<float>& pos, const math::Vector3<float>& target, const math::Vector3<float>& up)
-{
-    //math::Vector3<float> L = (target - pos).Normalize();
-}
-
-math::Matrix Camera::View() const
-{
-    return math::Matrix();
-}
-
-math::Matrix Camera::Proj() const
-{
-    return math::Matrix();
-}
-
-math::Matrix Camera::ViewProj() const
-{
-    return math::Matrix();
-}
-
-
 void Camera::Strafe(float distance)
 {
-    //_position += distance * _look;
-
-    // Transfom 에서 위치 정보, 회전 정보를 가져온다
-
-    // Set Position 한다.
+    math::Vector3<float> s{ distance, distance, distance };
+    math::Vector3<float> r{ _transform->GetRight() };
+    math::Vector3<float> p{_transform->GetPosition()};
+    p.MutiplyAdd(s, r, p);
 }
 
 void Camera::Walk(float distance)

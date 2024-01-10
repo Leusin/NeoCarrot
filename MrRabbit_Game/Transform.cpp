@@ -16,4 +16,12 @@ Transform::Transform()
 Transform::~Transform()
 {
 }
+math::Vector3<float> Transform::GetPosition()
+{
+    return _position;
+}
+math::Vector3<float> Transform::GetRight()
+{
+    return _right;
+}
 } // namespace game

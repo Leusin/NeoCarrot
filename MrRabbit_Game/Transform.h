@@ -16,15 +16,8 @@ public:
     Transform();
     ~Transform();
 
-    /*
-    	math::Matrix GetPosition() const;
-		math::Matrix GetRotation() const;
-		math::Matrix GetScale() const;
-		
-		void SetPostiton(math::Matrix& pos);
-        void SetRotation(math::Matrix& rot);
-        void SetScale(math::Matrix& scl);
-    */
+    math::Vector3<float> GetPosition();
+    math::Vector3<float> GetRight();
 
 private:
     // À§Ä¡
