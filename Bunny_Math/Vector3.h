@@ -91,7 +91,7 @@ struct Vector3
     /// <returns>(lhs.x/rhs.x, lhs.y/rhs.y, lhs.z/rhs.z)</returns>
     constexpr Vector3 ComponentWiseDiv(const Vector3& rhs) const;
 
-    void MutiplyAdd(const Vector3& v1, const Vector3& v2, const Vector3& v3) const;
+    void MutiplyAdd(const Vector3& v1, const Vector3& v2, const Vector3& v3);
 };
 
 /// <summary>
