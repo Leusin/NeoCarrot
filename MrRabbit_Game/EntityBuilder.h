@@ -29,7 +29,7 @@ public:
     EntityBuilder AddTransform();
     EntityBuilder AddCamera();
 
-    /// 
+    /// Add Script
 
     EntityBuilder AddCameraScript();
 

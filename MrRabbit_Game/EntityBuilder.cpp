@@ -24,11 +24,7 @@ _entity(
 }
 
 EntityBuilder game::EntityBuilder::AddTransform()
-{
-#ifdef _DEBUG
-    std::cout << "\t\t\t\tAdd Transform Component\n";
-#endif // _DEBUG
-    
+{   
     _entity->AddComponent<Transform>();
 
     return *this;
@@ -36,10 +32,6 @@ EntityBuilder game::EntityBuilder::AddTransform()
 
 EntityBuilder EntityBuilder::AddCamera()
 {
-#ifdef _DEBUG
-    std::cout << "\t\t\t\tAdd Camera Component\n";
-#endif // _DEBUG
-
     _entity->AddComponent<Camera>();
 
     return *this;
@@ -47,12 +39,7 @@ EntityBuilder EntityBuilder::AddCamera()
 
 EntityBuilder EntityBuilder::AddCameraScript()
 {
-#ifdef _DEBUG
-    std::cout << "\t\t\t\tAdd CameraScript Component\n";
-#endif // _DEBUG
-
-    /*auto aa = _entity->shared_from_this();*/
-    _entity->AddComponent<CameraScript>(/*aa*/);
+    _entity->AddComponent<CameraScript>(_entity);
 
     return *this;
 }

@@ -11,13 +11,18 @@
 namespace game
 {
 
-CameraScript::CameraScript(/*EntityPtr entityPtr*/) 
-    /*: _entity(EntityPtr(entityPtr))*/
+// CameraScript::CameraScript() 
+// {
+// }
+
+CameraScript::CameraScript(EntityPtr entityPtr) 
+    : _entity(EntityPtr(entityPtr))
 {
 }
 
 CameraScript::~CameraScript()
 {
+    _entity.reset();
 }
 
 void CameraScript::Update(float dt)
