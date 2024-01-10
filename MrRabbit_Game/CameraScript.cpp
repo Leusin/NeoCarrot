@@ -2,11 +2,11 @@
 
 #include "Entity.h"
 
+#include <windows.h>
+
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
-
-#include <windows.h>
 
 namespace game
 {
@@ -33,18 +33,30 @@ void CameraScript::Update(float dt)
      if (GetAsyncKeyState('W') & 0x8000)
      {
          //_camera->Walk(10.0f * speed);
+#ifdef _DEBUG
+         std::cout << 'W' << std::endl;
+#endif // _DEBUG
      }
      if (GetAsyncKeyState('S') & 0x8000)
      {
          //_camera->Walk(-10.0f * speed);
+#ifdef _DEBUG
+         std::cout << 'S' << std::endl;
+#endif // _DEBUG
      }
      if (GetAsyncKeyState('A') & 0x8000)
      {
          //_camera->Strafe(-10.0f * speed);
+#ifdef _DEBUG
+         std::cout << 'A' << std::endl;
+#endif // _DEBUG
      }
      if (GetAsyncKeyState('D') & 0x8000)
      {
          //_camera->Strafe(10.0f * speed);
+#ifdef _DEBUG
+         std::cout << 'D' << std::endl;
+#endif // _DEBUG
      }
 }
 
