@@ -42,6 +42,7 @@ private:
     std::shared_ptr<IScene>        _currenScene{nullptr};
     SceneStatus                    _status{SceneStatus::UNKNOWN};
 
+    // 그래픽스에게 보낼 데이터
     std::unique_ptr<data::ForGraphics> _currentGraphicsInfo;
 };
 

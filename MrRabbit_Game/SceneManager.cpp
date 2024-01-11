@@ -78,7 +78,7 @@ void SceneManager::Finalize()
 
 void SceneManager::ExportData(data::ForGraphics* info)
 {
-    _currentGraphicsInfo->_camera = info->_camera;
+    info->_camera = _currentGraphicsInfo->_camera;
 }
 
 }

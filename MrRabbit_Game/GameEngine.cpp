@@ -65,13 +65,12 @@ void game::GameEngine::Process()
             // 4. 랜더러 업데이트
 
             _timeManager->Tick();
-            
             float dt = _timeManager->DeltaTime();
+
             _sceneManager->Update(dt);
+            _sceneManager->ExportData(_graphicsInfo.get());
 
-            //auto data = _sceneManager->ExportData();
-            //_renderer->ImportData(data);
-
+            _renderer->ImportData(_graphicsInfo.get());
             _renderer->Update(dt);
 
         }
