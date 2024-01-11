@@ -12,7 +12,7 @@ using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace graphics
 {
-
+class ResourceManager;
 class ModelFactory : public core::IFactory
 {
 public:
@@ -26,6 +26,7 @@ private:
     /// TODO
     ///    여기에 리소스 메니저
     /// 
+    ResourceManager* _resourceManager;
 };
 
 } // namespace graphics

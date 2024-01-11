@@ -22,7 +22,9 @@ public:
 
     // 제품 반환
     EntityPtr Build();
+
 private:
+
     EntityPtr _entity;
 };
 

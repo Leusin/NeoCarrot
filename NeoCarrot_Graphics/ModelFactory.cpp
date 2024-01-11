@@ -1,6 +1,7 @@
 #include "ModelFactory.h"
 
 #include "../UnityLike_Core/Entity.h"
+#include "ResourceManager.h"
 #include "ModelBuilder.h"
 
 #ifdef _DEBUG

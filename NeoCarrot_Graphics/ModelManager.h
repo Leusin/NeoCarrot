@@ -14,11 +14,12 @@
 
 namespace graphics
 {
+class ResourceManager;
 
 class ModelManager
 {
 public:
-    ModelManager();
+    ModelManager(ResourceManager* resourceManager);
 
     void Initialize();
     void Update(float deltaTime);

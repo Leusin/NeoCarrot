@@ -28,7 +28,8 @@ template <typename T>
 class EntityManager
 {
 public:
-    EntityManager();
+    template <typename... Args>
+    EntityManager(Args&&... args);
 
     void Initialize();
     void Update(float deltaTime);
@@ -53,9 +54,13 @@ private:
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
 template <typename T>
-inline EntityManager<T>::EntityManager() : _factory(std::make_unique<T>())
+template <typename... Args>
+inline EntityManager<T>::EntityManager(Args&&... args) 
+    : _factory(std::make_unique<T>(std::forward<Args>(args)...))
 {
+
 #ifdef _DEBUG
     std::cout << "\tEntityManager Constructed\n";
 #endif // _DEBUG
@@ -187,6 +192,6 @@ inline void EntityManager<T>::AddEntity(EntityPtr entityPtr)
 {
     _entities.emplace_back(entityPtr);
 }
-}
+} // namespace core
 
 //#include "EntityManager.inl"

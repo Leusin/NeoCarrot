@@ -27,8 +27,8 @@ graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int client
 	, _font(std::make_unique<DXTKFont>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
-    , _modelManager(std::make_unique<ModelManager>())
     , _resourceManager(std::make_unique<ResourceManager>(_d3d11.get(), _renderState.get(), _font.get()))
+    , _modelManager(std::make_unique<ModelManager>(_resourceManager.get()))
 {
 #ifdef _DEBUG
     std::cout << "GraphicsEngine Constructed\n";

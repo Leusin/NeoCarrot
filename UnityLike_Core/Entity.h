@@ -31,7 +31,6 @@ public:
     /// <summary>
     /// 컴포넌트를 가져옵니다
     /// </summary>
-    //template <typename T>
     template <typename T, typename... Args>
     void AddComponent(Args&&... args);
 
