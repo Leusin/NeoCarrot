@@ -39,14 +39,12 @@ ModelBuilder ModelBuilder::AddTransform()
     return *this;
 }
 
-/*
 ModelBuilder ModelBuilder::AddVertexBuffer()
 {
-    _entity->AddComponent<VertexBuffer<Pos>>();
+    _entity->AddComponent<VertexBuffer<graphics::Pos>>();
 
     return *this;
 }
-*/
 
 EntityPtr ModelBuilder::Build()
 {

@@ -12,8 +12,9 @@
 
 namespace graphics
 {
+
 template <typename V>
-class VertexBuffer
+class VertexBuffer : public core::IComponent
 {
 public:
     VertexBuffer();
@@ -22,7 +23,7 @@ public:
 
 
 private:
-    //ID3D11Device* _d3dDevice;
+    ID3D11Device* _d3dDevice;
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
@@ -42,15 +43,15 @@ inline VertexBuffer<V>::VertexBuffer()
 template <typename V>
 inline void VertexBuffer<V>::BuildBuffers()
 {
-    //D3D11_BUFFER_DESC vbd;
-    //vbd.Usage          = D3D11_USAGE_IMMUTABLE;
-    //vbd.ByteWidth      = sizeof(V) * _totalVertexCount;
-    //vbd.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
-    //vbd.CPUAccessFlags = 0;
-    //vbd.MiscFlags      = 0;
-    //D3D11_SUBRESOURCE_DATA vinitData;
-    //vinitData.pSysMem = &_vertices[0];
-    //_d3dDevice->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
+    D3D11_BUFFER_DESC vbd;
+    vbd.Usage          = D3D11_USAGE_IMMUTABLE;
+    vbd.ByteWidth      = sizeof(V) * _totalVertexCount;
+    vbd.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
+    vbd.CPUAccessFlags = 0;
+    vbd.MiscFlags      = 0;
+    D3D11_SUBRESOURCE_DATA vinitData;
+    vinitData.pSysMem = &_vertices[0];
+    _d3dDevice->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 }
 
 } // namespace graphics
