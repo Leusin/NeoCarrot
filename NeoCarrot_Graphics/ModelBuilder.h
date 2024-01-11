@@ -29,6 +29,8 @@ public:
     
     ModelBuilder AddVertexBuffer();
 
+    ModelBuilder AddIndexBuffer();
+
     // 제품 반환
     EntityPtr Build();
 

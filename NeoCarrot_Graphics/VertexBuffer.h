@@ -1,9 +1,9 @@
 #pragma once
 
+#include "D3Device.h"
 #include "Entity.h"
 #include "EntityEnum.h"
 #include "IComponent.h"
-#include "D3Device.h"
 
 #include <d3d11.h>
 #include <vector>
@@ -29,19 +29,21 @@ public:
 
 private:
     EntityWeakPtr _entity;
-    D3Device* _d3device;
+    D3Device*     _d3device;
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
-    std::vector<V>                       _vertices;
-    std::vector<int>                     _vertexOffset;
-    UINT                                 _totalVertexCount;
+
+    std::vector<V>   _vertices;
+    std::vector<int> _vertexOffset;
+
+    UINT _totalVertexCount;
 };
 
 template <typename V>
-inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr) 
-    : _entity{EntityPtr(entityPtr)}
-    , _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr) :
+_entity{EntityPtr(entityPtr)},
+_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexBuffer Component\n";

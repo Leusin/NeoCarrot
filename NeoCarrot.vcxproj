@@ -29,6 +29,7 @@
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="NeoCarrot_Graphics\FontType.h" />
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h" />
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h" />
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />

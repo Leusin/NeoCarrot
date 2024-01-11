@@ -43,6 +43,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
     auto axis = builder
                    .AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext())
                    .AddVertexBuffer()
+                   .AddIndexBuffer()
                    .AddTransform()
                    .Build();
 

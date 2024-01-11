@@ -5,6 +5,7 @@
 #include "Transpose.h"
 #include "VertexBuffer.h"
 #include "VertexStruct.h"
+#include "IndexBuffer.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -42,6 +43,13 @@ ModelBuilder ModelBuilder::AddTransform()
 ModelBuilder ModelBuilder::AddVertexBuffer()
 {
     _entity->AddComponent<VertexBuffer<graphics::Pos>>(_entity);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddIndexBuffer()
+{
+    _entity->AddComponent<IndexBuffer>(_entity);
 
     return *this;
 }

@@ -72,6 +72,9 @@
     <ClCompile Include="NeoCarrot_Graphics\D3Device.cpp">
       <Filter>component</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
@@ -115,6 +118,9 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3Device.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">
       <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>
