@@ -16,7 +16,7 @@ class ResourceManager;
 class ModelFactory : public core::IFactory
 {
 public:
-    ModelFactory();
+    ModelFactory(ResourceManager* _resourceManager);
 
     EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 

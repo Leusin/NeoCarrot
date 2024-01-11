@@ -9,7 +9,7 @@ namespace graphics
 
 ModelManager::ModelManager(ResourceManager* resourceManager) 
 	:
-_entityManager{std::make_unique<core::EntityManager<ModelFactory>>()}
+_entityManager{std::make_unique<core::EntityManager<ModelFactory>>(resourceManager)}
 {
 #ifdef _DEBUG
     std::cout << "\tModelManager Constructed\n";

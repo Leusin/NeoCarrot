@@ -10,7 +10,7 @@
 
 namespace graphics
 {
-ModelFactory::ModelFactory()
+ModelFactory::ModelFactory(ResourceManager* resourceManager) : _resourceManager(resourceManager)
 {
 #if defined(DEBUG) || defined(_DEBUG)
     std::cout << "\t\tModelFactory Constructed\n";
