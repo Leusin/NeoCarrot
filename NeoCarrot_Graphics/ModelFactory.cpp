@@ -2,6 +2,7 @@
 
 #include "../UnityLike_Core/Entity.h"
 #include "ResourceManager.h"
+#include "D3D11Context.h"
 #include "ModelBuilder.h"
 
 #ifdef _DEBUG
@@ -21,9 +22,9 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 {
     switch (enumTypeEntity)
     {
-        case core::GameObect::BOX:
-            return CreateAxis(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::AXIS:
+            return CreateAxis(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::BOX:
             return CreateBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;
@@ -40,6 +41,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
         core::Layer::DEBUGINFO);
 
     auto axis = builder
+                   .AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext())
                    .AddTransform()
                    .Build();
 

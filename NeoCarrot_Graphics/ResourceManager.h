@@ -14,7 +14,6 @@ public:
 
     void Initialize();
 
-private:
     D3D11Context*      _d3d11;
     D3D11RenderStates* _renderState;
     DXTKFont*          _font;

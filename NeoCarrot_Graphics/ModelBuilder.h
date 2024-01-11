@@ -4,6 +4,9 @@
 
 #include <memory>
 
+struct ID3D11Device;
+struct ID3D11DeviceContext;
+
 namespace core
 {
 template <typename T, typename U>
@@ -20,7 +23,9 @@ class ModelBuilder
 public:
     ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
 
+    ModelBuilder AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext);
     ModelBuilder AddTransform();
+    //ModelBuilder AddVertexBuffer();
 
     // 제품 반환
     EntityPtr Build();

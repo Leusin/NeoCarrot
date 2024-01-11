@@ -23,6 +23,7 @@ public:
 private:
     EntityPtr CreateAxis(const size_t&& id, const char* name);
     EntityPtr CreateBox(const size_t&& id, const char* name);
+
     ResourceManager* _resourceManager;
 };
 
