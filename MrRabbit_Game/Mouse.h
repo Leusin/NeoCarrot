@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../Bunny_Math/Vector2.h"
+#include "Vector2.h"
 #include "EnumArray.h"
 #include "MouseEnum.h"
 

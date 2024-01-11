@@ -143,8 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\MrRabbit_Game\EntityManager.cpp" />
+    <ClCompile Include="EntityManager.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="IComponent.cpp" />
+    <ClCompile Include="IFactory.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -153,10 +157,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\MrRabbit_Game\EntityManager.h" />
+    <ClInclude Include="EntityEnum.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="IEventFunction.h" />
+    <ClInclude Include="IFactory.h" />
     <ClInclude Include="Object.h" />
   </ItemGroup>
   <ItemGroup>

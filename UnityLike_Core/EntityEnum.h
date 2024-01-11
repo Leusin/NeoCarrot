@@ -4,7 +4,7 @@
 
 #pragma once
 
-namespace game
+namespace core
 {
 
 enum class Tag
@@ -22,11 +22,11 @@ enum class Layer
     LAYERCOUNT
 };
 
-enum class Entity
+enum class GameObect
 {
     CAMERA,
 
-    ENTITY_COUNT
+    GAMEOBJECT_COUNT
 };
 
 } // namespace game

@@ -19,7 +19,7 @@ template <typename T, typename U>
 class Entity;
 }
 
-using EntityPtr     = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
+using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace game
 {

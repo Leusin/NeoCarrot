@@ -13,9 +13,11 @@
 namespace game
 {
 
-EntityBuilder::EntityBuilder(const size_t&& id, const char* name, Tag&& tag, Layer&& layer) :
-_entity(
-    std::make_shared<core::Entity<Tag, Layer>>(std::forward<const size_t>(id), std::move(name), std::move(tag), std::move(layer)))
+EntityBuilder::EntityBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer) :
+_entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<const size_t>(id),
+                                                            std::move(name),
+                                                            std::move(tag),
+                                                            std::move(layer)))
 {
 #ifdef _DEBUG
     std::cout << "\t\t\tCreate Entity ( " << name << ", " << static_cast<int>(id)

@@ -8,6 +8,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{3c0025dd-1ccd-42d9-a1ec-edc5e70a711a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -16,9 +19,10 @@
     <ClCompile Include="IComponent.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="..\MrRabbit_Game\EntityManager.cpp">
-      <Filter>core</Filter>
+    <ClCompile Include="EntityManager.inl">
+      <Filter>manager</Filter>
     </ClCompile>
+    <ClCompile Include="IFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IComponent.h">
@@ -33,7 +37,13 @@
     <ClInclude Include="IEventFunction.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="..\MrRabbit_Game\EntityManager.h">
+    <ClInclude Include="EntityEnum.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="IFactory.h">
       <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>

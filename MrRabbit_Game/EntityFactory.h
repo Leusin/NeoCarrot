@@ -13,7 +13,7 @@ template <typename T, typename U>
 class Entity;
 }
 
-using EntityPtr = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
+using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace game
 {
@@ -21,7 +21,7 @@ namespace game
 class EntityFactory
 {
 public:    
-    EntityPtr CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name);
+    EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 
 private:
     EntityPtr CreateCamera(const size_t&& id, const char* name);

@@ -10,10 +10,12 @@
 #include <list>
 #include <memory>
 
+namespace core{ template <typename T>class EntityManager; }
+
 namespace game
 {
 class IScene;
-class EntityManager;
+class EntityFactory;
 
 enum class SceneStatus
 {
@@ -38,7 +40,7 @@ public:
     void ExportData(data::ForGraphics* info);
 
 private:
-    std::unique_ptr<EntityManager> _entityManager;
+    std::unique_ptr<core::EntityManager<EntityFactory>> _entityManager;
     std::shared_ptr<IScene>        _currenScene{nullptr};
     SceneStatus                    _status{SceneStatus::UNKNOWN};
 

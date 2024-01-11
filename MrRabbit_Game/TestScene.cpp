@@ -1,9 +1,9 @@
 #include "TestScene.h"
 
 #include "EntityEnum.h"
-#include "EntityManager.h"
 #include "GraphicsEngine.h"
 #include "CameraManager.h"
+#include "EntityFactory.h"
 
 #include <cassert>
 #include <memory>
@@ -14,7 +14,7 @@
 namespace game
 {
 
-game::TestScene::TestScene(EntityManager* entityManager) 
+game::TestScene::TestScene(core::EntityManager<EntityFactory>* entityManager) 
     : _name{"test secne"}, 
     _entityManager{entityManager},
     _cameraManager{std::make_unique<CameraManager>()}
@@ -52,7 +52,7 @@ void game::TestScene::Finalize()
 
 void game::TestScene::CreateEnity()
 {
-    _entityManager->AddEntity(Entity::CAMERA, "camera");
+    _entityManager->AddEntity(core::GameObect::CAMERA, "camera");
 }
 
 void TestScene::ExportData(data::ForGraphics* info)
@@ -67,7 +67,7 @@ std::shared_ptr<game::IScene> game::TestScene::NextSene()
 
 void TestScene::InitCameraManager()
 {
-    auto cameras = _entityManager->GetEntity(Tag::CAMERA);
+    auto cameras = _entityManager->GetEntity(core::Tag::CAMERA);
     _cameraManager->GetCameraEntitys(cameras);
 }
 

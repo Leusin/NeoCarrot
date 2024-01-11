@@ -3,6 +3,7 @@
 #include "IScene.h"
 #include "TestScene.h"
 #include "EntityManager.h"
+#include "EntityFactory.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -12,7 +13,7 @@ namespace game
 {
 
 SceneManager::SceneManager(  ) 
-    : _entityManager{ std::make_unique<EntityManager>()}
+    : _entityManager{ std::make_unique<core::EntityManager<EntityFactory>>()}
     , _currenScene{ std::make_shared<TestScene>(_entityManager.get()) }
     , _status{ SceneStatus::START }
     , _currentGraphicsInfo{ std::make_unique<data::ForGraphics>() }

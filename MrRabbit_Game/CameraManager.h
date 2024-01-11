@@ -16,7 +16,7 @@ template <typename T, typename U>
 class Entity;
 }
 
-using WeakEntityPtr = std::weak_ptr<core::Entity<game::Tag, game::Layer>>;
+using WeakEntityPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace data
 {

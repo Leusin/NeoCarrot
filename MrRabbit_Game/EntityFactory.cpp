@@ -6,11 +6,11 @@
 namespace game
 {
 
-EntityPtr EntityFactory::CreateEntity(game::Entity enumTypeEntity,const size_t&& id, const char* name)
+EntityPtr EntityFactory::CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name)
 {
     switch (enumTypeEntity)
     {
-        case game::Entity::CAMERA:
+        case core::GameObect::CAMERA:
             return CreateCamera(std::forward<const size_t>(id), std::move(name));
         default: break;
     }
@@ -23,8 +23,8 @@ EntityPtr EntityFactory::CreateCamera(const size_t&& id, const char* name)
     auto builder = EntityBuilder(
         std::forward<const size_t>(id), 
         std::move(name), 
-        Tag::CAMERA, 
-        Layer::BACKGROUND);
+        core::Tag::CAMERA, 
+        core::Layer::BACKGROUND);
 
     auto camera = 
         builder
