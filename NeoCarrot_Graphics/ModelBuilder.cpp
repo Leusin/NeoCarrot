@@ -41,7 +41,7 @@ ModelBuilder ModelBuilder::AddTransform()
 
 ModelBuilder ModelBuilder::AddVertexBuffer()
 {
-    _entity->AddComponent<VertexBuffer<graphics::Pos>>();
+    _entity->AddComponent<VertexBuffer<graphics::Pos>>(_entity);
 
     return *this;
 }

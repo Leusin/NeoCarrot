@@ -1,6 +1,9 @@
 #pragma once
 
+#include "Entity.h"
+#include "EntityEnum.h"
 #include "IComponent.h"
+#include "D3Device.h"
 
 #include <d3d11.h>
 #include <vector>
@@ -10,20 +13,23 @@
 #include <iostream>
 #endif // _DEBUG
 
+using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
+using EntityWeakPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
+
 namespace graphics
 {
-
 template <typename V>
 class VertexBuffer : public core::IComponent
 {
 public:
-    VertexBuffer();
+    VertexBuffer(EntityPtr entityPtr);
 
     void BuildBuffers();
 
 
 private:
-    ID3D11Device* _d3dDevice;
+    EntityWeakPtr _entity;
+    D3Device* _d3device;
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
@@ -33,7 +39,9 @@ private:
 };
 
 template <typename V>
-inline VertexBuffer<V>::VertexBuffer()
+inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr) 
+    : _entity{EntityPtr(entityPtr)}
+    , _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexBuffer Component\n";
@@ -51,7 +59,7 @@ inline void VertexBuffer<V>::BuildBuffers()
     vbd.MiscFlags      = 0;
     D3D11_SUBRESOURCE_DATA vinitData;
     vinitData.pSysMem = &_vertices[0];
-    _d3dDevice->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
+    _d3device->Get()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 }
 
 } // namespace graphics
