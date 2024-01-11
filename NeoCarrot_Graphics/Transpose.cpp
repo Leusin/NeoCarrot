@@ -1,7 +1,7 @@
 #include "Transpose.h"
 #include <directXMath.h>
 
-grahics::Transpose::Transpose()
+graphics::Transpose::Transpose()
 {
 	DirectX::XMMATRIX I = DirectX::XMMatrixIdentity();
 	XMStoreFloat4x4(&_world, I);
@@ -9,48 +9,48 @@ grahics::Transpose::Transpose()
 	XMStoreFloat4x4(&_proj, I);
 }
 
-grahics::Transpose::~Transpose()
+graphics::Transpose::~Transpose()
 {
 }
 
-DirectX::XMMATRIX grahics::Transpose::GetWorld()
+DirectX::XMMATRIX graphics::Transpose::GetWorld()
 {
 	return  DirectX::XMLoadFloat4x4(&_world);
 }
 
-DirectX::XMMATRIX grahics::Transpose::GetView()
+DirectX::XMMATRIX graphics::Transpose::GetView()
 {
 	return  DirectX::XMLoadFloat4x4(&_view);
 }
 
-DirectX::XMMATRIX grahics::Transpose::GetProj()
+DirectX::XMMATRIX graphics::Transpose::GetProj()
 {
 	return  DirectX::XMLoadFloat4x4(&_proj);
 }
 
-void grahics::Transpose::SetWorld(const DirectX::XMMATRIX& w)
+void graphics::Transpose::SetWorld(const DirectX::XMMATRIX& w)
 {
 	DirectX::XMStoreFloat4x4(&_world, w);
 }
 
-void grahics::Transpose::SetView(const DirectX::XMMATRIX& v)
+void graphics::Transpose::SetView(const DirectX::XMMATRIX& v)
 {
 	DirectX::XMStoreFloat4x4(&_view, v);
 }
 
-void grahics::Transpose::SetProj(const DirectX::XMMATRIX& p)
+void graphics::Transpose::SetProj(const DirectX::XMMATRIX& p)
 {
 	DirectX::XMStoreFloat4x4(&_proj, p);
 }
 
-void grahics::Transpose::SetTM(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj)
+void graphics::Transpose::SetTM(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj)
 {
 	DirectX::XMStoreFloat4x4(&_world, world);
 	DirectX::XMStoreFloat4x4(&_view, view);
 	DirectX::XMStoreFloat4x4(&_proj, proj);
 }
 
-DirectX::XMMATRIX grahics::Transpose::WorldViewProj()
+DirectX::XMMATRIX graphics::Transpose::WorldViewProj()
 {
 	return GetWorld() * GetView() * GetProj();
 }

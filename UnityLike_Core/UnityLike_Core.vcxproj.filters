@@ -41,7 +41,7 @@
       <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="IFactory.h">
-      <Filter>core</Filter>
+      <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

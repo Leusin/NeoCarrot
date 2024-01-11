@@ -5,7 +5,7 @@
 #include <fstream>
 #include <vector>
 
-grahics::Grid::Grid(ID3D11Device* d, ID3D11DeviceContext* dc, ID3D11RasterizerState* rs)
+graphics::Grid::Grid(ID3D11Device* d, ID3D11DeviceContext* dc, ID3D11RasterizerState* rs)
 	: _d3dDevice(d)
 	, _d3dImmediateContext(dc)
 	, _renderstate(rs)
@@ -16,11 +16,11 @@ grahics::Grid::Grid(ID3D11Device* d, ID3D11DeviceContext* dc, ID3D11RasterizerSt
 	BuildVertexLayout();
 }
 
-grahics::Grid::~Grid()
+graphics::Grid::~Grid()
 {
 }
 
-void grahics::Grid::Render()
+void graphics::Grid::Render()
 {
 	// 입력 배치 객체 셋팅
 	_d3dImmediateContext->IASetInputLayout(_inputLayout.Get());
@@ -61,7 +61,7 @@ void grahics::Grid::Render()
 	}
 }
 
-void grahics::Grid::BuildGeometryBuffers()
+void graphics::Grid::BuildGeometryBuffers()
 {
 	/// 정점 버퍼
 
@@ -125,7 +125,7 @@ void grahics::Grid::BuildGeometryBuffers()
 		_ib.GetAddressOf());
 }
 
-void grahics::Grid::BuildFX()
+void graphics::Grid::BuildFX()
 {
 
 	// 실행 파일의 경로
@@ -158,7 +158,7 @@ void grahics::Grid::BuildFX()
 	_fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
 }
 
-void grahics::Grid::BuildVertexLayout()
+void graphics::Grid::BuildVertexLayout()
 {
 	/// 정점 입력과 배치
 

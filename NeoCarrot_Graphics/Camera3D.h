@@ -14,7 +14,7 @@ namespace data
 struct CameraInfo;
 }
 
-namespace grahics
+namespace graphics
 {
 
 class Camera3D

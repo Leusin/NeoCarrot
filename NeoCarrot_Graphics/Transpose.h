@@ -3,7 +3,7 @@
 #include <directxmath.h>
 
 
-namespace grahics
+namespace graphics
 {
 	class Transpose
 	{

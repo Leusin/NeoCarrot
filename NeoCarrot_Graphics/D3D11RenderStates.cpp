@@ -2,7 +2,7 @@
 #include <d3d11.h>
 #include <cassert>
 
-grahics::RenderStates::RenderStates(ID3D11Device* _d3dDevice)
+graphics::RenderStates::RenderStates(ID3D11Device* _d3dDevice)
 {
 	assert(_d3dDevice);
 
@@ -41,19 +41,19 @@ grahics::RenderStates::RenderStates(ID3D11Device* _d3dDevice)
 	assert(_normalDSS);
 }
 
-grahics::RenderStates::~RenderStates()
+graphics::RenderStates::~RenderStates()
 {
 	if(_normalDSS) _normalDSS->Release();
 	if(_solidRS) _solidRS->Release();
 	if(_wireframeRS) _wireframeRS->Release();
 }
 
-ID3D11RasterizerState* grahics::RenderStates::WireFrame()
+ID3D11RasterizerState* graphics::RenderStates::WireFrame()
 {
 	return _wireframeRS;
 }
 
-ID3D11RasterizerState* grahics::RenderStates::Solid()
+ID3D11RasterizerState* graphics::RenderStates::Solid()
 {
 	return _solidRS;
 }

@@ -1,9 +1,8 @@
 #include "TestScene.h"
 
 #include "EntityEnum.h"
-#include "GraphicsEngine.h"
-#include "CameraManager.h"
 #include "EntityFactory.h"
+#include "CameraManager.h"
 
 #include <cassert>
 #include <memory>

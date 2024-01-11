@@ -5,13 +5,13 @@
 #include "Matrix.h"
 
 using namespace DirectX;
-using namespace grahics;
+using namespace graphics;
 
 Camera3D::Camera3D()
 {
 }
 
-grahics::Camera3D::Camera3D(int clientWidth, int clientHeight)
+graphics::Camera3D::Camera3D(int clientWidth, int clientHeight)
 {
     // È­¸éºñ
     _aspect = static_cast<float>(clientWidth) / clientHeight;
@@ -24,7 +24,7 @@ Camera3D::~Camera3D()
 {
 }
 
-void grahics::Camera3D::Initialize()
+void graphics::Camera3D::Initialize()
 {
     SetLens(_aspect);
 }
@@ -97,7 +97,7 @@ float Camera3D::GetFovX() const
     return 2.0f * atanf(halfWidth / _nearZ);
 }
 
-void grahics::Camera3D::GetCameraInfo(const data::CameraInfo& info)
+void graphics::Camera3D::GetCameraInfo(const data::CameraInfo& info)
 {
     _position.x = info._position.x;
     _position.y = info._position.y;
@@ -140,7 +140,7 @@ void grahics::Camera3D::GetCameraInfo(const data::CameraInfo& info)
     _view._44 = info._view[3][3];
 }
 
-void grahics::Camera3D::SetLens(float aspect)
+void graphics::Camera3D::SetLens(float aspect)
 {
     SetLens(_fovY, aspect, _nearZ, _farZ);
 }

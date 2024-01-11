@@ -4,7 +4,7 @@
 
 #pragma once
 
-namespace grahics
+namespace graphics
 {
 
 enum class Tag

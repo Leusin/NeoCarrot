@@ -10,7 +10,7 @@
 #include <memory>
 #include <wrl.h>
 
-namespace grahics
+namespace graphics
 {
 class D3D11Context;
 class RenderStates;

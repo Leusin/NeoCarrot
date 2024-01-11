@@ -29,7 +29,7 @@ game::GameEngine::~GameEngine()
 
 void game::GameEngine::Initialize()
 {
-    _renderer = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
+    _renderer = std::make_unique<graphics::GraphicsEngine>(_windowInfo->hInstance,
                                                           _windowInfo->hMainWnd,
                                                           _windowInfo->clientWidth,
                                                           _windowInfo->clientHeight);

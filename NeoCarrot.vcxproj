@@ -28,6 +28,7 @@
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h" />
     <ClInclude Include="NeoCarrot_Graphics\Model.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h" />
     <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h" />
@@ -127,7 +129,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)UnityLike_Core;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalOptions>/IGNORE:4099
 /wd5260 %(AdditionalOptions)</AdditionalOptions>
@@ -170,7 +172,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)UnityLike_Core;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalOptions>/IGNORE:4099
 /wd5260 %(AdditionalOptions)</AdditionalOptions>

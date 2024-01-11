@@ -10,7 +10,7 @@
 #include <vector>
 #include <windows.h>
 
-namespace grahics{ class GraphicsEngine; }
+namespace graphics{ class GraphicsEngine; }
 namespace data{ struct WindowInfo; }
 namespace data{ struct ForGraphics; }
 
@@ -44,7 +44,7 @@ private:
     std::unique_ptr<TimeManager>  _timeManager;
 
     // 그래픽 엔진
-    std::unique_ptr<grahics::GraphicsEngine> _renderer{nullptr};
+    std::unique_ptr<graphics::GraphicsEngine> _renderer{nullptr};
 };
 
 } // namespace game

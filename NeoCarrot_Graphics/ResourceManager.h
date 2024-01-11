@@ -6,28 +6,22 @@
 #pragma once
 
 #include "ModelEnum.h"
+#include "ModelFactory.h"
+#include "EntityManager.h"
 
 #include <vector>
 #include <memory>
 
-namespace core
-{
-template <typename T, typename U>
-class Entity;
-}
-
-using EntityPtr     = std::shared_ptr<core::Entity<grahics::Tag, grahics::Layer>>;
-using WeakEntityPtr = std::weak_ptr<core::Entity<grahics::Tag, grahics::Layer>>;
-
-namespace grahics
+namespace graphics
 {
 
 class ResourceManager
 {
-
+public:
+    ResourceManager();
 
 private:
-	std::vector<EntityPtr>         _entities;
+	//std::vector<EntityPtr>         _entities;
+	std::unique_ptr<core::EntityManager<ModelFactory>> _entityManager;
 };
-
 }
