@@ -22,6 +22,8 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
     switch (enumTypeEntity)
     {
         case core::GameObect::BOX:
+            return CreateAxis(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::AXIS:
             return CreateBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;
@@ -29,9 +31,22 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 
     return nullptr;
 }
+EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(
+        std::forward<const size_t>(id), 
+        std::move(name), 
+        core::Tag::GIZMO, 
+        core::Layer::DEBUGINFO);
+
+    auto axis = builder
+                   .AddTransform()
+                   .Build();
+
+    return axis;
+}
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
-
     auto builder = ModelBuilder(
         std::forward<const size_t>(id), 
         std::move(name), 
@@ -40,6 +55,13 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 
     auto box = 
         builder
+        // dc, inputlayout(fx 와 초기화) , Renderstate
+        // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
+        // 이펙트, 조명, 테크
+        // 변환 행렬, 카메라 위치, 월드 좌표
+        // 머터리얼
+        // 
+        // 텍스처
         .Build();
 
     return box;

@@ -1,6 +1,7 @@
 #include "ModelBuilder.h"
 
-#include "../UnityLike_Core/Entity.h"
+#include "Entity.h"
+#include "Transpose.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -18,6 +19,13 @@ _entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<cons
 #ifdef _DEBUG
     std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
+}
+
+ModelBuilder ModelBuilder::AddTransform()
+{
+    _entity->AddComponent<Transpose>();
+
+    return *this;
 }
 
 EntityPtr ModelBuilder::Build()

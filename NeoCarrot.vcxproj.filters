@@ -4,9 +4,6 @@
     <Filter Include="doc">
       <UniqueIdentifier>{f0701479-2216-46a6-bddf-9d379fee9bd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="struct">
-      <UniqueIdentifier>{7f8dfe5f-77d3-4d86-8bf8-88efd4f40d2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DirectXTK">
       <UniqueIdentifier>{c5a16c50-cafb-4e9a-b604-465cbf71a38a}</UniqueIdentifier>
     </Filter>
@@ -39,12 +36,6 @@
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp">
-      <Filter>struct</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
-      <Filter>struct</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <Filter>mesh</Filter>
     </ClCompile>
@@ -68,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
       <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp">
+      <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

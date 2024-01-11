@@ -20,6 +20,8 @@ class ModelBuilder
 public:
     ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
 
+    ModelBuilder AddTransform();
+
     // 제품 반환
     EntityPtr Build();
 

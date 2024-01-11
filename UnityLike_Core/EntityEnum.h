@@ -11,6 +11,7 @@ enum class Tag
 {
     CAMERA,
     MESHOBJ,
+    GIZMO,
 
     TAG_COUNT
 };
@@ -26,6 +27,7 @@ enum class Layer
 enum class GameObect
 {
     CAMERA,
+    AXIS,
     BOX,
 
     GAMEOBJECT_COUNT

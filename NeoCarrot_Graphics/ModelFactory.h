@@ -21,11 +21,8 @@ public:
     EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 
 private:
+    EntityPtr CreateAxis(const size_t&& id, const char* name);
     EntityPtr CreateBox(const size_t&& id, const char* name);
-
-    /// TODO
-    ///    여기에 리소스 메니저
-    /// 
     ResourceManager* _resourceManager;
 };
 
