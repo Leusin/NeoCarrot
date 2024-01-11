@@ -1,6 +1,7 @@
 #pragma once
 
 #include <directxmath.h>
+#include <d3dx11effect.h>
 
 namespace graphics
 {
@@ -22,4 +23,8 @@ struct PosNolTex
     DirectX::XMFLOAT2 Tex;
 };
 
-}
+D3D11_INPUT_ELEMENT_DESC PosColorDesc[] =
+    {{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+     {"COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}};
+
+} // namespace graphics

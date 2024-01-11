@@ -1,9 +1,10 @@
 #include "ModelFactory.h"
 
 #include "../UnityLike_Core/Entity.h"
-#include "ResourceManager.h"
 #include "D3D11Context.h"
 #include "ModelBuilder.h"
+#include "ResourceManager.h"
+#include "VertexStruct.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -34,40 +35,31 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 }
 EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(
-        std::forward<const size_t>(id), 
-        std::move(name), 
-        core::Tag::GIZMO, 
-        core::Layer::DEBUGINFO);
+    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
 
-    auto axis = builder
-                   .AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext())
-                   .AddVertexBuffer()
-                   .AddIndexBuffer()
-                   .AddTransform()
+    auto axis = builder.AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext())
+                    .AddVertexBuffer<graphics::Pos>()
+                    .AddIndexBuffer()
+                    .AddTransform()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
-                   .Build();
+                    .AddVertexLayout(PosColorDesc)
+                    .Build();
 
     return axis;
 }
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(
-        std::forward<const size_t>(id), 
-        std::move(name), 
-        core::Tag::MESHOBJ, 
-        core::Layer::FORGROUND);
+    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
 
-    auto box = 
-        builder
-        // dc, inputlayout(fx 와 초기화) , Renderstate
-        // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
-        // 이펙트, 조명, 테크
-        // 변환 행렬, 카메라 위치, 월드 좌표
-        // 머터리얼
-        // 
-        // 텍스처
-        .Build();
+    auto box = builder
+                   // dc, inputlayout(fx 와 초기화) , Renderstate
+                   // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
+                   // 이펙트, 조명, 테크
+                   // 변환 행렬, 카메라 위치, 월드 좌표
+                   // 머터리얼
+                   //
+                   // 텍스처
+                   .Build();
 
     return box;
 }

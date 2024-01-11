@@ -1,12 +1,10 @@
 #include "ModelBuilder.h"
 
-#include "Entity.h"
 #include "D3Device.h"
 #include "Transpose.h"
-#include "VertexBuffer.h"
-#include "VertexStruct.h"
 #include "IndexBuffer.h"
 #include "Effect.h"
+#include "VertexLayout.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -40,12 +38,6 @@ ModelBuilder ModelBuilder::AddTransform()
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddVertexBuffer()
-{
-    _entity->AddComponent<VertexBuffer<graphics::Pos>>(_entity);
-
-    return *this;
-}
 
 ModelBuilder ModelBuilder::AddIndexBuffer()
 {
@@ -57,6 +49,13 @@ ModelBuilder ModelBuilder::AddIndexBuffer()
 ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
 {
     _entity->AddComponent<Effect>(_entity, fileName);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc)
+{
+    _entity->AddComponent<VertexLayout>(_entity, desc);
 
     return *this;
 }

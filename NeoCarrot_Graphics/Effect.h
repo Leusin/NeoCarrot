@@ -24,16 +24,16 @@ public:
 
     void BuildFX();
 
+     // ¿Ã∆Â∆Æ
+    Microsoft::WRL::ComPtr<ID3DX11Effect>               _fx{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectTechnique>      _tech{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{nullptr};
+
 private:
     EntityWeakPtr _entity;
     D3Device*     _d3device;
 
-    std::wstring _fileName; //{L"../NeoCarrot_Graphics/FX/color.fxo"};
-
-    // ¿Ã∆Â∆Æ
-    Microsoft::WRL::ComPtr<ID3DX11Effect>               _fx{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectTechnique>      _tech{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{nullptr};
+    std::wstring _fileName;
 };
 
 } // namespace graphics
