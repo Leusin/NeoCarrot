@@ -8,44 +8,49 @@
 #include <iostream>
 #endif // _DEBUG
 
-
-game::SceneManager::SceneManager() :
-_entityManager{std::make_unique<EntityManager>()},
-_currenScene{std::make_shared<TestScene>(_entityManager.get())},
-_status{game::SceneStatus::START}
+namespace game
 {
+
+SceneManager::SceneManager(  ) 
+    : _entityManager{ std::make_unique<EntityManager>()}
+    , _currenScene{ std::make_shared<TestScene>(_entityManager.get()) }
+    , _status{ SceneStatus::START }
+    , _currentGraphicsInfo{ std::make_unique<data::ForGraphics>() }
+{
+
 #ifdef _DEBUG
     std::cout << "\tSceneManager Constructed\n";
 #endif // _DEBUG
 }
 
-game::SceneManager::~SceneManager()
+SceneManager::~SceneManager()
 {
 #ifdef _DEBUG
     std::cout << "\tSceneManager Distructed\n";
 #endif // _DEBUG
 }
 
-void game::SceneManager::Initialize()
+void SceneManager::Initialize()
 {
 }
 
-void game::SceneManager::Update(float deltaTime)
+void SceneManager::Update(float deltaTime)
 {
     switch (_status)
     {
-        case game::SceneStatus::UNKNOWN:
+        case SceneStatus::UNKNOWN:
             break;
-        case game::SceneStatus::LOAD:
+        case SceneStatus::LOAD:
             break;
-        case game::SceneStatus::START:
+        case SceneStatus::START:
             _currenScene->Initialize();
             _status = SceneStatus::RUN;
             break;
-        case game::SceneStatus::RUN:
+        case SceneStatus::RUN:
             _currenScene->Update(deltaTime);
+            _currenScene->ExportData(_currentGraphicsInfo.get());
             break;
-        case game::SceneStatus::FINAL:
+        case SceneStatus::FINAL:
         {
             _currenScene->Finalize();
             std::weak_ptr<IScene> nextScene = _currenScene->NextSene();
@@ -60,13 +65,20 @@ void game::SceneManager::Update(float deltaTime)
             }
         }
         break;
-        case game::SceneStatus::QUIT:
+        case SceneStatus::QUIT:
             break;
         default:
             break;
     }
 }
 
-void game::SceneManager::Finalize()
+void SceneManager::Finalize()
 {
+}
+
+void SceneManager::ExportData(data::ForGraphics* info)
+{
+    _currentGraphicsInfo->_camera = info->_camera;
+}
+
 }

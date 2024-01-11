@@ -7,16 +7,15 @@
 
 #pragma once
 
+#include "WindowInfo.h"
+
 #include <windows.h>
 #include <memory>
-
-#include "WindowInfomation.h"
 
 namespace game 
 { 
 	class GameEngine; 
-	struct WindowInfomation;
-}
+ }
 
 class Application
 {
@@ -33,6 +32,6 @@ public:
 private:
 	void InitalizeMainWindow();
 
-	game::WindowInfomation _winInfo;
+	data::WindowInfo                  _winInfo;
 	std::unique_ptr<game::GameEngine>_gameEngine{ nullptr };
 };

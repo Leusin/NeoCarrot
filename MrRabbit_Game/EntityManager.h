@@ -16,6 +16,7 @@ class Entity;
 }
 
 using EntityPtr = std::shared_ptr<core::Entity<game::Tag, game::Layer>>;
+using WeakEntityPtr = std::weak_ptr<core::Entity<game::Tag, game::Layer>>;
 
 namespace game
 {
@@ -32,6 +33,15 @@ public:
     void Finalize();
 
     void AddEntity(game::Entity enumTypeEntity, const char* name);
+
+    [[nodiscard]]
+    WeakEntityPtr GetEntity(const char* name);
+
+    [[nodiscard]]
+    WeakEntityPtr GetEntity(const size_t&& id);
+
+    [[nodiscard]] 
+    std::vector<WeakEntityPtr> GetEntity(game::Tag enumTag);
 
 private:
     EntityPtr CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name);

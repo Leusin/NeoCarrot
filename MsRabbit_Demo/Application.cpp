@@ -1,6 +1,7 @@
 #include "Application.h"
-#include "GameEngine.h"
+
 #include "resource.h"
+#include "../MrRabbit_Game/GameEngine.h"
 
 namespace
 {

@@ -1,6 +1,9 @@
 /// TestScene.h : ISccene 클래스를 상속받은 구현 클래스 입니다.
 /// 
-/// 씬마다 엔티티 매니저를 가지고 엔티티 생성, 실행, 삭제 등을 수행합니다.
+///    - 엔티티 매니저: 가지고 엔티티 생성, 실행, 삭제 등을 수행합니다.
+/// 
+///    - 카메라 매니저: 카메라 태그를 가진 개체만을 관리합니다. 
+///    그래픽스에게 필요한 카메라 정보를 넘깁니다.
 /// 
 /// 2024-01-09
 
@@ -14,6 +17,7 @@
 namespace game
 {
 class EntityManager;
+class CameraManager;
 
 class TestScene : public IScene
 {
@@ -26,6 +30,7 @@ public:
     void Update(float deltaTime) override;
     void Finalize() override;
 
+    void ExportData(data::ForGraphics* info) override;
 
     /// <summary>
     /// 미구현 함수
@@ -45,7 +50,10 @@ private:
     /// </summary>
     void           CreateEnity();
 
+    void InitCameraManager();
+
     EntityManager* _entityManager;
+    std::unique_ptr <CameraManager> _cameraManager;
 };
 
 } // namespace game

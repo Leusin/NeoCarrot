@@ -14,9 +14,29 @@
 
 namespace game
 {
-Camera::Camera(EntityPtr entityPtr) : _transform(entityPtr->GetComponent<Transform>())
+Camera::Camera(EntityPtr entityPtr) 
+    : _transform(entityPtr->GetComponent<Transform>())
+    , _cameraInfo{}
 {
-    assert(_transform);
+    assert(_transform && "camera 가 transform 정보를 불러올 수 없음");
+    
+    //
+    // _cameraInfo
+    // 해당 구조체의 초기값과 같지만
+    // 명시적으로 초기화
+    //
+
+    _cameraInfo._position = { 0.0f, 0.0f, 0.0f };
+
+    _cameraInfo._right = { 1.0f, 0.f, 0.f };
+    _cameraInfo._up = { 0.0f, 1.f, 0.f };
+    _cameraInfo._look = { 0.0f, 0.f, 1.f };
+
+    _cameraInfo._nearZ = 000.1f;
+    _cameraInfo._farZ = 1000.f;
+    _cameraInfo._fovY  = 0.25f;
+
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Camera Component\n";
 #endif // _DEBUG
@@ -28,10 +48,10 @@ Camera::~Camera()
 
 void Camera::Update(float dt)
 {
-
     //
     // _view 업데이트
     //
+
     math::Vector3<float> r = _transform->GetRight();
     math::Vector3<float> u = _transform->GetUp();
     math::Vector3<float> l = _transform->GetLook();
@@ -41,25 +61,32 @@ void Camera::Update(float dt)
     float y = -p.Dot(u);
     float z = -p.Dot(l);
 
-    _cInfo._view[0][0] = _transform->GetRight().x;
-    _cInfo._view[1][0] = _transform->GetRight().y;
-    _cInfo._view[2][0] = _transform->GetRight().z;
-    _cInfo._view[3][0] = x;
+    _cameraInfo._view[0][0] = _transform->GetRight().x;
+    _cameraInfo._view[1][0] = _transform->GetRight().y;
+    _cameraInfo._view[2][0] = _transform->GetRight().z;
+    _cameraInfo._view[3][0] = x;
 
-    _cInfo._view[0][1] = _transform->GetUp().x;
-    _cInfo._view[1][1] = _transform->GetUp().y;
-    _cInfo._view[2][1] = _transform->GetUp().z;
-    _cInfo._view[3][1] = y;
+    _cameraInfo._view[0][1] = _transform->GetUp().x;
+    _cameraInfo._view[1][1] = _transform->GetUp().y;
+    _cameraInfo._view[2][1] = _transform->GetUp().z;
+    _cameraInfo._view[3][1] = y;
 
-    _cInfo._view[0][2] = _transform->GetLook().x;
-    _cInfo._view[1][2] = _transform->GetLook().y;
-    _cInfo._view[2][2] = _transform->GetLook().z;
-    _cInfo._view[3][2] = z;
+    _cameraInfo._view[0][2] = _transform->GetLook().x;
+    _cameraInfo._view[1][2] = _transform->GetLook().y;
+    _cameraInfo._view[2][2] = _transform->GetLook().z;
+    _cameraInfo._view[3][2] = z;
 
-    _cInfo._view[0][3] = 0.0f;
-    _cInfo._view[1][3] = 0.0f;
-    _cInfo._view[2][3] = 0.0f;
-    _cInfo._view[3][3] = 1.0f;
+    _cameraInfo._view[0][3] = 0.0f;
+    _cameraInfo._view[1][3] = 0.0f;
+    _cameraInfo._view[2][3] = 0.0f;
+    _cameraInfo._view[3][3] = 1.0f;
+
+    //
+    // _position
+    //
+
+    _cameraInfo._position = _transform->GetPosition();
+    _cameraInfo._look = _transform->GetLook();
 }
 
 void Camera::Strafe(float distance)
@@ -118,6 +145,11 @@ void Camera::RotateY(float angle)
     _transform->SetUp(right);
     _transform->SetUp(up);
     _transform->SetLook(look);
+}
+
+data::CameraInfo Camera::GetCameraInfo()
+{
+    return _cameraInfo;
 }
 
 } // namespace game

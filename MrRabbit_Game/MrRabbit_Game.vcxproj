@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Math;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Common;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -100,7 +100,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Math;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Common;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -131,7 +131,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Math;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Common;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -140,7 +140,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,7 +151,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Math;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FX11\inc;..\NeoCarrot_Graphics;..\Bunny_Common;..\UnityLike_Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,7 +161,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Math.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CameraInfo.h" />
+    <ClInclude Include="CameraManager.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="EntityBuilder.h" />
     <ClInclude Include="EntityEnum.h" />
@@ -218,11 +218,10 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="WindowInfomation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CameraInfo.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="EntityBuilder.cpp" />
     <ClCompile Include="EntityFactory.cpp" />
@@ -254,9 +253,6 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bunny_Math\Bunny_Math.vcxproj">
-      <Project>{05044883-acde-43b4-9566-d4aa2891973d}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\NeoCarrot.vcxproj">
       <Project>{ece318c0-2f85-4b3f-80b0-b0063b96c918}</Project>
     </ProjectReference>

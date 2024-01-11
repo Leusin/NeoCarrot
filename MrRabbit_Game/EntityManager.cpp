@@ -3,6 +3,7 @@
 #include "../UnityLike_Core/Entity.h"
 #include "EntityFactory.h"
 
+#include <cassert>
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -26,7 +27,6 @@ EntityManager::~EntityManager()
 
 void EntityManager::Initialize()
 {
-
     for (auto& e : _entities)
     {
         e->Awake();
@@ -68,6 +68,53 @@ void EntityManager::AddEntity(game::Entity enumTypeEntity, const char* name)
 {
     auto entity = CreateEntity(enumTypeEntity, std::move(name));
     AddEntity(entity);
+}
+
+WeakEntityPtr EntityManager::GetEntity(const char* name)
+{
+
+    for (auto& e : _entities)
+    {
+        if (e->_name == name)
+        {
+            return e;
+        }
+
+    }
+
+    return WeakEntityPtr();
+}
+
+WeakEntityPtr EntityManager::GetEntity(const size_t&& id)
+{
+    // id는 0 부터 추가된다.
+    // id 따라서 엔티티 크기보다 크면 안된다.
+    assert(_entities.size() < id && "유효하지 않는 id값");
+
+    for (auto& e : _entities)
+    {
+        if (e->_id == id)
+        {
+            return e;
+        }
+    }
+
+    return WeakEntityPtr();
+}
+
+std::vector<WeakEntityPtr> EntityManager::GetEntity(game::Tag enumTag)
+{
+    std::vector<WeakEntityPtr> spisificEntitis;
+
+    for (auto& e : _entities)
+    {
+        if (e->_tag == enumTag)
+        {
+            spisificEntitis.emplace_back(e);
+        }
+    }
+
+    return spisificEntitis;
 }
 
 EntityPtr EntityManager::CreateEntity(game::Entity enumTypeEntity, const size_t&& id, const char* name)

@@ -3,15 +3,17 @@
 #include "GraphicsEngine.h"
 #include "SceneManager.h"
 #include "TimeManager.h"
-#include "WindowInfomation.h"
+#include "WindowInfo.h"
+#include "ForGraphics.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
-game::GameEngine::GameEngine(WindowInfomation* wi) :
+game::GameEngine::GameEngine(data::WindowInfo* wi) :
 // 필요한 순서대로 초기화 중이다.
 _windowInfo(wi),
+_graphicsInfo{std::make_unique<data::ForGraphics>()},
 _sceneManager{std::make_unique<SceneManager>()},
 _timeManager{std::make_unique<TimeManager>()}
 {
@@ -27,12 +29,19 @@ game::GameEngine::~GameEngine()
 
 void game::GameEngine::Initialize()
 {
+    _sceneManager->Initialize();
+
     _renderer = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
                                                                 _windowInfo->hMainWnd,
                                                                 _windowInfo->clientWidth,
                                                                 _windowInfo->clientHeight);
 
-    _sceneManager->Initialize();
+    _sceneManager->ExportData(_graphicsInfo.get());
+
+    _renderer->ImportData(_graphicsInfo.get());
+
+    _renderer->Initialize();
+
 }
 
 void game::GameEngine::Process()
@@ -59,6 +68,10 @@ void game::GameEngine::Process()
             
             float dt = _timeManager->DeltaTime();
             _sceneManager->Update(dt);
+
+            //auto data = _sceneManager->ExportData();
+            //_renderer->ImportData(data);
+
             _renderer->Update(dt);
 
         }

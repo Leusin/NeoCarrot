@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "Camera.h"
+#include "Transform.h"
 #include "Vector3.h"
 
 #include <windows.h>
@@ -14,11 +15,15 @@
 namespace game
 {
 
-CameraScript::CameraScript(EntityPtr entityPtr) :
-_entity{EntityPtr(entityPtr)},
-_camera{_entity.lock()->GetComponent<game::Camera>()}
+CameraScript::CameraScript(EntityPtr entityPtr) 
+    : _entity{EntityPtr(entityPtr)}
+    , _camera{_entity.lock()->GetComponent<game::Camera>()}
+    , _transform{_entity.lock()->GetComponent<game::Transform>()}
 {
-    assert(_camera);
+    assert(_camera && "camera script 가 camera 정보를 불러올 수 없음");
+    assert(_transform && "camera script 가 _transform 정보를 불러올 수 없음");
+
+    _transform->SetPosition({0.0f, 2.0f, -15.0f});
 
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Camera Script Component\n";
@@ -43,30 +48,18 @@ void CameraScript::Update(float dt)
     if (GetAsyncKeyState('W') & 0x8000)
     {
         _camera->Walk(10.0f * speed);
-#ifdef _DEBUG
-        std::cout << 'W' << std::endl;
-#endif // _DEBUG
     }
     if (GetAsyncKeyState('S') & 0x8000)
     {
-        //_camera->Walk(-10.0f * speed);
-#ifdef _DEBUG
-        std::cout << 'S' << std::endl;
-#endif // _DEBUG
+        _camera->Walk(-10.0f * speed);
     }
     if (GetAsyncKeyState('A') & 0x8000)
     {
-        //_camera->Strafe(-10.0f * speed);
-#ifdef _DEBUG
-        std::cout << 'A' << std::endl;
-#endif // _DEBUG
+        _camera->Strafe(-10.0f * speed);
     }
     if (GetAsyncKeyState('D') & 0x8000)
     {
-        //_camera->Strafe(10.0f * speed);
-#ifdef _DEBUG
-        std::cout << 'D' << std::endl;
-#endif // _DEBUG
+        _camera->Strafe(10.0f * speed);
     }
 }
 

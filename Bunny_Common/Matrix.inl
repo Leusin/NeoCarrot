@@ -101,4 +101,14 @@ inline const std::array<T, 4>& Matrix<T>::operator[](int index) const
     return _data[index];
 }
 
+template <typename T>
+math::Matrix<T>& math::Matrix<T>::operator=(const Matrix<T>& other)
+{
+    if (this != &other)
+    {
+        _data = other._data;
+    }
+    return *this;
+}
+
 } // namespace math

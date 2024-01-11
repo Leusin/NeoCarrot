@@ -5,15 +5,10 @@
 
 #pragma once
 
+#include "ForGraphics.h"
+
 #include <memory>
 #include <wrl.h>
-
-struct ID3D11Device;
-struct ID3D11DeviceContext;
-struct IDXGISwapChain;
-struct ID3D11Texture2D;
-struct ID3D11RenderTargetView;
-
 
 namespace grahics
 {
@@ -35,24 +30,8 @@ public:
 
     void OnResize(int clientWidth, int clientHeight);
     void DrawStatus();
-#pragma region input
-    
-    // TODO
-    //    게임 엔진에서
-    //    입력을 담당하는 클래스가 동작하도록 할 것
 
-public:
-    void Keybord();
-    void OnMouseDown(WPARAM btnState, int x, int y);
-    void OnMouseUp(WPARAM btnState, int x, int y);
-    void OnMouseMove(WPARAM btnState, int x, int y);
-
-private:
-    // 마우스
-    POINT _lastMousePos{0, 0};
-    HWND& _hWnd;
-
-#pragma endregion input
+    void ImportData(const data::ForGraphics* info);
 
 private:
 
@@ -71,6 +50,8 @@ private:
     /// 카메라 부분
     std::unique_ptr<Camera3D> _camera;
     // 카메라 데이터
+
+    data::ForGraphics _fromGameEngine;
 };
 
 } // namespace ge

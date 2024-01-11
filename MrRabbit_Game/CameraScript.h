@@ -20,6 +20,7 @@ namespace game
 {
 
 class Camera;
+class Transform;
 
 class CameraScript : public core::IComponent
 {
@@ -27,18 +28,13 @@ public:
     CameraScript(EntityPtr entityPtr);
     ~CameraScript();
 
-    //void Start() override;
     void Update(float dt) override;
 
 private:
 
-    /// <summary>
-    /// 컴포넌트를 소유하는 엔티티를 찾모하기 때문에
-    /// shared_ptr 로 인한 메모리 누수를 고려하여
-    /// waek_ptr 로 받는다
-    /// </summary>
     EntityWeakPtr _entity{};
     Camera*   _camera{nullptr};
+    Transform*   _transform{nullptr};
 };
 
 } // namespace game

@@ -1,47 +1,50 @@
 /// GameProcess.cpp : 게임의 흐름을 제어 및 관리합니다.
 /// 대부분 매니저 클래스들을 여기에 있습니다.
-/// 
+///
 /// 2023-12-22
 
 
 #pragma once
 
-#include <windows.h>
-#include <vector>
 #include <memory>
+#include <vector>
+#include <windows.h>
 
-namespace grahics { class GraphicsEngine; }
+namespace grahics{ class GraphicsEngine; }
+namespace data{ struct WindowInfo; }
+namespace data{ struct ForGraphics; }
 
 namespace game
 {
-	class IManger;
-	class ManagerCreator;
-    class SceneManager;
-    class TimeManager;
-	struct WindowInfomation;
+class IManger;
+class ManagerCreator;
+class SceneManager;
+class TimeManager;
 
-	class GameEngine
-	{
-	public:
-		GameEngine(WindowInfomation* winInfo);
-		~GameEngine();
+class GameEngine
+{
+public:
+    GameEngine(data::WindowInfo* winInfo);
+    ~GameEngine();
 
-		void Initialize();
-		void Process();
-		void Finalize();
-		
-		LRESULT MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+    void Initialize();
+    void Process();
+    void Finalize();
 
-	private:
-		// 윈도우 정보. 
-		// 초기화 및  MassageProc에서 사용한다.
-		WindowInfomation* _windowInfo;
+    LRESULT MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-		std::unique_ptr<SceneManager> _sceneManager;
-        std::unique_ptr<TimeManager>  _timeManager;
+private:
+    // 윈도우 정보.
+    // 초기화 및  MassageProc에서 사용한다.
+    data::WindowInfo* _windowInfo;
 
-		// 그래픽 엔진
-		std::unique_ptr<grahics::GraphicsEngine> _renderer{ nullptr };
-	};
+    std::unique_ptr<data::ForGraphics>  _graphicsInfo;
 
-} // GameEngene
+    std::unique_ptr<SceneManager> _sceneManager;
+    std::unique_ptr<TimeManager>  _timeManager;
+
+    // 그래픽 엔진
+    std::unique_ptr<grahics::GraphicsEngine> _renderer{nullptr};
+};
+
+} // namespace game

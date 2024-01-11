@@ -19,9 +19,12 @@ struct Matrix
 
     void RotateY(const float& angle);
 
-    // 인덱스로의 접근을 추가
+    // 인덱스로의 접근
     std::array<T, 4>& operator[](int index);
     const std::array<T, 4>& operator[](int index) const;
+
+    // 대입 연산자 
+    Matrix<T>& operator=(const Matrix<T>& other);
 
 private:
     const int _rows = 4;
