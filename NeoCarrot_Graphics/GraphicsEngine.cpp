@@ -8,9 +8,12 @@
 
 // Mesh Obj
 #include "Grid.h"
-
 #include "ForGraphics.h"
 #include "ResourceManager.h"
+
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
 
 #include <cassert>
 
@@ -25,7 +28,9 @@ grahics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientW
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
     , _resourceManager(std::make_unique<ResourceManager>())
 {
-
+#ifdef _DEBUG
+    std::cout << "GraphicsEngine Constructed\n";
+#endif // _DEBUG
 }
 
 grahics::GraphicsEngine::~GraphicsEngine()

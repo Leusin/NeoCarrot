@@ -19,9 +19,6 @@
     <ClCompile Include="IComponent.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.inl">
-      <Filter>manager</Filter>
-    </ClCompile>
     <ClCompile Include="IFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
