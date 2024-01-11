@@ -2,7 +2,11 @@
 #include <d3d11.h>
 #include <cassert>
 
-graphics::RenderStates::RenderStates(ID3D11Device* _d3dDevice)
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
+
+graphics::D3D11RenderStates::D3D11RenderStates(ID3D11Device* _d3dDevice)
 {
 	assert(_d3dDevice);
 
@@ -39,21 +43,25 @@ graphics::RenderStates::RenderStates(ID3D11Device* _d3dDevice)
 	_d3dDevice->CreateDepthStencilState(&equalsDesc, &_normalDSS);
 
 	assert(_normalDSS);
+
+#ifdef _DEBUG
+    std::cout << "\tD3D11RenderStates Constructed\n";
+#endif // _DEBUG
 }
 
-graphics::RenderStates::~RenderStates()
+graphics::D3D11RenderStates::~D3D11RenderStates()
 {
 	if(_normalDSS) _normalDSS->Release();
 	if(_solidRS) _solidRS->Release();
 	if(_wireframeRS) _wireframeRS->Release();
 }
 
-ID3D11RasterizerState* graphics::RenderStates::WireFrame()
+ID3D11RasterizerState* graphics::D3D11RenderStates::WireFrame()
 {
 	return _wireframeRS;
 }
 
-ID3D11RasterizerState* graphics::RenderStates::Solid()
+ID3D11RasterizerState* graphics::D3D11RenderStates::Solid()
 {
 	return _solidRS;
 }

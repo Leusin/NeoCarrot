@@ -11,11 +11,11 @@ struct ID3D11DepthStencilState;
 
 namespace graphics
 {
-class RenderStates
+class D3D11RenderStates
 {
 public:
-	RenderStates(ID3D11Device* divice);
-	~RenderStates();
+	D3D11RenderStates(ID3D11Device* divice);
+	~D3D11RenderStates();
 
 	ID3D11RasterizerState* WireFrame();
 	ID3D11RasterizerState* Solid();

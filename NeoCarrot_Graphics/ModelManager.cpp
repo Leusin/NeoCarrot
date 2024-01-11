@@ -11,7 +11,7 @@ ModelManager::ModelManager()
 	: _entityManager{std::make_unique<core::EntityManager<ModelFactory>>()}
 {
 #ifdef _DEBUG
-    std::cout << "\tResourceManager Constructed\n";
+    std::cout << "\tModelManager Constructed\n";
 #endif // _DEBUG
 }
 

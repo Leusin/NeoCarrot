@@ -10,7 +10,7 @@ class DXTKFont;
 class ResourceManager
 {
 public:
-    ResourceManager();
+    ResourceManager(D3D11Context* d3d11, D3D11RenderStates* renderState, DXTKFont* font);
 
     void Initialize();
 

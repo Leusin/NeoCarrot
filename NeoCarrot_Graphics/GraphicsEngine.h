@@ -13,7 +13,7 @@
 namespace graphics
 {
 class D3D11Context;
-class RenderStates;
+class D3D11RenderStates;
 class DXTKFont;
 class Grid;
 class Camera3D;
@@ -44,7 +44,7 @@ private:
 
     //  府家胶甸
     std::unique_ptr<D3D11Context> _d3d11;
-    std::unique_ptr<RenderStates> _renderState;
+    std::unique_ptr<D3D11RenderStates> _renderState;
     std::unique_ptr<DXTKFont>         _font;
     
     /// 府家胶 概聪历

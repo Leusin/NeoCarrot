@@ -10,8 +10,10 @@
 
 namespace graphics
 {
-
-ResourceManager::ResourceManager()
+ResourceManager::ResourceManager(D3D11Context* d3d11, D3D11RenderStates* renderState, DXTKFont* font) :
+_d3d11(d3d11),
+_renderState(renderState),
+_font(font)
 {
 #ifdef _DEBUG
     std::cout << "\tResourceManager Constructed\n";
@@ -20,7 +22,6 @@ ResourceManager::ResourceManager()
 
 void ResourceManager::Initialize()
 {
-
 }
 
 } // namespace graphics

@@ -16,6 +16,8 @@ namespace graphics
 class ModelFactory : public core::IFactory
 {
 public:
+    ModelFactory();
+
     EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 
 private:

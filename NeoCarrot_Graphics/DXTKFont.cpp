@@ -14,12 +14,6 @@ graphics::DXTKFont::DXTKFont(ID3D11Device* device, ID3D11DeviceContext* deviceCt
 	_rasterizerState(rasterizerState)
 	, _depthStencilState(dethsencil)
 {
-
-// 현재 경로가 어딘지 확인 
-#if defined(DEBUG) || defined(_DEBUG)
-		//std::cout << "\tFont 파일 경로: " << std::filesystem::current_path() << std::endl;
-#endif
-
 	const TCHAR* pathName =  L"../NeoCarrot_Graphics/Font";
 
 	TCHAR* fileName{ nullptr };
@@ -47,6 +41,12 @@ graphics::DXTKFont::DXTKFont(ID3D11Device* device, ID3D11DeviceContext* deviceCt
 	assert(_spriteFont);
 
 	_spriteFont->SetLineSpacing(14.0f);
+
+    // 현재 경로가 어딘지 확인
+#if defined(DEBUG) || defined(_DEBUG)
+    //std::cout << "( Font ) 파일 경로: " << std::filesystem::current_path() << std::endl;
+    std::cout << "\tDXTKFont Constructed\n";
+#endif
 }
 
 #if defined(DEBUG) || defined(_DEBUG)
