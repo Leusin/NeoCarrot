@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\MrRabbit_Game\EntityManager.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -152,6 +153,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\MrRabbit_Game\EntityManager.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="IEventFunction.h" />

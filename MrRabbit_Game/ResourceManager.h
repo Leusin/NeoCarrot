@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <vector>
+
 namespace game
 {
 
@@ -15,6 +17,7 @@ public:
     ResourceManager();
     ~ResourceManager();
 
+private:
 };
 
 } // namespace ge

@@ -33,6 +33,9 @@
     <ClInclude Include="WindowInfo.h">
       <Filter>info</Filter>
     </ClInclude>
+    <ClInclude Include="..\MrRabbit_Game\EntityEnum.h">
+      <Filter>info</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MathUtils.cpp">

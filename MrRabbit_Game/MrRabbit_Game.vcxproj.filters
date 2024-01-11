@@ -33,9 +33,6 @@
     <ClInclude Include="TestScene.h">
       <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="EntityManager.h">
-      <Filter>manager</Filter>
-    </ClInclude>
     <ClInclude Include="TimeManager.h">
       <Filter>manager</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>input</Filter>
     </ClInclude>
-    <ClInclude Include="EntityEnum.h">
-      <Filter>entity</Filter>
-    </ClInclude>
     <ClInclude Include="EntityFactory.h">
       <Filter>entity</Filter>
     </ClInclude>
@@ -91,9 +85,6 @@
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>scene</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>manager</Filter>

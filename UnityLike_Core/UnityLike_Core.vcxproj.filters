@@ -16,6 +16,9 @@
     <ClCompile Include="IComponent.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\MrRabbit_Game\EntityManager.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IComponent.h">
@@ -28,6 +31,9 @@
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="IEventFunction.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MrRabbit_Game\EntityManager.h">
       <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>

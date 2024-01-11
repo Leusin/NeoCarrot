@@ -172,7 +172,6 @@
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="EntityBuilder.h" />
-    <ClInclude Include="EntityEnum.h" />
     <ClInclude Include="EntityFactory.h" />
     <ClInclude Include="InputManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -213,7 +212,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="TestScene.h" />
-    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="TimeManager.h" />
@@ -245,7 +243,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="TestScene.cpp" />
-    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ResourceType.cpp" />
     <ClCompile Include="SceneManager.cpp" />

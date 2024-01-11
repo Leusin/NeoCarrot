@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="enum type">
-      <UniqueIdentifier>{0d896ce9-5391-4fcb-bc7c-332589228e1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="doc">
       <UniqueIdentifier>{f0701479-2216-46a6-bddf-9d379fee9bd2}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{cb8c9de6-899a-4efb-a731-40d63500bbe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{9fcb012e-b537-47ff-ab16-f42706e85164}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +57,9 @@
     <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\EntityManager.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
@@ -64,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
       <Filter>D3D11</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\FontType.h">
-      <Filter>enum type</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
@@ -83,6 +83,15 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
       <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Model.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\FontType.h">
+      <Filter>DirectXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\EntityManager.h">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
