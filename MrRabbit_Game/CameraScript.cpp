@@ -24,7 +24,7 @@ CameraScript::CameraScript(EntityPtr entityPtr)
     assert(_transform && "camera script 가 _transform 정보를 불러올 수 없음");
 
     _transform->SetPosition({0.0f, 2.0f, -15.0f});
-
+ 
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Camera Script Component\n";
 #endif // _DEBUG
@@ -39,28 +39,31 @@ void CameraScript::Update(float dt)
 {
     // 카메라 제어
 
-    float speed = 0.0001f;
+    float speed = 1.f
+        ;
     if (GetAsyncKeyState(VK_LSHIFT) & 0x8000)
-        speed = 0.002f;
+        speed = 4.f;
     else
-        speed = 0.0001f;
+        speed = 1.f;
 
     if (GetAsyncKeyState('W') & 0x8000)
     {
-        _camera->Walk(10.0f * speed);
+        _camera->Walk(10.0f * dt * speed);
     }
     if (GetAsyncKeyState('S') & 0x8000)
     {
-        _camera->Walk(-10.0f * speed);
+        _camera->Walk(-10.0f * dt * speed);
     }
     if (GetAsyncKeyState('A') & 0x8000)
     {
-        _camera->Strafe(-10.0f * speed);
+        _camera->Strafe(-10.0f * dt * speed);
     }
     if (GetAsyncKeyState('D') & 0x8000)
     {
-        _camera->Strafe(10.0f * speed);
+        _camera->Strafe(10.0f * dt * speed);
     }
+
+    
 }
 
 } // namespace game

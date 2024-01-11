@@ -29,17 +29,15 @@ game::GameEngine::~GameEngine()
 
 void game::GameEngine::Initialize()
 {
-    _sceneManager->Initialize();
-
     _renderer = std::make_unique<grahics::GraphicsEngine>(_windowInfo->hInstance,
-                                                                _windowInfo->hMainWnd,
-                                                                _windowInfo->clientWidth,
-                                                                _windowInfo->clientHeight);
+                                                          _windowInfo->hMainWnd,
+                                                          _windowInfo->clientWidth,
+                                                          _windowInfo->clientHeight);
 
     _sceneManager->ExportData(_graphicsInfo.get());
-
     _renderer->ImportData(_graphicsInfo.get());
 
+    _sceneManager->Initialize();
     _renderer->Initialize();
 
 }

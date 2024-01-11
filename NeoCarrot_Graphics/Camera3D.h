@@ -20,11 +20,11 @@ namespace grahics
 class Camera3D
 {
 public:
-    Camera3D(/*const data::CameraInfo& info*/);
+    Camera3D();
+    Camera3D(int clientWidth, int clientHeight);
     ~Camera3D();
-    
+
     void Initialize();
-    void Update(float dt);
 
     //
     // 인터페이스 함수

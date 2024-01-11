@@ -7,8 +7,17 @@
 using namespace DirectX;
 using namespace grahics;
 
-Camera3D::Camera3D(/*const data::CameraInfo& info*/)
+Camera3D::Camera3D()
 {
+}
+
+grahics::Camera3D::Camera3D(int clientWidth, int clientHeight)
+{
+    // 화면비
+    _aspect = static_cast<float>(clientWidth) / clientHeight;
+
+    // 업데이트
+    
 }
 
 Camera3D::~Camera3D()
@@ -18,10 +27,6 @@ Camera3D::~Camera3D()
 void grahics::Camera3D::Initialize()
 {
     SetLens(_aspect);
-}
-
-void grahics::Camera3D::Update(float dt)
-{
 }
 
 XMVECTOR Camera3D::GetPositionXM() const
@@ -94,13 +99,21 @@ float Camera3D::GetFovX() const
 
 void grahics::Camera3D::GetCameraInfo(const data::CameraInfo& info)
 {
-    _look.x = info._look.x;
-    _look.y = info._look.z;
-    _look.z = info._look.z;
-
     _position.x = info._position.x;
-    _position.y = info._position.z;
+    _position.y = info._position.y;
     _position.z = info._position.z;
+
+    _right.x = info._right.x;
+    _right.y = info._right.y;
+    _right.z = info._right.z;
+
+    _up.x = info._up.x;
+    _up.y = info._up.y;
+    _up.z = info._up.z;
+
+    _look.x = info._look.x;
+    _look.y = info._look.y;
+    _look.z = info._look.z;
 
     _nearZ = info._nearZ;
     _farZ  = info._farZ;
@@ -116,10 +129,10 @@ void grahics::Camera3D::GetCameraInfo(const data::CameraInfo& info)
     _view._23 = info._view[1][2];
     _view._24 = info._view[1][3];
 
-    _view._31 = info._view[1][0];
-    _view._32 = info._view[1][1];
-    _view._33 = info._view[1][2];
-    _view._34 = info._view[1][3];
+    _view._31 = info._view[2][0];
+    _view._32 = info._view[2][1];
+    _view._33 = info._view[2][2];
+    _view._34 = info._view[2][3];
 
     _view._41 = info._view[3][0];
     _view._42 = info._view[3][1];
@@ -134,11 +147,11 @@ void grahics::Camera3D::SetLens(float aspect)
 
 void Camera3D::SetLens(float fovY, float aspect, float zn, float zf)
 {
-    _fovY = fovY;
+    _fovY   = fovY;
     _aspect = aspect;
 
     _nearZ = zn;
-    _farZ = zf;
+    _farZ  = zf;
 
     auto farWindowHeight = 2.0f * _farZ * tanf(0.5f * _fovY);
 

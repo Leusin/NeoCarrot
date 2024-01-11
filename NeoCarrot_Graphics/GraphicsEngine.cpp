@@ -21,11 +21,8 @@ grahics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientW
 	, _renderState(std::make_unique<RenderStates>(_d3d11->Divice()))
 	, _font(std::make_unique<Font>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
-    , _camera(std::make_unique<Camera3D>(/*_info->_camera*/))
+    , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
 {
-    // 카메라 초기화
-    //_camera->LookAt(DirectX::XMFLOAT3(10.f, 10.f, 10.f), DirectX::XMFLOAT3(0.f, 0.f, 0.f),
-                    //DirectX::XMFLOAT3(0.f, 1.f, 0.f));
 
 }
 
@@ -40,9 +37,9 @@ void grahics::GraphicsEngine::Initialize()
 
 void grahics::GraphicsEngine::Update(float deltaTime)
 {
-    //_camera->UpdateViewMatrix();
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
-    //_grid->SetEyePosW(_camera->GetPosition());
+    
+    _grid->SetEyePosW(_camera->GetPosition());
 
     BeginRender();
     Render();
