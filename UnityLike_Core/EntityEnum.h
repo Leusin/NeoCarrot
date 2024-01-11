@@ -25,6 +25,7 @@ enum class Layer
 enum class GameObect
 {
     CAMERA,
+    BOX,
 
     GAMEOBJECT_COUNT
 };

@@ -60,6 +60,9 @@
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
       <Filter>manager</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
@@ -91,6 +94,9 @@
       <Filter>DirectXTK</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h">
       <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>

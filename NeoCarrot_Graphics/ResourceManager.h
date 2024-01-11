@@ -21,7 +21,6 @@ public:
     ResourceManager();
 
 private:
-	//std::vector<EntityPtr>         _entities;
 	std::unique_ptr<core::EntityManager<ModelFactory>> _entityManager;
 };
 }
