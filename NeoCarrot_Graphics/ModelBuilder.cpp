@@ -6,12 +6,12 @@
 #include "VertexBuffer.h"
 #include "VertexStruct.h"
 #include "IndexBuffer.h"
+#include "Effect.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 #include <d3d11.h>
-
 
 namespace graphics
 {
@@ -53,6 +53,15 @@ ModelBuilder ModelBuilder::AddIndexBuffer()
 
     return *this;
 }
+
+ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
+{
+    _entity->AddComponent<Effect>(_entity, fileName);
+
+    return *this;
+}
+
+
 
 EntityPtr ModelBuilder::Build()
 {

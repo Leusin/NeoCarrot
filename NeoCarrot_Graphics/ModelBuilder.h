@@ -3,6 +3,7 @@
 #include "EntityEnum.h"
 
 #include <memory>
+#include <string>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -30,6 +31,8 @@ public:
     ModelBuilder AddVertexBuffer();
 
     ModelBuilder AddIndexBuffer();
+
+    ModelBuilder AddEffect(std::wstring fileName);
 
     // 제품 반환
     EntityPtr Build();

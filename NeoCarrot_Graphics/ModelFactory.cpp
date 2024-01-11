@@ -45,6 +45,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
                    .AddVertexBuffer()
                    .AddIndexBuffer()
                    .AddTransform()
+                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                    .Build();
 
     return axis;
