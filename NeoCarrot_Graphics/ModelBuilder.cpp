@@ -16,7 +16,7 @@ _entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<cons
                                                                std::move(layer)))
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\tCreate Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
+    std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
 }
 

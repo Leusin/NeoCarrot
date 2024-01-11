@@ -10,6 +10,7 @@ namespace core
 enum class Tag
 {
     CAMERA,
+    MESHOBJ,
 
     TAG_COUNT
 };

@@ -1,6 +1,7 @@
 #include "ModelFactory.h"
 
 #include "../UnityLike_Core/Entity.h"
+#include "ModelBuilder.h"
 
 namespace graphics
 {
@@ -9,7 +10,7 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
     switch (enumTypeEntity)
     {
         case core::GameObect::BOX:
-            //return CreateCamera(std::forward<const size_t>(id), std::move(name));
+            return CreateBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;
     }
@@ -18,6 +19,33 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 }
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
-    return EntityPtr();
+    /*
+    * auto builder = EntityBuilder(
+        std::forward<const size_t>(id), 
+        std::move(name), 
+        core::Tag::CAMERA, 
+        core::Layer::BACKGROUND);
+
+    auto camera = 
+        builder
+        .AddTransform()
+        .AddCamera()
+        .AddCameraScript()
+        .Build();
+
+    return camera;
+    */
+
+    auto builder = ModelBuilder(
+        std::forward<const size_t>(id), 
+        std::move(name), 
+        core::Tag::MESHOBJ, 
+        core::Layer::FORGROUND);
+
+    auto box = 
+        builder
+        .Build();
+
+    return box;
 }
 } // namespace graphics

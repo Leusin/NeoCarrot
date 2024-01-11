@@ -40,13 +40,14 @@ graphics::GraphicsEngine::~GraphicsEngine()
 void graphics::GraphicsEngine::Initialize()
 {
     _camera->Initialize();
+    _resourceManager->Initialize();
 }
 
 void graphics::GraphicsEngine::Update(float deltaTime)
 {
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
-    
     _grid->SetEyePosW(_camera->GetPosition());
+    _resourceManager->Update(deltaTime);
 
     BeginRender();
     Render();
@@ -72,6 +73,7 @@ void graphics::GraphicsEngine::EndRender()
 
 void graphics::GraphicsEngine::Finalize()
 {
+    _resourceManager->Finalize();
 }
 
 void graphics::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
