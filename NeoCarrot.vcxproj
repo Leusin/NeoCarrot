@@ -30,7 +30,7 @@
     <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
   </ItemGroup>
@@ -49,7 +49,7 @@
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h" />
-    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md" />

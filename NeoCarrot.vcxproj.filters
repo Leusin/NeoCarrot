@@ -28,6 +28,9 @@
     <Filter Include="model">
       <UniqueIdentifier>{9fcb012e-b537-47ff-ab16-f42706e85164}</UniqueIdentifier>
     </Filter>
+    <Filter Include="component">
+      <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
@@ -54,7 +57,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
       <Filter>camera</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
@@ -84,7 +87,7 @@
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
       <Filter>camera</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
+    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
       <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Model.h">

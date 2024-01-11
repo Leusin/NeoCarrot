@@ -34,10 +34,10 @@ void game::GameEngine::Initialize()
                                                           _windowInfo->clientWidth,
                                                           _windowInfo->clientHeight);
 
+    _sceneManager->Initialize();
     _sceneManager->ExportData(_graphicsInfo.get());
     _renderer->ImportData(_graphicsInfo.get());
 
-    _sceneManager->Initialize();
     _renderer->Initialize();
 
 }

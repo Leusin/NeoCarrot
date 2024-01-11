@@ -19,22 +19,6 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 }
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
-    /*
-    * auto builder = EntityBuilder(
-        std::forward<const size_t>(id), 
-        std::move(name), 
-        core::Tag::CAMERA, 
-        core::Layer::BACKGROUND);
-
-    auto camera = 
-        builder
-        .AddTransform()
-        .AddCamera()
-        .AddCameraScript()
-        .Build();
-
-    return camera;
-    */
 
     auto builder = ModelBuilder(
         std::forward<const size_t>(id), 

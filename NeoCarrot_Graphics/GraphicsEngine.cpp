@@ -9,13 +9,12 @@
 // Mesh Obj
 #include "Grid.h"
 #include "ForGraphics.h"
-#include "ResourceManager.h"
+#include "ModelManager.h"
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
-#include <cassert>
 
 namespace graphics
 {
@@ -26,7 +25,7 @@ graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int client
 	, _font(std::make_unique<Font>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
-    , _resourceManager(std::make_unique<ResourceManager>())
+    , _modelManager(std::make_unique<ModelManager>())
 {
 #ifdef _DEBUG
     std::cout << "GraphicsEngine Constructed\n";
@@ -40,14 +39,14 @@ graphics::GraphicsEngine::~GraphicsEngine()
 void graphics::GraphicsEngine::Initialize()
 {
     _camera->Initialize();
-    _resourceManager->Initialize();
+    _modelManager->Initialize();
 }
 
 void graphics::GraphicsEngine::Update(float deltaTime)
 {
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
     _grid->SetEyePosW(_camera->GetPosition());
-    _resourceManager->Update(deltaTime);
+    _modelManager->Update(deltaTime);
 
     BeginRender();
     Render();
@@ -73,7 +72,7 @@ void graphics::GraphicsEngine::EndRender()
 
 void graphics::GraphicsEngine::Finalize()
 {
-    _resourceManager->Finalize();
+    _modelManager->Finalize();
 }
 
 void graphics::GraphicsEngine::OnResize(int clientWidth, int clientHeight)

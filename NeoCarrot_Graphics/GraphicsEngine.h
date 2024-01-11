@@ -21,7 +21,7 @@ class Camera3D;
 /// <summary>
 ///  리소스 매니저
 /// </summary>
-class ResourceManager;
+class ModelManager;
 
 class GraphicsEngine
 {
@@ -51,7 +51,7 @@ private:
 
     // Mesh Obj
     std::unique_ptr<Grid> _grid;
-    std::unique_ptr<ResourceManager> _resourceManager;
+    std::unique_ptr<ModelManager> _modelManager;
 
     /// 카메라 부분
     std::unique_ptr<Camera3D> _camera;

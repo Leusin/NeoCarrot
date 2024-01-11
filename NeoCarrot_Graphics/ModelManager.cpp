@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "ModelManager.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -7,7 +7,7 @@
 namespace graphics
 {
 
-ResourceManager::ResourceManager() 
+ModelManager::ModelManager() 
 	: _entityManager{std::make_unique<core::EntityManager<ModelFactory>>()}
 {
 #ifdef _DEBUG
@@ -15,24 +15,24 @@ ResourceManager::ResourceManager()
 #endif // _DEBUG
 }
 
-void ResourceManager::Initialize()
+void ModelManager::Initialize()
 {
     CreateEnity();
 
     _entityManager->Initialize();
 }
 
-void ResourceManager::Update(float deltaTime)
+void ModelManager::Update(float deltaTime)
 {
     _entityManager->Update(deltaTime);
 }
 
-void ResourceManager::Finalize()
+void ModelManager::Finalize()
 {
     _entityManager->Finalize();
 }
 
-void ResourceManager::CreateEnity()
+void ModelManager::CreateEnity()
 {
     _entityManager->AddEntity(core::GameObect::BOX, "box");
 }

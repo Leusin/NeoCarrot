@@ -20,6 +20,10 @@ public:
 
 private:
     EntityPtr CreateBox(const size_t&& id, const char* name);
+
+    /// TODO
+    ///    여기에 리소스 메니저
+    /// 
 };
 
 } // namespace graphics
