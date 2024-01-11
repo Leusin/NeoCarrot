@@ -10,6 +10,7 @@
 #include "Grid.h"
 
 #include "ForGraphics.h"
+#include "ResourceManager.h"
 
 #include <cassert>
 
@@ -22,6 +23,7 @@ grahics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientW
 	, _font(std::make_unique<Font>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
+    , _resourceManager(std::make_unique<ResourceManager>())
 {
 
 }

@@ -28,6 +28,7 @@
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
   </ItemGroup>
@@ -43,6 +44,7 @@
     <ClInclude Include="NeoCarrot_Graphics\Grid.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md" />

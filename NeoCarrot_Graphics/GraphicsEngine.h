@@ -18,6 +18,11 @@ class Font;
 class Grid;
 class Camera3D;
 
+/// <summary>
+///  리소스 매니저
+/// </summary>
+class ResourceManager;
+
 class GraphicsEngine
 {
 public:
@@ -46,6 +51,7 @@ private:
 
     // Mesh Obj
     std::unique_ptr<Grid> _grid;
+    std::unique_ptr<ResourceManager> _resourceManager;
 
     /// 카메라 부분
     std::unique_ptr<Camera3D> _camera;

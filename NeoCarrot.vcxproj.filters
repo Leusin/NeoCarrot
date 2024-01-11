@@ -25,6 +25,9 @@
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{cb8c9de6-899a-4efb-a731-40d63500bbe5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
       <Filter>camera</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
@@ -74,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
       <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
+      <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
