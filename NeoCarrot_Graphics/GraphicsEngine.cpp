@@ -4,6 +4,8 @@
 #include "D3D11RenderStates.h"
 #include "DXTKFont.h"
 #include "FontType.h"
+#include "ResourceManager.h"
+
 #include "Camera3D.h"
 
 // Mesh Obj
@@ -22,10 +24,11 @@ namespace graphics
 graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth, int clientHeight) 
     :_d3d11(std::make_unique<D3D11Context>(hinst, hWnd, clientWidth, clientHeight))
 	, _renderState(std::make_unique<RenderStates>(_d3d11->Divice()))
-	, _font(std::make_unique<Font>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
+	, _font(std::make_unique<DXTKFont>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
     , _modelManager(std::make_unique<ModelManager>())
+    , _resourceManager(std::make_unique<ResourceManager>())
 {
 #ifdef _DEBUG
     std::cout << "GraphicsEngine Constructed\n";
@@ -39,6 +42,7 @@ graphics::GraphicsEngine::~GraphicsEngine()
 void graphics::GraphicsEngine::Initialize()
 {
     _camera->Initialize();
+    _resourceManager->Initialize();
     _modelManager->Initialize();
 }
 

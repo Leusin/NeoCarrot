@@ -57,20 +57,20 @@
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
       <Filter>camera</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
-      <Filter>manager</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
       <Filter>D3D11</Filter>
     </ClInclude>
@@ -87,19 +87,22 @@
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
       <Filter>camera</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
-      <Filter>manager</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\Model.h">
-      <Filter>model</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FontType.h">
       <Filter>DirectXTK</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h">
+      <Filter>model</Filter>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
       <Filter>manager</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h">
+    <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
       <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>

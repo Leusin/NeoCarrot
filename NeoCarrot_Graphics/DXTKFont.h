@@ -19,10 +19,10 @@ struct ID3D11DepthStencilState;
 
 namespace graphics
 {
-	class Font
+	class DXTKFont
 	{
 	public:
-		Font(ID3D11Device* device
+		DXTKFont(ID3D11Device* device
 			, ID3D11DeviceContext* deviceCtext
 			, ID3D11RasterizerState* rasterizerState
 			, ID3D11DepthStencilState* ds

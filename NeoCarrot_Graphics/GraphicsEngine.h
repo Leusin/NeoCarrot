@@ -14,14 +14,12 @@ namespace graphics
 {
 class D3D11Context;
 class RenderStates;
-class Font;
+class DXTKFont;
 class Grid;
 class Camera3D;
 
-/// <summary>
-///  리소스 매니저
-/// </summary>
 class ModelManager;
+class ResourceManager;
 
 class GraphicsEngine
 {
@@ -44,10 +42,13 @@ private:
     void Render();
     void EndRender();
 
-    ///  랜더링 부분
+    //  리소스들
     std::unique_ptr<D3D11Context> _d3d11;
     std::unique_ptr<RenderStates> _renderState;
-    std::unique_ptr<Font>         _font;
+    std::unique_ptr<DXTKFont>         _font;
+    
+    /// 리소스 매니저
+    std::unique_ptr<ResourceManager> _resourceManager;
 
     // Mesh Obj
     std::unique_ptr<Grid> _grid;
