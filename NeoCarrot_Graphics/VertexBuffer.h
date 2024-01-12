@@ -24,8 +24,8 @@ class VertexBuffer : public core::IComponent
 public:
     VertexBuffer(EntityPtr entityPtr);
 
-    void BuildBuffers();
 
+    void Awake() override;
 
 private:
     EntityWeakPtr _entity;
@@ -51,8 +51,10 @@ _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
 }
 
 template <typename V>
-inline void VertexBuffer<V>::BuildBuffers()
+inline void VertexBuffer<V>::Awake()
 {
+    if (_vertices.empty()) return;
+
     D3D11_BUFFER_DESC vbd;
     vbd.Usage          = D3D11_USAGE_IMMUTABLE;
     vbd.ByteWidth      = sizeof(V) * _totalVertexCount;
@@ -61,7 +63,11 @@ inline void VertexBuffer<V>::BuildBuffers()
     vbd.MiscFlags      = 0;
     D3D11_SUBRESOURCE_DATA vinitData;
     vinitData.pSysMem = &_vertices[0];
-    _d3device->Get()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
+    _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
+
+#ifdef _DEBUG
+   std::cout << "\t\t\t\t\tAdd VertexBuffer Component Awake\n";
+#endif // _DEBUG;
 }
 
 } // namespace graphics

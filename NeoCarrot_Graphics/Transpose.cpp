@@ -23,6 +23,13 @@ graphics::Transpose::~Transpose()
 {
 }
 
+void graphics::Transpose::Awake()
+{
+#ifdef _DEBUG
+    std::cout << "\t\t\t\t\tAdd Transpose Component Awake\n";
+#endif // _DEBUG
+}
+
 DirectX::XMMATRIX graphics::Transpose::GetWorld()
 {
     return DirectX::XMLoadFloat4x4(&_world);

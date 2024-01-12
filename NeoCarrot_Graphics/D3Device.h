@@ -12,8 +12,10 @@ class D3Device : public core::IComponent
 public:
     D3Device(ID3D11Device* _device, ID3D11DeviceContext* _dContext);
 
-    ID3D11Device* Get();
-    ID3D11DeviceContext* GetContext();
+    void Awake() override;
+
+    ID3D11Device* GetDevice();
+    ID3D11DeviceContext* GetDeviceContext();
 
 private:
     // 디바이스

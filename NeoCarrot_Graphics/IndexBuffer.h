@@ -20,7 +20,7 @@ class IndexBuffer : public core::IComponent
 public:
     IndexBuffer(EntityPtr entityPtr);
 
-    void BuildBuffers();
+    void Awake() override;
 
 private:
     EntityWeakPtr _entity;

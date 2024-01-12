@@ -14,11 +14,19 @@ D3Device::D3Device(ID3D11Device* device, ID3D11DeviceContext* dContext)
     std::cout << "\t\t\t\tAdd D3Device Component\n";
 #endif // _DEBUG
 }
-ID3D11Device* D3Device::Get()
+
+void D3Device::Awake()
+{
+#ifdef _DEBUG
+    std::cout << "\t\t\t\t\tAdd VertexBuffer D3Device Awake\n";
+#endif // _DEBUG;
+}
+
+ID3D11Device* D3Device::GetDevice()
 {
     return _d3dDevice;
 }
-ID3D11DeviceContext* D3Device::GetContext()
+ID3D11DeviceContext* D3Device::GetDeviceContext()
 {
     return _d3dImmediateContext;
 }

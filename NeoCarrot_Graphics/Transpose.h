@@ -12,6 +12,8 @@ namespace graphics
 		Transpose();
 		~Transpose();
 
+		void Awake() override;
+
 		DirectX::XMMATRIX GetWorld();
 		DirectX::XMMATRIX GetView();
 		DirectX::XMMATRIX GetProj();

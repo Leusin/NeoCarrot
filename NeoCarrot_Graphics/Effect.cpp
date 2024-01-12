@@ -20,8 +20,10 @@ _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
     std::cout << "\t\t\t\tAdd Effect Component\n";
 #endif // _DEBUG
 }
-void Effect::BuildFX()
+
+void Effect::Awake()
 {
+
     std::ifstream fin(_fileName, std::ios::binary);
 
     if (!fin)
@@ -37,14 +39,18 @@ void Effect::BuildFX()
     fin.read(&compiledShader[0], size);
     fin.close();
 
-    D3DX11CreateEffectFromMemory(&compiledShader[0],  // 컴파일된 효과 데이터 Blob
-                                 size,                // Blob 의 길이
-                                 0,                   // 이펙트 플래그
-                                 _d3device->Get(),    // 디바이스 포인터
-                                 _fx.GetAddressOf()); // 새로 만든 이펙트 인터페이스 주소
+    D3DX11CreateEffectFromMemory(&compiledShader[0],     // 컴파일된 효과 데이터 Blob
+                                 size,                   // Blob 의 길이
+                                 0,                      // 이펙트 플래그
+                                 _d3device->GetDevice(), // 디바이스 포인터
+                                 _fx.GetAddressOf());    // 새로 만든 이펙트 인터페이스 주소
 
     _tech            = _fx->GetTechniqueByName("ColorTech");
     _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
+
+#ifdef _DEBUG
+    std::cout << "\t\t\t\t\tAdd Effect D3Device Awake\n";
+#endif // _DEBUG;
 }
 
-}
+} // namespace graphics

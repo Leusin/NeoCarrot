@@ -21,18 +21,22 @@ _vertexDesc{vertexDesc}
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexLayout Component\n";
 #endif // _DEBUG
-};
+}
 
-void VertexLayout::Build()
+void VertexLayout::Awake()
 {
     D3DX11_PASS_DESC passDesc;
     _effect->_tech->GetPassByIndex(0)->GetDesc(&passDesc);
 
-    _d3device->Get()->CreateInputLayout(_vertexDesc,
-                                  2,
-                                  passDesc.pIAInputSignature,
-                                  passDesc.IAInputSignatureSize,
-                                  _inputLayout.GetAddressOf());
-}
+    _d3device->GetDevice()->CreateInputLayout(_vertexDesc,
+                                              2,
+                                              passDesc.pIAInputSignature,
+                                              passDesc.IAInputSignatureSize,
+                                              _inputLayout.GetAddressOf());
+
+#ifdef _DEBUG
+    std::cout << "\t\t\t\t\tAdd VertexLayout Component Awake\n";
+#endif // _DEBUG
+};
 
 } // namespace graphics

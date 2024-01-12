@@ -22,7 +22,7 @@ class Effect : public core::IComponent
 public:
     Effect(EntityPtr entityPtr, std::wstring fileName);
 
-    void BuildFX();
+    void Awake() override;
 
      // ¿Ã∆Â∆Æ
     Microsoft::WRL::ComPtr<ID3DX11Effect>               _fx{nullptr};

@@ -21,7 +21,7 @@ class VertexLayout : public core::IComponent
 public:
     VertexLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc);
 
-    void Build();
+    void Awake() override;
 
 private:
     EntityWeakPtr _entity;
