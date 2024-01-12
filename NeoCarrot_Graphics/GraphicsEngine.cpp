@@ -28,8 +28,9 @@ graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int client
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
     , _resourceManager(std::make_unique<ResourceManager>(_d3d11.get(), _renderState.get(), _font.get()))
-    , _modelManager(std::make_unique<ModelManager>(_resourceManager.get()))
 {
+    _modelManager = std::make_unique<ModelManager>(_resourceManager.get(), _camera.get());
+
 #ifdef _DEBUG
     std::cout << "GraphicsEngine Constructed\n";
 #endif // _DEBUG
@@ -54,7 +55,6 @@ void graphics::GraphicsEngine::Update(float deltaTime)
 
     _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), view, proj);
     _grid->SetEyePosW(eye);
-
 }
 
 void graphics::GraphicsEngine::BeginRender()

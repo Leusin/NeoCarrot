@@ -25,20 +25,20 @@ _indexBuffer{_entity.lock()->GetComponent<graphics::IndexBuffer>()}
         {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::Crimson)});
 
     _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(static_cast<float>(INT_MAX), 0.0f, 0.0f),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Crimson)});
+                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
     _vertexBuffer->_vertices.push_back(
         {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::SeaGreen)});
 
     _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(0.0f, static_cast<float>(INT_MAX), 0.0f),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::SeaGreen)});
+                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
 
     _vertexBuffer->_vertices.push_back(
         {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::RoyalBlue)});
 
     _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(0.0f, 0.0f, static_cast<float>(INT_MAX)),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::RoyalBlue)});
+                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
 
-    _vertexBuffer->_totalVertexCount = _vertexBuffer->_vertices.size();
+    _vertexBuffer->_totalVertexCount = static_cast<UINT>(_vertexBuffer->_vertices.size());
 
     _indexBuffer->_indices = {
         // xÃà
@@ -49,18 +49,15 @@ _indexBuffer{_entity.lock()->GetComponent<graphics::IndexBuffer>()}
         4, 5,
     };
 
-    _indexBuffer->_indexCount.emplace_back(_indexBuffer->_indices.size());
+    _indexBuffer->_indexCount.emplace_back(static_cast<UINT>(_indexBuffer->_indices.size()));
 
 #ifdef _DEBUG
-    std::cout << "\t\t\t\t\tAdd AxisScript Component\n";
+    std::cout << "\t\t\t\tAdd AxisScript Component\n";
 #endif // _DEBUG;
 }
 
 void AxisScript::Awake()
 {
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tAxisScript Component Awake\n";
-#endif // _DEBUG;
 }
 
 void AxisScript::Update(float dt)

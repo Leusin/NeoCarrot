@@ -17,7 +17,6 @@ class D3D11RenderStates;
 class DXTKFont;
 class Grid;
 class Camera3D;
-
 class ModelManager;
 class ResourceManager;
 
@@ -56,8 +55,8 @@ private:
 
     /// 카메라 부분
     std::unique_ptr<Camera3D> _camera;
-    // 카메라 데이터
 
+    // 카메라 데이터
     data::ForGraphics _fromGameEngine;
 };
 

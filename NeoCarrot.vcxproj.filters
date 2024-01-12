@@ -84,6 +84,9 @@
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
       <Filter>component</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
@@ -139,6 +142,9 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h">
       <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>

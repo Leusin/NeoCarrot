@@ -25,9 +25,6 @@ graphics::Transpose::~Transpose()
 
 void graphics::Transpose::Awake()
 {
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tTranspose Component Awake\n";
-#endif // _DEBUG
 }
 
 void graphics::Transpose::Update(float dt)

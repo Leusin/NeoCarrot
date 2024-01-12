@@ -17,6 +17,7 @@ using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace graphics
 {
+class Camera3D;
 
 class ModelBuilder
 {
@@ -35,6 +36,8 @@ public:
     ModelBuilder AddEffect(std::wstring fileName);
 
     ModelBuilder AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc);
+
+    ModelBuilder AddCamera(Camera3D* camera);
 
     /// 스크립트
 

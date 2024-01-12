@@ -31,14 +31,14 @@ namespace graphics
 		DirectX::XMMATRIX WorldViewProj();
 		// world, view, proj 곱을 반환
 
+		// 카메라 위치
+        DirectX::XMFLOAT3 _eyePosW; 
+
 	private:
         // 변환 관련 
 		DirectX::XMFLOAT4X4 _world; // 월드 변환 행렬 (로컬->월드)
 		DirectX::XMFLOAT4X4 _view; // 시야 변환 행렬 (카메라 뷰)
 		DirectX::XMFLOAT4X4 _proj; // 투영 변환 행렬 (원근/직교)
-
-		// 카메라 위치
-        DirectX::XMFLOAT3 _eyePosW; 
 
 		// 월드 좌표
         DirectX::XMFLOAT4X4 _objWorld;

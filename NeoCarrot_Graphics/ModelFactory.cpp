@@ -4,6 +4,7 @@
 #include "D3D11Context.h"
 #include "ModelBuilder.h"
 #include "ResourceManager.h"
+#include "Camera3D.h"
 #include "D3D11RenderStates.h"
 #include "VertexStruct.h"
 
@@ -13,7 +14,9 @@
 
 namespace graphics
 {
-ModelFactory::ModelFactory(ResourceManager* resourceManager) : _resourceManager(resourceManager)
+ModelFactory::ModelFactory(ResourceManager* resourceManager, Camera3D* camera) :
+_resourceManager(resourceManager),
+_camera(camera)
 {
 #if defined(DEBUG) || defined(_DEBUG)
     std::cout << "\t\tModelFactory Constructed\n";
@@ -45,6 +48,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                     .AddVertexLayout(PosColorDesc)
                     .AddAxisScript()
+                    .AddCamera(_camera)
                     .Build();
 
     return axis;

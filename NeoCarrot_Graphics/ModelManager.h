@@ -15,11 +15,12 @@
 namespace graphics
 {
 class ResourceManager;
+class Camera3D;
 
 class ModelManager
 {
 public:
-    ModelManager(ResourceManager* resourceManager);
+    ModelManager(ResourceManager* resourceManager, Camera3D* camera);
 
     void Initialize();
     void Update(float deltaTime);

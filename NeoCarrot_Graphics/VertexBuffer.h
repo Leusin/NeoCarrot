@@ -44,7 +44,7 @@ _entity{EntityPtr(entityPtr)},
 _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\t\tVertexBuffer Component\n";
+    std::cout << "\t\t\t\tAdd VertexBuffer Component\n";
 #endif // _DEBUG
 }
 
@@ -63,9 +63,6 @@ inline void VertexBuffer<V>::Awake()
     vinitData.pSysMem = &_vertices[0];
     _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 
-#ifdef _DEBUG
-   std::cout << "\t\t\t\t\tAdd VertexBuffer Component Awake\n";
-#endif // _DEBUG;
 }
 
 } // namespace graphics

@@ -5,6 +5,8 @@
 #include "IndexBuffer.h"
 #include "Effect.h"
 #include "VertexLayout.h"
+#include "Camera3D.h"
+#include "CameraPtr.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -38,7 +40,6 @@ ModelBuilder ModelBuilder::AddTransform()
     return *this;
 }
 
-
 ModelBuilder ModelBuilder::AddIndexBuffer()
 {
     _entity->AddComponent<IndexBuffer>(_entity);
@@ -56,6 +57,13 @@ ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
 ModelBuilder ModelBuilder::AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc)
 {
     _entity->AddComponent<VertexLayout>(_entity, desc);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
+{
+    _entity->AddComponent<CameraPtr>(_entity,camera);
 
     return *this;
 }

@@ -48,9 +48,6 @@ void Effect::Awake()
     _tech            = _fx->GetTechniqueByName("ColorTech");
     _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
 
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tEffect D3Device Awake\n";
-#endif // _DEBUG;
 }
 
 } // namespace graphics

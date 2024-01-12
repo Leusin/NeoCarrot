@@ -20,9 +20,6 @@ D3Device::D3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11Ra
 
 void D3Device::Awake()
 {
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tVertexBuffer D3Device Awake\n";
-#endif // _DEBUG;
 }
 
 void D3Device::Update(float dt)

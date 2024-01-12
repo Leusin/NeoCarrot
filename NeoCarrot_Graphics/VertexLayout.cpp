@@ -9,9 +9,6 @@
 
 namespace graphics
 {
-
-    
-
 VertexLayout::VertexLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc) :
 _entity{EntityPtr(entityPtr)},
 _d3device{_entity.lock()->GetComponent<graphics::D3Device>()},
@@ -34,9 +31,6 @@ void VertexLayout::Awake()
                                               passDesc.IAInputSignatureSize,
                                               _inputLayout.GetAddressOf());
 
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tVertexLayout Component Awake\n";
-#endif // _DEBUG
 };
 
 } // namespace graphics

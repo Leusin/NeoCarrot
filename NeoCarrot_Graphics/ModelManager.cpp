@@ -1,5 +1,7 @@
 #include "ModelManager.h"
 
+#include "Camera3D.h"
+
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -7,9 +9,8 @@
 namespace graphics
 {
 
-ModelManager::ModelManager(ResourceManager* resourceManager) 
-	:
-_entityManager{std::make_unique<core::EntityManager<ModelFactory>>(resourceManager)}
+ModelManager::ModelManager(ResourceManager* resourceManager, Camera3D* camera) :
+_entityManager{std::make_unique<core::EntityManager<ModelFactory>>(resourceManager, camera)}
 {
 #ifdef _DEBUG
     std::cout << "\tModelManager Constructed\n";
