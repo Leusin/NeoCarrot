@@ -23,6 +23,8 @@ public:
 
     void Awake() override;
 
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayout{nullptr};
+
 private:
     EntityWeakPtr _entity;
     D3Device*     _d3device;
@@ -30,6 +32,5 @@ private:
 
     const D3D11_INPUT_ELEMENT_DESC* _vertexDesc;
 
-    Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayout{nullptr};
 };
 } // namespace graphics

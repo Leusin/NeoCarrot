@@ -4,6 +4,7 @@
 #include "D3D11Context.h"
 #include "ModelBuilder.h"
 #include "ResourceManager.h"
+#include "D3D11RenderStates.h"
 #include "VertexStruct.h"
 
 #ifdef _DEBUG
@@ -37,12 +38,13 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
 
-    auto axis = builder.AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext())
-                    .AddVertexBuffer<graphics::Pos>()
+    auto axis = builder.AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext(), _resourceManager->_renderState->WireFrame())
+                    .AddVertexBuffer<graphics::PosCol>()
                     .AddIndexBuffer()
                     .AddTransform()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                     .AddVertexLayout(PosColorDesc)
+                    .AddAxisScript()
                     .Build();
 
     return axis;

@@ -24,9 +24,9 @@ _entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<cons
     std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
 }
-ModelBuilder ModelBuilder::AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext)
+ModelBuilder ModelBuilder::AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11RasterizerState* rasterizerState)
 {
-    _entity->AddComponent<D3Device>(device, dContext);
+    _entity->AddComponent<D3Device>(device, dContext, rasterizerState);
 
     return *this;
 }
@@ -61,6 +61,13 @@ ModelBuilder ModelBuilder::AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc)
 }
 
 
+
+ModelBuilder ModelBuilder::AddAxisScript()
+{
+    _entity->AddComponent<AxisScript>(_entity);
+
+    return *this;
+}
 
 EntityPtr ModelBuilder::Build()
 {

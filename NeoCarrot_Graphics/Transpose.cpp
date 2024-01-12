@@ -26,8 +26,12 @@ graphics::Transpose::~Transpose()
 void graphics::Transpose::Awake()
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\t\t\tAdd Transpose Component Awake\n";
+    std::cout << "\t\t\t\t\tTranspose Component Awake\n";
 #endif // _DEBUG
+}
+
+void graphics::Transpose::Update(float dt)
+{
 }
 
 DirectX::XMMATRIX graphics::Transpose::GetWorld()

@@ -71,6 +71,10 @@ void game::GameEngine::Process()
             _renderer->ImportData(_graphicsInfo.get());
             _renderer->Update(dt);
 
+            _renderer->BeginRender();
+            _renderer->Render();
+            _renderer->EndRender();
+
         }
     }
 }

@@ -48,13 +48,13 @@ void graphics::GraphicsEngine::Initialize()
 
 void graphics::GraphicsEngine::Update(float deltaTime)
 {
-    _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), _camera->View(), _camera->Proj());
-    _grid->SetEyePosW(_camera->GetPosition());
-    _modelManager->Update(deltaTime);
+    auto view = _camera->View();
+    auto proj = _camera->Proj();
+    auto eye = _camera->GetPosition();
 
-    BeginRender();
-    Render();
-    EndRender();
+    _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), view, proj);
+    _grid->SetEyePosW(eye);
+
 }
 
 void graphics::GraphicsEngine::BeginRender()
@@ -66,6 +66,8 @@ void graphics::GraphicsEngine::Render()
 {
 	_font->DrawTest();
 	_grid->Render();
+    _modelManager->Update(0);
+
     DrawStatus();
 }
 

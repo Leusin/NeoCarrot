@@ -36,11 +36,11 @@ public:
 
     void ImportData(const data::ForGraphics* info);
 
-private:
-
     void BeginRender();
     void Render();
     void EndRender();
+
+private:
 
     //  리소스들
     std::unique_ptr<D3D11Context> _d3d11;

@@ -3,6 +3,7 @@
 #include "EntityEnum.h"
 #include "Entity.h"
 #include "VertexBuffer.h"
+#include "AxisScript.h"
 
 #include <memory>
 #include <string>
@@ -10,14 +11,7 @@
 struct ID3D11Device;
 struct ID3D11DeviceContext;
 struct D3D11_INPUT_ELEMENT_DESC;
-
-/*
-namespace core
-{
-template <typename T, typename U>
-class Entity;
-} // namespace core
-*/
+struct ID3D11RasterizerState;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
@@ -29,7 +23,7 @@ class ModelBuilder
 public:
     ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
     
-    ModelBuilder AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext);
+    ModelBuilder AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11RasterizerState* rasterizerState);
     
     ModelBuilder AddTransform();
     
@@ -41,6 +35,10 @@ public:
     ModelBuilder AddEffect(std::wstring fileName);
 
     ModelBuilder AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc);
+
+    /// 스크립트
+
+    ModelBuilder AddAxisScript();
 
     // 제품 반환
     EntityPtr Build();

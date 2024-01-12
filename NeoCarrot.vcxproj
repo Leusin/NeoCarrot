@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3Device.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="NeoCarrot_Graphics\VertexLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3Device.h" />

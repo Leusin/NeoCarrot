@@ -22,16 +22,16 @@ public:
 
     void Awake() override;
 
+    // 인덱스버퍼
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _ib{nullptr};
+    std::vector<UINT> _indices;
+
+    std::vector<UINT> _indexOffset;
+    std::vector<UINT> _indexCount;
+
 private:
     EntityWeakPtr _entity;
     D3Device*     _d3device;
-
-    // 인덱스버퍼
-    Microsoft::WRL::ComPtr<ID3D11Buffer> _ib{nullptr};
-
-    std::vector<UINT> _indices;
-    std::vector<UINT> _indexOffset;
-    std::vector<UINT> _indexCount;
 
     UINT _totalIndexCount;
 };

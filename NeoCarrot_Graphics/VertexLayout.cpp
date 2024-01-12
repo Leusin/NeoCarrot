@@ -35,7 +35,7 @@ void VertexLayout::Awake()
                                               _inputLayout.GetAddressOf());
 
 #ifdef _DEBUG
-    std::cout << "\t\t\t\t\tAdd VertexLayout Component Awake\n";
+    std::cout << "\t\t\t\t\tVertexLayout Component Awake\n";
 #endif // _DEBUG
 };
 

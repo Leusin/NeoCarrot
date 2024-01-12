@@ -127,7 +127,6 @@ void graphics::Grid::BuildGeometryBuffers()
 
 void graphics::Grid::BuildFX()
 {
-
 	// 실행 파일의 경로
 	const TCHAR* pathName{ L"../NeoCarrot_Graphics/FX" };
 	const TCHAR* fileName{ L"color.fxo" };

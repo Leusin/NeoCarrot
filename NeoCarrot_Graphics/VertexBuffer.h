@@ -24,20 +24,18 @@ class VertexBuffer : public core::IComponent
 public:
     VertexBuffer(EntityPtr entityPtr);
 
-
     void Awake() override;
 
+    // 버텍스버퍼
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
+    std::vector<V>   _vertices;
+    std::vector<int> _vertexOffset;
+    UINT _totalVertexCount;
 private:
     EntityWeakPtr _entity;
     D3Device*     _d3device;
 
-    // 버텍스버퍼
-    Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
 
-    std::vector<V>   _vertices;
-    std::vector<int> _vertexOffset;
-
-    UINT _totalVertexCount;
 };
 
 template <typename V>
@@ -46,7 +44,7 @@ _entity{EntityPtr(entityPtr)},
 _d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\t\tAdd VertexBuffer Component\n";
+    std::cout << "\t\t\t\tVertexBuffer Component\n";
 #endif // _DEBUG
 }
 
