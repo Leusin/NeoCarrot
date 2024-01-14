@@ -20,7 +20,6 @@ public:
 	ID3D11RasterizerState* WireFrame();
 	ID3D11RasterizerState* Solid();
 
-
 	//폰트용. 
 	// TODO - 다른 클래스로 분리할 것
 	ID3D11DepthStencilState* _normalDSS{ nullptr };

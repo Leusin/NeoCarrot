@@ -28,19 +28,16 @@
     <Filter Include="component">
       <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="D3D11\mk1">
+      <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
-      <Filter>D3D11</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <Filter>mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
-      <Filter>D3D11</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
       <Filter>DirectXTK</Filter>
@@ -87,17 +84,26 @@
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp">
       <Filter>component</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
+      <Filter>D3D11\mk1</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
+      <Filter>D3D11\mk1</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context_mk2.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Devices.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ResourceView.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
-      <Filter>D3D11</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <Filter>mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
-      <Filter>D3D11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
       <Filter>DirectXTK</Filter>
@@ -146,6 +152,21 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h">
       <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
+      <Filter>D3D11\mk1</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
+      <Filter>D3D11\mk1</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context_mk2.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Devices.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceView.h">
+      <Filter>D3D11</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

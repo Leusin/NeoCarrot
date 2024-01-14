@@ -22,12 +22,6 @@ _camera(camera)
 
 void CameraPtr::Update(float dt)
 {
-
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tCameraPtr Update\n";
-#endif // _DEBUG
-
-
     auto view = _camera->View();
     auto proj = _camera->Proj();
     auto eye  = _camera->GetPosition();
