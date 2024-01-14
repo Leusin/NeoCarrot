@@ -47,7 +47,7 @@ ID3D11DeviceContext* graphics::D3D11Context::DiviceContext()
 {
     return _d3dDiviceContext.Get();
 }
-
+/*
 IDXGISwapChain* graphics::D3D11Context::SwapChain()
 {
     return _swapChain.Get();
@@ -67,6 +67,7 @@ ID3D11DepthStencilView* graphics::D3D11Context::DepthStencilView()
 {
     return _depthStencilView.Get();
 }
+*/
 
 void graphics::D3D11Context::OnResize(int clientWidth, int clientHeight)
 {
@@ -141,10 +142,10 @@ void graphics::D3D11Context::OnResize(int clientWidth, int clientHeight)
 void graphics::D3D11Context::BeginRender()
 {
     // 후면 버퍼를 지정돤 색으로 지움
-    DiviceContext()->ClearRenderTargetView(RenderTargetView(), reinterpret_cast<const float*>(&myColor::Carrot));
+    DiviceContext()->ClearRenderTargetView(_renderTargetView.Get(), reinterpret_cast<const float*>(&myColor::Carrot));
 
     //깊이버퍼를 1.0f, 스텐실 버퍼를 0 으로 지움
-    DiviceContext()->ClearDepthStencilView(DepthStencilView(), /*D3D11_CLEAR_DEPTH*/ 1 | /*D3D11_CLEAR_STENCIL*/ 2, 1.0f, 0);
+    DiviceContext()->ClearDepthStencilView(_depthStencilView.Get(), /*D3D11_CLEAR_DEPTH*/ 1 | /*D3D11_CLEAR_STENCIL*/ 2, 1.0f, 0);
 }
 
 void graphics::D3D11Context::EndRender()
@@ -155,7 +156,9 @@ void graphics::D3D11Context::EndRender()
 
 void graphics::D3D11Context::CreateDeviceContext()
 {
+    // 디버 그레이어 생성 여부
     UINT createDeviceFlags = 0;
+
 #if defined(DEBUG) || defined(_DEBUG)
     createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
@@ -174,14 +177,8 @@ void graphics::D3D11Context::CreateDeviceContext()
                                    &featureLevel,
                                    _d3dDiviceContext.GetAddressOf());
 
-    assert(_d3dDevice.Get());
-    assert(_d3dDiviceContext.Get());
-
-    if (FAILED(hr))
-    {
-        MessageBox(0, L"D3D11CreateDevice Failed.", 0, 0);
-        return;
-    }
+    assert(_d3dDevice.Get() && "device 가 만들어지지 않았습니다.");
+    assert(_d3dDiviceContext.Get() && "device context 가 만들어지지 않았습니다.");
 
     if (featureLevel != D3D_FEATURE_LEVEL_11_0)
     {

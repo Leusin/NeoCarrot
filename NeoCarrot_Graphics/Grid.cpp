@@ -22,9 +22,6 @@ graphics::Grid::~Grid()
 
 void graphics::Grid::Render()
 {
-	// 입력 배치 객체 셋팅
-	_d3dImmediateContext->IASetInputLayout(_inputLayout.Get());
-	_d3dImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
 	// 인덱스버퍼와 버텍스버퍼 셋팅
 	UINT stride = sizeof(Vertex);
@@ -40,10 +37,13 @@ void graphics::Grid::Render()
 		DXGI_FORMAT_R32_UINT,	// 인덱스 형식
 		0);						// 오프셋 값
 
+	// 입력 배치 객체 셋팅
+	_d3dImmediateContext->IASetInputLayout(_inputLayout.Get());
+	_d3dImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+
 	// WVP TM등을 셋팅
 	DirectX::XMMATRIX worldViewProj = _transpose.WorldViewProj();
 	_fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
-
 
 	// 렌더스테이트
 	_d3dImmediateContext->RSSetState(_renderstate);
