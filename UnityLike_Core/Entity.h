@@ -9,9 +9,8 @@
 
 #pragma once
 
-#include "IEventFunction.h"
-#include "Object.h"
 #include "IComponent.h"
+#include "Object.h"
 
 #include <memory>
 #include <vector>
@@ -20,7 +19,9 @@
 namespace core
 {
 
-template <typename Tag, typename Layer/*, typename ComponentT*/>
+class IComponent;
+
+template <typename Tag, typename Layer /*, typename ComponentT*/>
 class Entity : public Object<Tag, Layer>, public IEventFunction
 {
 public:

@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GetEntity.cpp" />
     <ClCompile Include="IComponent.cpp" />
     <ClCompile Include="IFactory.cpp" />
     <ClCompile Include="main.cpp">
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="EntityEnum.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="GetEntity.h" />
     <ClInclude Include="IComponent.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="IEventFunction.h" />

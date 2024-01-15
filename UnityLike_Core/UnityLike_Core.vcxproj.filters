@@ -20,6 +20,9 @@
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="IFactory.cpp" />
+    <ClCompile Include="GetEntity.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IComponent.h">
@@ -42,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="IFactory.h">
       <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GetEntity.h">
+      <Filter>core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

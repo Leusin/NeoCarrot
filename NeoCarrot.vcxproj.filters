@@ -13,9 +13,6 @@
     <Filter Include="D3D11">
       <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mesh">
-      <UniqueIdentifier>{eb05ede7-1d03-4809-91d4-8d3fd4c2fba9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
     </Filter>
@@ -35,9 +32,6 @@
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
       <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
-      <Filter>mesh</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
       <Filter>DirectXTK</Filter>
@@ -102,12 +96,11 @@
     <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
-    <ClInclude Include="NeoCarrot_Graphics\Grid.h">
-      <Filter>mesh</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
       <Filter>DirectXTK</Filter>
     </ClInclude>
@@ -173,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\RenderStates.h">
       <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Grid.h">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
+#include "IEventFunction.h"
+
 #ifdef CORE_Test
 #include <iostream>
-#include "Entity.h"
 #endif // CORE_Test
 
 namespace core
