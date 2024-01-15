@@ -123,8 +123,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
     // Fbx의 Poligon 은 ImpFace 와 같다.
     // 따라서 _meshFace 의 사이즈를 Face 크기만큼 잡아준다.
 
-    //_meshes.back()->_meshFace.resize(polygonCount);
-    //_meshes.back()->_meshVertex.resize(polygonCount * 3);
+    _meshes.back().faces.resize(polygonCount);
+    _meshes.back().vertices.resize(polygonCount * 3);
 
     FBXSDK_printf("    Polygons\n");
 
@@ -158,14 +158,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
         // 폴리곤의 사이즈는 무조건 3 이다.
         int polygonSize = mesh->GetPolygonSize(i);
 
-        // 페이스를 생성한다.
-        //_meshes.back()->_meshFace[i] = new ImpFace();
-
         for (j = 0; j < polygonSize; j++)
         {
-            // 정점을 생성한다.
-            //_meshes.back()->_meshVertex[i * 3 + j] = new ImpVertex();
-
             /// ----------------
             /// Vertex Position
             /// ----------------
@@ -185,12 +179,12 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 FBXSDK_printf("            Coordinates: %f, %f, %f\n", localPosition[0], localPosition[1], localPosition[2]);
 
                 // 위치값을 담는다.
-                //_meshes.back()->_meshVertex[i * 3 + j]->_localPos = {static_cast<float>(localPosition[0]),
-                //                                                     static_cast<float>(localPosition[1]),
-                //                                                     static_cast<float>(localPosition[2])};
+                _meshes.back().vertices[i * 3 + j].position = {static_cast<float>(localPosition[0]),
+                                                               static_cast<float>(localPosition[1]),
+                                                               static_cast<float>(localPosition[2])};
 
                 // 정점 데이터 값을 담는다
-                //_meshes.back()->_meshFace[i]->vertexIndex[j] = controlPointIndex;
+                _meshes.back().faces[i].indices[j] = controlPointIndex;
             }
 
             /// --------------
@@ -221,25 +215,25 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                         {
                             case FbxGeometryElement::eDirect:
                             {
-                                //vertexColor = leVtxc->GetDirectArray().GetAt(controlPointIndex);
-                                //FBXSDK_printf("%s %f, %f, %f, %f\n",
-                                //              header,
-                                //              vertexColor[0],
-                                //              vertexColor[1],
-                                //              vertexColor[2],
-                                //              vertexColor[3]);
+                                vertexColor = leVtxc->GetDirectArray().GetAt(controlPointIndex);
+                                FBXSDK_printf("%s %f, %f, %f, %f\n",
+                                              header,
+                                              vertexColor[0],
+                                              vertexColor[1],
+                                              vertexColor[2],
+                                              vertexColor[3]);
                             }
                             break;
                             case FbxGeometryElement::eIndexToDirect:
                             {
-                                //int id      = leVtxc->GetIndexArray().GetAt(controlPointIndex);
-                                //vertexColor = leVtxc->GetDirectArray().GetAt(id);
-                                //FBXSDK_printf("%s %f, %f, %f, %f\n",
-                                //              header,
-                                //              vertexColor[0],
-                                //              vertexColor[1],
-                                //              vertexColor[2],
-                                //              vertexColor[3]);
+                                int id      = leVtxc->GetIndexArray().GetAt(controlPointIndex);
+                                vertexColor = leVtxc->GetDirectArray().GetAt(id);
+                                FBXSDK_printf("%s %f, %f, %f, %f\n",
+                                              header,
+                                              vertexColor[0],
+                                              vertexColor[1],
+                                              vertexColor[2],
+                                              vertexColor[3]);
                             }
                             break;
                             default:
@@ -287,10 +281,10 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 컬러 값을 담는다.
-                //_meshes.back()->_meshVertex[i * 3 + j]->_color = {static_cast<float>(vertexColor[0]),
-                //                                                  static_cast<float>(vertexColor[1]),
-                //                                                  static_cast<float>(vertexColor[2]),
-                //                                                  static_cast<float>(vertexColor[3])};
+                _meshes.back().vertices[i * 3 + j].color = {static_cast<float>(vertexColor[0]),
+                                                            static_cast<float>(vertexColor[1]),
+                                                            static_cast<float>(vertexColor[2]),
+                                                            static_cast<float>(vertexColor[3])};
 
             } // for eColorCount
 
@@ -315,18 +309,18 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                         {
                             case FbxGeometryElement::eDirect:
                             {
-                                //uv = leUV->GetDirectArray().GetAt(controlPointIndex);
-                                //FBXSDK_printf("%s %f, %f\n", header, uv[0], uv[1]);
+                                uv = leUV->GetDirectArray().GetAt(controlPointIndex);
+                                FBXSDK_printf("%s %f, %f\n", header, uv[0], uv[1]);
                             }
                             break;
                             case FbxGeometryElement::eIndexToDirect:
                             {
-                                //int id = leUV->GetIndexArray().GetAt(controlPointIndex);
-                                //uv     = leUV->GetDirectArray().GetAt(id);
-                                //FBXSDK_printf("%s %f, %f\n",
-                                //              header,
-                                //              leUV->GetDirectArray().GetAt(id)[0],
-                                //              leUV->GetDirectArray().GetAt(id)[1]);
+                                int id = leUV->GetIndexArray().GetAt(controlPointIndex);
+                                uv     = leUV->GetDirectArray().GetAt(id);
+                                FBXSDK_printf("%s %f, %f\n",
+                                              header,
+                                              leUV->GetDirectArray().GetAt(id)[0],
+                                              leUV->GetDirectArray().GetAt(id)[1]);
                             }
                             break;
                             default:
@@ -359,8 +353,7 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // uv 좌표값을 담는다.
-                //_meshes.back()->_meshVertex[i * 3 + j]->_u = static_cast<float>(uv[0]);
-                //_meshes.back()->_meshVertex[i * 3 + j]->_v = static_cast<float>(uv[1]);
+                _meshes.back().vertices[i * 3 + j].uv = {static_cast<float>(uv[0]), static_cast<float>(uv[1])};
 
             } // for PolygonSize
 
@@ -374,8 +367,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
             int normalCount = mesh->GetElementNormalCount();
 
             // 노말 값의 유무 표시한다.
-            //if (normalCount)
-            //    _meshes.back()->_hasNormal = true;
+            if (normalCount)
+                _meshes.back().hasNormal = true;
 
             for (l = 0; l < normalCount; ++l)
             {
@@ -405,9 +398,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                     }
 
                     // 노말 값을 담는다.
-                    //_meshes.back()->_meshVertex[i * 3 + j]->_normal = {static_cast<float>(normal[0]),
-                    //                                                   static_cast<float>(normal[1]),
-                    //                                                   static_cast<float>(normal[2])};
+                    _meshes.back().vertices[i * 3 + j].normal = {static_cast<float>(normal[0]),
+                                                                 static_cast<float>(normal[1]),
+                                                                 static_cast<float>(normal[2])};
 
                 } // for normalCount
             }
@@ -422,8 +415,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
             int tangentCount = mesh->GetElementTangentCount();
 
             // 탄젠트 값의 유무를 표시한다.
-            //if (tangentCount)
-            //_meshes.back()->_hasTangent = true;
+            if (tangentCount)
+                _meshes.back().hasTangent = true;
 
             for (l = 0; l < tangentCount; ++l)
             {
@@ -453,8 +446,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 탄젠트 값을 담는다.
-                //_meshes.back()->_meshVertex[i * 3 + j]->_tangent =
-                //   {static_cast<float>(tangent[0]), static_cast<float>(tangent[1]), static_cast<float>(tangent[2])};
+                _meshes.back().vertices[i * 3 + j].tangent = {static_cast<float>(tangent[0]),
+                                                              static_cast<float>(tangent[1]),
+                                                              static_cast<float>(tangent[2])};
 
             } // for tangentCount
 
@@ -494,9 +488,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 바이노말 값을 담는다.
-                //_meshes.back()->_meshVertex[i * 3 + j]->_bitangent = {static_cast<float>(bitangent[0]),
-                //                                                      static_cast<float>(bitangent[1]),
-                //                                                      static_cast<float>(bitangent[2])};
+                _meshes.back().vertices[i * 3 + j].binormal = {static_cast<float>(bitangent[0]),
+                                                               static_cast<float>(bitangent[1]),
+                                                               static_cast<float>(bitangent[2])};
 
             } // for Binormal Count
 
