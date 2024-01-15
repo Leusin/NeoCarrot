@@ -1,4 +1,5 @@
 #pragma once
+
 #include "GetEntity.h"
 #include "IComponent.h"
 

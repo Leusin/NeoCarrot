@@ -34,7 +34,6 @@ GridScript::GridScript(EntityPtr entityPtr)
 }
 void GridScript::Awake()
 {
-
 }
 
 void GridScript::Update(float dt)
@@ -80,7 +79,7 @@ void GridScript::SetVertexBuffer()
     for (int i = 0; i < 100; i++)
     {
         _vertexBuffer->_vertices[i]
-            .Pos = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f, 0.0f, static_cast<float>(i / 10) - 5.0f);
+            .Pos = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f, -0.f, static_cast<float>(i / 10) - 5.0f);
         _vertexBuffer->_vertices[i].Color = DirectX::XMFLOAT4((const float*)&DirectX::Colors::Orange);
 
     }

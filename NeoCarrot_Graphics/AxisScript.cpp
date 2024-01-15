@@ -2,10 +2,9 @@
 
 #include "D3Devices.h"
 #include "Effect.h"
-#include "Entity.h"
+#include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "Transpose.h"
-#include "VertexBuffer.h"
 #include "InputLayout.h"
 #include "StructedBuffer.h"
 

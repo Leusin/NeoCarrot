@@ -54,7 +54,6 @@ EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
                     .AddIndexBuffer()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                     .AddVertexLayout(PosColorDesc)
-                    .AddAxisScript()
                     .AddGridScript()
                     .Build();
 
@@ -87,7 +86,11 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
                    .AddD3Device(_d3d11context)
                    .AddTransform()
                    .AddCamera(_camera)
+                   .AddVertexBuffer<PosNormal>()
                    .AddIndexBuffer()
+                   .AddEffect({L"../NeoCarrot_Graphics/FX/BasicTex.fxo"})
+                   .AddVertexLayout(PosNormalDesc)
+                   .AddBoxcript(_fbxLoader.get())
                    // dc, inputlayout(fx 와 초기화) , Renderstate
                    // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
                    // 이펙트, 조명, 테크

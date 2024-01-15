@@ -15,10 +15,13 @@ struct ID3D11RasterizerState;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
+namespace loader{ class FbxLoader; }
+
 namespace graphics
 {
 class Camera3D;
 
+// 본문
 class ModelBuilder
 {
 public:
@@ -43,6 +46,7 @@ public:
 
     ModelBuilder AddAxisScript();
     ModelBuilder AddGridScript();
+    ModelBuilder AddBoxcript(loader::FbxLoader* fbxLodaer);
 
     // 제품 반환
     EntityPtr Build();

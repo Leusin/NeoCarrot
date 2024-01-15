@@ -1,6 +1,7 @@
 #include "ModelBuilder.h"
 
 #include "D3D11Context_mk2.h"
+#include "FBXLoader.h"
 
 #include "D3Devices.h"
 #include "Transpose.h"
@@ -10,6 +11,7 @@
 #include "Camera3D.h"
 #include "CameraPtr.h"
 #include "GridScript.h"
+#include "BoxScript.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -82,6 +84,12 @@ ModelBuilder ModelBuilder::AddGridScript()
 {
     _entity->AddComponent<GridScript>(_entity);
 
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddBoxcript(loader::FbxLoader* fbxLodaer)
+{
+    _entity->AddComponent<BoxScript>(_entity, fbxLodaer);
     return *this;
 }
 

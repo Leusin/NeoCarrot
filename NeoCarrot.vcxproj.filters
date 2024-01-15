@@ -28,6 +28,9 @@
     <Filter Include="D3D11\mk1">
       <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="component_script">
+      <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
@@ -66,9 +69,6 @@
     <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp">
       <Filter>component</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp">
       <Filter>component</Filter>
     </ClCompile>
@@ -99,8 +99,14 @@
     <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp">
-      <Filter>component</Filter>
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
+      <Filter>component_script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +146,6 @@
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h">
       <Filter>component</Filter>
     </ClInclude>
@@ -173,8 +176,14 @@
     <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
       <Filter>manager</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GridScript.h">
-      <Filter>component</Filter>
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
+      <Filter>component_script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
