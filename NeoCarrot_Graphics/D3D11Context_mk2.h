@@ -13,6 +13,7 @@ namespace graphics
 // 전방 선언
 class Devices;
 struct ResourceView;
+struct RenderStates;
 
 // 본문
 class D3D11Context_mk2
@@ -33,6 +34,7 @@ private:
     std::unique_ptr<Devices>               _devices;
     Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain;
     std::unique_ptr<ResourceView>          _resourceView;
+    std::unique_ptr<RenderStates>          _renderState;
 };
 
 } // namespace graphics

@@ -26,11 +26,11 @@ Devices::Devices()
 
 Devices::~Devices()
 {
-    _d3dImmdiateContext->ClearState();
-    _d3dImmdiateContext->Flush();
-
     _d3dDeferredContext->ClearState();
     _d3dDeferredContext->Flush();
+
+    _d3dImmdiateContext->ClearState();
+    _d3dImmdiateContext->Flush();
 }
 
 ID3D11Device* Devices::Device() const

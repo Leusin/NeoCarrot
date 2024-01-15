@@ -99,6 +99,9 @@
     <ClCompile Include="NeoCarrot_Graphics\ResourceView.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
+      <Filter>D3D11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
@@ -166,6 +169,9 @@
       <Filter>D3D11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h">
+      <Filter>D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\RenderStates.h">
       <Filter>D3D11</Filter>
     </ClInclude>
   </ItemGroup>

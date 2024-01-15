@@ -1,6 +1,7 @@
 #include "GraphicsEngine.h"
 
 #include "D3D11Context.h"
+#include "D3D11Context_mk2.h"
 #include "D3D11RenderStates.h"
 #include "DXTKFont.h"
 #include "FontType.h"
@@ -23,6 +24,7 @@ namespace graphics
 
 graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth, int clientHeight) 
     : _d3d11(std::make_unique<D3D11Context>(hinst, hWnd, clientWidth, clientHeight))
+    , _d3d11context(std::make_unique<D3D11Context_mk2>(hinst, hWnd, clientWidth, clientHeight))
 	, _renderState(std::make_unique<D3D11RenderStates>(_d3d11->Divice()))
 	, _font(std::make_unique<DXTKFont>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
 	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))

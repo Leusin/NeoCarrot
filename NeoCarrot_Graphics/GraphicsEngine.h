@@ -13,6 +13,7 @@
 namespace graphics
 {
 class D3D11Context;
+class D3D11Context_mk2;
 class D3D11RenderStates;
 class DXTKFont;
 class Grid;
@@ -43,6 +44,7 @@ private:
 
     //  리소스들
     std::unique_ptr<D3D11Context> _d3d11;
+    std::unique_ptr<D3D11Context_mk2> _d3d11context;
     std::unique_ptr<D3D11RenderStates> _renderState;
     std::unique_ptr<DXTKFont>         _font;
     

@@ -2,9 +2,9 @@
 
 #include "D3D11Context_mk2.h"
 
-#include "MyColor.h"
 #include "Devices.h"
 #include "ResourceView.h"
+#include "RenderStates.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -17,8 +17,9 @@ namespace graphics
 D3D11Context_mk2::D3D11Context_mk2(HINSTANCE hinst, HWND hWnd, int clientWidth, int clientHeight) 
     : _devices(std::make_unique<Devices>())
     , _resourceView(std::make_unique<ResourceView>())
+    , _renderState(std::make_unique<RenderStates>(_devices->Device()))
 {
-    CreateSwapChain(hWnd, clientWidth, clientHeight);
+    //CreateSwapChain(hWnd, clientWidth, clientHeight);
 
 #ifdef _DEBUG
     std::cout << "\tD3D11Context_mk2 Constructed\n";
@@ -156,7 +157,7 @@ void D3D11Context_mk2::OnResize(int width, int height)
 void D3D11Context_mk2::BeginRender(const float* color) const
 {
     // 후면 버퍼를 지정돤 색으로 지움
-    _devices->ImmediateContext()->ClearRenderTargetView(_resourceView->renderTargetView.Get(), reinterpret_cast<const float*>(&myColor::Carrot));
+    _devices->ImmediateContext()->ClearRenderTargetView(_resourceView->renderTargetView.Get(), reinterpret_cast<const float*>(&color));
     //깊이버퍼를 1.0f, 스텐실 버퍼를 0 으로 지움
     _devices->ImmediateContext()->ClearDepthStencilView(_resourceView->depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }
