@@ -12,14 +12,10 @@
 
 namespace graphics
 {
-class D3D11Context;
 class D3D11Context_mk2;
-class D3D11RenderStates;
 class DXTKFont;
-class Grid;
 class Camera3D;
 class ModelManager;
-class ResourceManager;
 
 class GraphicsEngine
 {

@@ -1,16 +1,9 @@
 #include "GraphicsEngine.h"
 
-#include "D3D11Context.h"
 #include "D3D11Context_mk2.h"
-#include "D3D11RenderStates.h"
 #include "DXTKFont.h"
 #include "FontType.h"
-#include "ResourceManager.h"
 #include "Camera3D.h"
-
-// Mesh Obj
-#include "Grid.h"
-#include "ForGraphics.h"
 #include "ModelManager.h"
 
 #ifdef _DEBUG
@@ -49,8 +42,6 @@ void graphics::GraphicsEngine::Update(float deltaTime)
     auto proj = _camera->Proj();
     auto eye = _camera->GetPosition();
 
-    //_grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), view, proj);
-    //_grid->SetEyePosW(eye);
 }
 
 void graphics::GraphicsEngine::BeginRender()
@@ -62,7 +53,6 @@ void graphics::GraphicsEngine::BeginRender()
 void graphics::GraphicsEngine::Render()
 {
 	_font->DrawTest();
-	//_grid->Render();
     _modelManager->Update(0);
 
     DrawStatus();
