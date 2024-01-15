@@ -37,6 +37,7 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 
     return nullptr;
 }
+
 EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
@@ -45,7 +46,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
                     .AddD3Device(_d3d11context)
                     .AddTransform()
                     .AddCamera(_camera)
-                    .AddVertexBuffer<graphics::PosCol>()
+                    .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                     .AddVertexLayout(PosColorDesc)
@@ -54,11 +55,16 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 
     return axis;
 }
+
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
 
     auto box = builder
+                   .AddD3Device(_d3d11context)
+                   .AddTransform()
+                   .AddCamera(_camera)
+                   .AddIndexBuffer()
                    // dc, inputlayout(fx 와 초기화) , Renderstate
                    // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
                    // 이펙트, 조명, 테크
@@ -70,4 +76,5 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 
     return box;
 }
+
 } // namespace graphics

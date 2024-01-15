@@ -36,6 +36,7 @@
     <ClInclude Include="..\MrRabbit_Game\EntityEnum.h">
       <Filter>info</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MathUtils.cpp">
