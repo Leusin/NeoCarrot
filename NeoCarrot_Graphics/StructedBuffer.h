@@ -5,6 +5,10 @@
 
 namespace graphics
 {
+
+//
+// 구조체 버퍼
+//
 struct Pos
 {
     DirectX::XMFLOAT3 Pos;
@@ -28,6 +32,10 @@ struct PosNolTex
     DirectX::XMFLOAT3 Normal;
     DirectX::XMFLOAT2 Tex;
 };
+
+//
+// 인풋 레이아웃
+//
 
 static const D3D11_INPUT_ELEMENT_DESC PosColorDesc[] =
     {{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},

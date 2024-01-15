@@ -69,7 +69,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Effect.cpp">
       <Filter>component</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\VertexLayout.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp">
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
@@ -128,7 +128,7 @@
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\VertexStruct.h">
+    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h">
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
@@ -140,7 +140,7 @@
     <ClInclude Include="NeoCarrot_Graphics\Effect.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\VertexLayout.h">
+    <ClInclude Include="NeoCarrot_Graphics\InputLayout.h">
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">

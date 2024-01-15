@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <vector>
+#include <cassert>
 
 #ifdef _DEBUG
 #include <iostream>
@@ -16,6 +17,8 @@ Effect::Effect(EntityPtr entityPtr, std::wstring fileName)
     , _fileName(fileName)
     , _d3device{GetComponent<graphics::D3Devices>()}
 {
+    assert(_d3device && "Effect 에서 D3Devices 를 찾을 수 없음");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Effect Component\n";
 #endif // _DEBUG

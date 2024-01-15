@@ -15,6 +15,10 @@ CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera)
     , _transpose(GetComponent<graphics::Transpose>())
     , _camera(camera)
 {
+    assert(_transpose && "CameraPtr 에서 Transpose 를 찾을 수 없음");
+    assert(_transpose && "CameraPtr 에서 Camera3D 를 찾을 수 없음");
+
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd CameraPtr Component\n";
 #endif // _DEBUG

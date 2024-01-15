@@ -12,10 +12,10 @@ namespace graphics
 class D3Devices;
 class Effect;
 
-class VertexLayout : public core::IComponent, virtual core::GetEntity
+class InputLayout : public core::IComponent, virtual core::GetEntity
 {
 public:
-    VertexLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc);
+    InputLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc);
 
     void Awake() override;
 

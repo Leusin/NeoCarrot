@@ -6,7 +6,7 @@
 #include "Transpose.h"
 #include "IndexBuffer.h"
 #include "Effect.h"
-#include "VertexLayout.h"
+#include "InputLayout.h"
 #include "Camera3D.h"
 #include "CameraPtr.h"
 
@@ -58,7 +58,7 @@ ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
 
 ModelBuilder ModelBuilder::AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc)
 {
-    _entity->AddComponent<VertexLayout>(_entity, desc);
+    _entity->AddComponent<InputLayout>(_entity, desc);
 
     return *this;
 }

@@ -7,6 +7,7 @@
 #include <d3d11.h>
 #include <vector>
 #include <wrl.h>
+#include <cassert>
 
 #ifdef _DEBUG
 #include <iostream>
@@ -37,6 +38,8 @@ inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr)),
     _d3device{GetComponent<graphics::D3Devices>()}
 {
+    assert(_d3device && "VertexBuffer 에서 D3Devices 를 찾을 수 없음");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexBuffer Component\n";
 #endif // _DEBUG

@@ -6,8 +6,8 @@
 #include "IndexBuffer.h"
 #include "Transpose.h"
 #include "VertexBuffer.h"
-#include "VertexLayout.h"
-#include "VertexStruct.h"
+#include "InputLayout.h"
+#include "StructedBuffer.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>
@@ -63,7 +63,7 @@ void AxisScript::Awake()
 void AxisScript::Update(float dt)
 {
     auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
-    auto* inputLayout = GetComponent<VertexLayout>()->_inputLayout.Get();
+    auto* inputLayout = GetComponent<InputLayout>()->_inputLayout.Get();
     dc->IASetInputLayout(inputLayout);
     dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 

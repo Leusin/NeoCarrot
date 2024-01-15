@@ -5,6 +5,7 @@
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
+#include <cassert>
 
 namespace graphics
 {
@@ -12,6 +13,8 @@ IndexBuffer::IndexBuffer(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
     , _d3device{GetComponent<graphics::D3Devices>()}
 {
+    assert(_d3device && "IndexBuffer 에서 D3Devices 를 찾을 수 없음");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd IndexBuffer Component\n";
 #endif // _DEBUG

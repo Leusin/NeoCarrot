@@ -67,7 +67,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
     <ClCompile Include="NeoCarrot_Graphics\VertexBuffer.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\VertexLayout.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
@@ -117,8 +117,8 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
-    <ClInclude Include="NeoCarrot_Graphics\VertexLayout.h" />
-    <ClInclude Include="NeoCarrot_Graphics\VertexStruct.h" />
+    <ClInclude Include="NeoCarrot_Graphics\InputLayout.h" />
+    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md" />

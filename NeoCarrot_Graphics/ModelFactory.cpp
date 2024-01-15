@@ -5,7 +5,7 @@
 #include "Devices.h"
 #include "ModelBuilder.h"
 #include "Camera3D.h"
-#include "VertexStruct.h"
+#include "StructedBuffer.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -43,13 +43,13 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 
     auto axis = builder
                     .AddD3Device(_d3d11context)
+                    .AddTransform()
+                    .AddCamera(_camera)
                     .AddVertexBuffer<graphics::PosCol>()
                     .AddIndexBuffer()
-                    .AddTransform()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                     .AddVertexLayout(PosColorDesc)
                     .AddAxisScript()
-                    .AddCamera(_camera)
                     .Build();
 
     return axis;
