@@ -27,6 +27,7 @@ enum class Layer
 enum class GameObect
 {
     CAMERA,
+    GRID,
     AXIS,
     BOX,
 

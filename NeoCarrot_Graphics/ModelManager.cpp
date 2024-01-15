@@ -37,6 +37,7 @@ void ModelManager::Finalize()
 void ModelManager::CreateEnity()
 {
     _entityManager->AddEntity(core::GameObect::AXIS, "axis");
+    _entityManager->AddEntity(core::GameObect::GRID, "grid");
     _entityManager->AddEntity(core::GameObect::BOX, "box");
 }
 

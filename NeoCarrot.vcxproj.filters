@@ -45,12 +45,6 @@
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
-      <Filter>manager</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
-      <Filter>manager</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
       <Filter>component</Filter>
     </ClCompile>
@@ -99,6 +93,15 @@
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <Filter>model</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
@@ -116,14 +119,8 @@
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
-      <Filter>manager</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
       <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
-      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h">
       <Filter>component</Filter>
@@ -169,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GridScript.h">
+      <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

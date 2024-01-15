@@ -34,11 +34,31 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
             return CreateAxis(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::BOX:
             return CreateBox(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::GRID:
+            return CreateGrid(std::forward<const size_t>(id), std::move(name));
         default:
             break;
     }
 
     return nullptr;
+}
+
+EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
+
+    auto grid = builder.AddD3Device(_d3d11context)
+                    .AddTransform()
+                    .AddCamera(_camera)
+                    .AddVertexBuffer<PosCol>()
+                    .AddIndexBuffer()
+                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
+                    .AddVertexLayout(PosColorDesc)
+                    .AddAxisScript()
+                    .AddGridScript()
+                    .Build();
+
+    return grid;
 }
 
 EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)

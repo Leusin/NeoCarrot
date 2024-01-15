@@ -27,6 +27,7 @@ public:
     EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 
 private:
+    EntityPtr CreateGrid(const size_t&& id, const char* name);
     EntityPtr CreateAxis(const size_t&& id, const char* name);
     EntityPtr CreateBox(const size_t&& id, const char* name);
 

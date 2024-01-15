@@ -42,6 +42,7 @@ public:
     /// 스크립트
 
     ModelBuilder AddAxisScript();
+    ModelBuilder AddGridScript();
 
     // 제품 반환
     EntityPtr Build();

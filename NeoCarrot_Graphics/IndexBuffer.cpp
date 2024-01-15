@@ -29,8 +29,10 @@ void IndexBuffer::Awake()
     ibd.BindFlags      = D3D11_BIND_INDEX_BUFFER;
     ibd.CPUAccessFlags = 0;
     ibd.MiscFlags      = 0;
+
     D3D11_SUBRESOURCE_DATA iinitData;
-    iinitData.pSysMem = &_indices[0];
+    iinitData.pSysMem = _indices.data();
+
     _d3device->GetDevice()->CreateBuffer(&ibd, &iinitData, _ib.GetAddressOf());
 }
 

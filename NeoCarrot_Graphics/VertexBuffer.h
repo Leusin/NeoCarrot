@@ -57,7 +57,7 @@ inline void VertexBuffer<V>::Awake()
     vbd.CPUAccessFlags = 0;
     vbd.MiscFlags      = 0;
     D3D11_SUBRESOURCE_DATA vinitData;
-    vinitData.pSysMem = &_vertices[0];
+    vinitData.pSysMem = _vertices.data();
     _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 
 }

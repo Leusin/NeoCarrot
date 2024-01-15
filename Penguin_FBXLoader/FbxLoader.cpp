@@ -6,19 +6,21 @@ loader::FbxLoader::FbxLoader()
 	, _manager(FbxManager::Create())
 	, _meshLoader(std::make_unique<loader::MeshLoader>(_manager))
 {
+#ifdef _DEBUG
 	if (!_manager)
 	{
 		FBXSDK_printf("오류: 《FbxManager》를 만들 수 없음.\n\n");
 		exit(1);
 
 	}
-	else FBXSDK_printf("\n>> Autodesk FBX SDK 버전: \"%s\"\n", _manager->GetVersion());
+	else FBXSDK_printf("\t\t\tFbxLoader Constructed >> Autodesk FBX SDK 버전: \"%s\"\n", _manager->GetVersion());
+#endif // _DEBUG;
 
 	// IO 설정 객체 생성 및 초기화
 	FbxIOSettings* ios{ FbxIOSettings::Create(_manager, IOSROOT) };
 	_manager->SetIOSettings(ios);
-
 }
+
 
 loader::FbxLoader::~FbxLoader()
 {

@@ -9,6 +9,7 @@
 #include "InputLayout.h"
 #include "Camera3D.h"
 #include "CameraPtr.h"
+#include "GridScript.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -73,6 +74,13 @@ ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
 ModelBuilder ModelBuilder::AddAxisScript()
 {
     _entity->AddComponent<AxisScript>(_entity);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddGridScript()
+{
+    _entity->AddComponent<GridScript>(_entity);
 
     return *this;
 }
