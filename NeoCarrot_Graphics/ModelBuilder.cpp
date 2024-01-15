@@ -1,5 +1,7 @@
 #include "ModelBuilder.h"
 
+#include "D3D11Context_mk2.h"
+
 #include "D3Device.h"
 #include "Transpose.h"
 #include "IndexBuffer.h"
@@ -26,9 +28,9 @@ _entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<cons
     std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
 }
-ModelBuilder ModelBuilder::AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11RasterizerState* rasterizerState)
+ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
 {
-    _entity->AddComponent<D3Device>(device, dContext, rasterizerState);
+    _entity->AddComponent<D3Device>(d3d11context);
 
     return *this;
 }
@@ -67,8 +69,6 @@ ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
 
     return *this;
 }
-
-
 
 ModelBuilder ModelBuilder::AddAxisScript()
 {

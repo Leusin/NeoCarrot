@@ -13,11 +13,11 @@ using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 namespace graphics
 {
 class Camera3D;
-class ResourceManager;
+class D3D11Context_mk2;
 class ModelFactory : public core::IFactory
 {
 public:
-    ModelFactory(ResourceManager* _resourceManager, Camera3D* camera);
+    ModelFactory(D3D11Context_mk2* d3d11context, Camera3D* camera);
 
     EntityPtr CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name);
 
@@ -25,7 +25,7 @@ private:
     EntityPtr CreateAxis(const size_t&& id, const char* name);
     EntityPtr CreateBox(const size_t&& id, const char* name);
 
-    ResourceManager* _resourceManager;
+    D3D11Context_mk2* _d3d11context;
     Camera3D*        _camera;
 };
 

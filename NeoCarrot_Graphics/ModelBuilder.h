@@ -24,7 +24,7 @@ class ModelBuilder
 public:
     ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
     
-    ModelBuilder AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11RasterizerState* rasterizerState);
+    ModelBuilder AddD3Device(const D3D11Context_mk2* d3d11context);
     
     ModelBuilder AddTransform();
     

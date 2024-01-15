@@ -22,7 +22,12 @@
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context_mk2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -36,13 +41,23 @@
     <ClCompile Include="NeoCarrot_Graphics\Effect.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ResourceView.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
@@ -53,7 +68,12 @@
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h" />
-    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h" />
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context_mk2.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -72,10 +92,20 @@
     <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h" />
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h" />
     <ClInclude Include="NeoCarrot_Graphics\MyColor.h" />
-    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h" />
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ModelManager.h" />
     <ClInclude Include="NeoCarrot_Graphics\RenderStates.h" />
-    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexLayout.h" />

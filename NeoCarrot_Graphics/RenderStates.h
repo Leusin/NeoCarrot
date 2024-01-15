@@ -12,10 +12,10 @@ struct RenderStates
     ~RenderStates();
 
 
-    Microsoft::WRL::ComPtr<ID3D11RasterizerState> _wireframeRS{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11RasterizerState> _solidRS{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11RasterizerState> wireframeRS{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11RasterizerState> solidRS{ nullptr };
 
-    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> _normalDSS{ nullptr }; //폰트용. 
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> normalDSS{ nullptr }; //폰트용. 
 
 private:
     void CreateWireFrameRanderState(ID3D11Device* _d3dDevice);

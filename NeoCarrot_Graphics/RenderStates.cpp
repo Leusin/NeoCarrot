@@ -22,9 +22,6 @@ RenderStates::RenderStates(ID3D11Device* _d3dDevice)
 
 RenderStates::~RenderStates()
 {
-    //if (_normalDSS) _normalDSS->Release();
-    //if (_solidRS) _solidRS->Release();
-    //if (_wireframeRS) _wireframeRS->Release();
 }
 
 void RenderStates::CreateWireFrameRanderState(ID3D11Device* _d3dDevice)
@@ -38,9 +35,9 @@ void RenderStates::CreateWireFrameRanderState(ID3D11Device* _d3dDevice)
     solidDesc.FrontCounterClockwise = false;
     solidDesc.DepthClipEnable       = true;
 
-    _d3dDevice->CreateRasterizerState(&solidDesc, _solidRS.GetAddressOf());
+    _d3dDevice->CreateRasterizerState(&solidDesc, solidRS.GetAddressOf());
 
-    assert(_solidRS);
+    assert(solidRS);
 }
 
 void RenderStates::CreateSolidRenderState(ID3D11Device* _d3dDevice)
@@ -54,9 +51,9 @@ void RenderStates::CreateSolidRenderState(ID3D11Device* _d3dDevice)
     wireframeDesc.FrontCounterClockwise = false;
     wireframeDesc.DepthClipEnable       = true;
 
-    _d3dDevice->CreateRasterizerState(&wireframeDesc, _wireframeRS.GetAddressOf());
+    _d3dDevice->CreateRasterizerState(&wireframeDesc, wireframeRS.GetAddressOf());
 
-    assert(_wireframeRS);
+    assert(wireframeRS);
 }
 
 void RenderStates::CreateNormalDepthStencilState(ID3D11Device* _d3dDevice)
@@ -69,9 +66,9 @@ void RenderStates::CreateNormalDepthStencilState(ID3D11Device* _d3dDevice)
     equalsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL; // 깊이버퍼에 쓰기는 한다
     equalsDesc.DepthFunc      = D3D11_COMPARISON_LESS;
 
-    _d3dDevice->CreateDepthStencilState(&equalsDesc, _normalDSS.GetAddressOf());
+    _d3dDevice->CreateDepthStencilState(&equalsDesc, normalDSS.GetAddressOf());
 
-    assert(_normalDSS);
+    assert(normalDSS);
 }
 
 } // namespace graphics

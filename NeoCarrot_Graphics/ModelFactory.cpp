@@ -1,11 +1,10 @@
 #include "ModelFactory.h"
 
 #include "../UnityLike_Core/Entity.h"
-#include "D3D11Context.h"
+#include "D3D11Context_mk2.h"
+#include "Devices.h"
 #include "ModelBuilder.h"
-#include "ResourceManager.h"
 #include "Camera3D.h"
-#include "D3D11RenderStates.h"
 #include "VertexStruct.h"
 
 #ifdef _DEBUG
@@ -14,9 +13,10 @@
 
 namespace graphics
 {
-ModelFactory::ModelFactory(ResourceManager* resourceManager, Camera3D* camera) :
-_resourceManager(resourceManager),
-_camera(camera)
+
+ModelFactory::ModelFactory(D3D11Context_mk2* d3d11context, Camera3D* camera) 
+    : _d3d11context(d3d11context)
+    , _camera(camera)
 {
 #if defined(DEBUG) || defined(_DEBUG)
     std::cout << "\t\tModelFactory Constructed\n";
@@ -41,7 +41,8 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
 
-    auto axis = builder.AddD3Device(_resourceManager->_d3d11->Divice(), _resourceManager->_d3d11->DiviceContext(), _resourceManager->_renderState->WireFrame())
+    auto axis = builder
+                    .AddD3Device(_d3d11context)
                     .AddVertexBuffer<graphics::PosCol>()
                     .AddIndexBuffer()
                     .AddTransform()

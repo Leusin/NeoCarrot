@@ -41,24 +41,17 @@ public:
     void EndRender();
 
 private:
-
-    //  리소스들
-    std::unique_ptr<D3D11Context> _d3d11;
+    // 리소스
     std::unique_ptr<D3D11Context_mk2> _d3d11context;
-    std::unique_ptr<D3D11RenderStates> _renderState;
     std::unique_ptr<DXTKFont>         _font;
-    
-    /// 리소스 매니저
-    std::unique_ptr<ResourceManager> _resourceManager;
 
-    // Mesh Obj
-    std::unique_ptr<Grid> _grid;
+    // 메시
     std::unique_ptr<ModelManager> _modelManager;
 
-    /// 카메라 부분
+    /// 카메라
     std::unique_ptr<Camera3D> _camera;
 
-    // 카메라 데이터
+    // 외부 데이터
     data::ForGraphics _fromGameEngine;
 };
 

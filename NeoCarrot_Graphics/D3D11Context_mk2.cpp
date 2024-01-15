@@ -19,7 +19,9 @@ D3D11Context_mk2::D3D11Context_mk2(HINSTANCE hinst, HWND hWnd, int clientWidth, 
     , _resourceView(std::make_unique<ResourceView>())
     , _renderState(std::make_unique<RenderStates>(_devices->Device()))
 {
-    //CreateSwapChain(hWnd, clientWidth, clientHeight);
+    CreateSwapChain(hWnd, clientWidth, clientHeight);
+
+    OnResize(clientWidth, clientHeight);
 
 #ifdef _DEBUG
     std::cout << "\tD3D11Context_mk2 Constructed\n";
@@ -30,9 +32,25 @@ D3D11Context_mk2::~D3D11Context_mk2()
 {
 }
 
-Devices* D3D11Context_mk2::GetDevices()
+
+ID3D11Device* D3D11Context_mk2::GetDevice() const
+{
+    return _devices->Device();
+}
+
+const Devices* D3D11Context_mk2::GetDevices() const
 {
     return _devices.get();
+}
+
+ResourceView* D3D11Context_mk2::GetResourceView() const
+{
+    return _resourceView.get();
+}
+
+RenderStates* D3D11Context_mk2::GetRenderStates() const
+{
+    return _renderState.get();
 }
 
 void D3D11Context_mk2::CreateSwapChain(HWND hWnd, int width, int height)
@@ -79,11 +97,6 @@ void D3D11Context_mk2::CreateSwapChain(HWND hWnd, int width, int height)
     if (dxgiDevice) dxgiDevice->Release();
     if (dxgiAdapter) dxgiAdapter->Release();
     if (dxgiFactory) dxgiFactory->Release();
-}
-
-ResourceView* D3D11Context_mk2::GetResourceView()
-{
-    return _resourceView.get();
 }
 
 void D3D11Context_mk2::OnResize(int width, int height)
@@ -157,7 +170,7 @@ void D3D11Context_mk2::OnResize(int width, int height)
 void D3D11Context_mk2::BeginRender(const float* color) const
 {
     // 후면 버퍼를 지정돤 색으로 지움
-    _devices->ImmediateContext()->ClearRenderTargetView(_resourceView->renderTargetView.Get(), reinterpret_cast<const float*>(&color));
+    _devices->ImmediateContext()->ClearRenderTargetView(_resourceView->renderTargetView.Get(), color);
     //깊이버퍼를 1.0f, 스텐실 버퍼를 0 으로 지움
     _devices->ImmediateContext()->ClearDepthStencilView(_resourceView->depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 }

@@ -9,8 +9,8 @@
 namespace graphics
 {
 
-ModelManager::ModelManager(ResourceManager* resourceManager, Camera3D* camera) :
-_entityManager{std::make_unique<core::EntityManager<ModelFactory>>(resourceManager, camera)}
+ModelManager::ModelManager(D3D11Context_mk2* d3dcontext, Camera3D* camera) 
+    : _entityManager{std::make_unique<core::EntityManager<ModelFactory>>(d3dcontext, camera)}
 {
 #ifdef _DEBUG
     std::cout << "\tModelManager Constructed\n";

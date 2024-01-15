@@ -14,13 +14,13 @@
 
 namespace graphics
 {
-class ResourceManager;
+class D3D11Context_mk2;
 class Camera3D;
 
 class ModelManager
 {
 public:
-    ModelManager(ResourceManager* resourceManager, Camera3D* camera);
+    ModelManager(D3D11Context_mk2* d3dcontext, Camera3D* camera);
 
     void Initialize();
     void Update(float deltaTime);

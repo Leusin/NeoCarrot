@@ -5,6 +5,7 @@
 #pragma once
 
 #include <dxgi.h>
+#include <d3d11.h>
 #include <memory>
 #include <wrl.h>
 
@@ -22,9 +23,11 @@ public:
     D3D11Context_mk2(HINSTANCE hinst, HWND hWnd, int clientWidth, int clientHeight);
     ~D3D11Context_mk2();
 
-    Devices*      GetDevices();
+    ID3D11Device* GetDevice() const;
+    const Devices* GetDevices() const;
+    ResourceView* GetResourceView() const;
+    RenderStates* GetRenderStates() const;
     void          CreateSwapChain(HWND hWnd, int width, int height);
-    ResourceView* GetResourceView();
 
     void OnResize(int width, int height);
     void BeginRender(const float* color) const;
