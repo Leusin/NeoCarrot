@@ -135,6 +135,11 @@
     <ClInclude Include="FbxLoader.h" />
     <ClInclude Include="MeshLoader.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bunny_Common\Bunny_Common.vcxproj">
+      <Project>{25445be0-3352-4f0e-a2ab-f962e15ff449}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

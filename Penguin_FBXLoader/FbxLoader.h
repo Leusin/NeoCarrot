@@ -36,8 +36,8 @@ public:
     FbxLoader();
     ~FbxLoader();
 
-    Mesh             GetMesh(const char* file, size_t i);
-    std::vector<Mesh> GetMeshAll(const char* file);
+    model::Mesh             GetMesh(const char* file, size_t i);
+    std::vector<model::Mesh> GetMeshAll(const char* file);
     size_t            GetMeshSize(const char* file);
 
     // 디버깅용. 매시 목록 중 맨 처음의 메시만 읽도록 한다.

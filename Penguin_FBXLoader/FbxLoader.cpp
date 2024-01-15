@@ -26,13 +26,13 @@ loader::FbxLoader::~FbxLoader()
 	if (_manager) _manager->Destroy();
 }
 
-Mesh loader::FbxLoader::GetMesh(const char* file, size_t i)
+model::Mesh loader::FbxLoader::GetMesh(const char* file, size_t i)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMesh(i);
 }
 
-std::vector<Mesh> loader::FbxLoader::GetMeshAll(const char* file)
+std::vector<model::Mesh> loader::FbxLoader::GetMeshAll(const char* file)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMeshAll();

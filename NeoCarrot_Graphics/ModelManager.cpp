@@ -40,4 +40,4 @@ void ModelManager::CreateEnity()
     _entityManager->AddEntity(core::GameObect::BOX, "box");
 }
 
-}
+}          

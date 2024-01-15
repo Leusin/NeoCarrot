@@ -7,14 +7,14 @@ loader::MeshLoader::MeshLoader(FbxManager* manager) : _manager(manager)
     assert(_manager);
 }
 
-Mesh loader::MeshLoader::GetMesh(size_t i)
+model::Mesh loader::MeshLoader::GetMesh(size_t i)
 {
     assert(i < _meshes.size());
 
     return _meshes[i];
 }
 
-std::vector<Mesh> loader::MeshLoader::GetMeshAll()
+std::vector<model::Mesh> loader::MeshLoader::GetMeshAll()
 {
     return _meshes;
 }
@@ -36,7 +36,7 @@ void loader::MeshLoader::LoadMesh(FbxNode* node)
         return;
 
     // 세로운 메시 추가
-    _meshes.emplace_back(Mesh());
+    _meshes.emplace_back(model::Mesh());
 
     // 가능한 모든 점을 삼각형 폴리곤으로 바꿈
     {

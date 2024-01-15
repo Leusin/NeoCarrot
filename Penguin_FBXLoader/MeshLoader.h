@@ -19,8 +19,8 @@ class MeshLoader
 public:
 	MeshLoader(FbxManager* manager);
 
-	Mesh GetMesh(size_t i);
-    std::vector<Mesh> GetMeshAll();
+	model::Mesh       GetMesh(size_t i);
+    std::vector<model::Mesh> GetMeshAll();
 	size_t GetMeshSize();
 
 	void LoadMesh(FbxNode* node);
@@ -49,6 +49,6 @@ private:
 	/// <summary>
 	/// 최종적으로 외부로 내보낼 데이터
 	/// </summary>
-    std::vector<Mesh> _meshes;
+    std::vector<model::Mesh> _meshes;
 };
 }
