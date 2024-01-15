@@ -1,28 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="FbxLoader">
-      <UniqueIdentifier>{452179af-c3b6-486b-84df-ba86c50be6f3}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="FbxLoader.cpp" />
+    <ClCompile Include="MeshLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FbxLoader.cpp">
-      <Filter>FbxLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshLoader.cpp">
-      <Filter>FbxLoader</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="FbxLoader.h">
-      <Filter>FbxLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshLoader.h">
-      <Filter>FbxLoader</Filter>
-    </ClInclude>
+    <ClInclude Include="FbxLoader.h" />
+    <ClInclude Include="MeshLoader.h" />
   </ItemGroup>
 </Project>

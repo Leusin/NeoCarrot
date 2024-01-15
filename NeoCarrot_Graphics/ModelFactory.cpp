@@ -1,6 +1,8 @@
 #include "ModelFactory.h"
 
-#include "../UnityLike_Core/Entity.h"
+#include "FbxLoader.h"
+
+#include "Entity.h"
 #include "D3D11Context_mk2.h"
 #include "Devices.h"
 #include "ModelBuilder.h"
@@ -17,6 +19,7 @@ namespace graphics
 ModelFactory::ModelFactory(D3D11Context_mk2* d3d11context, Camera3D* camera) 
     : _d3d11context(d3d11context)
     , _camera(camera)
+    , _fbxLoader(std::make_unique<loader::FbxLoader>())
 {
 #if defined(DEBUG) || defined(_DEBUG)
     std::cout << "\t\tModelFactory Constructed\n";

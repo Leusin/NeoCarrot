@@ -17,21 +17,26 @@
 #pragma comment(lib, "C:/Program Files/Autodesk/FBX/FBX SDK/2020.3.4/lib/vs2022/x64/release/zlib-md.lib")
 #endif
 
-#include "Mesh.h"
+#include "../Bunny_Common/Mesh.h"
 
 #include <fbxsdk.h>
+//#include <C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include\fbxsdk.h>
 #include <vector>
+#include <memory>
 
 namespace loader
 {
+// Àü¹æ ¼±¾ð
+class MeshLoader;
 
+// º»¹®
 class FbxLoader
 {
 public:
     FbxLoader();
     ~FbxLoader();
 
-    Mesh*             GetMesh(const char* file, size_t i);
+    Mesh             GetMesh(const char* file, size_t i);
     std::vector<Mesh> GetMeshAll(const char* file);
     size_t            GetMeshSize(const char* file);
 
@@ -50,11 +55,11 @@ private:
     void DisplayMetaData(FbxScene* pScene);
 
     // FBX °´Ã¼
-    FbxScene*   _scene{nullptr};
+    FbxScene* _scene{nullptr};
     FbxManager* _manager{nullptr};
 
     // Loader °´Ã¼
-    MeshLoader* _meshLoader{nullptr};
+    std::unique_ptr <MeshLoader> _meshLoader{nullptr};
 };
 
 } // namespace loader

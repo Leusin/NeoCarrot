@@ -100,7 +100,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;Penguin_FbxLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -121,7 +121,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;Penguin_FbxLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -139,7 +139,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>NeoCarrot_Graphics.lib;UnityLike_Core.lib;Bunny_Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>

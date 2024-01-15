@@ -1,10 +1,10 @@
 #include "FbxLoader.h"
 #include "MeshLoader.h"
 
-FBXLoad::FbxLoader::FbxLoader()
+loader::FbxLoader::FbxLoader()
 	: _scene()
 	, _manager(FbxManager::Create())
-	, _meshLoader(new FBXLoad::MeshLoader(_manager))
+	, _meshLoader(std::make_unique<loader::MeshLoader>(_manager))
 {
 	if (!_manager)
 	{
@@ -20,33 +20,31 @@ FBXLoad::FbxLoader::FbxLoader()
 
 }
 
-FBXLoad::FbxLoader::~FbxLoader()
+loader::FbxLoader::~FbxLoader()
 {
-	delete _meshLoader;
-
 	if (_scene) _scene->Destroy();
 	if (_manager) _manager->Destroy();
 }
 
-ImpMesh* FBXLoad::FbxLoader::GetMesh(const char* file, size_t i)
+Mesh loader::FbxLoader::GetMesh(const char* file, size_t i)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMesh(i);
 }
 
-std::vector<ImpMesh*> FBXLoad::FbxLoader::GetMeshAll(const char* file)
+std::vector<Mesh> loader::FbxLoader::GetMeshAll(const char* file)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMeshAll();
 }
 
-size_t FBXLoad::FbxLoader::GetMeshSize(const char* file)
+size_t loader::FbxLoader::GetMeshSize(const char* file)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMeshSize();
 }
 
-void FBXLoad::FbxLoader::LoadAMeshContent(const char* file)
+void loader::FbxLoader::LoadAMeshContent(const char* file)
 {
 	assert(_manager && file);
 	FBXSDK_printf("\n>> 파일 이름: \"%s\" \n", file);
@@ -57,7 +55,7 @@ void FBXLoad::FbxLoader::LoadAMeshContent(const char* file)
 	}
 }
 
-void FBXLoad::FbxLoader::LoadFbxFile(const char* file)
+void loader::FbxLoader::LoadFbxFile(const char* file)
 {
 	assert(_manager && file);
 	FBXSDK_printf("\n>> 파일 이름: \"%s\" \n", file);
@@ -83,7 +81,7 @@ void FBXLoad::FbxLoader::LoadFbxFile(const char* file)
 	LoadContent(node->GetChild(0));
 }
 
-bool FBXLoad::FbxLoader::CreateFbxScene(const char* file)
+bool loader::FbxLoader::CreateFbxScene(const char* file)
 {
 	// importer 생성
 	FbxImporter* fbxImporter{ FbxImporter::Create(_manager, "Importer") };
@@ -126,7 +124,7 @@ bool FBXLoad::FbxLoader::CreateFbxScene(const char* file)
 	return true;
 }
 
-void FBXLoad::FbxLoader::LoadContent()
+void loader::FbxLoader::LoadContent()
 {
 	int i{ 0 };
 	FbxNode* node{ _scene->GetRootNode() };
@@ -141,7 +139,7 @@ void FBXLoad::FbxLoader::LoadContent()
 	}
 }
 
-void FBXLoad::FbxLoader::LoadContent(FbxNode* pNode)
+void loader::FbxLoader::LoadContent(FbxNode* pNode)
 {
 	FbxNodeAttribute::EType lAttributeType;
 	int i{ 0 };
@@ -218,7 +216,7 @@ void FBXLoad::FbxLoader::LoadContent(FbxNode* pNode)
 	}
 }
 
-void FBXLoad::FbxLoader::DisplayTarget(FbxNode* pNode)
+void loader::FbxLoader::DisplayTarget(FbxNode* pNode)
 {
 	if (pNode->GetTarget() != NULL)
 	{
@@ -226,7 +224,7 @@ void FBXLoad::FbxLoader::DisplayTarget(FbxNode* pNode)
 	}
 }
 
-void FBXLoad::FbxLoader::DisplayTransformPropagation(FbxNode* pNode)
+void loader::FbxLoader::DisplayTransformPropagation(FbxNode* pNode)
 {
 	FBXSDK_printf("    Transformation Propagation\n");
 
@@ -293,7 +291,7 @@ void FBXLoad::FbxLoader::DisplayTransformPropagation(FbxNode* pNode)
 	}
 }
 
-void FBXLoad::FbxLoader::DisplayGeometricTransform(FbxNode* pNode)
+void loader::FbxLoader::DisplayGeometricTransform(FbxNode* pNode)
 {
 	FbxVector4 lTmpVector;
 
@@ -318,7 +316,7 @@ void FBXLoad::FbxLoader::DisplayGeometricTransform(FbxNode* pNode)
 	FBXSDK_printf("        Scaling:     %f %f %f\n", lTmpVector[0], lTmpVector[1], lTmpVector[2]);
 }
 
-void FBXLoad::FbxLoader::DisplayMetaData(FbxScene* pScene)
+void loader::FbxLoader::DisplayMetaData(FbxScene* pScene)
 {
 	FbxDocumentInfo* sceneInfo = pScene->GetSceneInfo();
 	if (sceneInfo)

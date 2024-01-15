@@ -124,8 +124,11 @@
     <None Include="NeoCarrot_Graphics\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Bunny_Common\Bunny_Common.vcxproj">
-      <Project>{25445be0-3352-4f0e-a2ab-f962e15ff449}</Project>
+    <ProjectReference Include="Penguin_FBXLoader\Penguin_FBXLoader.vcxproj">
+      <Project>{8d702cfd-4b3c-4f84-8f1a-c301381e8ad1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="UnityLike_Core\UnityLike_Core.vcxproj">
+      <Project>{f9a014b2-0cd4-473e-81b8-50674696cc65}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -200,7 +203,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)UnityLike_Core;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;..\NeoCarrot\UnityLike_Core;..\NeoCarrot\Bunny_Common;$(SolutionDir)DirectXTK\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalOptions>/IGNORE:4099
 /wd5260 %(AdditionalOptions)</AdditionalOptions>
@@ -210,8 +213,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;Penguin_FBXLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -222,7 +225,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;..\NeoCarrot\UnityLike_Core;..\NeoCarrot\Bunny_Common;$(SolutionDir)DirectXTK\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -232,8 +235,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;Penguin_FBXLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -243,7 +246,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)UnityLike_Core;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;..\NeoCarrot\UnityLike_Core;..\NeoCarrot\Penguin_FBXLoader;..\NeoCarrot\Bunny_Common;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include;$(SolutionDir)DirectXTK\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalOptions>/IGNORE:4099
 /wd5260 %(AdditionalOptions)</AdditionalOptions>
@@ -253,8 +256,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Penguin_FBXLoader.lib;DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -265,7 +268,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)Bunny_Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\NeoCarrot\FX11\inc;..\NeoCarrot\UnityLike_Core;..\NeoCarrot\Bunny_Common;$(SolutionDir)DirectXTK\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -275,8 +278,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)(Platform)\$(Configuration);$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DirectXTK.lib;d3d11.lib;Effects11d.lib;Penguin_FBXLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

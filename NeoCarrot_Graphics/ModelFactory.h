@@ -2,6 +2,7 @@
 
 #include "IFactory.h"
 
+// 전방 선언
 namespace core
 {
 template <typename T, typename U>
@@ -10,10 +11,14 @@ class Entity;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
+namespace loader{ class FbxLoader; }
+
 namespace graphics
 {
 class Camera3D;
 class D3D11Context_mk2;
+
+// 본문
 class ModelFactory : public core::IFactory
 {
 public:
@@ -27,6 +32,8 @@ private:
 
     D3D11Context_mk2* _d3d11context;
     Camera3D*        _camera;
+
+    std::unique_ptr<loader::FbxLoader> _fbxLoader;
 };
 
 } // namespace graphics

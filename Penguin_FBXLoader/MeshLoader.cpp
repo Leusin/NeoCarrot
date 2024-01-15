@@ -7,12 +7,9 @@ loader::MeshLoader::MeshLoader(FbxManager* manager) : _manager(manager)
     assert(_manager);
 }
 
-Mesh* loader::MeshLoader::GetMesh(size_t i)
+Mesh loader::MeshLoader::GetMesh(size_t i)
 {
-    if (i >= _meshes.size())
-    {
-        return nullptr;
-    }
+    assert(i < _meshes.size());
 
     return _meshes[i];
 }
@@ -74,9 +71,6 @@ void loader::MeshLoader::LoadMesh(FbxNode* node)
     // 파싱한 데이터 가공
     // --------
 
-    // 메시 스플릿
-    SplitPerNormal(_meshes.back());
-
     // 다 사용한 Fbx Mesh  제거
     mesh->Destroy();
 }
@@ -129,8 +123,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
     // Fbx의 Poligon 은 ImpFace 와 같다.
     // 따라서 _meshFace 의 사이즈를 Face 크기만큼 잡아준다.
 
-    _meshes.back()->_meshFace.resize(polygonCount);
-    _meshes.back()->_meshVertex.resize(polygonCount * 3);
+    //_meshes.back()->_meshFace.resize(polygonCount);
+    //_meshes.back()->_meshVertex.resize(polygonCount * 3);
 
     FBXSDK_printf("    Polygons\n");
 
@@ -165,12 +159,12 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
         int polygonSize = mesh->GetPolygonSize(i);
 
         // 페이스를 생성한다.
-        _meshes.back()->_meshFace[i] = new ImpFace();
+        //_meshes.back()->_meshFace[i] = new ImpFace();
 
         for (j = 0; j < polygonSize; j++)
         {
             // 정점을 생성한다.
-            _meshes.back()->_meshVertex[i * 3 + j] = new ImpVertex();
+            //_meshes.back()->_meshVertex[i * 3 + j] = new ImpVertex();
 
             /// ----------------
             /// Vertex Position
@@ -191,12 +185,12 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 FBXSDK_printf("            Coordinates: %f, %f, %f\n", localPosition[0], localPosition[1], localPosition[2]);
 
                 // 위치값을 담는다.
-                _meshes.back()->_meshVertex[i * 3 + j]->_localPos = {static_cast<float>(localPosition[0]),
-                                                                     static_cast<float>(localPosition[1]),
-                                                                     static_cast<float>(localPosition[2])};
+                //_meshes.back()->_meshVertex[i * 3 + j]->_localPos = {static_cast<float>(localPosition[0]),
+                //                                                     static_cast<float>(localPosition[1]),
+                //                                                     static_cast<float>(localPosition[2])};
 
                 // 정점 데이터 값을 담는다
-                _meshes.back()->_meshFace[i]->vertexIndex[j] = controlPointIndex;
+                //_meshes.back()->_meshFace[i]->vertexIndex[j] = controlPointIndex;
             }
 
             /// --------------
@@ -209,12 +203,12 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
             int eColorCount = mesh->GetElementVertexColorCount();
 
             // 컬러값 데이터 유무 표시한다.
-            if (eColorCount)
-                _meshes.back()->_hasColor = true;
+            //if (eColorCount)
+            //    _meshes.back()->_hasColor = true;
 
             for (l = 0; l < eColorCount; l++)
             {
-                _meshes.back()->_hasColor             = true;
+                //_meshes.back()->_hasColor             = true;
                 FbxGeometryElementVertexColor* leVtxc = mesh->GetElementVertexColor(l);
                 FBXSDK_sprintf(header, 100, "            Color vertex: ");
 
@@ -227,25 +221,25 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                         {
                             case FbxGeometryElement::eDirect:
                             {
-                                vertexColor = leVtxc->GetDirectArray().GetAt(controlPointIndex);
-                                FBXSDK_printf("%s %f, %f, %f, %f\n",
-                                              header,
-                                              vertexColor[0],
-                                              vertexColor[1],
-                                              vertexColor[2],
-                                              vertexColor[3]);
+                                //vertexColor = leVtxc->GetDirectArray().GetAt(controlPointIndex);
+                                //FBXSDK_printf("%s %f, %f, %f, %f\n",
+                                //              header,
+                                //              vertexColor[0],
+                                //              vertexColor[1],
+                                //              vertexColor[2],
+                                //              vertexColor[3]);
                             }
                             break;
                             case FbxGeometryElement::eIndexToDirect:
                             {
-                                int id      = leVtxc->GetIndexArray().GetAt(controlPointIndex);
-                                vertexColor = leVtxc->GetDirectArray().GetAt(id);
-                                FBXSDK_printf("%s %f, %f, %f, %f\n",
-                                              header,
-                                              vertexColor[0],
-                                              vertexColor[1],
-                                              vertexColor[2],
-                                              vertexColor[3]);
+                                //int id      = leVtxc->GetIndexArray().GetAt(controlPointIndex);
+                                //vertexColor = leVtxc->GetDirectArray().GetAt(id);
+                                //FBXSDK_printf("%s %f, %f, %f, %f\n",
+                                //              header,
+                                //              vertexColor[0],
+                                //              vertexColor[1],
+                                //              vertexColor[2],
+                                //              vertexColor[3]);
                             }
                             break;
                             default:
@@ -293,10 +287,10 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 컬러 값을 담는다.
-                _meshes.back()->_meshVertex[i * 3 + j]->_color = {static_cast<float>(vertexColor[0]),
-                                                                  static_cast<float>(vertexColor[1]),
-                                                                  static_cast<float>(vertexColor[2]),
-                                                                  static_cast<float>(vertexColor[3])};
+                //_meshes.back()->_meshVertex[i * 3 + j]->_color = {static_cast<float>(vertexColor[0]),
+                //                                                  static_cast<float>(vertexColor[1]),
+                //                                                  static_cast<float>(vertexColor[2]),
+                //                                                  static_cast<float>(vertexColor[3])};
 
             } // for eColorCount
 
@@ -321,18 +315,18 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                         {
                             case FbxGeometryElement::eDirect:
                             {
-                                uv = leUV->GetDirectArray().GetAt(controlPointIndex);
-                                FBXSDK_printf("%s %f, %f\n", header, uv[0], uv[1]);
+                                //uv = leUV->GetDirectArray().GetAt(controlPointIndex);
+                                //FBXSDK_printf("%s %f, %f\n", header, uv[0], uv[1]);
                             }
                             break;
                             case FbxGeometryElement::eIndexToDirect:
                             {
-                                int id = leUV->GetIndexArray().GetAt(controlPointIndex);
-                                uv     = leUV->GetDirectArray().GetAt(id);
-                                FBXSDK_printf("%s %f, %f\n",
-                                              header,
-                                              leUV->GetDirectArray().GetAt(id)[0],
-                                              leUV->GetDirectArray().GetAt(id)[1]);
+                                //int id = leUV->GetIndexArray().GetAt(controlPointIndex);
+                                //uv     = leUV->GetDirectArray().GetAt(id);
+                                //FBXSDK_printf("%s %f, %f\n",
+                                //              header,
+                                //              leUV->GetDirectArray().GetAt(id)[0],
+                                //              leUV->GetDirectArray().GetAt(id)[1]);
                             }
                             break;
                             default:
@@ -365,8 +359,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // uv 좌표값을 담는다.
-                _meshes.back()->_meshVertex[i * 3 + j]->_u = static_cast<float>(uv[0]);
-                _meshes.back()->_meshVertex[i * 3 + j]->_v = static_cast<float>(uv[1]);
+                //_meshes.back()->_meshVertex[i * 3 + j]->_u = static_cast<float>(uv[0]);
+                //_meshes.back()->_meshVertex[i * 3 + j]->_v = static_cast<float>(uv[1]);
 
             } // for PolygonSize
 
@@ -380,8 +374,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
             int normalCount = mesh->GetElementNormalCount();
 
             // 노말 값의 유무 표시한다.
-            if (normalCount)
-                _meshes.back()->_hasNormal = true;
+            //if (normalCount)
+            //    _meshes.back()->_hasNormal = true;
 
             for (l = 0; l < normalCount; ++l)
             {
@@ -411,9 +405,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                     }
 
                     // 노말 값을 담는다.
-                    _meshes.back()->_meshVertex[i * 3 + j]->_normal = {static_cast<float>(normal[0]),
-                                                                       static_cast<float>(normal[1]),
-                                                                       static_cast<float>(normal[2])};
+                    //_meshes.back()->_meshVertex[i * 3 + j]->_normal = {static_cast<float>(normal[0]),
+                    //                                                   static_cast<float>(normal[1]),
+                    //                                                   static_cast<float>(normal[2])};
 
                 } // for normalCount
             }
@@ -428,8 +422,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
             int tangentCount = mesh->GetElementTangentCount();
 
             // 탄젠트 값의 유무를 표시한다.
-            if (tangentCount)
-                _meshes.back()->_hasTangent = true;
+            //if (tangentCount)
+            //_meshes.back()->_hasTangent = true;
 
             for (l = 0; l < tangentCount; ++l)
             {
@@ -459,8 +453,8 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 탄젠트 값을 담는다.
-                _meshes.back()->_meshVertex[i * 3 + j]->_tangent =
-                    {static_cast<float>(tangent[0]), static_cast<float>(tangent[1]), static_cast<float>(tangent[2])};
+                //_meshes.back()->_meshVertex[i * 3 + j]->_tangent =
+                //   {static_cast<float>(tangent[0]), static_cast<float>(tangent[1]), static_cast<float>(tangent[2])};
 
             } // for tangentCount
 
@@ -500,9 +494,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 }
 
                 // 바이노말 값을 담는다.
-                _meshes.back()->_meshVertex[i * 3 + j]->_bitangent = {static_cast<float>(bitangent[0]),
-                                                                      static_cast<float>(bitangent[1]),
-                                                                      static_cast<float>(bitangent[2])};
+                //_meshes.back()->_meshVertex[i * 3 + j]->_bitangent = {static_cast<float>(bitangent[0]),
+                //                                                      static_cast<float>(bitangent[1]),
+                //                                                      static_cast<float>(bitangent[2])};
 
             } // for Binormal Count
 
@@ -535,147 +529,4 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 break;
         }
     }
-}
-
-void loader::MeshLoader::DisplayMaterialMapping(FbxMesh* pMesh)
-{
-    const char* lMappingTypes[] = {"None", "By Control Point", "By Polygon Vertex", "By Polygon", "By Edge", "All Same"};
-    const char* lReferenceMode[] = {"Direct", "Index", "Index to Direct"};
-
-    int      lMtrlCount = 0;
-    FbxNode* lNode      = NULL;
-    if (pMesh)
-    {
-        lNode = pMesh->GetNode();
-        if (lNode)
-            lMtrlCount = lNode->GetMaterialCount();
-
-        for (int l = 0; l < pMesh->GetElementMaterialCount(); l++)
-        {
-            FbxGeometryElementMaterial* leMat = pMesh->GetElementMaterial(l);
-            if (leMat)
-            {
-                char header[100];
-                FBXSDK_sprintf(header, 100, "    Material Element %d: ", l);
-                FBXSDK_printf("%s\n", header);
-
-                FBXSDK_printf("           Mapping: %s\n", lMappingTypes[leMat->GetMappingMode()]);
-                FBXSDK_printf("           ReferenceMode: %s\n", lReferenceMode[leMat->GetReferenceMode()]);
-
-                int       lMaterialCount = 0;
-                FbxString lString;
-
-                if (leMat->GetReferenceMode() == FbxGeometryElement::eDirect ||
-                    leMat->GetReferenceMode() == FbxGeometryElement::eIndexToDirect)
-                {
-                    lMaterialCount = lMtrlCount;
-                }
-
-                if (leMat->GetReferenceMode() == FbxGeometryElement::eIndex ||
-                    leMat->GetReferenceMode() == FbxGeometryElement::eIndexToDirect)
-                {
-                    int i;
-
-                    lString = "           Indices: ";
-
-                    int lIndexArrayCount = leMat->GetIndexArray().GetCount();
-                    for (i = 0; i < lIndexArrayCount; i++)
-                    {
-                        lString += leMat->GetIndexArray().GetAt(i);
-
-                        if (i < lIndexArrayCount - 1)
-                        {
-                            lString += ", ";
-                        }
-                    }
-
-                    lString += "\n";
-
-                    FBXSDK_printf(lString);
-                }
-            }
-        }
-    }
-}
-
-void loader::MeshLoader::DisplayTexture(FbxGeometry* geometry)
-{
-    int         materialIndex;
-    FbxProperty property;
-    if (geometry->GetNode() == NULL)
-        return;
-
-    int nbMat = geometry->GetNode()->GetSrcObjectCount<FbxSurfaceMaterial>();
-    for (materialIndex = 0; materialIndex < nbMat; materialIndex++)
-    {
-        FbxSurfaceMaterial* material      = geometry->GetNode()->GetSrcObject<FbxSurfaceMaterial>(materialIndex);
-        bool                displayHeader = true;
-
-        // go through all the possible textures
-        if (material)
-        {
-            int textureIndex;
-            //_meshes.back()->_hasTexture = true;
-            //_meshes.back()->_meshFace->textureIndex[j];
-            FBXSDK_FOR_EACH_TEXTURE(textureIndex)
-            {
-                property         = material->FindProperty(FbxLayerElement::sTextureChannelNames[textureIndex]);
-                int textureCount = property.GetSrcObjectCount<FbxTexture>();
-
-                for (int j = 0; j < textureCount; ++j)
-                {
-                    // Here we have to check if it's layeredtextures, or just textures:
-                    FbxLayeredTexture* layeredTexture = property.GetSrcObject<FbxLayeredTexture>(j);
-                    if (layeredTexture)
-                    {
-                        FBXSDK_printf("    Layered Texture: %d\n", j);
-                        int nbTextures = layeredTexture->GetSrcObjectCount<FbxTexture>();
-                        for (int k = 0; k < nbTextures; ++k)
-                        {
-                            FbxTexture* texture = layeredTexture->GetSrcObject<FbxTexture>(k);
-                            if (texture)
-                            {
-
-                                if (displayHeader)
-                                {
-                                    FBXSDK_printf("    Textures connected to Material %d\n", materialIndex);
-                                    displayHeader = false;
-                                }
-
-                                // NOTE the blend mode is ALWAYS on the LayeredTexture and NOT the one on the texture.
-                                // Why is that?  because one texture can be shared on different layered textures and
-                                // might have different blend modes.
-
-                                FbxLayeredTexture::EBlendMode lBlendMode;
-                                layeredTexture->GetTextureBlendMode(k, lBlendMode);
-                                FBXSDK_printf("    Textures for %s\n", property.GetName().Buffer());
-                                FBXSDK_printf("        Texture %d\n", k);
-                                // DisplayTextureInfo(lTexture, (int)lBlendMode);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // no layered texture simply get on the property
-                        FbxTexture* texture = property.GetSrcObject<FbxTexture>(j);
-                        if (texture)
-                        {
-                            // display connected Material header only at the first time
-                            if (displayHeader)
-                            {
-                                FBXSDK_printf("    Textures connected to Material %d", materialIndex);
-                                displayHeader = false;
-                            }
-
-                            FBXSDK_printf("    Textures for %s\n", property.GetName().Buffer());
-                            FBXSDK_printf("        Texture %d\n", j);
-                            // DisplayTextureInfo(texture, -1);
-                        }
-                    }
-                }
-            }
-
-        } // end if(lMaterial)
-
-    } // end for lMaterialIndex
 }

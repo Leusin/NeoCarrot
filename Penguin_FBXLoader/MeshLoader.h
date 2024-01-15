@@ -5,13 +5,13 @@
 
 #pragma once
 
-#include "Mesh.h"
-#include "Vector3.h"
+#include "../Bunny_Common/Mesh.h"
+#include "../Bunny_Common/Vector3.h"
 
 #include <fbxsdk.h>
 #include <vector>
 
-namespace FBXLoad
+namespace loader
 {
 
 class MeshLoader
@@ -19,7 +19,7 @@ class MeshLoader
 public:
 	MeshLoader(FbxManager* manager);
 
-	Mesh* GetMesh(size_t i);
+	Mesh GetMesh(size_t i);
     std::vector<Mesh> GetMeshAll();
 	size_t GetMeshSize();
 
@@ -31,10 +31,9 @@ private:
 	// 폴리곤 데이터
 	void LoadPolygons(FbxMesh* mesh);
 	// 머터리얼 데이터
-	void DisplayMaterialMapping(FbxMesh* mesh);
 
 	//void DisplayMaterial(FbxMesh* mesh);
-	void DisplayTexture(FbxGeometry* mesh);
+	//void DisplayTexture(FbxGeometry* mesh);
 	//void DisplayMaterialConnections(FbxGeometry* mesh);
 	//void DisplayLink(FbxGeometry* mesh);
 	//void DisplayShape(FbxGeometry* mesh);
