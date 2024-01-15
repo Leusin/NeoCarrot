@@ -1,8 +1,8 @@
 /// 2024-01-15
 #pragma once
 
-#include "EntityEnum.h"
 #include "Entity.h"
+#include "EntityEnum.h"
 
 #include <memory>
 
@@ -22,18 +22,18 @@ namespace core
 
 class GetEntity
 {
-private:
+public:
     GetEntity(EntityPtr entity);
 
     template <typename T>
     T* GetComponent();
 
-    EntityPtr    Get();
+    EntityPtr Get();
 
-    const size_t       GetId();
+    const size_t      GetId();
     const std::string GetName();
-    Tag GetTag();
-    Layer GetLayer();
+    Tag               GetTag();
+    Layer             GetLayer();
 
 private:
     EntityWeakPtr _entity;

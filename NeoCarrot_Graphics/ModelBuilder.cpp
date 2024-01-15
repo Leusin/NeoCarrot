@@ -2,7 +2,7 @@
 
 #include "D3D11Context_mk2.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
 #include "Transpose.h"
 #include "IndexBuffer.h"
 #include "Effect.h"
@@ -30,7 +30,7 @@ _entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<cons
 }
 ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
 {
-    _entity->AddComponent<D3Device>(d3d11context);
+    _entity->AddComponent<D3Devices>(d3d11context);
 
     return *this;
 }

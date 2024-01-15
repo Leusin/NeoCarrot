@@ -1,4 +1,4 @@
-#include "D3Device.h"
+#include "D3Devices.h"
 
 #include "D3D11Context_mk2.h"
 #include "Devices.h"
@@ -11,7 +11,7 @@
 
 namespace graphics
 {
-D3Device::D3Device(const D3D11Context_mk2* d3d11context) 
+D3Devices::D3Devices(const D3D11Context_mk2* d3d11context) 
     : _d3dDevice(d3d11context->GetDevices()->Device())
     , _d3dImmediateContext(d3d11context->GetDevices()->ImmediateContext()),
     _rasterizerState(d3d11context->GetRenderStates()->solidRS.Get())
@@ -22,19 +22,19 @@ D3Device::D3Device(const D3D11Context_mk2* d3d11context)
 #endif // _DEBUG
 }
 
-void D3Device::Awake()
+void D3Devices::Awake()
 {
 }
 
-void D3Device::Update(float dt)
+void D3Devices::Update(float dt)
 {
 }
 
-ID3D11Device* D3Device::GetDevice()
+ID3D11Device* D3Devices::GetDevice()
 {
     return _d3dDevice;
 }
-ID3D11DeviceContext* D3Device::GetDeviceContext()
+ID3D11DeviceContext* D3Devices::GetDeviceContext()
 {
     return _d3dImmediateContext;
 }

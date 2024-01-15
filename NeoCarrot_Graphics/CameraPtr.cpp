@@ -10,10 +10,10 @@
 
 namespace graphics
 {
-CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera) :
-_entity{EntityPtr(entityPtr)},
-_transpose(_entity.lock()->GetComponent<graphics::Transpose>()),
-_camera(camera)
+CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera) 
+    : GetEntity(EntityPtr(entityPtr))
+    , _transpose(GetComponent<graphics::Transpose>())
+    , _camera(camera)
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd CameraPtr Component\n";

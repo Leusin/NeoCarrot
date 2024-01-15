@@ -60,7 +60,7 @@
     <ClCompile Include="NeoCarrot_Graphics\VertexBuffer.cpp">
       <Filter>component</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3Device.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\D3Devices.cpp">
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
@@ -131,7 +131,7 @@
     <ClInclude Include="NeoCarrot_Graphics\VertexStruct.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\D3Device.h">
+    <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">

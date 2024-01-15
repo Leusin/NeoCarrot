@@ -1,6 +1,6 @@
 #include "IndexBuffer.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -8,9 +8,9 @@
 
 namespace graphics
 {
-IndexBuffer::IndexBuffer(EntityPtr entityPtr) :
-_entity{EntityPtr(entityPtr)},
-_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+IndexBuffer::IndexBuffer(EntityPtr entityPtr) 
+    : GetEntity(EntityPtr(entityPtr))
+    , _d3device{GetComponent<graphics::D3Devices>()}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd IndexBuffer Component\n";

@@ -1,6 +1,6 @@
 #include "VertexLayout.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
 #include "Effect.h"
 
 #ifdef _DEBUG
@@ -9,11 +9,11 @@
 
 namespace graphics
 {
-VertexLayout::VertexLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc) :
-_entity{EntityPtr(entityPtr)},
-_d3device{_entity.lock()->GetComponent<graphics::D3Device>()},
-_effect{_entity.lock()->GetComponent<graphics::Effect>()},
-_vertexDesc{vertexDesc}
+VertexLayout::VertexLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc) 
+    : GetEntity(EntityPtr(entityPtr))
+    , _d3device{GetComponent<graphics::D3Devices>()}
+    , _effect{GetComponent<graphics::Effect>()}
+    , _vertexDesc{vertexDesc}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexLayout Component\n";

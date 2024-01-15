@@ -1,9 +1,8 @@
 #pragma once
 
-#include "D3Device.h"
-#include "Entity.h"
-#include "EntityEnum.h"
 #include "IComponent.h"
+#include "GetEntity.h"
+#include "D3Devices.h"
 
 #include <d3d11.h>
 #include <vector>
@@ -13,13 +12,10 @@
 #include <iostream>
 #endif // _DEBUG
 
-using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
-using EntityWeakPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
-
 namespace graphics
 {
 template <typename V>
-class VertexBuffer : public core::IComponent
+class VertexBuffer : public core::IComponent, virtual core::GetEntity
 {
 public:
     VertexBuffer(EntityPtr entityPtr);
@@ -31,17 +27,15 @@ public:
     std::vector<V>   _vertices;
     std::vector<int> _vertexOffset;
     UINT _totalVertexCount;
+
 private:
-    EntityWeakPtr _entity;
-    D3Device*     _d3device;
-
-
+    D3Devices*     _d3device;
 };
 
 template <typename V>
-inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr) :
-_entity{EntityPtr(entityPtr)},
-_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr)
+    : GetEntity(EntityPtr(entityPtr)),
+    _d3device{GetComponent<graphics::D3Devices>()}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexBuffer Component\n";

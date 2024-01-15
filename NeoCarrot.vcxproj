@@ -32,7 +32,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3Device.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\D3Devices.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Devices.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -83,7 +83,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\D3Device.h" />
+    <ClInclude Include="NeoCarrot_Graphics\D3Devices.h" />
     <ClInclude Include="NeoCarrot_Graphics\Devices.h" />
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

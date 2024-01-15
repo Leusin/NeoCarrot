@@ -1,8 +1,8 @@
 #pragma once
 
-#include <directxmath.h>
-
 #include "IComponent.h"
+
+#include <directxmath.h>
 
 namespace graphics
 {

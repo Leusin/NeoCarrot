@@ -1,21 +1,17 @@
 #pragma once
 
-#include "Entity.h"
-#include "EntityEnum.h"
 #include "IComponent.h"
+#include "GetEntity.h"
 
 #include <d3d11.h>
 #include <vector>
 #include <wrl.h>
 
-using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
-using EntityWeakPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
-
 namespace graphics
 {
-class D3Device;
+class D3Devices;
 
-class IndexBuffer : public core::IComponent
+class IndexBuffer : public core::IComponent, virtual core::GetEntity
 {
 public:
     IndexBuffer(EntityPtr entityPtr);
@@ -30,9 +26,9 @@ public:
     std::vector<UINT> _indexCount;
 
 private:
-    EntityWeakPtr _entity;
-    D3Device*     _d3device;
 
-    UINT _totalIndexCount;
+    D3Devices* _d3device{ nullptr };
+
+    UINT _totalIndexCount{ 0 };
 };
 } // namespace graphics

@@ -1,6 +1,6 @@
 #include "Effect.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
 
 #include <fstream>
 #include <vector>
@@ -12,9 +12,9 @@
 namespace graphics
 {
 Effect::Effect(EntityPtr entityPtr, std::wstring fileName) 
-    : _fileName(fileName)
-    , _entity{EntityPtr(entityPtr)}
-    ,_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+    : GetEntity(EntityPtr(entityPtr))
+    , _fileName(fileName)
+    , _d3device{GetComponent<graphics::D3Devices>()}
 {
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Effect Component\n";
