@@ -36,4 +36,26 @@ void IndexBuffer::Awake()
     _d3device->GetDevice()->CreateBuffer(&ibd, &iinitData, _ib.GetAddressOf());
 }
 
+void IndexBuffer::SetFromMesh(const model::Mesh& data)
+{
+    // 읽고 있는 메시의 정점 크기
+    UINT idxCount = static_cast<UINT>(data.faces.size());
+
+    // 읽고 있는 매시가 시작될 인덱스 숫자
+    _indexOffset.emplace_back(_totalIndexCount);
+
+    // 읽고 있는 메시가 가질 총 인덱스 수
+    _indexCount.emplace_back(3 * idxCount);
+
+    // 전체 인덱스 수
+    _totalIndexCount += (3 * idxCount);
+
+    for (UINT i = 0; i < idxCount; ++i)
+    {
+        _indices.emplace_back(static_cast<UINT>(data.faces[i].indices[0]));
+        _indices.emplace_back(static_cast<UINT>(data.faces[i].indices[1]));
+        _indices.emplace_back(static_cast<UINT>(data.faces[i].indices[2]));
+    }
+}
+
 } // namespace graphics

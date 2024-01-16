@@ -29,8 +29,8 @@ private:
     IndexBuffer*          _indexBuffer;
     VertexBuffer<PosNormal>* _vertexBuffer;
 
-    void SetVertexBuffer(std::vector<model::Mesh>& data);
-    void SetIndexBuffer(std::vector<model::Mesh>& data);
+    void SetVertexBuffer(model::Mesh& data);
+    void SetIndexBuffer(model::Mesh& data);
 };
 
 }

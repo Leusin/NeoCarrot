@@ -13,15 +13,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
     <ClCompile Include="IComponent.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="IFactory.cpp" />
     <ClCompile Include="GetEntity.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="IFactory.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

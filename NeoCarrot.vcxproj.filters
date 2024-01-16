@@ -84,9 +84,6 @@
     <ClCompile Include="NeoCarrot_Graphics\Devices.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ResourceView.cpp">
-      <Filter>D3D11</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
       <Filter>D3D11</Filter>
     </ClCompile>

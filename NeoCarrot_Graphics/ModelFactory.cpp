@@ -88,7 +88,7 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
                    .AddCamera(_camera)
                    .AddVertexBuffer<PosNormal>()
                    .AddIndexBuffer()
-                   .AddEffect({L"../NeoCarrot_Graphics/FX/BasicTex.fxo"})
+                   .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
                    .AddVertexLayout(PosNormalDesc)
                    .AddBoxcript(_fbxLoader.get())
                    // dc, inputlayout(fx 와 초기화) , Renderstate

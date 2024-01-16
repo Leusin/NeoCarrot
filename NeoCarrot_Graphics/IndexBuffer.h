@@ -2,6 +2,7 @@
 
 #include "IComponent.h"
 #include "GetEntity.h"
+#include "Mesh.h"
 
 #include <d3d11.h>
 #include <vector>
@@ -18,6 +19,8 @@ public:
 
     void Awake() override;
 
+    void SetFromMesh(const model::Mesh& data);
+
     // ÀÎµ¦½º¹öÆÛ
     Microsoft::WRL::ComPtr<ID3D11Buffer> _ib{nullptr};
     std::vector<UINT> _indices;
@@ -25,10 +28,9 @@ public:
     std::vector<UINT> _indexOffset;
     std::vector<UINT> _indexCount;
 
+    UINT _totalIndexCount;
+
 private:
-
     D3Devices* _d3device{ nullptr };
-
-    UINT _totalIndexCount{ 0 };
 };
 } // namespace graphics
