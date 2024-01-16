@@ -1,6 +1,7 @@
 #include "Effect.h"
 
 #include "D3Devices.h"
+#include "Transpose.h"
 
 #include <fstream>
 #include <vector>
@@ -51,6 +52,22 @@ void Effect::Awake()
     _tech            = _fx->GetTechniqueByName("ColorTech");
     _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
 
+}
+
+void Effect::Update(float dt)
+{
+    SetWorldViewProj();
+}
+
+void Effect::SetWorldViewProj()
+{
+    auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
+    _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
+}
+
+void Effect::GetTechniqueDesc(D3DX11_TECHNIQUE_DESC* des)
+{
+    _tech->GetDesc(des);
 }
 
 } // namespace graphics

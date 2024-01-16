@@ -27,6 +27,12 @@ public:
     ID3D11DeviceContext* _d3dImmediateContext;
     // 랜더 상태
     ID3D11RasterizerState* _rasterizerState;
+
+
+    void SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
+
+private:
+    void RasterizerStateSetRanderstate();
 };
 
 } // namespace graphics

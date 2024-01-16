@@ -36,6 +36,11 @@ void IndexBuffer::Awake()
     _d3device->GetDevice()->CreateBuffer(&ibd, &iinitData, _ib.GetAddressOf());
 }
 
+void IndexBuffer::Update(float dt)
+{
+    //SetBuffers();
+}
+
 void IndexBuffer::SetFromMesh(const model::Mesh& data)
 {
     // 읽고 있는 메시의 정점 크기
@@ -56,6 +61,11 @@ void IndexBuffer::SetFromMesh(const model::Mesh& data)
         _indices.emplace_back(static_cast<UINT>(data.faces[i].indices[1]));
         _indices.emplace_back(static_cast<UINT>(data.faces[i].indices[2]));
     }
+}
+
+void IndexBuffer::SetBuffers()
+{
+    _d3device->GetDeviceContext()->IASetIndexBuffer(_ib.Get(), DXGI_FORMAT_R32_UINT, 0);
 }
 
 } // namespace graphics

@@ -18,8 +18,10 @@ public:
     IndexBuffer(EntityPtr entityPtr);
 
     void Awake() override;
+    void Update(float dt) override;
 
     void SetFromMesh(const model::Mesh& data);
+    void SetBuffers();
 
     // ÀÎµ¦½º¹öÆÛ
     Microsoft::WRL::ComPtr<ID3D11Buffer> _ib{nullptr};
@@ -28,9 +30,10 @@ public:
     std::vector<UINT> _indexOffset;
     std::vector<UINT> _indexCount;
 
-    UINT _totalIndexCount;
+    UINT _totalIndexCount{ 0 };
 
 private:
+
     D3Devices* _d3device{ nullptr };
 };
 } // namespace graphics

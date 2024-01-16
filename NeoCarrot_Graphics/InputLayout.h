@@ -18,8 +18,11 @@ public:
     InputLayout(EntityPtr entityPtr, const D3D11_INPUT_ELEMENT_DESC* vertexDesc);
 
     void Awake() override;
+    void Update(float dt) override;
 
     Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayout{nullptr};
+
+    void SetInputLayout();
 
 private:
     D3Devices* _d3device{nullptr};

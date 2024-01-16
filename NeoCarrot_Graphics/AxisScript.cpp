@@ -68,23 +68,17 @@ void AxisScript::Awake()
 void AxisScript::Update(float dt)
 {
     auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
-    auto* inputLayout = GetComponent<InputLayout>()->_inputLayout.Get();
-    dc->IASetInputLayout(inputLayout);
-    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+    // InputLayout::SetInputLayout();
+    GetComponent<D3Devices>()->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
-    // 인덱스버퍼와 버텍스버퍼 셋팅
-    UINT stride = sizeof(PosCol);
+    // 버퍼 디바이스에 묶기
     UINT offset = 0;
-
-    dc->IASetVertexBuffers(0, 1, _vertexBuffer->_vb.GetAddressOf(), &stride, &offset);
-    dc->IASetIndexBuffer(_indexBuffer->_ib.Get(), DXGI_FORMAT_R32_UINT, 0);
+    _vertexBuffer->SetBuffers(offset);
+    _indexBuffer->SetBuffers();
 
     auto worldViewProj   = GetComponent<Transpose>()->WorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
-
-    auto rState = GetComponent<D3Devices>()->_rasterizerState;
-    dc->RSSetState(rState);
 
     D3DX11_TECHNIQUE_DESC techDesc;
     auto                  tech = GetComponent<Effect>()->_tech;

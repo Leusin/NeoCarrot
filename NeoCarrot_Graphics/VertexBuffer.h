@@ -25,8 +25,10 @@ public:
     VertexBuffer(EntityPtr entityPtr);
 
     void Awake() override;
+    void Update(float dt) override;
 
     void SetFromMesh(const model::Mesh& data);
+    void SetBuffers(UINT& offset);
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
@@ -35,6 +37,9 @@ public:
     UINT _totalVertexCount;
 
 private:
+    
+    void SetBuffers(UINT& stride, UINT& offset);
+
     D3Devices*     _d3device;
 };
 
@@ -66,6 +71,12 @@ inline void VertexBuffer<V>::Awake()
     vinitData.pSysMem = _vertices.data();
     _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 
+}
+
+template <typename V>
+inline void VertexBuffer<V>::Update(float dt)
+{
+    //SetBuffers();
 }
 
 template <typename V>
@@ -117,6 +128,21 @@ inline void VertexBuffer<V>::SetFromMesh(const model::Mesh& data)
 
         //_vertexBuffer->_vertices.emplace_back(V{pos, col, uv, nol, tan, bi});
     }
+}
+
+template <typename V>
+inline void VertexBuffer<V>::SetBuffers(UINT& stride, UINT& offset)
+{
+    // 정점 버퍼 장치 묶기
+    _d3device->GetDeviceContext()->IASetVertexBuffers(0, 1, _vb.GetAddressOf(), &stride, &offset);
+}
+
+template <typename V>
+inline void VertexBuffer<V>::SetBuffers(UINT& offset)
+{
+    UINT stride = static_cast<UINT>(sizeof(V));
+
+    SetBuffers(stride, offset);
 }
 
 } // namespace graphics

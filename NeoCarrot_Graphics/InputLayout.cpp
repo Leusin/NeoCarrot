@@ -35,6 +35,15 @@ void InputLayout::Awake()
                                               passDesc.IAInputSignatureSize,
                                               _inputLayout.GetAddressOf());
 
+}
+void InputLayout::Update(float dt)
+{
+    SetInputLayout();
+}
+
+void InputLayout::SetInputLayout()
+{
+    _d3device->GetDeviceContext()->IASetInputLayout(_inputLayout.Get());
 };
 
 } // namespace graphics

@@ -39,26 +39,18 @@ void GridScript::Awake()
 void GridScript::Update(float dt)
 {
     auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
-    auto* inputLayout = GetComponent<InputLayout>()->_inputLayout.Get();
-    dc->IASetInputLayout(inputLayout);
-    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+    // InputLayout::SetInputLayout();
+    GetComponent<D3Devices>()->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
-    // 인덱스버퍼와 버텍스버퍼 셋팅
-    UINT stride = sizeof(PosCol);
-    UINT offset = 0;
-
-    // 버퍼 장치 묶기
-    dc->IASetVertexBuffers(0, 1, _vertexBuffer->_vb.GetAddressOf(), &stride, &offset);
-    dc->IASetIndexBuffer(_indexBuffer->_ib.Get(), DXGI_FORMAT_R32_UINT, 0);
+    // 버퍼 디바이스에 묶기
+     UINT offset = 0;
+    _vertexBuffer->SetBuffers(offset);
+    _indexBuffer->SetBuffers();
 
     // WVP TM등을 셋팅
     auto worldViewProj   = GetComponent<Transpose>()->WorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
-
-    // 렌더스테이트
-    auto rState = GetComponent<D3Devices>()->_rasterizerState;
-    dc->RSSetState(rState);
 
     D3DX11_TECHNIQUE_DESC techDesc;
     auto                  tech = GetComponent<Effect>()->_tech;

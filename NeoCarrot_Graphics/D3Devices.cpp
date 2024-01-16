@@ -28,6 +28,7 @@ void D3Devices::Awake()
 
 void D3Devices::Update(float dt)
 {
+    RasterizerStateSetRanderstate();
 }
 
 ID3D11Device* D3Devices::GetDevice()
@@ -37,5 +38,15 @@ ID3D11Device* D3Devices::GetDevice()
 ID3D11DeviceContext* D3Devices::GetDeviceContext()
 {
     return _d3dImmediateContext;
+}
+
+void D3Devices::SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY primitiveTopology)
+{
+    _d3dImmediateContext->IASetPrimitiveTopology(primitiveTopology);
+}
+
+void D3Devices::RasterizerStateSetRanderstate()
+{
+    _d3dImmediateContext->RSSetState(_rasterizerState);
 }
 } // namespace graphics
