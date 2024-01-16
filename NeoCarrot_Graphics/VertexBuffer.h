@@ -1,48 +1,56 @@
 #pragma once
 
-#include "D3Device.h"
-#include "Entity.h"
-#include "EntityEnum.h"
 #include "IComponent.h"
+#include "GetEntity.h"
+#include "D3Devices.h"
+#include "FbxLoader.h"
 
 #include <d3d11.h>
 #include <vector>
 #include <wrl.h>
+#include <cassert>
+#include <directxmath.h>
+#include <type_traits>
 
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
-using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
-using EntityWeakPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
-
 namespace graphics
 {
 template <typename V>
-class VertexBuffer : public core::IComponent
+class VertexBuffer : public core::IComponent, virtual core::GetEntity
 {
 public:
     VertexBuffer(EntityPtr entityPtr);
 
     void Awake() override;
+    void Update(float dt) override;
+
+    void SetFromMesh(const model::Mesh& data);
+    void SetBuffers(UINT& offset);
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
     std::vector<V>   _vertices;
     std::vector<int> _vertexOffset;
     UINT _totalVertexCount;
+
 private:
-    EntityWeakPtr _entity;
-    D3Device*     _d3device;
+    
+    void SetBuffers(UINT& stride, UINT& offset);
 
-
+    D3Devices*     _d3device;
 };
 
 template <typename V>
-inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr) :
-_entity{EntityPtr(entityPtr)},
-_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+inline VertexBuffer<V>::VertexBuffer(EntityPtr entityPtr)
+    : GetEntity(EntityPtr(entityPtr)),
+    _d3device{GetComponent<graphics::D3Devices>()}
 {
+    static_assert(std::is_class<V>::value, "VertexBuffer 가 받는 V 는 구조체(클래스)야 함");
+    assert(_d3device && "VertexBuffer 에서 D3Devices 를 찾을 수 없음");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd VertexBuffer Component\n";
 #endif // _DEBUG
@@ -60,9 +68,81 @@ inline void VertexBuffer<V>::Awake()
     vbd.CPUAccessFlags = 0;
     vbd.MiscFlags      = 0;
     D3D11_SUBRESOURCE_DATA vinitData;
-    vinitData.pSysMem = &_vertices[0];
+    vinitData.pSysMem = _vertices.data();
     _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
 
+}
+
+template <typename V>
+inline void VertexBuffer<V>::Update(float dt)
+{
+    //SetBuffers();
+}
+
+template <typename V>
+inline void VertexBuffer<V>::SetFromMesh(const model::Mesh& data)
+{
+    // 읽고 있는 메시의 정점 크기
+    UINT vcount = static_cast<UINT>(data.vertices.size());
+
+    // 읽고 있는 매시가 시작될 정점 숫자
+    _vertexOffset.emplace_back(_totalVertexCount);
+
+    // 전체 정점 수
+    _totalVertexCount += vcount;
+
+    for (unsigned int i = 0; i < vcount; i++)
+    {
+        DirectX::XMFLOAT3 pos{data.vertices[i].position.x, data.vertices[i].position.y, data.vertices[i].position.z};
+
+        DirectX::XMFLOAT4 col;
+        if (data.hasColor)
+        {
+            col = {data.vertices[i].color.x, data.vertices[i].color.y, data.vertices[i].color.z, data.vertices[i].color.w};
+        }
+
+        DirectX::XMFLOAT2 uv;
+        if (data.hasTexture)
+        {
+            uv = {data[i].uv.x, data[i].uv.y};
+        }
+
+        DirectX::XMFLOAT3 nol;
+        if (data.hasNormal)
+        {
+            nol = {data.vertices[i].normal.x, data.vertices[i].normal.y, data.vertices[i].normal.z};
+        }
+
+        DirectX::XMFLOAT3 tan;
+        DirectX::XMFLOAT3 bi;
+        if (data.hasTangent)
+        {
+            tan = {data.vertices[i].tangent.x, data.vertices[i].tangent.y, data.vertices[i].tangent.z};
+            bi  = {data.vertices[i].binormal.x, data.vertices[i].binormal.y, data.vertices[i].binormal.z};
+        }
+
+        ///
+        /// 미완성 
+        ///    좀더 생각해봐야함.
+        /// 
+
+        //_vertexBuffer->_vertices.emplace_back(V{pos, col, uv, nol, tan, bi});
+    }
+}
+
+template <typename V>
+inline void VertexBuffer<V>::SetBuffers(UINT& stride, UINT& offset)
+{
+    // 정점 버퍼 장치 묶기
+    _d3device->GetDeviceContext()->IASetVertexBuffers(0, 1, _vb.GetAddressOf(), &stride, &offset);
+}
+
+template <typename V>
+inline void VertexBuffer<V>::SetBuffers(UINT& offset)
+{
+    UINT stride = static_cast<UINT>(sizeof(V));
+
+    SetBuffers(stride, offset);
 }
 
 } // namespace graphics

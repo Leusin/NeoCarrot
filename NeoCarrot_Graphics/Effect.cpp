@@ -1,9 +1,11 @@
 #include "Effect.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
+#include "Transpose.h"
 
 #include <fstream>
 #include <vector>
+#include <cassert>
 
 #ifdef _DEBUG
 #include <iostream>
@@ -12,10 +14,12 @@
 namespace graphics
 {
 Effect::Effect(EntityPtr entityPtr, std::wstring fileName) 
-    : _fileName(fileName)
-    , _entity{EntityPtr(entityPtr)}
-    ,_d3device{_entity.lock()->GetComponent<graphics::D3Device>()}
+    : GetEntity(EntityPtr(entityPtr))
+    , _fileName(fileName)
+    , _d3device{GetComponent<graphics::D3Devices>()}
 {
+    assert(_d3device && "Effect 에서 D3Devices 를 찾을 수 없음");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd Effect Component\n";
 #endif // _DEBUG
@@ -23,12 +27,30 @@ Effect::Effect(EntityPtr entityPtr, std::wstring fileName)
 
 void Effect::Awake()
 {
+    ReadFile();
 
+    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
+
+}
+
+void Effect::Update(float dt)
+{
+    SetWorldViewProj();
+}
+
+void Effect::SetWorldViewProj()
+{
+    auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
+    _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
+}
+
+void Effect::ReadFile()
+{
     std::ifstream fin(_fileName, std::ios::binary);
 
     if (!fin)
     {
-        MessageBox(0, L"cso Not found.", 0, 0);
+        MessageBox(0, L"파일을 찾을 수 없으센.", 0, 0);
     }
 
     fin.seekg(0, std::ios_base::end);
@@ -44,10 +66,11 @@ void Effect::Awake()
                                  0,                      // 이펙트 플래그
                                  _d3device->GetDevice(), // 디바이스 포인터
                                  _fx.GetAddressOf());    // 새로 만든 이펙트 인터페이스 주소
+}
 
-    _tech            = _fx->GetTechniqueByName("ColorTech");
-    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
-
+void Effect::GetTechniqueDesc(D3DX11_TECHNIQUE_DESC* des)
+{
+    _tech->GetDesc(des);
 }
 
 } // namespace graphics

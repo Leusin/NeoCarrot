@@ -1,16 +1,9 @@
 #include "GraphicsEngine.h"
 
-#include "D3D11Context.h"
-#include "D3D11RenderStates.h"
+#include "D3D11Context_mk2.h"
 #include "DXTKFont.h"
 #include "FontType.h"
-#include "ResourceManager.h"
-
 #include "Camera3D.h"
-
-// Mesh Obj
-#include "Grid.h"
-#include "ForGraphics.h"
 #include "ModelManager.h"
 
 #ifdef _DEBUG
@@ -22,14 +15,11 @@ namespace graphics
 {
 
 graphics::GraphicsEngine::GraphicsEngine(HINSTANCE& hinst, HWND hWnd, int clientWidth, int clientHeight) 
-    : _d3d11(std::make_unique<D3D11Context>(hinst, hWnd, clientWidth, clientHeight))
-	, _renderState(std::make_unique<D3D11RenderStates>(_d3d11->Divice()))
-	, _font(std::make_unique<DXTKFont>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->Solid(), _renderState->_normalDSS, FontType::gulima9k))
-	, _grid(std::make_unique<Grid>(_d3d11->Divice(), _d3d11->DiviceContext(), _renderState->WireFrame()))
+    : _d3d11context(std::make_unique<D3D11Context_mk2>(hinst, hWnd, clientWidth, clientHeight))
+    , _font(std::make_unique<DXTKFont>(_d3d11context->GetDevices(), _d3d11context->GetRenderStates(), FontType::gulima9k))
     , _camera(std::make_unique<Camera3D>(clientWidth, clientHeight))
-    , _resourceManager(std::make_unique<ResourceManager>(_d3d11.get(), _renderState.get(), _font.get()))
 {
-    _modelManager = std::make_unique<ModelManager>(_resourceManager.get(), _camera.get());
+    _modelManager = std::make_unique<ModelManager>(_d3d11context.get(), _camera.get());
 
 #ifdef _DEBUG
     std::cout << "GraphicsEngine Constructed\n";
@@ -43,7 +33,6 @@ graphics::GraphicsEngine::~GraphicsEngine()
 void graphics::GraphicsEngine::Initialize()
 {
     _camera->Initialize();
-    _resourceManager->Initialize();
     _modelManager->Initialize();
 }
 
@@ -53,19 +42,17 @@ void graphics::GraphicsEngine::Update(float deltaTime)
     auto proj = _camera->Proj();
     auto eye = _camera->GetPosition();
 
-    _grid->_transpose.SetTM(DirectX::XMMatrixIdentity(), view, proj);
-    _grid->SetEyePosW(eye);
 }
 
 void graphics::GraphicsEngine::BeginRender()
 {
-	_d3d11->BeginRender();
+    const float Carrot[4] = {0.999f, 0.444f, 0.f, 1.0f};
+    _d3d11context->BeginRender(Carrot);
 }
 
 void graphics::GraphicsEngine::Render()
 {
 	_font->DrawTest();
-	_grid->Render();
     _modelManager->Update(0);
 
     DrawStatus();
@@ -73,7 +60,7 @@ void graphics::GraphicsEngine::Render()
 
 void graphics::GraphicsEngine::EndRender()
 {
-	_d3d11->EndRender();
+    _d3d11context->EndRender();
 }
 
 void graphics::GraphicsEngine::Finalize()
@@ -83,7 +70,7 @@ void graphics::GraphicsEngine::Finalize()
 
 void graphics::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
 {
-	_d3d11->OnResize(clientWidth, clientHeight);
+    _d3d11context->OnResize(clientWidth, clientHeight);
 
 	// È­¸éºñ
     float aspectRatio = static_cast<float>(clientWidth) / clientHeight;

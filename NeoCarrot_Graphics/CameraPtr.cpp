@@ -10,11 +10,15 @@
 
 namespace graphics
 {
-CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera) :
-_entity{EntityPtr(entityPtr)},
-_transpose(_entity.lock()->GetComponent<graphics::Transpose>()),
-_camera(camera)
+CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera) 
+    : GetEntity(EntityPtr(entityPtr))
+    , _transpose(GetComponent<graphics::Transpose>())
+    , _camera(camera)
 {
+    assert(_transpose && "CameraPtr 에서 Transpose 를 찾을 수 없음");
+    assert(_transpose && "CameraPtr 에서 Camera3D 를 찾을 수 없음");
+
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd CameraPtr Component\n";
 #endif // _DEBUG
@@ -22,12 +26,6 @@ _camera(camera)
 
 void CameraPtr::Update(float dt)
 {
-
-#ifdef _DEBUG
-    std::cout << "\t\t\t\t\tCameraPtr Update\n";
-#endif // _DEBUG
-
-
     auto view = _camera->View();
     auto proj = _camera->Proj();
     auto eye  = _camera->GetPosition();

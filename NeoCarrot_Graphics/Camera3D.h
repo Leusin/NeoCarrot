@@ -67,13 +67,13 @@ private:
     DirectX::XMFLOAT3 _look;  // z
 
     // 절두체 속성
-    float _nearZ;
-    float _farZ;
-    float _aspect; // 종횡비
-    float _fovY;   // y 시야각
+    float _nearZ{ 000.1f };
+    float _farZ{ 1000.f };
+    float _aspect{ 0.f }; // 종횡비
+    float _fovY{ 0.25f }; // y 시야각
 
     // 시야행렬 및 투영 행렬
     DirectX::XMFLOAT4X4 _view;
     DirectX::XMFLOAT4X4 _proj;
 };
-} // namespace grahics
+} // namespace graphics

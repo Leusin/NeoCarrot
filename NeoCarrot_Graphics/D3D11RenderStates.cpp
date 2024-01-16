@@ -52,7 +52,6 @@ graphics::D3D11RenderStates::D3D11RenderStates(ID3D11Device* _d3dDevice)
 graphics::D3D11RenderStates::~D3D11RenderStates()
 {
 	if(_normalDSS) _normalDSS->Release();
-	if(_solidRS) _solidRS->Release();
 	if(_wireframeRS) _wireframeRS->Release();
 }
 

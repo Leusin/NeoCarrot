@@ -4,7 +4,10 @@
     <Filter Include="math">
       <UniqueIdentifier>{25eb7e59-c2ab-4f06-959c-a55bc34998bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="info">
+    <Filter Include="model">
+      <UniqueIdentifier>{0db75704-a164-4211-a7d2-aa7fb5a6c2ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
       <UniqueIdentifier>{cf6fcbb5-c328-4be2-9707-fa15fe643839}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -25,16 +28,22 @@
       <Filter>math</Filter>
     </ClInclude>
     <ClInclude Include="CameraInfo.h">
-      <Filter>info</Filter>
+      <Filter>data</Filter>
     </ClInclude>
     <ClInclude Include="ForGraphics.h">
-      <Filter>info</Filter>
+      <Filter>data</Filter>
     </ClInclude>
     <ClInclude Include="WindowInfo.h">
-      <Filter>info</Filter>
+      <Filter>data</Filter>
     </ClInclude>
     <ClInclude Include="..\MrRabbit_Game\EntityEnum.h">
-      <Filter>info</Filter>
+      <Filter>data</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +54,10 @@
       <Filter>math</Filter>
     </ClCompile>
     <ClCompile Include="ForGraphics.cpp">
-      <Filter>info</Filter>
+      <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4.inl">
+      <Filter>math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

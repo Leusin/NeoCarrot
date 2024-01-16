@@ -149,14 +149,17 @@
     <ClInclude Include="ForGraphics.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Vector4.h" />
     <ClInclude Include="WindowInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForGraphics.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector4.inl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Matrix.inl" />

@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -15,16 +16,19 @@ struct ID3D11RasterizerState;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
+namespace loader{ class FbxLoader; }
+
 namespace graphics
 {
 class Camera3D;
 
+// 본문
 class ModelBuilder
 {
 public:
     ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
     
-    ModelBuilder AddD3Device(ID3D11Device* device, ID3D11DeviceContext* dContext, ID3D11RasterizerState* rasterizerState);
+    ModelBuilder AddD3Device(const D3D11Context_mk2* d3d11context);
     
     ModelBuilder AddTransform();
     
@@ -35,13 +39,15 @@ public:
 
     ModelBuilder AddEffect(std::wstring fileName);
 
-    ModelBuilder AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc);
+    ModelBuilder AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc);
 
     ModelBuilder AddCamera(Camera3D* camera);
 
     /// 스크립트
 
     ModelBuilder AddAxisScript();
+    ModelBuilder AddGridScript();
+    ModelBuilder AddBoxcript(loader::FbxLoader* fbxLodaer);
 
     // 제품 반환
     EntityPtr Build();

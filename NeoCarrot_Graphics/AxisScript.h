@@ -1,33 +1,24 @@
 #pragma once
 
+#include "GetEntity.h"
 #include "IComponent.h"
-#include "EntityEnum.h"
 
 #include <memory>
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
-
-namespace core
-{
-template<typename T, typename U>
-class Entity;
-}
-
-using EntityPtr     = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
-using EntityWeakPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
-
 namespace graphics
 {
-template<typename V>
+// 전방 선언
+template <typename V>
 class VertexBuffer;
 class IndexBuffer;
 struct PosCol;
 
-class AxisScript : public core::IComponent
+// 본문
+class AxisScript : public core::IComponent, virtual core::GetEntity
 {
-
 public:
     AxisScript(EntityPtr entityPtr);
 
@@ -35,8 +26,7 @@ public:
     void Update(float dt) override;
 
 private:
-    EntityWeakPtr _entity;
-    IndexBuffer* _indexBuffer;
+    IndexBuffer*          _indexBuffer;
     VertexBuffer<PosCol>* _vertexBuffer;
 };
 

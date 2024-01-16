@@ -25,11 +25,11 @@ struct Vector3
     constexpr Vector3();
 
     /// <summary>
-    /// 2Â÷¿ø ÁÂÇ¥°è »ý¼ºÀÚ ÀÔ´Ï´Ù..
+    /// 3Â÷¿ø ÁÂÇ¥°è »ý¼ºÀÚ ÀÔ´Ï´Ù.
     /// </summary>
     /// <param name="x">º¤ÅÍÀÇ X ÁÂÇ¥</param>
-    /// <param name="y">º¤ÅÍÀÇ  Y ÁÂÇ¥</param>
-    /// <param name="z">º¤ÅÍÀÇ  Z ÁÂÇ¥</param>
+    /// <param name="y">º¤ÅÍÀÇ Y ÁÂÇ¥</param>
+    /// <param name="z">º¤ÅÍÀÇ Z ÁÂÇ¥</param>
     constexpr Vector3(T x, T y, T z);
 
     /// <summary>

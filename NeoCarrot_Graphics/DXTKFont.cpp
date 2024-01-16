@@ -1,49 +1,57 @@
 #include "DXTKFont.h"
+
+#include "Devices.h"
+#include "RenderStates.h"
+
 #include <SimpleMath.h>
 #include <tchar.h>
 
 // ÇöÀç °æ·Î°¡ ¾îµòÁö È®ÀÎÇÏ±â À§ÇØ
 #if defined(DEBUG) || defined(_DEBUG)
-#include <iostream>
 #include <filesystem>
+#include <iostream>
 #endif
 
 
-graphics::DXTKFont::DXTKFont(ID3D11Device* device, ID3D11DeviceContext* deviceCtext, ID3D11RasterizerState* rasterizerState, ID3D11DepthStencilState* dethsencil, FontType fontT)
-	: _spriteBatch(std::make_unique<DirectX::SpriteBatch>(deviceCtext)), 
-	_rasterizerState(rasterizerState)
-	, _depthStencilState(dethsencil)
+graphics::DXTKFont::DXTKFont(ID3D11Device*            device,
+                             ID3D11DeviceContext*     deviceCtext,
+                             ID3D11RasterizerState*   rasterizerState,
+                             ID3D11DepthStencilState* dethsencil,
+                             FontType                 fontT) :
+_spriteBatch(std::make_unique<DirectX::SpriteBatch>(deviceCtext)),
+_rasterizerState(rasterizerState),
+_depthStencilState(dethsencil)
 {
-	const TCHAR* pathName =  L"../NeoCarrot_Graphics/Font";
+    const std::wstring fullPath = GetFontFilePath(fontT);
 
-	TCHAR* fileName{ nullptr };
-	switch (fontT)
-	{
-	case FontType::Consolas:
-		fileName = (TCHAR*)L"Consolas10.spritefont";
-		break;
-	case FontType::gulima9k:
-		fileName = (TCHAR*)L"gulim9k.spritefont";
-		break;
-	case FontType::SegoeUI_:
-		fileName = (TCHAR*)L"SegoeUI_18.spritefont";
-		break;
-	default:
-		assert(false);
-		break;
-	}
+    _spriteFont = std::make_unique<DirectX::SpriteFont>(device, fullPath.c_str());
+    
+    assert(_spriteFont);
 
-	assert(fileName);
+    _spriteFont->SetLineSpacing(14.0f);
 
-	std::wstring fullPath = std::wstring(pathName) + L"\\" + fileName;
-	_spriteFont = std::make_unique<DirectX::SpriteFont>(device, fullPath.c_str());
-
-	assert(_spriteFont);
-
-	_spriteFont->SetLineSpacing(14.0f);
-
-    // ÇöÀç °æ·Î°¡ ¾îµòÁö È®ÀÎ
 #if defined(DEBUG) || defined(_DEBUG)
+    // ÇöÀç °æ·Î°¡ ¾îµòÁö È®ÀÎ
+    //std::cout << "( Font ) ÆÄÀÏ °æ·Î: " << std::filesystem::current_path() << std::endl;
+    std::cout << "\tDXTKFont Constructed\n";
+#endif
+}
+
+graphics::DXTKFont::DXTKFont(const Devices* devices, const RenderStates* renderStates, const FontType fontT) 
+    : _spriteBatch(std::make_unique<DirectX::SpriteBatch>(devices->ImmediateContext()))
+    , _rasterizerState(renderStates->solidRS.Get())
+    , _depthStencilState(renderStates->normalDSS.Get())
+{
+    const std::wstring fullPath = GetFontFilePath(fontT);
+
+    _spriteFont = std::make_unique<DirectX::SpriteFont>(devices->Device(), fullPath.c_str());
+
+    assert(_spriteFont);
+
+    _spriteFont->SetLineSpacing(14.0f);
+
+#if defined(DEBUG) || defined(_DEBUG)
+    // ÇöÀç °æ·Î°¡ ¾îµòÁö È®ÀÎ
     //std::cout << "( Font ) ÆÄÀÏ °æ·Î: " << std::filesystem::current_path() << std::endl;
     std::cout << "\tDXTKFont Constructed\n";
 #endif
@@ -52,10 +60,10 @@ graphics::DXTKFont::DXTKFont(ID3D11Device* device, ID3D11DeviceContext* deviceCt
 #if defined(DEBUG) || defined(_DEBUG)
 void graphics::DXTKFont::DrawTest()
 {
-	_spriteBatch->Begin();
-	const wchar_t* text = L"´Ù¶÷Áã½ã´õ ÇåÃÂ¹ÙÄû¿¡ Å¸°íÆÄ\nÅä³¢¿Í ÇÇÄ«Ãò ¶Ç ¹ÙÁö¶ôÂ«»Í ¿øÇÏ¼Ì´ë";
-	_spriteFont->DrawString(_spriteBatch.get(), text, DirectX::XMFLOAT2(32.f, 36.f));
-	_spriteBatch->End();
+    _spriteBatch->Begin();
+    const wchar_t* text = L"´Ù¶÷Áã½ã´õ ÇåÃÂ¹ÙÄû¿¡ Å¸°íÆÄ\nÅä³¢¿Í ÇÇÄ«Ãò ¶Ç ¹ÙÁö¶ôÂ«»Í ¿øÇÏ¼Ì´ë";
+    _spriteFont->DrawString(_spriteBatch.get(), text, DirectX::XMFLOAT2(32.f, 36.f));
+    _spriteBatch->End();
 }
 #endif
 
@@ -105,4 +113,32 @@ void graphics::DXTKFont::DrawTextColor(int x, int y, const DirectX::XMVECTORF32&
                             DirectX::XMFLOAT2((float)x, (float)y),
                             DirectX::SimpleMath::Vector4(color));
     _spriteBatch->End();
+}
+
+const std::wstring graphics::DXTKFont::GetFontFilePath(const FontType& fontT)
+{
+    const TCHAR* pathName = L"../NeoCarrot_Graphics/Font";
+
+    TCHAR* fileName{nullptr};
+    switch (fontT)
+    {
+        case FontType::Consolas:
+            fileName = (TCHAR*)L"Consolas10.spritefont";
+            break;
+        case FontType::gulima9k:
+            fileName = (TCHAR*)L"gulim9k.spritefont";
+            break;
+        case FontType::SegoeUI_:
+            fileName = (TCHAR*)L"SegoeUI_18.spritefont";
+            break;
+        default:
+            assert(false);
+            break;
+    }
+
+    assert(fileName);
+
+    std::wstring fullPath = std::wstring(pathName) + L"\\" + fileName;
+
+    return fullPath;
 }

@@ -1,13 +1,12 @@
 #include "AxisScript.h"
 
-#include "D3Device.h"
+#include "D3Devices.h"
 #include "Effect.h"
-#include "Entity.h"
+#include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "Transpose.h"
-#include "VertexBuffer.h"
-#include "VertexLayout.h"
-#include "VertexStruct.h"
+#include "InputLayout.h"
+#include "StructedBuffer.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>
@@ -16,27 +15,33 @@
 namespace graphics
 {
 
-AxisScript::AxisScript(EntityPtr entityPtr) :
-_entity{EntityPtr(entityPtr)},
-_vertexBuffer{_entity.lock()->GetComponent<graphics::VertexBuffer<graphics::PosCol>>()},
-_indexBuffer{_entity.lock()->GetComponent<graphics::IndexBuffer>()}
+AxisScript::AxisScript(EntityPtr entityPtr)
+    : GetEntity(EntityPtr(entityPtr))
+    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosCol>>()}
+    , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
 {
-    _vertexBuffer->_vertices.push_back(
-        {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::Crimson)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), 
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Crimson)});
 
-    _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(static_cast<float>(INT_MAX), 0.0f, 0.0f),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
-    _vertexBuffer->_vertices.push_back(
-        {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::SeaGreen)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(static_cast<float>(INT_MAX), 0.0f, 0.0f),
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f),
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::SeaGreen)});
 
-    _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(0.0f, static_cast<float>(INT_MAX), 0.0f),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(0.0f, static_cast<float>(INT_MAX), 0.0f),
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
 
-    _vertexBuffer->_vertices.push_back(
-        {DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT4((const float*)&DirectX::Colors::RoyalBlue)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), 
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::RoyalBlue)});
 
-    _vertexBuffer->_vertices.push_back({DirectX::XMFLOAT3(0.0f, 0.0f, static_cast<float>(INT_MAX)),
-                                        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
+    _vertexBuffer->_vertices.push_back({
+        DirectX::XMFLOAT3(0.0f, 0.0f, static_cast<float>(INT_MAX)),
+        DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow)});
 
     _vertexBuffer->_totalVertexCount = static_cast<UINT>(_vertexBuffer->_vertices.size());
 
@@ -62,29 +67,21 @@ void AxisScript::Awake()
 
 void AxisScript::Update(float dt)
 {
-    auto* dc          = _entity.lock()->GetComponent<D3Device>()->GetDeviceContext();
-    auto* inputLayout = _entity.lock()->GetComponent<VertexLayout>()->_inputLayout.Get();
-    dc->IASetInputLayout(inputLayout);
-    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+    auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
+    // InputLayout::SetInputLayout();
+    GetComponent<D3Devices>()->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
-    // 인덱스버퍼와 버텍스버퍼 셋팅
-    UINT stride = sizeof(PosCol);
+    // 버퍼 디바이스에 묶기
     UINT offset = 0;
+    _vertexBuffer->SetBuffers(offset);
+    _indexBuffer->SetBuffers();
 
-
-    dc->IASetVertexBuffers(0, 1, _vertexBuffer->_vb.GetAddressOf(), &stride, &offset);
-
-    dc->IASetIndexBuffer(_indexBuffer->_ib.Get(), DXGI_FORMAT_R32_UINT, 0);
-
-    auto worldViewProj   = _entity.lock()->GetComponent<Transpose>()->WorldViewProj();
-    auto fxWorldViewProj = _entity.lock()->GetComponent<Effect>()->_fxWorldViewProj;
+    auto worldViewProj   = GetComponent<Transpose>()->WorldViewProj();
+    auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 
-    auto rState = _entity.lock()->GetComponent<D3Device>()->_rasterizerState;
-    dc->RSSetState(rState);
-
     D3DX11_TECHNIQUE_DESC techDesc;
-    auto                  tech = _entity.lock()->GetComponent<Effect>()->_tech;
+    auto                  tech = GetComponent<Effect>()->_tech;
     tech->GetDesc(&techDesc);
 
     for (UINT p = 0; p < techDesc.Passes; ++p)
