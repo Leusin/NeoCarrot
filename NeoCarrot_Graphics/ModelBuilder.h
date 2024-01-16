@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -38,7 +39,7 @@ public:
 
     ModelBuilder AddEffect(std::wstring fileName);
 
-    ModelBuilder AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc);
+    ModelBuilder AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc);
 
     ModelBuilder AddCamera(Camera3D* camera);
 

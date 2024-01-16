@@ -32,7 +32,7 @@ void Effect::Awake()
 
     if (!fin)
     {
-        MessageBox(0, L"cso Not found.", 0, 0);
+        MessageBox(0, L"파일을 찾을 수 없으센.", 0, 0);
     }
 
     fin.seekg(0, std::ios_base::end);

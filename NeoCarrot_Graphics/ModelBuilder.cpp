@@ -59,7 +59,7 @@ ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddVertexLayout(const D3D11_INPUT_ELEMENT_DESC* desc)
+ModelBuilder ModelBuilder::AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc)
 {
     _entity->AddComponent<InputLayout>(_entity, desc);
 

@@ -26,6 +26,8 @@ public:
      // 이펙트
     Microsoft::WRL::ComPtr<ID3DX11Effect>               _fx{ nullptr };
     Microsoft::WRL::ComPtr<ID3DX11EffectTechnique>      _tech{ nullptr };
+
+    // 상수 버퍼
     Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{ nullptr };
 
 private:
