@@ -53,7 +53,7 @@ EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
                     .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
-                    .AddVertexLayout(&PosColorDescVec)
+                    .AddVertexLayout(&PosColorDesc)
                     .AddGridScript()
                     .Build();
 
@@ -71,7 +71,7 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
                     .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
                     .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
-                    .AddVertexLayout(&PosColorDescVec)
+                    .AddVertexLayout(&PosColorDesc)
                     .AddAxisScript()
                     .Build();
 
@@ -89,10 +89,8 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
                    .AddVertexBuffer<PosNormal>()
                    .AddIndexBuffer()
                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
-                   .AddVertexLayout(&PosColorDescVec)
+                   .AddVertexLayout(&PosNormalTexWeightsBoneidxDesc)
                    .AddBoxcript(_fbxLoader.get())
-                   // dc, inputlayout(fx 와 초기화) , Renderstate
-                   // GeometryBuffers - (버텍스 & 인덱스)버퍼, 버텍스 데이터
                    // 이펙트, 조명, 테크
                    // 변환 행렬, 카메라 위치, 월드 좌표
                    // 머터리얼

@@ -4,8 +4,8 @@
 #include "IComponent.h"
 
 #include <d3dx11effect.h>
-#include <wrl.h>
 #include <string>
+#include <wrl.h>
 
 namespace graphics
 {
@@ -23,16 +23,28 @@ public:
 
     void GetTechniqueDesc(D3DX11_TECHNIQUE_DESC* dec);
 
-     // ¿Ã∆Â∆Æ
-    Microsoft::WRL::ComPtr<ID3DX11Effect>               _fx{ nullptr };
-    Microsoft::WRL::ComPtr<ID3DX11EffectTechnique>      _tech{ nullptr };
+    // ¿Ã∆Â∆Æ
+    Microsoft::WRL::ComPtr<ID3DX11Effect> _fx{nullptr};
+
+    // pass
+    Microsoft::WRL::ComPtr<ID3DX11EffectTechnique> _tech{nullptr};
 
     // ªÛºˆ πˆ∆€
-    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{ nullptr };
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{nullptr};
+
+    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>               _dirLights{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectVectorVariable>         _eyePosW{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _world{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _worldInvTranspose{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _worldViewProj{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _texTransform{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>               _material{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectShaderResourceVariable> _diffuseMap{nullptr};
 
 private:
-
     void SetWorldViewProj();
+
+    void ReadFile();
 
     D3Devices* _d3device{nullptr};
 

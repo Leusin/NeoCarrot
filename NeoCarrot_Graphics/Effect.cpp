@@ -27,7 +27,25 @@ Effect::Effect(EntityPtr entityPtr, std::wstring fileName)
 
 void Effect::Awake()
 {
+    ReadFile();
 
+    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
+
+}
+
+void Effect::Update(float dt)
+{
+    SetWorldViewProj();
+}
+
+void Effect::SetWorldViewProj()
+{
+    auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
+    _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
+}
+
+void Effect::ReadFile()
+{
     std::ifstream fin(_fileName, std::ios::binary);
 
     if (!fin)
@@ -48,21 +66,6 @@ void Effect::Awake()
                                  0,                      // 이펙트 플래그
                                  _d3device->GetDevice(), // 디바이스 포인터
                                  _fx.GetAddressOf());    // 새로 만든 이펙트 인터페이스 주소
-
-    _tech            = _fx->GetTechniqueByName("ColorTech");
-    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
-
-}
-
-void Effect::Update(float dt)
-{
-    SetWorldViewProj();
-}
-
-void Effect::SetWorldViewProj()
-{
-    auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
-    _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 }
 
 void Effect::GetTechniqueDesc(D3DX11_TECHNIQUE_DESC* des)
