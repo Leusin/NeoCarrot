@@ -29,7 +29,7 @@ public:
     ID3D11RasterizerState* _rasterizerState;
 
 
-    void SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
+    void SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology);
 
 private:
     void RasterizerStateSetRanderstate();

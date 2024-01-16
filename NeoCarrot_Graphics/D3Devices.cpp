@@ -40,7 +40,7 @@ ID3D11DeviceContext* D3Devices::GetDeviceContext()
     return _d3dImmediateContext;
 }
 
-void D3Devices::SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY primitiveTopology)
+void D3Devices::SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology)
 {
     _d3dImmediateContext->IASetPrimitiveTopology(primitiveTopology);
 }

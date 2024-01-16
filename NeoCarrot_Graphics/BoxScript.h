@@ -5,7 +5,9 @@
 #include "Mesh.h"
 
 #include <vector>
+#include <d3d11.h>
 #include <windows.h>
+#include <d3dx11effect.h>
 
 namespace loader{ class FbxLoader; }
 
@@ -30,9 +32,12 @@ public:
 
 private:
 
+    void SetBuffers(model::Mesh& data);
     void SetVertexBuffer(model::Mesh& data);
     void SetIndexBuffer(model::Mesh& data);
+    void SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology);
     void SetBuffersToContext(UINT& offset);
+    void RenderWithEffectPasses(const D3DX11_TECHNIQUE_DESC& techDesc, UINT& offset); 
     void DrawIndexed(const int& idx);
 
     D3Devices*               _devices;

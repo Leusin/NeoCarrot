@@ -27,8 +27,7 @@ BoxScript::BoxScript(EntityPtr entityPtr, loader::FbxLoader* fbxLoader)
 {
     std::vector<model::Mesh> mesh = fbxLoader->GetMeshAll("../NeoCarrot_Graphics/FBX/a.fbx");
 
-    SetVertexBuffer(mesh[0]);
-    SetIndexBuffer(mesh[0]);
+    SetBuffers(mesh[0]);
 
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd BoxScript Component\n";
@@ -41,27 +40,21 @@ void BoxScript::Awake()
 
 void BoxScript::Update(float dt)
 {
-    _devices->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
     UINT offset = 0;
     SetBuffersToContext(offset);
 
-    //  TECH
     D3DX11_TECHNIQUE_DESC techDesc;
     _effect->GetTechniqueDesc(&techDesc);
 
-    for (UINT p = 0; p < techDesc.Passes; ++p)
-    {
-        SetBuffersToContext(offset);
+    RenderWithEffectPasses(techDesc, offset);
+}
 
-        // 테크 설정
-        _effect->_tech->GetPassByIndex(p)->Apply(0, _devices->GetDeviceContext());
-
-        for (unsigned int i = 0; i < _vertexBuffer->_vertexOffset.size(); ++i)
-        {
-            DrawIndexed(i);
-        }
-    }
+void BoxScript::SetBuffers(model::Mesh& data)
+{
+    SetVertexBuffer(data);
+    SetIndexBuffer(data);
 }
 
 void BoxScript::SetVertexBuffer(model::Mesh& data)
@@ -100,6 +93,26 @@ void BoxScript::SetBuffersToContext(UINT& offset)
 {
     _vertexBuffer->SetBuffers(offset);
     _indexBuffer->SetBuffers();
+}
+
+void BoxScript::RenderWithEffectPasses(const D3DX11_TECHNIQUE_DESC& techDesc, UINT& offset)
+{
+    for (UINT p = 0; p < techDesc.Passes; ++p)
+    {
+        SetBuffersToContext(offset);
+
+        _effect->_tech->GetPassByIndex(p)->Apply(0, _devices->GetDeviceContext());
+
+        for (unsigned int i = 0; i < _vertexBuffer->_vertexOffset.size(); ++i)
+        {
+            DrawIndexed(i);
+        }
+    }
+}
+
+void BoxScript::SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology)
+{
+    _devices->SetPrimitiveTopology(primitiveTopology);
 }
 
 void BoxScript::DrawIndexed(const int& idx)
