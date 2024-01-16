@@ -92,13 +92,12 @@ void graphics::D3D11Context::OnResize(int clientWidth, int clientHeight)
     _d3dDevice->CreateRenderTargetView(backBuffer, 0, _renderTargetView.GetAddressOf());
     assert(_renderTargetView);
 
-    //if (backBuffer)
+    if (backBuffer)
     {
         backBuffer->Release();
     }
 
     /// 깊이/스텐실 버퍼 생성
-    Microsoft::WRL::ComPtr<ID3D11Texture2D> _depthStencilBuffer;
 
     D3D11_TEXTURE2D_DESC depthStencilDesc;
 

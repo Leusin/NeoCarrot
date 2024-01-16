@@ -43,10 +43,8 @@ namespace graphics
 
 		Microsoft::WRL::ComPtr<ID3D11Device> _d3dDevice;
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> _d3dDiviceContext;
-
 		Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> _depthStencilBuffer;
-
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _renderTargetView;
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> _depthStencilView;
 
