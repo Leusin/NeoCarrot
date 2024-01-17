@@ -28,17 +28,17 @@ public:
     void Update(float dt) override;
 
     void SetFromMesh(const model::Mesh& data);
-    void SetBuffers(UINT& offset);
+    void SetBuffers(unsigned int& offset);
 
     // 버텍스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vb;
     std::vector<V>   _vertices;
     std::vector<int> _vertexOffset;
-    UINT _totalVertexCount;
+    unsigned int                         _totalVertexCount;
 
 private:
     
-    void SetBuffers(UINT& stride, UINT& offset);
+    void SetBuffers(unsigned int& stride, unsigned int& offset);
 
     D3Devices*     _d3device;
 };
@@ -126,22 +126,35 @@ inline void VertexBuffer<V>::SetFromMesh(const model::Mesh& data)
         ///    좀더 생각해봐야함.
         /// 
 
-        //_vertexBuffer->_vertices.emplace_back(V{pos, col, uv, nol, tan, bi});
+        if (data.hasColor && !data.hasTexture && !data.hasNormal)
+        {
+            // PosCol
+            _vertices.emplace_back(V{pos, col});
+        }
+        else if (!data.hasColor && data.hasTexture && !data.hasNormal)
+        {
+            // PosNormal
+            _vertices.emplace_back(V{pos, nol});
+        }
+        else if (!data.hasColor && data.hasTexture && !data.hasNormal)
+        {
+            // PosNormalTex
+            _vertices.emplace_back(V{pos, nol, uv});
+        }
     }
 }
 
 template <typename V>
-inline void VertexBuffer<V>::SetBuffers(UINT& stride, UINT& offset)
+inline void VertexBuffer<V>::SetBuffers(unsigned int& stride, unsigned int& offset)
 {
     // 정점 버퍼 장치 묶기
     _d3device->GetDeviceContext()->IASetVertexBuffers(0, 1, _vb.GetAddressOf(), &stride, &offset);
 }
 
 template <typename V>
-inline void VertexBuffer<V>::SetBuffers(UINT& offset)
+inline void VertexBuffer<V>::SetBuffers(unsigned int& offset)
 {
-    UINT stride = static_cast<UINT>(sizeof(V));
-
+    unsigned int stride = static_cast<unsigned int>(sizeof(V));
     SetBuffers(stride, offset);
 }
 

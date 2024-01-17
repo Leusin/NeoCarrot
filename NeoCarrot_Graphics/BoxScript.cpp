@@ -1,14 +1,13 @@
 #include "BoxScript.h"
 
 #include "FbxLoader.h"
-#include "StructedBuffer.h"
 
 #include "D3Devices.h"
 #include "Effect.h"
-#include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "Transpose.h"
 #include "InputLayout.h"
+#include "VertexBuffer.h"
 
 #include <memory>
 #ifdef _DEBUG
@@ -25,6 +24,11 @@ BoxScript::BoxScript(EntityPtr entityPtr, loader::FbxLoader* fbxLoader)
     , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
     , _effect{GetComponent<graphics::Effect>()}
 {
+    assert(_devices);
+    assert(_vertexBuffer);
+    assert(_indexBuffer);
+    assert(_effect);
+
     std::vector<model::Mesh> mesh = fbxLoader->GetMeshAll("../NeoCarrot_Graphics/FBX/a.fbx");
 
     SetBuffers(mesh[0]);
@@ -71,12 +75,13 @@ void BoxScript::SetVertexBuffer(model::Mesh& data)
     for (unsigned int i = 0; i < vcount; i++)
     {
         _vertexBuffer->_vertices.emplace_back(
-            PosNormal{DirectX::XMFLOAT3{
+            PosNormal{
+                DirectX::XMFLOAT3{
                 data.vertices[i].position.x,
                 data.vertices[i].position.y,
                 data.vertices[i].position.z
             },
-            DirectX::XMFLOAT3{
+                DirectX::XMFLOAT3{
                 data.vertices[i].normal.x,
                 data.vertices[i].normal.y,
                 data.vertices[i].normal.z

@@ -184,7 +184,7 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                                                                static_cast<float>(localPosition[2])};
 
                 // 정점 데이터 값을 담는다
-                _meshes.back().faces[i].indices[j] = controlPointIndex;
+                _meshes.back().faces[i].indices[j] = vertexId; /*controlPointIndex;*/
             }
 
             /// --------------

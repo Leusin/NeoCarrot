@@ -54,9 +54,6 @@
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp">
       <Filter>component</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\VertexBuffer.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3Devices.cpp">
       <Filter>component</Filter>
     </ClCompile>

@@ -3,6 +3,7 @@
 #include "D3Devices.h"
 #include "Transpose.h"
 
+#include <d3dcompiler.h>
 #include <fstream>
 #include <vector>
 #include <cassert>
@@ -29,13 +30,51 @@ void Effect::Awake()
 {
     ReadFile();
 
+    _tech            = _fx->GetTechniqueByName("ColorTech");
     _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
-
 }
 
 void Effect::Update(float dt)
 {
     SetWorldViewProj();
+}
+
+bool Effect::CompileFromFile()
+{
+    //
+    //DXUTFindDXSDKMediaFileCch(str, MAX_PATH, L"BasicHLSL10.fx");
+    //hr = D3DX11CompileFromFile(str, NULL, NULL, pFunctionName, pProfile, D3D10_SHADER_ENABLE_STRICTNESS, NULL, NULL, &pBlob, &pErrorBlob, NULL);
+    //
+
+    Microsoft::WRL::ComPtr<ID3DBlob> shaderBlob{nullptr};
+    Microsoft::WRL::ComPtr<ID3DBlob> errorBlob{nullptr};
+
+    HRESULT hr = D3DCompileFromFile(_fileName.c_str(),         // HLSL 파일 경로
+                                    nullptr,                   // 매크로 정의 (보통은 nullptr)
+                                    nullptr,                   // include 파일 (보통은 nullptr)
+                                    "main",                    // 진입점 함수 이름
+                                    "ps_5_0",                  // 컴파일할 프로파일
+                                    0,                         // 플래그 (보통은 0)
+                                    0,                         // 플래그 (보통은 0)
+                                    shaderBlob.GetAddressOf(), // 컴파일된 쉐이더 코드를 저장할 버퍼
+                                    errorBlob.GetAddressOf()   // 컴파일 에러 메시지를 저장할 버퍼
+    );
+
+    // 컴파일 결과 확인
+    if (FAILED(hr)) 
+    {
+        if (errorBlob)
+        {
+            OutputDebugStringA(static_cast<char*>(errorBlob->GetBufferPointer()));
+            errorBlob->Release();
+        }
+        // 오류 처리
+        // ...
+
+        return false;
+    }
+
+     return true;
 }
 
 void Effect::SetWorldViewProj()
@@ -50,7 +89,8 @@ void Effect::ReadFile()
 
     if (!fin)
     {
-        MessageBox(0, L"파일을 찾을 수 없으센.", 0, 0);
+        if(CompileFromFile())
+            MessageBox(0, L"파일을 찾을 수 없으센.", 0, 0);
     }
 
     fin.seekg(0, std::ios_base::end);
@@ -61,11 +101,13 @@ void Effect::ReadFile()
     fin.read(&compiledShader[0], size);
     fin.close();
 
-    D3DX11CreateEffectFromMemory(&compiledShader[0],     // 컴파일된 효과 데이터 Blob
-                                 size,                   // Blob 의 길이
-                                 0,                      // 이펙트 플래그
-                                 _d3device->GetDevice(), // 디바이스 포인터
-                                 _fx.GetAddressOf());    // 새로 만든 이펙트 인터페이스 주소
+    HRESULT result = D3DX11CreateEffectFromMemory(&compiledShader[0],     // 컴파일된 효과 데이터 Blob
+                                                  size,                   // Blob 의 길이
+                                                  0,                      // 이펙트 플래그
+                                                  _d3device->GetDevice(), // 디바이스 포인터
+                                                  _fx.GetAddressOf()); // 새로 만든 이펙트 인터페이스 주소
+
+    assert(_fx);
 }
 
 void Effect::GetTechniqueDesc(D3DX11_TECHNIQUE_DESC* des)

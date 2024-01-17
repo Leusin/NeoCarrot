@@ -89,7 +89,7 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
                    .AddVertexBuffer<PosNormal>()
                    .AddIndexBuffer()
                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
-                   .AddVertexLayout(&PosNormalTexWeightsBoneidxDesc)
+                   .AddVertexLayout(&PosColorDesc)
                    .AddBoxcript(_fbxLoader.get())
                    // 이펙트, 조명, 테크
                    // 변환 행렬, 카메라 위치, 월드 좌표

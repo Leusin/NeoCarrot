@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
@@ -67,10 +69,11 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
-    <ClCompile Include="NeoCarrot_Graphics\VertexBuffer.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColorShader.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
@@ -124,6 +127,8 @@
     <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="color.ps" />
+    <None Include="color.vs" />
     <None Include="NeoCarrot_Graphics\README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -260,7 +265,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)DirectXTK\Lib\$(Platform)\$(Configuration);$(SolutionDir)FX11\Lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Penguin_FBXLoader.lib;DirectXTK.lib;d3d11.lib;Effects11d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Penguin_FBXLoader.lib;DirectXTK.lib;d3d11.lib;Effects11d.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

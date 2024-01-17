@@ -43,7 +43,7 @@ public:
 
 private:
     void SetWorldViewProj();
-
+    bool CompileFromFile();
     void ReadFile();
 
     D3Devices* _d3device{nullptr};

@@ -3,6 +3,7 @@
 #include "GetEntity.h"
 #include "IComponent.h"
 #include "Mesh.h"
+#include "StructedBuffer.h"
 
 #include <vector>
 #include <d3d11.h>
@@ -14,12 +15,12 @@ namespace loader{ class FbxLoader; }
 namespace graphics
 {
 // 전방 선언
-class D3Devices;
 template <typename V>
 class VertexBuffer;
-struct PosNormal;
+class D3Devices;
 class IndexBuffer;
 class Effect;
+struct PosNormal;
 
 // 본문
 class BoxScript : public core::IComponent, virtual core::GetEntity
@@ -31,7 +32,6 @@ public:
     void Update(float dt) override;
 
 private:
-
     void SetBuffers(model::Mesh& data);
     void SetVertexBuffer(model::Mesh& data);
     void SetIndexBuffer(model::Mesh& data);

@@ -36,7 +36,7 @@ void InputLayout::Awake()
                                               passDesc.IAInputSignatureSize,
                                               _inputLayout.GetAddressOf());
 
-
+    assert(_inputLayout.Get() && "input layout 이  초기화되지 않으센");
 }
 
 void InputLayout::Update(float dt)

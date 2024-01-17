@@ -25,12 +25,12 @@ public:
 
     // 인덱스버퍼
     Microsoft::WRL::ComPtr<ID3D11Buffer> _ib{nullptr};
-    std::vector<UINT> _indices;
+    std::vector<unsigned int>            _indices;
 
-    std::vector<UINT> _indexOffset;
-    std::vector<UINT> _indexCount;
+    std::vector<unsigned int> _indexOffset;
+    std::vector<unsigned int> _indexCount;
 
-    UINT _totalIndexCount{ 0 };
+    unsigned int _totalIndexCount{0};
 
 private:
 
