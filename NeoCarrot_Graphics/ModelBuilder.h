@@ -43,10 +43,16 @@ public:
 
     ModelBuilder AddCamera(Camera3D* camera);
 
+    ModelBuilder AddShader(std::wstring vsfile, std::wstring psfile);
+
+    ModelBuilder AddTexture(std::wstring filename);
+
     /// 스크립트
 
     ModelBuilder AddAxisScript();
+
     ModelBuilder AddGridScript();
+
     ModelBuilder AddBoxcript(loader::FbxLoader* fbxLodaer);
 
     // 제품 반환

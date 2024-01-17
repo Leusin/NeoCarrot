@@ -1,17 +1,11 @@
 #include "ModelBuilder.h"
 
 #include "D3D11Context_mk2.h"
+#include "Devices.h"
+#include "Camera3D.h"
 #include "FBXLoader.h"
 
-#include "D3Devices.h"
-#include "Transpose.h"
-#include "IndexBuffer.h"
-#include "Effect.h"
-#include "InputLayout.h"
-#include "Camera3D.h"
-#include "CameraPtr.h"
-#include "GridScript.h"
-#include "BoxScript.h"
+#include "components.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -69,6 +63,20 @@ ModelBuilder ModelBuilder::AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT
 ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
 {
     _entity->AddComponent<CameraPtr>(_entity,camera);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddShader(std::wstring vsfile, std::wstring psfile)
+{
+    _entity->AddComponent<Shader>(_entity, vsfile, psfile);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
+{
+    _entity->AddComponent<Texture>(_entity, filename);
 
     return *this;
 }

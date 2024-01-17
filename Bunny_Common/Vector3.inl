@@ -91,6 +91,7 @@ template <typename T>
 inline Vector3<T> Vector3<T>::Vector3TransformNormal(const Matrix<T>& matrix) const
 {
     Vector3 result;
+
     result.x = x * matrix._data[0][0] + y * matrix._data[1][0] + z * matrix._data[2][0];
     result.y = x * matrix._data[0][1] + y * matrix._data[1][1] + z * matrix._data[2][1];
     result.z = x * matrix._data[0][2] + y * matrix._data[1][2] + z * matrix._data[2][2];

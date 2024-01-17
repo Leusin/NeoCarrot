@@ -30,6 +30,7 @@ enum class GameObect
     GRID,
     AXIS,
     BOX,
+    BOX2,
 
     GAMEOBJECT_COUNT
 };

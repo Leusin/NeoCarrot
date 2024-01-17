@@ -71,6 +71,8 @@ void loader::MeshLoader::LoadMesh(FbxNode* node)
     // 파싱한 데이터 가공
     // --------
 
+    IndicesSplit();
+
     // 다 사용한 Fbx Mesh  제거
     mesh->Destroy();
 }
@@ -523,4 +525,9 @@ void loader::MeshLoader::LoadPolygons(FbxMesh* mesh)
                 break;
         }
     }
+}
+
+void loader::MeshLoader::IndicesSplit()
+{
+
 }

@@ -6,6 +6,7 @@
 #include <d3dcompiler.h>
 #include <fstream>
 #include <vector>
+
 #include <cassert>
 
 #ifdef _DEBUG
@@ -14,10 +15,10 @@
 
 namespace graphics
 {
-Effect::Effect(EntityPtr entityPtr, std::wstring fileName) 
-    : GetEntity(EntityPtr(entityPtr))
-    , _fileName(fileName)
-    , _d3device{GetComponent<graphics::D3Devices>()}
+Effect::Effect(EntityPtr entityPtr, std::wstring fileName) :
+GetEntity(EntityPtr(entityPtr)),
+_fileName(fileName),
+_d3device{GetComponent<graphics::D3Devices>()}
 {
     assert(_d3device && "Effect 에서 D3Devices 를 찾을 수 없음");
 
@@ -28,24 +29,17 @@ Effect::Effect(EntityPtr entityPtr, std::wstring fileName)
 
 void Effect::Awake()
 {
-    ReadFile();
-
-    _tech            = _fx->GetTechniqueByName("ColorTech");
-    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
+    AwakeReadFile();
+    AwakeGetTechniqueByName();
 }
 
 void Effect::Update(float dt)
 {
-    SetWorldViewProj();
+    UpdateSetWorldViewProj();
 }
 
 bool Effect::CompileFromFile()
 {
-    //
-    //DXUTFindDXSDKMediaFileCch(str, MAX_PATH, L"BasicHLSL10.fx");
-    //hr = D3DX11CompileFromFile(str, NULL, NULL, pFunctionName, pProfile, D3D10_SHADER_ENABLE_STRICTNESS, NULL, NULL, &pBlob, &pErrorBlob, NULL);
-    //
-
     Microsoft::WRL::ComPtr<ID3DBlob> shaderBlob{nullptr};
     Microsoft::WRL::ComPtr<ID3DBlob> errorBlob{nullptr};
 
@@ -61,7 +55,7 @@ bool Effect::CompileFromFile()
     );
 
     // 컴파일 결과 확인
-    if (FAILED(hr)) 
+    if (FAILED(hr))
     {
         if (errorBlob)
         {
@@ -74,22 +68,37 @@ bool Effect::CompileFromFile()
         return false;
     }
 
-     return true;
+    return true;
 }
 
-void Effect::SetWorldViewProj()
+void Effect::AwakeGetTechniqueByName()
+{
+    _tech            = _fx->GetTechniqueByName("ColorTech");
+    _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
+
+    _world             = _fx->GetVariableByName("gWorld")->AsMatrix();
+    _worldInvTranspose = _fx->GetVariableByName("gWorldInvTranspose")->AsMatrix();
+    _eyePosW           = _fx->GetVariableByName("gEyePosW")->AsVector();
+    _dirLights         = _fx->GetVariableByName("gDirLights");
+    _mat               = _fx->GetVariableByName("gMaterial");
+
+    _texTransform = _fx->GetVariableByName("gTexTransform")->AsMatrix();
+    _diffuseMap   = _fx->GetVariableByName("gDiffuseMap")->AsShaderResource();
+}
+
+void Effect::UpdateSetWorldViewProj()
 {
     auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
     _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 }
 
-void Effect::ReadFile()
+void Effect::AwakeReadFile()
 {
     std::ifstream fin(_fileName, std::ios::binary);
 
     if (!fin)
     {
-        if(CompileFromFile())
+        if (CompileFromFile())
             MessageBox(0, L"파일을 찾을 수 없으센.", 0, 0);
     }
 

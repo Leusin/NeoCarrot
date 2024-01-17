@@ -16,9 +16,6 @@
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="manager">
-      <UniqueIdentifier>{cb8c9de6-899a-4efb-a731-40d63500bbe5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="model">
       <UniqueIdentifier>{9fcb012e-b537-47ff-ab16-f42706e85164}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,12 @@
     </Filter>
     <Filter Include="component_script">
       <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deprecated">
+      <UniqueIdentifier>{f93f3a65-af54-4f66-ac4e-5e8ad4536184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader code">
+      <UniqueIdentifier>{c15bd26f-96b4-40e2-9788-0aaa0d17033b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,9 +93,6 @@
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
-      <Filter>manager</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
@@ -101,6 +101,24 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Shader.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ColorShader.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Model.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\InputLayouts.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Texture.cpp">
+      <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,7 +143,7 @@
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h">
+    <ClInclude Include="NeoCarrot_Graphics\InputLayouts.h">
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
@@ -167,9 +185,6 @@
     <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
-      <Filter>manager</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">
       <Filter>component_script</Filter>
     </ClInclude>
@@ -179,10 +194,39 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <Filter>component_script</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Shader.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ColorShader.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Model.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\components.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Texture.h">
+      <Filter>component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md">
       <Filter>doc</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\PixelShader.hlsl">
+      <Filter>shader code</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\VertexShader.hlsl">
+      <Filter>shader code</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
+      <Filter>shader code</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

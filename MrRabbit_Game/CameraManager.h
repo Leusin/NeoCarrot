@@ -36,8 +36,8 @@ public:
 
     void GetActiveCameraInfo(data::ForGraphics* info);
 
-private:
     WeakEntityPtr GetActiveCamera();
+private:
 
     std::vector<WeakEntityPtr> _cameras;
     data::CameraInfo           _camera;

@@ -19,12 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ColorShader.cpp" />
-    <ClCompile Include="Model.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ColorShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -57,6 +58,10 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\InputLayouts.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Model.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp" />
@@ -67,17 +72,23 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Shader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Texture.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
     <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorShader.h" />
-    <ClInclude Include="Model.h" />
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ColorShader.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\components.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -105,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GridScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Model.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h" />
     <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
@@ -122,13 +136,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Shader.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Texture.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h" />
-    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\InputLayouts.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="color.ps" />
-    <None Include="color.vs" />
     <None Include="NeoCarrot_Graphics\README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +154,22 @@
     <ProjectReference Include="UnityLike_Core\UnityLike_Core.vcxproj">
       <Project>{f9a014b2-0cd4-473e-81b8-50674696cc65}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\PixelShader.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)NeoCarrot_Graphics\HLSL%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\VertexShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)NeoCarrot_Graphics\HLSL%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+    </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -84,8 +84,8 @@ inline void Matrix<T>::RotateY(const float& angle)
     float sinTheta = std::sin(angle);
 
     _data[0][0] = cosTheta;
-    _data[0][2] = sinTheta;
-    _data[2][0] = -sinTheta;
+    _data[0][2] = -sinTheta;
+    _data[2][0] = sinTheta;
     _data[2][2] = cosTheta;
 }
 

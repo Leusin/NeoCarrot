@@ -6,11 +6,15 @@
 #pragma once
 
 #include "ForGraphics.h"
+#include "EntityEnum.h"
+#include "Entity.h"
 
 #include <list>
 #include <memory>
 
 namespace core{ template <typename T>class EntityManager; }
+
+using WeakEntityPtr = std::weak_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace game
 {
@@ -38,6 +42,10 @@ public:
     void Finalize();
 
     void ExportData(data::ForGraphics* info);
+
+    WeakEntityPtr GetEntity(const char* name);
+
+    IScene* GetCurrentScene();
 
 private:
     std::unique_ptr<core::EntityManager<EntityFactory>> _entityManager;

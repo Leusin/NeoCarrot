@@ -30,6 +30,9 @@ public:
 
     void Update(float dt) override;
 
+    void Pitch(float dy);
+    void RotateY(float dx);
+
 private:
 
     EntityWeakPtr _entity{};

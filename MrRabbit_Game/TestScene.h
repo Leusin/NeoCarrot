@@ -18,7 +18,6 @@
 namespace game
 {
 class EntityFactory;
-class CameraManager;
 
 class TestScene : public IScene
 {
@@ -58,7 +57,6 @@ private:
     void InitCameraManager();
 
     core::EntityManager<EntityFactory>* _entityManager;
-    std::unique_ptr<CameraManager> _cameraManager;
 };
 
 } // namespace game

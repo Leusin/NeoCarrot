@@ -6,7 +6,7 @@
 #include "IndexBuffer.h"
 #include "Transpose.h"
 #include "InputLayout.h"
-#include "StructedBuffer.h"
+#include "InputLayouts.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>

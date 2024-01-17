@@ -34,6 +34,8 @@ void IndexBuffer::Awake()
     iinitData.pSysMem = _indices.data();
 
     _d3device->GetDevice()->CreateBuffer(&ibd, &iinitData, _ib.GetAddressOf());
+
+    assert(_ib.Get());
 }
 
 void IndexBuffer::Update(float dt)

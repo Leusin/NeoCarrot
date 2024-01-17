@@ -2,7 +2,7 @@
 
 #include "EntityEnum.h"
 #include "EntityFactory.h"
-#include "CameraManager.h"
+
 
 #include <cassert>
 #include <memory>
@@ -15,8 +15,7 @@ namespace game
 
 game::TestScene::TestScene(core::EntityManager<EntityFactory>* entityManager) 
     : _name{"test secne"}, 
-    _entityManager{entityManager},
-    _cameraManager{std::make_unique<CameraManager>()}
+    _entityManager{entityManager}
 {
 #ifdef _DEBUG
     std::cout << "\t\tTestScene Constructed\n";

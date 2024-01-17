@@ -3,19 +3,26 @@
 #include "GraphicsEngine.h"
 #include "SceneManager.h"
 #include "TimeManager.h"
+#include "InputManager.h"
 #include "WindowInfo.h"
 #include "ForGraphics.h"
 
+#include "IScene.h"
+#include "CameraManager.h"
+#include "CameraScript.h"
+
+#include <windowsx.h>
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
-game::GameEngine::GameEngine(data::WindowInfo* wi) :
+game::GameEngine::GameEngine(data::WindowInfo* wi) 
 // 필요한 순서대로 초기화 중이다.
-_windowInfo(wi),
-_graphicsInfo{std::make_unique<data::ForGraphics>()},
-_sceneManager{std::make_unique<SceneManager>()},
-_timeManager{std::make_unique<TimeManager>()}
+    : _windowInfo(wi)
+    , _graphicsInfo{std::make_unique<data::ForGraphics>()}
+    , _sceneManager{std::make_unique<SceneManager>()}
+    , _timeManager{std::make_unique<TimeManager>()}
+    , _inputManager{std::make_unique<InputManager>(&wi->hMainWnd)}
 {
 
 #ifdef _DEBUG
@@ -30,7 +37,7 @@ game::GameEngine::~GameEngine()
 void game::GameEngine::Initialize()
 {
     _renderer = std::make_unique<graphics::GraphicsEngine>(_windowInfo->hInstance,
-                                                          _windowInfo->hMainWnd,
+                                                            _windowInfo->hMainWnd,
                                                           _windowInfo->clientWidth,
                                                           _windowInfo->clientHeight);
 
@@ -39,6 +46,9 @@ void game::GameEngine::Initialize()
     _renderer->ImportData(_graphicsInfo.get());
 
     _renderer->Initialize();
+
+    auto* currScene = _sceneManager->GetCurrentScene();
+    _inputManager->_currentscene = currScene;
 
 }
 
@@ -144,12 +154,15 @@ LRESULT game::GameEngine::MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM
         case WM_LBUTTONDOWN:
         case WM_MBUTTONDOWN:
         case WM_RBUTTONDOWN:
+            _inputManager->OnMouseDown(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             break;
         case WM_LBUTTONUP:
         case WM_MBUTTONUP:
         case WM_RBUTTONUP:
+            _inputManager->OnMouseUp(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             break;
         case WM_MOUSEMOVE:
+            _inputManager->OnMouseMove(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             break;
         default:
             return DefWindowProc(hwnd, msg, wParam, lParam);

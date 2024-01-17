@@ -3,7 +3,7 @@
 #include "GetEntity.h"
 #include "IComponent.h"
 #include "Mesh.h"
-#include "StructedBuffer.h"
+#include "InputLayouts.h"
 
 #include <vector>
 #include <d3d11.h>
@@ -20,7 +20,6 @@ class VertexBuffer;
 class D3Devices;
 class IndexBuffer;
 class Effect;
-struct PosNormal;
 
 // º»¹®
 class BoxScript : public core::IComponent, virtual core::GetEntity
@@ -35,6 +34,7 @@ private:
     void SetBuffers(model::Mesh& data);
     void SetVertexBuffer(model::Mesh& data);
     void SetIndexBuffer(model::Mesh& data);
+
     void SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopology);
     void SetBuffersToContext(UINT& offset);
     void RenderWithEffectPasses(const D3DX11_TECHNIQUE_DESC& techDesc, UINT& offset); 
@@ -42,7 +42,7 @@ private:
 
     D3Devices*               _devices;
     IndexBuffer*             _indexBuffer;
-    VertexBuffer<PosNormal>* _vertexBuffer;
+    VertexBuffer<PosNormalTex>* _vertexBuffer;
     Effect*                  _effect;
 };
 
