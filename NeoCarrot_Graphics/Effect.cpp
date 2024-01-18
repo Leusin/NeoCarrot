@@ -73,17 +73,9 @@ bool Effect::CompileFromFile()
 
 void Effect::AwakeGetTechniqueByName()
 {
+
     _tech            = _fx->GetTechniqueByName("ColorTech");
     _fxWorldViewProj = _fx->GetVariableByName("gWorldViewProj")->AsMatrix();
-
-    _world             = _fx->GetVariableByName("gWorld")->AsMatrix();
-    _worldInvTranspose = _fx->GetVariableByName("gWorldInvTranspose")->AsMatrix();
-    _eyePosW           = _fx->GetVariableByName("gEyePosW")->AsVector();
-    _dirLights         = _fx->GetVariableByName("gDirLights");
-    _mat               = _fx->GetVariableByName("gMaterial");
-
-    _texTransform = _fx->GetVariableByName("gTexTransform")->AsMatrix();
-    _diffuseMap   = _fx->GetVariableByName("gDiffuseMap")->AsShaderResource();
 }
 
 void Effect::UpdateSetWorldViewProj()

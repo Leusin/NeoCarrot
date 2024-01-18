@@ -9,6 +9,8 @@
 #include "Effect.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "RainbowBoxScript.h"
 
 #include "GridScript.h"
 #include "BoxScript.h"
+#include "TriangleScript.h"

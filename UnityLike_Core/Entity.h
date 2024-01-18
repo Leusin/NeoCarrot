@@ -21,7 +21,7 @@ namespace core
 
 class IComponent;
 
-template <typename Tag, typename Layer /*, typename ComponentT*/>
+template <typename Tag, typename Layer>
 class Entity : public Object<Tag, Layer>, public IEventFunction
 {
 public:

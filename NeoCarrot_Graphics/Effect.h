@@ -60,12 +60,12 @@ public:
     // 상수 버퍼
     Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _fxWorldViewProj{nullptr};
 
-    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _worldViewProj{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _world{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _worldInvTranspose{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectVectorVariable>         _eyePosW{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>               _dirLights{nullptr};
-    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>               _mat{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _worldViewProj{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _world{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable> _worldInvTranspose{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectVectorVariable> _eyePosW{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>       _dirLights{nullptr};
+    Microsoft::WRL::ComPtr<ID3DX11EffectVariable>       _mat{nullptr};
 
 
     Microsoft::WRL::ComPtr<ID3DX11EffectMatrixVariable>         _texTransform{nullptr};

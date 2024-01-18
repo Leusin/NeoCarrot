@@ -95,9 +95,21 @@ ModelBuilder ModelBuilder::AddGridScript()
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddBoxcript(loader::FbxLoader* fbxLodaer)
+ModelBuilder ModelBuilder::AddBoxScript(loader::FbxLoader* fbxLodaer)
 {
     _entity->AddComponent<BoxScript>(_entity, fbxLodaer);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddTriangleScript()
+{
+    _entity->AddComponent<TriangleScript>(_entity);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddRainbowScript()
+{
+    _entity->AddComponent<RainbowBoxScript>(_entity);
     return *this;
 }
 

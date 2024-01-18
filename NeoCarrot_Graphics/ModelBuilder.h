@@ -53,7 +53,11 @@ public:
 
     ModelBuilder AddGridScript();
 
-    ModelBuilder AddBoxcript(loader::FbxLoader* fbxLodaer);
+    ModelBuilder AddBoxScript(loader::FbxLoader* fbxLodaer);
+
+    ModelBuilder AddTriangleScript();
+
+    ModelBuilder AddRainbowScript();
 
     // 제품 반환
     EntityPtr Build();

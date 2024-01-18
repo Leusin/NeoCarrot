@@ -35,6 +35,10 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
             return CreateBox2(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::GRID:
             return CreateGrid(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::Triangle:
+            return CreateTriangle(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::RainbowBox:
+            return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;
     }
@@ -83,12 +87,12 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTransform()
                    .AddCamera(_camera)
-                   .AddVertexBuffer<PosNormalTex>()
+                   .AddVertexBuffer<PosCol>()
                    .AddIndexBuffer()
-                   .AddEffect({L"../NeoCarrot_Graphics/FX/BasicTex.cso"})
-                   .AddVertexLayout(&PosNormalTexDesc)
-                   .AddTexture(L"../NeoCarrot_Graphics/Texture/WoodCrate01.dds")
-                   .AddBoxcript(_fbxLoader.get())
+                   .AddEffect({L"../NeoCarrot_Graphics/FX/color.cso"})
+                   .AddVertexLayout(&PosColorDesc)
+                   //.AddTexture(L"../NeoCarrot_Graphics/Texture/WoodCrate01.dds")
+                   .AddBoxScript(_fbxLoader.get())
                    .Build();
 
     return box;
@@ -99,12 +103,39 @@ EntityPtr ModelFactory::CreateBox2(const size_t&& id, const char* name)
     auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
 
     auto box = builder.AddD3Device(_d3d11context)
-        .AddTransform()
-        .AddCamera(_camera)
-        .AddShader(L"../NeoCarrot_Graphics/HLSL/VertexShader.hlsl", L"../NeoCarrot_Graphics/HLSL/PixelShader.hlsl")
-        .Build();
+                   .AddTransform()
+                   .AddCamera(_camera)
+                   .AddShader(L"../NeoCarrot_Graphics/HLSL/VertexShader.hlsl",
+                              L"../NeoCarrot_Graphics/HLSL/PixelShader.hlsl")
+                   .Build();
 
     return box;
+}
+
+EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+
+    auto box = builder.AddD3Device(_d3d11context)
+                   .AddTransform()
+                   .AddCamera(_camera)
+                   .AddRainbowScript()
+                   .Build();
+
+    return box;
+}
+
+EntityPtr ModelFactory::CreateTriangle(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+
+    auto triangle = builder.AddD3Device(_d3d11context)
+                   .AddTransform()
+                   .AddCamera(_camera)
+                   .AddTriangleScript()
+                   .Build();
+
+    return triangle;
 }
 
 } // namespace graphics

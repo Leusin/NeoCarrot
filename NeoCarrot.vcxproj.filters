@@ -31,7 +31,7 @@
     <Filter Include="deprecated">
       <UniqueIdentifier>{f93f3a65-af54-4f66-ac4e-5e8ad4536184}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shader code">
+    <Filter Include="shaders">
       <UniqueIdentifier>{c15bd26f-96b4-40e2-9788-0aaa0d17033b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -119,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Texture.cpp">
       <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\RainbowBoxScript.cpp">
+      <Filter>component_script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,21 +218,33 @@
     <ClInclude Include="NeoCarrot_Graphics\Texture.h">
       <Filter>component</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\RainbowBoxScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md">
       <Filter>doc</Filter>
     </None>
+    <None Include="NeoCarrot_Graphics\HLSL\triangle.fxh">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="NeoCarrot_Graphics\HLSL\PixelShader.hlsl">
-      <Filter>shader code</Filter>
-    </FxCompile>
-    <FxCompile Include="NeoCarrot_Graphics\HLSL\VertexShader.hlsl">
-      <Filter>shader code</Filter>
-    </FxCompile>
     <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
-      <Filter>shader code</Filter>
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\triangle_ps.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\triangle_vs.hlsl">
+      <Filter>shaders</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

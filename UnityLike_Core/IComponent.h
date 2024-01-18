@@ -1,6 +1,6 @@
 /// IComponent.h
 ///
-/// 구현할만한 Component 속성
+/// 구현할 만한 Component 속성
 ///
 ///    - Transform
 ///    - Renderor

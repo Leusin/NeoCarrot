@@ -31,6 +31,10 @@ private:
     EntityPtr CreateAxis(const size_t&& id, const char* name);
     EntityPtr CreateBox(const size_t&& id, const char* name);
     EntityPtr CreateBox2(const size_t&& id, const char* name);
+    EntityPtr CreateRainbowBox(const size_t&& id, const char* name);
+
+    // hlsl °øºÎÁß
+    EntityPtr CreateTriangle(const size_t&& id, const char* name);
 
     D3D11Context_mk2* _d3d11context;
     Camera3D*        _camera;
