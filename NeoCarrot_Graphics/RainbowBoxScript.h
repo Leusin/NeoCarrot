@@ -27,6 +27,16 @@ private:
     HRESULT CompileShaderFromFile(const WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
     void AwakeCheckVaildFile(const std::wstring& file);
 
+    // BindVSResource
+    // BindPSResource
+
+    // SetVSArgument
+    // SetPSArgument
+
+    // BindWVPMatrix
+    // BindLight
+    // BindBone
+
 private:
     D3Devices* _d3devices{nullptr};
 

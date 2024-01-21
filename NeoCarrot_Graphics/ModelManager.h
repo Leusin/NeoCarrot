@@ -27,6 +27,7 @@ public:
 
 private:
     void CreateEnity();
+    void CreateEnity(const core::GameObect&& enumTypeEntity, const char* name);
 
     std::unique_ptr<core::EntityManager<ModelFactory>> _entityManager;
 };

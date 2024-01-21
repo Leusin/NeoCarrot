@@ -9,8 +9,8 @@
 namespace graphics
 {
 
-ModelManager::ModelManager(D3D11Context_mk2* d3dcontext, Camera3D* camera) 
-    : _entityManager{std::make_unique<core::EntityManager<ModelFactory>>(d3dcontext, camera)}
+ModelManager::ModelManager(D3D11Context_mk2* d3dcontext, Camera3D* camera)
+    : _entityManager{ std::make_unique<core::EntityManager<ModelFactory>>(d3dcontext, camera) }
 {
 #ifdef _DEBUG
     std::cout << "\tModelManager Constructed\n";
@@ -36,11 +36,17 @@ void ModelManager::Finalize()
 
 void ModelManager::CreateEnity()
 {
-    _entityManager->AddEntity(core::GameObect::AXIS, "axis");
-    _entityManager->AddEntity(core::GameObect::GRID, "grid");
-    _entityManager->AddEntity(core::GameObect::BOX, "box");
-    //_entityManager->AddEntity(core::GameObect::Triangle, "triangle");
-    //_entityManager->AddEntity(core::GameObect::RainbowBox, "rainbow box");
+    CreateEnity(core::GameObect::AXIS, "axis");
+    CreateEnity(core::GameObect::GRID, "grid");
+    CreateEnity(core::GameObect::BOX, "box");
+    // CreateEnity(core::GameObect::Triangle, "triangle");
+    // CreateEnity(core::GameObect::RainbowBox, "rainbow");
 }
 
-}          
+void ModelManager::CreateEnity(const core::GameObect&& enumTypeEntity,
+                               const char* name)
+{
+    _entityManager->AddEntity(enumTypeEntity, name);
+}
+
+} // namespace graphics
