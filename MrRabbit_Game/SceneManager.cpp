@@ -2,6 +2,7 @@
 
 #include "IScene.h"
 #include "TestScene.h"
+#include "Entity.h"
 #include "EntityManager.h"
 #include "EntityFactory.h"
 
@@ -80,6 +81,16 @@ void SceneManager::Finalize()
 void SceneManager::ExportData(data::ForGraphics* info)
 {
     info->_camera = _currentGraphicsInfo->_camera;
+}
+
+WeakEntityPtr SceneManager::GetEntity(const char* name)
+{
+    return _entityManager->GetEntity(name);
+}
+
+IScene* SceneManager::GetCurrentScene()
+{
+    return _currenScene.get();
 }
 
 }

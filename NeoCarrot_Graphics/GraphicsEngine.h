@@ -49,6 +49,8 @@ private:
 
     // 외부 데이터
     data::ForGraphics _fromGameEngine;
+
+    float _dt;
 };
 
 } // namespace ge

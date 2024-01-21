@@ -7,9 +7,6 @@
     <Filter Include="entity">
       <UniqueIdentifier>{f45fbe7c-ff4f-4f06-95cd-858d8af0e6d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="input">
-      <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{3c5199fc-10c0-4e4f-9d4e-ac97a32ea3f2}</UniqueIdentifier>
     </Filter>
@@ -21,6 +18,9 @@
     </Filter>
     <Filter Include="engine">
       <UniqueIdentifier>{02f4a77b-a184-4b9b-a96b-b7b2de766c52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deprecated">
+      <UniqueIdentifier>{ec1c8732-cf9c-4b52-aac0-37013ccda4ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,22 +43,19 @@
       <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="EnumArray.h">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="MouseEnum.h">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="KeyboardEnum.h">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="EntityFactory.h">
       <Filter>entity</Filter>
@@ -76,6 +73,9 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="CameraManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
       <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>
@@ -99,13 +99,10 @@
       <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>input</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>input</Filter>
+      <Filter>deprecated</Filter>
     </ClCompile>
     <ClCompile Include="EntityFactory.cpp">
       <Filter>entity</Filter>
@@ -123,6 +120,9 @@
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="CameraManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
   </ItemGroup>

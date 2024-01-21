@@ -1,33 +1,35 @@
 #pragma once
 
-#include <memory>
-#include "Mouse.h"
+#include "EntityEnum.h"
+#include <windows.h>
 
 namespace game
 {
+class IScene;
 /*
-class Mouse;
 class Keyboard;
 */
 
 class InputManager
 {
+class CameraScript;
+
 public:
-    InputManager();
+    InputManager(HWND* hMainWnd);
 
-    void Update(float dt);
-    // GetKeyState
-    // IsKeyState
+    //void Update(float dt);
 
-    // GetMousePosition
-    // GetDeltaMousePosition
+    void OnMouseDown(WPARAM btnState, int x, int y);
+    void OnMouseUp(WPARAM btnState, int x, int y);
+    void OnMouseMove(WPARAM btnState, int x, int y);
 
 
+    IScene* _currentscene;
 private:
-    //std::unique_ptr<Mouse>    _mouse{nullptr};
-    /*
-    std::unique_ptr<Keyboard> _keybard{nullptr};
-    */
+
+    // ¸¶¿ì½º
+    POINT _lastMousePos;
+    HWND* _hMainWnd;
 };
 
 } // namespace game

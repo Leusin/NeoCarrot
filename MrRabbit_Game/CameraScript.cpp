@@ -39,8 +39,7 @@ void CameraScript::Update(float dt)
 {
     // 카메라 제어
 
-    float speed = 1.f
-        ;
+    float speed = 1.f;
     if (GetAsyncKeyState(VK_LSHIFT) & 0x8000)
         speed = 4.f;
     else
@@ -64,6 +63,16 @@ void CameraScript::Update(float dt)
     }
 
     
+}
+
+void CameraScript::Pitch(float dy)
+{
+    _camera->Pitch(dy);
+}
+
+void CameraScript::RotateY(float dx)
+{
+    _camera->RotateY(dx);
 }
 
 } // namespace game

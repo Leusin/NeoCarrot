@@ -20,6 +20,7 @@ class IManger;
 class ManagerCreator;
 class SceneManager;
 class TimeManager;
+class InputManager;
 
 class GameEngine
 {
@@ -34,6 +35,7 @@ public:
     LRESULT MessageProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 private:
+
     // 윈도우 정보.
     // 초기화 및  MassageProc에서 사용한다.
     data::WindowInfo* _windowInfo;
@@ -42,6 +44,7 @@ private:
 
     std::unique_ptr<SceneManager> _sceneManager;
     std::unique_ptr<TimeManager>  _timeManager;
+    std::unique_ptr<InputManager>  _inputManager;
 
     // 그래픽 엔진
     std::unique_ptr<graphics::GraphicsEngine> _renderer{nullptr};

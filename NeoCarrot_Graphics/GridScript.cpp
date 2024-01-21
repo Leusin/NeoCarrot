@@ -7,7 +7,7 @@
 #include "Transpose.h"
 #include "VertexBuffer.h"
 #include "InputLayout.h"
-#include "StructedBuffer.h"
+#include "InputLayouts.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>

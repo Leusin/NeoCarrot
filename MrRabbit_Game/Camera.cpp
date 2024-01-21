@@ -121,8 +121,8 @@ void Camera::Pitch(float angle)
     math::Vector3<float> up{_transform->GetUp()};
     math::Vector3<float> look{_transform->GetLook()};
 
-    up.Vector3TransformNormal(r);
-    look.Vector3TransformNormal(r);
+    up = up.Vector3TransformNormal(r);
+    look = look.Vector3TransformNormal(r);
 
     _transform->SetUp(up);
     _transform->SetLook(look);
@@ -138,9 +138,9 @@ void Camera::RotateY(float angle)
     math::Vector3<float> up{_transform->GetUp()};
     math::Vector3<float> look{_transform->GetLook()};
 
-    right.Vector3TransformNormal(r);
-    up.Vector3TransformNormal(r);
-    look.Vector3TransformNormal(r);
+    right = right.Vector3TransformNormal(r);
+    up = up.Vector3TransformNormal(r);
+    look = look.Vector3TransformNormal(r);
 
     _transform->SetUp(right);
     _transform->SetUp(up);

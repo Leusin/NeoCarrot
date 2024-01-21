@@ -1,17 +1,11 @@
 #include "ModelBuilder.h"
 
 #include "D3D11Context_mk2.h"
+#include "Devices.h"
+#include "Camera3D.h"
 #include "FBXLoader.h"
 
-#include "D3Devices.h"
-#include "Transpose.h"
-#include "IndexBuffer.h"
-#include "Effect.h"
-#include "InputLayout.h"
-#include "Camera3D.h"
-#include "CameraPtr.h"
-#include "GridScript.h"
-#include "BoxScript.h"
+#include "components.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -73,6 +67,20 @@ ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
     return *this;
 }
 
+ModelBuilder ModelBuilder::AddShader(std::wstring vsfile, std::wstring psfile)
+{
+    _entity->AddComponent<Shader>(_entity, vsfile, psfile);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
+{
+    _entity->AddComponent<Texture>(_entity, filename);
+
+    return *this;
+}
+
 ModelBuilder ModelBuilder::AddAxisScript()
 {
     _entity->AddComponent<AxisScript>(_entity);
@@ -87,9 +95,21 @@ ModelBuilder ModelBuilder::AddGridScript()
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddBoxcript(loader::FbxLoader* fbxLodaer)
+ModelBuilder ModelBuilder::AddBoxScript(loader::FbxLoader* fbxLodaer)
 {
     _entity->AddComponent<BoxScript>(_entity, fbxLodaer);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddTriangleScript()
+{
+    _entity->AddComponent<TriangleScript>(_entity);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddRainbowScript()
+{
+    _entity->AddComponent<RainbowBoxScript>(_entity);
     return *this;
 }
 

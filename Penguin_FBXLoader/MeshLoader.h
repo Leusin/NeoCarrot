@@ -39,6 +39,8 @@ private:
 	//void DisplayShape(FbxGeometry* mesh);
 	//void DisplayCache(FbxGeometry* mesh);
 
+	void IndicesSplit();
+
 	/// <summary>
 	///  외부에서 받아 쓰는 Fbx Manager
 	/// </summary>

@@ -2,12 +2,7 @@
 
 #include "FbxLoader.h"
 
-#include "D3Devices.h"
-#include "Effect.h"
-#include "IndexBuffer.h"
-#include "Transpose.h"
-#include "InputLayout.h"
-#include "VertexBuffer.h"
+#include "components.h"
 
 #include <memory>
 #ifdef _DEBUG
@@ -20,7 +15,7 @@ namespace graphics
 BoxScript::BoxScript(EntityPtr entityPtr, loader::FbxLoader* fbxLoader)
     : GetEntity(EntityPtr(entityPtr))
     , _devices{GetComponent<graphics::D3Devices>()}
-    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosNormal>>()}
+    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosCol>>()}
     , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
     , _effect{GetComponent<graphics::Effect>()}
 {
@@ -75,16 +70,17 @@ void BoxScript::SetVertexBuffer(model::Mesh& data)
     for (unsigned int i = 0; i < vcount; i++)
     {
         _vertexBuffer->_vertices.emplace_back(
-            PosNormal{
+            PosCol{
                 DirectX::XMFLOAT3{
                 data.vertices[i].position.x,
                 data.vertices[i].position.y,
                 data.vertices[i].position.z
             },
-                DirectX::XMFLOAT3{
-                data.vertices[i].normal.x,
-                data.vertices[i].normal.y,
-                data.vertices[i].normal.z
+                DirectX::XMFLOAT4{
+                1.f,
+                1.f,
+                1.f,
+                1.f
             }});
     }
 }
@@ -122,8 +118,8 @@ void BoxScript::SetPrimitiveTopology(const D3D_PRIMITIVE_TOPOLOGY& primitiveTopo
 
 void BoxScript::DrawIndexed(const int& idx)
 {
-    _devices->GetDeviceContext()->DrawIndexed(_indexBuffer->_indexCount[idx],   // 인덱스 개수
-                                              _indexBuffer->_indexOffset[idx],  // 인덱스 시작 위치
+    _devices->GetDeviceContext()->DrawIndexed(_indexBuffer->_indexCount[idx],     // 인덱스 개수
+                                              _indexBuffer->_indexOffset[idx],    // 인덱스 시작 위치
                                               _vertexBuffer->_vertexOffset[idx]); // 색인들이 더해지는 정수 값
 }
 

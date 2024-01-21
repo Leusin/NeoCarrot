@@ -38,6 +38,8 @@ void graphics::GraphicsEngine::Initialize()
 
 void graphics::GraphicsEngine::Update(float deltaTime)
 {
+    _dt       = deltaTime;
+
     auto view = _camera->View();
     auto proj = _camera->Proj();
     auto eye = _camera->GetPosition();
@@ -53,7 +55,7 @@ void graphics::GraphicsEngine::BeginRender()
 void graphics::GraphicsEngine::Render()
 {
 	_font->DrawTest();
-    _modelManager->Update(0);
+    _modelManager->Update(_dt);
 
     DrawStatus();
 }

@@ -46,9 +46,9 @@ WeakEntityPtr CameraManager::GetActiveCamera()
 
      for (auto& e : _cameras)
     {
-        auto camera = e.lock();
+        auto camera = e;
 
-        if (camera->_isActive)
+        if (camera.lock()->_isActive)
         {
             return camera;
         }
