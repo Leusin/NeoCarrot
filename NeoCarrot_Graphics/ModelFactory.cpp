@@ -37,9 +37,9 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
             return CreateBox2(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::GRID:
             return CreateGrid(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::Triangle:
+        case core::GameObect::TRIANGLE:
             return CreateTriangle(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::RainbowBox:
+        case core::GameObect::RAINBOWBOX:
             return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;

@@ -38,9 +38,9 @@ void ModelManager::CreateEnity()
 {
     CreateEnity(core::GameObect::AXIS, "axis");
     CreateEnity(core::GameObect::GRID, "grid");
-    CreateEnity(core::GameObect::BOX, "box");
-    // CreateEnity(core::GameObect::Triangle, "triangle");
-    // CreateEnity(core::GameObect::RainbowBox, "rainbow");
+    // CreateEnity(core::GameObect::BOX, "box");
+    // CreateEnity(core::GameObect::TRIANGLE, "triangle");
+    CreateEnity(core::GameObect::RAINBOWBOX, "rainbow");
 }
 
 void ModelManager::CreateEnity(const core::GameObect&& enumTypeEntity,

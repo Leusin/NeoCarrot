@@ -31,8 +31,8 @@ enum class GameObect
     AXIS,
     BOX,
     BOX2,
-    Triangle,
-    RainbowBox,
+    TRIANGLE,
+    RAINBOWBOX,
 
     GAMEOBJECT_COUNT
 };
