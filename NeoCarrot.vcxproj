@@ -70,6 +70,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
     <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColorShader.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h" />
     <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

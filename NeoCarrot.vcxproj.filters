@@ -31,6 +31,9 @@
     <Filter Include="component_script">
       <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{71c4945c-ad5d-4bed-8513-f23b7afde191}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
@@ -102,6 +105,9 @@
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
+    <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
@@ -179,10 +185,15 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <Filter>component_script</Filter>
     </ClInclude>
+    <ClInclude Include="ColorShader.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\README.md">
       <Filter>doc</Filter>
     </None>
+    <None Include="color.ps" />
+    <None Include="color.vs" />
   </ItemGroup>
 </Project>

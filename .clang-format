@@ -1,7 +1,7 @@
 ﻿---
 # Project
 Standard: c++20
-ColumnLimit: 120
+ColumnLimit: 80
 
 # Indentation
 AccessModifierOffset: -4
@@ -21,7 +21,7 @@ UseTab: Never
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveBitFields: Consecutive
-AlignConsecutiveDeclarations: Consecutive
+AlignConsecutiveDeclarations: false
 AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: Align
@@ -45,7 +45,7 @@ AlwaysBreakBeforeMultilineStrings: true
 AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeConceptDeclarations: true
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializers: AfterColon
+BreakConstructorInitializers: BeforeComma
 BreakBeforeBinaryOperators: None
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
@@ -53,9 +53,9 @@ BreakStringLiterals: true
 # Initializers & arguments
 BinPackArguments: false
 BinPackParameters: false
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-ConstructorInitializerIndentWidth: 0
-Cpp11BracedListStyle: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 4
+Cpp11BracedListStyle: false
 
 # Braces
 BreakBeforeBraces: Custom
@@ -135,33 +135,26 @@ PenaltyReturnTypeOnItsOwnLine: 500
 PointerAlignment: Left
 
 # Comments
-ReflowComments: false
+ReflowComments: true
 
 # Spaces
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
-SpaceAfterTemplateKeyword: true
-SpaceAroundPointerQualifiers: Default
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Left
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeCaseColon: false
 SpaceBeforeCpp11BracedList: false
-SpaceBeforeCtorInitializerColon: true
-SpaceBeforeInheritanceColon: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
 SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: true
-SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 SpacesInAngles: false
-SpacesInCStyleCastParentheses: false
-SpacesInConditionalStatement: false
 SpacesInContainerLiterals: false
-SpacesInParentheses: false
 SpacesInSquareBrackets: false
-
-# Line endings
-UseCRLF: false
 
 # Qualifiers (const, volatile, static, etc)
 QualifierAlignment: Custom

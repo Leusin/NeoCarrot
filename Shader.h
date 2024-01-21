@@ -6,6 +6,7 @@
 #include <d3d11.h>
 #include <string>
 #include <wrl.h>
+#include <cassert>
 
 namespace graphics
 {
