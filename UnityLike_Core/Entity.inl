@@ -6,7 +6,7 @@
 
 namespace core
 {
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 template <typename Tag, typename Layer>
 inline Entity<Tag, Layer>::Entity(const  size_t&& id, const char* name, Tag&& tag, Layer&& layer) :
 Object<Tag, Layer>(std::forward<const size_t>(id), name, std::forward<Tag>(tag), std::forward<Layer>(layer))
@@ -17,7 +17,7 @@ Object<Tag, Layer>(std::forward<const size_t>(id), name, std::forward<Tag>(tag),
 #endif // CORE_Test
 }
 
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 template <typename Tag, typename Layer>
 template <typename T, typename... Args>
 inline void Entity<Tag, Layer >::AddComponent(Args&&... args)
@@ -29,7 +29,7 @@ inline void Entity<Tag, Layer >::AddComponent(Args&&... args)
     _componentList.emplace_back(std::make_unique<T>(std::forward<Args>(args)...));
 }
 
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 template <typename Tag, typename Layer>
 template <typename T>
 inline T* Entity<Tag, Layer>::GetComponent()
@@ -44,7 +44,7 @@ inline T* Entity<Tag, Layer>::GetComponent()
     return nullptr; // 찾지 못한 경우 nullptr 반환
 }
 
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 template <typename Tag, typename Layer>
 inline core::Entity<Tag, Layer>::~Entity()
 {

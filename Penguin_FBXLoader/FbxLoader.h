@@ -3,7 +3,7 @@
 /// - Scene 안의 기타 정보를 관리하는 객체들을 관리합니다
 ///
 /// 2023-12-29
-///
+
 
 #pragma once
 
@@ -20,7 +20,6 @@
 #include "../Bunny_Common/Mesh.h"
 
 #include <fbxsdk.h>
-//#include <C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include\fbxsdk.h>
 #include <vector>
 #include <memory>
 

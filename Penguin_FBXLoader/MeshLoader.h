@@ -1,7 +1,7 @@
 /// MeshLoader.h : ControlPoint, Polgon, Material 관련 데이터를 다루는 클래스 입니다.
 /// 
 /// 2023-12-29
-///
+
 
 #pragma once
 

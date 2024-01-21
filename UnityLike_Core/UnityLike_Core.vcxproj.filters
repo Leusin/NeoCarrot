@@ -19,9 +19,6 @@
     <ClCompile Include="GetEntity.cpp">
       <Filter>core</Filter>
     </ClCompile>
-    <ClCompile Include="IFactory.cpp">
-      <Filter>manager</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>test</Filter>
     </ClCompile>

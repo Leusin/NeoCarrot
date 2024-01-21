@@ -37,4 +37,4 @@ enum class GameObect
     GAMEOBJECT_COUNT
 };
 
-} // namespace game
+} // namespace core

@@ -13,17 +13,19 @@
 namespace graphics
 {
 
-ModelFactory::ModelFactory(D3D11Context_mk2* d3d11context, Camera3D* camera) :
-_d3d11context(d3d11context),
-_camera(camera),
-_fbxLoader(std::make_unique<loader::FbxLoader>())
+ModelFactory::ModelFactory(D3D11Context_mk2* d3d11context, Camera3D* camera)
+    : _d3d11context(d3d11context)
+    , _camera(camera)
+    , _fbxLoader(std::make_unique<loader::FbxLoader>())
 {
 #if defined(DEBUG) || defined(_DEBUG)
     std::cout << "\t\tModelFactory Constructed\n";
 #endif
 }
 
-EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_t&& id, const char* name)
+EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
+                                     const size_t&& id,
+                                     const char* name)
 {
     switch (enumTypeEntity)
     {
@@ -48,14 +50,17 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity, const size_
 
 EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::GIZMO,
+                                core::Layer::DEBUGINFO);
 
     auto grid = builder.AddD3Device(_d3d11context)
                     .AddTransform()
                     .AddCamera(_camera)
                     .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
-                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
+                    .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
                     .AddVertexLayout(&PosColorDesc)
                     .AddGridScript()
                     .Build();
@@ -65,14 +70,17 @@ EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::GIZMO, core::Layer::DEBUGINFO);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::GIZMO,
+                                core::Layer::DEBUGINFO);
 
     auto axis = builder.AddD3Device(_d3d11context)
                     .AddTransform()
                     .AddCamera(_camera)
                     .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
-                    .AddEffect({L"../NeoCarrot_Graphics/FX/color.fxo"})
+                    .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
                     .AddVertexLayout(&PosColorDesc)
                     .AddAxisScript()
                     .Build();
@@ -82,14 +90,17 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTransform()
                    .AddCamera(_camera)
                    .AddVertexBuffer<PosCol>()
                    .AddIndexBuffer()
-                   .AddEffect({L"../NeoCarrot_Graphics/FX/color.cso"})
+                   .AddEffect({ L"../NeoCarrot_Graphics/FX/color.cso" })
                    .AddVertexLayout(&PosColorDesc)
                    //.AddTexture(L"../NeoCarrot_Graphics/Texture/WoodCrate01.dds")
                    .AddBoxScript(_fbxLoader.get())
@@ -100,7 +111,10 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateBox2(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTransform()
@@ -114,7 +128,10 @@ EntityPtr ModelFactory::CreateBox2(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTransform()
@@ -127,13 +144,16 @@ EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateTriangle(const size_t&& id, const char* name)
 {
-    auto builder = ModelBuilder(std::forward<const size_t>(id), std::move(name), core::Tag::MESHOBJ, core::Layer::FORGROUND);
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
 
     auto triangle = builder.AddD3Device(_d3d11context)
-                   .AddTransform()
-                   .AddCamera(_camera)
-                   .AddTriangleScript()
-                   .Build();
+                        .AddTransform()
+                        .AddCamera(_camera)
+                        .AddTriangleScript()
+                        .Build();
 
     return triangle;
 }

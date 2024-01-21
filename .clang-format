@@ -141,7 +141,7 @@ ReflowComments: true
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: false
-SpaceAroundPointerQualifiers: Left
+SpaceAroundPointerQualifiers: Default 
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeCaseColon: false
 SpaceBeforeCpp11BracedList: false

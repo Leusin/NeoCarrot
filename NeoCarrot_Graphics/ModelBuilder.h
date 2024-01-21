@@ -1,9 +1,9 @@
 #pragma once
 
-#include "EntityEnum.h"
-#include "Entity.h"
-#include "VertexBuffer.h"
 #include "AxisScript.h"
+#include "Entity.h"
+#include "EntityEnum.h"
+#include "VertexBuffer.h"
 
 #include <memory>
 #include <string>
@@ -16,7 +16,10 @@ struct ID3D11RasterizerState;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
-namespace loader{ class FbxLoader; }
+namespace loader
+{
+class FbxLoader;
+}
 
 namespace graphics
 {
@@ -26,52 +29,40 @@ class Camera3D;
 class ModelBuilder
 {
 public:
-    ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer);
-    
+    ModelBuilder(const size_t&& id,
+                 const char* name,
+                 core::Tag&& tag,
+                 core::Layer&& layer);
+
     ModelBuilder AddD3Device(const D3D11Context_mk2* d3d11context);
-    
     ModelBuilder AddTransform();
-    
-    template <typename T>
+    template<typename T>
     ModelBuilder AddVertexBuffer();
-
     ModelBuilder AddIndexBuffer();
-
     ModelBuilder AddEffect(std::wstring fileName);
-
     ModelBuilder AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc);
-
     ModelBuilder AddCamera(Camera3D* camera);
-
     ModelBuilder AddShader(std::wstring vsfile, std::wstring psfile);
-
     ModelBuilder AddTexture(std::wstring filename);
 
     /// 스크립트
-
     ModelBuilder AddAxisScript();
-
     ModelBuilder AddGridScript();
-
     ModelBuilder AddBoxScript(loader::FbxLoader* fbxLodaer);
-
     ModelBuilder AddTriangleScript();
-
     ModelBuilder AddRainbowScript();
 
     // 제품 반환
     EntityPtr Build();
 
 private:
-
     EntityPtr _entity;
 };
 
-template <typename T>
+template<typename T>
 inline ModelBuilder ModelBuilder::AddVertexBuffer()
 {
     _entity->AddComponent<VertexBuffer<T>>(_entity);
-
     return *this;
 }
 

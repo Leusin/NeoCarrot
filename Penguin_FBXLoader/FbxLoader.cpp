@@ -1,6 +1,7 @@
 #include "FbxLoader.h"
 #include "MeshLoader.h"
 
+//////////////////////////////////////////////////////////////////////
 loader::FbxLoader::FbxLoader()
 	: _scene()
 	, _manager(FbxManager::Create())
@@ -21,31 +22,35 @@ loader::FbxLoader::FbxLoader()
 	_manager->SetIOSettings(ios);
 }
 
-
+//////////////////////////////////////////////////////////////////////
 loader::FbxLoader::~FbxLoader()
 {
 	if (_scene) _scene->Destroy();
 	if (_manager) _manager->Destroy();
 }
 
+//////////////////////////////////////////////////////////////////////
 model::Mesh loader::FbxLoader::GetMesh(const char* file, size_t i)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMesh(i);
 }
 
+//////////////////////////////////////////////////////////////////////
 std::vector<model::Mesh> loader::FbxLoader::GetMeshAll(const char* file)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMeshAll();
 }
 
+//////////////////////////////////////////////////////////////////////
 size_t loader::FbxLoader::GetMeshSize(const char* file)
 {
 	LoadFbxFile(file);
 	return _meshLoader->GetMeshSize();
 }
 
+//////////////////////////////////////////////////////////////////////
 void loader::FbxLoader::LoadAMeshContent(const char* file)
 {
 	assert(_manager && file);
@@ -57,6 +62,7 @@ void loader::FbxLoader::LoadAMeshContent(const char* file)
 	}
 }
 
+//////////////////////////////////////////////////////////////////////
 void loader::FbxLoader::LoadFbxFile(const char* file)
 {
 	assert(_manager && file);
@@ -83,6 +89,7 @@ void loader::FbxLoader::LoadFbxFile(const char* file)
 	LoadContent(node->GetChild(0));
 }
 
+//////////////////////////////////////////////////////////////////////
 bool loader::FbxLoader::CreateFbxScene(const char* file)
 {
 	// importer »ý¼º

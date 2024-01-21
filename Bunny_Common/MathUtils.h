@@ -2,6 +2,7 @@
 /// 필요한 수학 관련 함수들이 인라인 함수로 래핑(wrapping) 되어 있습니다.
 ///
 
+
 #pragma once
 
 #include <cmath>
@@ -25,7 +26,9 @@ inline void Swap(float& lhs, float& rhs)
 /// <param name="lhs">비교할 flaot 값 1</param>
 /// <param name="rhs">비교할 float 값 2</param>
 /// <param name="epsilon">오차 허용 범위</param>
-inline bool FuzzyRealEqual(const float& lhs, const float& rhs, const float& epsilon /* = Constant::FLOAT_TOLERANCE*/);
+inline bool FuzzyRealEqual(const float& lhs,
+                           const float& rhs,
+                           const float& epsilon /* = Constant::FLOAT_TOLERANCE*/);
 
 /// <summary>
 /// 부동 소수값을 비교
@@ -41,4 +44,4 @@ inline float DegreeToRadian(const float angle);
 // 라디안(rad)에서 도(°)로
 inline float RadianToDegree(const float angle);
 
-} // namespace me
+} // namespace math

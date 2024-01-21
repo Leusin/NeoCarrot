@@ -22,7 +22,7 @@
 namespace core
 {
 
-class IComponent : public IEventFunction
+class IComponent: public IEventFunction
 {
 public:
     IComponent();

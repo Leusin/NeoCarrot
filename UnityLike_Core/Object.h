@@ -18,8 +18,8 @@
 namespace core
 {
 
-template <typename Tag, typename Layer>
-class Object : public std::enable_shared_from_this<Object<Tag, Layer>>
+template<typename Tag, typename Layer>
+class Object: public std::enable_shared_from_this<Object<Tag, Layer>>
 {
     /// <summary>
     /// Object 클래스는 직접 생성하지 못하게 하도록
@@ -27,18 +27,15 @@ class Object : public std::enable_shared_from_this<Object<Tag, Layer>>
     /// </summary>
 
 protected:
-
     Object(const size_t&& id, std::string&& name, Tag&& tag, Layer&& layer);
 
 public:
-
     /// <summary>
     /// 상속을 위한 가상 소멸자.
     /// </summary>
     ~Object();
 
 public:
-
     /// <summary>
     /// 객체를 소멸시키는데 사용됩니다.
     ///    사용처: 불필요한 객체 삭제, 씬 전환시 이전씬의 객체 정리
@@ -52,29 +49,28 @@ public:
     ///    해당 함수를 어떻게 구현해볼건지 좀 더 고민
     ///
     /// </summary>
-    //virtual void Instantiate();
+    // virtual void Instantiate();
 
 public:
-
     /// <summary>
     /// 객체를 식별 및 검색을 위한 데이터.
     /// </summary>
-    const size_t      _id;
+    const size_t _id;
     const std::string _name;
 
-//private:
+    // private:
 
     /// <summary>
     /// 객체의 활성 여부.
     /// </summary>
-    bool _isActive{false};
-    bool _isStart{true};
+    bool _isActive{ false };
+    bool _isStart{ true };
 
     /// <summary>
     /// 오브젝트의 유사한 속성이나
     /// 역할을 식별하는데 사용하는 데이터.
     /// </summary>
-    Tag   _tag;
+    Tag _tag;
     Layer _layer;
 };
 

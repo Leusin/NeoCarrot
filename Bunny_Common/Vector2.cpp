@@ -4,7 +4,7 @@
 
 namespace math
 {
-
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline Vector2<T> Vector2<T>::Normalize() const
 {
@@ -19,7 +19,7 @@ inline Vector2<T> Vector2<T>::Normalize() const
     return (*this) / Length();
 }
 
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 Vector2<T> Vector2<T>::ProjectedOnto(const Vector2& axis) const
 {

@@ -165,9 +165,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="CameraScript.h" />

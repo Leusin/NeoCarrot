@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClCompile Include="GetEntity.cpp" />
     <ClCompile Include="IComponent.cpp" />
-    <ClCompile Include="IFactory.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

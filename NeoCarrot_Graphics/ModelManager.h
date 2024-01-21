@@ -6,7 +6,6 @@
 #pragma once
 
 #include "EntityManager.h"
-#include "ModelEnum.h"
 #include "ModelFactory.h"
 
 #include <memory>

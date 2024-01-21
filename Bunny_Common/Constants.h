@@ -1,6 +1,8 @@
 ///
 /// 수학 관련 상수를 모아둔 헤더 입니다.
 ///
+
+
 #pragma once
 
 namespace math
@@ -22,7 +24,7 @@ const float DOUBLE_PI{ PI * 2.0f };
 const float FLOAT_TOLERANCE{ 0.00001f };
 
 // √2 / 2
-//float SQRT2_OVER_2{ 0.70710678118f };
+// float SQRT2_OVER_2{ 0.70710678118f };
 
-} // namespace Constant
-} // namespace me
+} // namespace constant
+} // namespace math

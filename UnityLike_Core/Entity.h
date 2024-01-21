@@ -21,8 +21,8 @@ namespace core
 
 class IComponent;
 
-template <typename Tag, typename Layer>
-class Entity : public Object<Tag, Layer>, public IEventFunction
+template<typename Tag, typename Layer>
+class Entity: public Object<Tag, Layer>, public IEventFunction
 {
 public:
     Entity(const size_t&& id, const char* name, Tag&& tag, Layer&& layer);
@@ -32,14 +32,14 @@ public:
     /// <summary>
     /// 컴포넌트를 가져옵니다
     /// </summary>
-    template <typename T, typename... Args>
+    template<typename T, typename... Args>
     void AddComponent(Args&&... args);
 
     /// <summary>
     /// 인자로 전달 받은 컴포넌트 타입에 해당하는
     /// 컴포넌트를 반환합니다.
     /// </summary>
-    template <typename T>
+    template<typename T>
     T* GetComponent();
 
     //
@@ -56,7 +56,6 @@ public:
     void OnEnable() override;
     void OnDisable() override;
     void OnDestroy() override;
-
 
 private:
     std::vector<std::unique_ptr<IComponent>> _componentList;

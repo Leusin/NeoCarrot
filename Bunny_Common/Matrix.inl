@@ -14,6 +14,7 @@ inline Matrix<T>::Matrix()
     Identity();
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline void Matrix<T>::Identity()
 {
@@ -26,6 +27,7 @@ inline void Matrix<T>::Identity()
     }
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline void Matrix<T>::RotateAxis(const Vector3<float>& axis, const float& angle)
 {
@@ -53,6 +55,7 @@ inline void Matrix<T>::RotateAxis(const Vector3<float>& axis, const float& angle
     _data[2][2] = c + a.z * a.z * oneMinusCos;
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline void Matrix<T>::RotateAxisNormal(const Vector3<float>& axis, const float& angle)
 {
@@ -77,6 +80,7 @@ inline void Matrix<T>::RotateAxisNormal(const Vector3<float>& axis, const float&
     _data[2][2] = c + axis.z * axis.z * oneMinusCos;
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline void Matrix<T>::RotateY(const float& angle)
 {
@@ -89,18 +93,21 @@ inline void Matrix<T>::RotateY(const float& angle)
     _data[2][2] = cosTheta;
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline std::array<T, 4>& Matrix<T>::operator[](int index)
 {
     return _data[index];
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 inline const std::array<T, 4>& Matrix<T>::operator[](int index) const
 {
     return _data[index];
 }
 
+//////////////////////////////////////////////////////////////////////
 template <typename T>
 math::Matrix<T>& math::Matrix<T>::operator=(const Matrix<T>& other)
 {

@@ -1,17 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="doc">
-      <UniqueIdentifier>{f0701479-2216-46a6-bddf-9d379fee9bd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DirectXTK">
-      <UniqueIdentifier>{c5a16c50-cafb-4e9a-b604-465cbf71a38a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine">
       <UniqueIdentifier>{88cdd2ce-018b-46c3-a875-0faa155f0bc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="D3D11">
-      <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
     </Filter>
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
@@ -25,14 +16,23 @@
     <Filter Include="component">
       <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="D3D11\mk1">
-      <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="component_script">
       <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HLSL">
+    <Filter Include="fx">
+      <UniqueIdentifier>{1c851177-b3cd-44fe-9460-14899340ee95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hlsl">
       <UniqueIdentifier>{71c4945c-ad5d-4bed-8513-f23b7afde191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="directXTK">
+      <UniqueIdentifier>{c5a16c50-cafb-4e9a-b604-465cbf71a38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d11">
+      <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d11\mk1">
+      <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -40,7 +40,7 @@
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
-      <Filter>DirectXTK</Filter>
+      <Filter>directXTK</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
       <Filter>camera</Filter>
@@ -73,19 +73,19 @@
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
-      <Filter>D3D11\mk1</Filter>
+      <Filter>d3d11\mk1</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
-      <Filter>D3D11\mk1</Filter>
+      <Filter>d3d11\mk1</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context_mk2.cpp">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Devices.cpp">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <Filter>model</Filter>
@@ -105,19 +105,31 @@
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
-    <ClCompile Include="ColorShader.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Model.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Shader.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Texture.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\RainbowBoxScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
-      <Filter>DirectXTK</Filter>
+      <Filter>directXTK</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
       <Filter>camera</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FontType.h">
-      <Filter>DirectXTK</Filter>
+      <Filter>directXTK</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h">
       <Filter>model</Filter>
@@ -150,22 +162,22 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
-      <Filter>D3D11\mk1</Filter>
+      <Filter>d3d11\mk1</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
-      <Filter>D3D11\mk1</Filter>
+      <Filter>d3d11\mk1</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context_mk2.h">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Devices.h">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\RenderStates.h">
-      <Filter>D3D11</Filter>
+      <Filter>d3d11</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <Filter>model</Filter>
@@ -185,15 +197,54 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <Filter>component_script</Filter>
     </ClInclude>
-    <ClInclude Include="ColorShader.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Shader.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Model.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Shader.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Texture.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\RainbowBoxScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="NeoCarrot_Graphics\README.md">
-      <Filter>doc</Filter>
+    <None Include="NeoCarrot_Graphics\HLSL\triangle.fxh">
+      <Filter>hlsl</Filter>
     </None>
-    <None Include="color.ps" />
-    <None Include="color.vs" />
+    <None Include="NeoCarrot_Graphics\FX\color.cso">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="NeoCarrot_Graphics\FX\color.fxo">
+      <Filter>fx</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\PixelShader.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox_vs.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\triangle_ps.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\triangle_vs.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\VertexShader.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
+      <Filter>fx</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
