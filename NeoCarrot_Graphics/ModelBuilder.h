@@ -42,7 +42,6 @@ public:
     ModelBuilder AddEffect(std::wstring fileName);
     ModelBuilder AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc);
     ModelBuilder AddCamera(Camera3D* camera);
-    ModelBuilder AddShader(std::wstring vsfile, std::wstring psfile);
     ModelBuilder AddTexture(std::wstring filename);
 
     ModelBuilder AddTransform_mk2(Camera3D* camera);

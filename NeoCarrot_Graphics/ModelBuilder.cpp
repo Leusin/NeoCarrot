@@ -67,13 +67,6 @@ ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddShader(std::wstring vsfile, std::wstring psfile)
-{
-    _entity->AddComponent<Shader>(_entity, vsfile, psfile);
-
-    return *this;
-}
-
 ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
 {
     _entity->AddComponent<Texture>(_entity, filename);
@@ -97,7 +90,7 @@ ModelBuilder ModelBuilder::AddIndexBuffer_mk2()
 
 ModelBuilder ModelBuilder::AddRenderor()
 {
-    _entity->AddComponent<Renderor>(_entity);
+    _entity->AddComponent<Renderor>(_entity, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     return *this;
 }
 

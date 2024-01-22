@@ -3,10 +3,12 @@
 #include "D3Devices.h"
 #include "GetEntity.h"
 #include "IComponent.h"
+#include "CompileShader.h"
 
 #include <d3d11.h>
 #include <string>
 #include <type_traits>
+#include <cassert>
 #include <wrl.h>
 
 #ifdef _DEBUG
@@ -59,8 +61,8 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline VertexResource<StructBuffer>::VertexResource(
+template<typename StructB>
+inline VertexResource<StructB>::VertexResource(
     EntityPtr entityPtr,
     const std::wstring shaderFile,
     const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc)
@@ -78,23 +80,23 @@ inline VertexResource<StructBuffer>::VertexResource(
 }
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::Awake()
+template<typename StructB>
+inline void VertexResource<StructB>::Awake()
 {
     CreateVertexBuffer();
 }
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::Update(float dt)
+template<typename StructB>
+inline void VertexResource<StructB>::Update(float dt)
 {
     UpdateInputAssemBler();
     SetShader();
 }
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::InitilaizeVertexBuffer(
+template<typename StructB>
+inline void VertexResource<StructB>::InitilaizeVertexBuffer(
     const std::wstring& shaderFile,
     const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc)
 {
@@ -141,9 +143,9 @@ inline void VertexResource<StructBuffer>::InitilaizeVertexBuffer(
 }
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::GetVerteices(
-    const std::vector<StructBuffer>& vertices)
+template<typename StructB>
+inline void VertexResource<StructB>::GetVerteices(
+    const std::vector<StructB>& vertices)
 {
     //
     // 4.  어딘가에서 _vertices 를 채워넣는다
@@ -152,8 +154,8 @@ inline void VertexResource<StructBuffer>::GetVerteices(
 }
 
 //////////////////////////////////////////////////////////////////////
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::CreateVertexBuffer()
+template<typename StructB>
+inline void VertexResource<StructB>::CreateVertexBuffer()
 {
     //
     // 5.CreateVertexBuffer
@@ -173,8 +175,8 @@ inline void VertexResource<StructBuffer>::CreateVertexBuffer()
     //assert(_vertexBuffer.Get() && "버텍스 버퍼에 암것도 없음");
 }
 
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::UpdateInputAssemBler()
+template<typename StructB>
+inline void VertexResource<StructB>::UpdateInputAssemBler()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
     // UpdateInputAssemBler
@@ -184,8 +186,8 @@ inline void VertexResource<StructBuffer>::UpdateInputAssemBler()
     deviceContext->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
 }
 
-template<typename StructBuffer>
-inline void VertexResource<StructBuffer>::SetShader()
+template<typename StructB>
+inline void VertexResource<StructB>::SetShader()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
     deviceContext->VSSetShader(_vertexShader.Get(), nullptr, 0);
