@@ -3,7 +3,6 @@
 #include "AxisScript.h"
 #include "Entity.h"
 #include "EntityEnum.h"
-#include "VertexBuffer.h"
 
 #include <memory>
 #include <string>
@@ -24,6 +23,7 @@ class FbxLoader;
 namespace graphics
 {
 class Camera3D;
+class D3D11Context_mk2;
 
 // 본문
 class ModelBuilder
@@ -45,6 +45,19 @@ public:
     ModelBuilder AddShader(std::wstring vsfile, std::wstring psfile);
     ModelBuilder AddTexture(std::wstring filename);
 
+    ModelBuilder AddTransform_mk2(Camera3D* camera);
+
+    template<typename T>
+    ModelBuilder AddVertexResource(std::wstring shaderFile,
+                                     const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc);
+
+    ModelBuilder AddIndexBuffer_mk2();
+
+    template<typename T>
+    ModelBuilder AddContantBuffer();
+
+    ModelBuilder AddRenderor();
+
     /// 스크립트
     ModelBuilder AddAxisScript();
     ModelBuilder AddGridScript();
@@ -59,11 +72,6 @@ private:
     EntityPtr _entity;
 };
 
-template<typename T>
-inline ModelBuilder ModelBuilder::AddVertexBuffer()
-{
-    _entity->AddComponent<VertexBuffer<T>>(_entity);
-    return *this;
-}
-
 } // namespace graphics
+
+#include "ModelBuilder.inl"

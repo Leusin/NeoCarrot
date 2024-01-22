@@ -33,7 +33,7 @@ enum class Key
     Q,            //!< The Q key
     R,            //!< The R key
     S,            //!< The S key
-    T,            //!< The T key
+    CB,            //!< The T key
     U,            //!< The U key
     V,            //!< The V key
     W,            //!< The W key

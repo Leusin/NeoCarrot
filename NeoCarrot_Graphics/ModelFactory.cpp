@@ -33,14 +33,14 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
             return CreateAxis(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::BOX:
             return CreateBox(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::BOX2:
-            return CreateBox2(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::GRID:
             return CreateGrid(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::TRIANGLE:
             return CreateTriangle(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::RAINBOWBOX:
             return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::COLOREDBOX:
+            return CreateColoredBox(std::forward<const size_t>(id), std::move(name));
         default:
             break;
     }
@@ -109,23 +109,6 @@ EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
     return box;
 }
 
-EntityPtr ModelFactory::CreateBox2(const size_t&& id, const char* name)
-{
-    auto builder = ModelBuilder(std::forward<const size_t>(id),
-                                std::move(name),
-                                core::Tag::MESHOBJ,
-                                core::Layer::FORGROUND);
-
-    auto box = builder.AddD3Device(_d3d11context)
-                   .AddTransform()
-                   .AddCamera(_camera)
-                   .AddShader(L"../NeoCarrot_Graphics/HLSL/VertexShader.hlsl",
-                              L"../NeoCarrot_Graphics/HLSL/PixelShader.hlsl")
-                   .Build();
-
-    return box;
-}
-
 EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id),
@@ -137,6 +120,24 @@ EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
                    .AddTransform()
                    .AddCamera(_camera)
                    .AddRainbowScript()
+                   .Build();
+
+    return box;
+}
+
+EntityPtr ModelFactory::CreateColoredBox(const size_t&& id, const char* name)
+{
+
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
+
+    auto box = builder.AddD3Device(_d3d11context)
+                   .AddTransform_mk2(_camera)
+                   .AddVertexResource<Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
+                   .AddIndexBuffer_mk2()
+                   .AddContantBuffer<ContWorldViewProj>()
                    .Build();
 
     return box;

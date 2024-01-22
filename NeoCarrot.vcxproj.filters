@@ -4,9 +4,6 @@
     <Filter Include="engine">
       <UniqueIdentifier>{88cdd2ce-018b-46c3-a875-0faa155f0bc5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="camera">
-      <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{cb8c9de6-899a-4efb-a731-40d63500bbe5}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,9 @@
     </Filter>
     <Filter Include="d3d11\mk1">
       <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,9 +108,6 @@
     <ClCompile Include="NeoCarrot_Graphics\Model.cpp">
       <Filter>model</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Shader.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Texture.cpp">
       <Filter>component</Filter>
     </ClCompile>
@@ -119,6 +116,18 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
       <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose_mk2.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\CompileShader.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer_mk2.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Renderor.cpp">
+      <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +150,6 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h">
-      <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h">
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
@@ -182,9 +188,6 @@
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h">
-      <Filter>model</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
       <Filter>manager</Filter>
     </ClInclude>
@@ -200,9 +203,6 @@
     <ClInclude Include="NeoCarrot_Graphics\Model.h">
       <Filter>model</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\Shader.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Texture.h">
       <Filter>component</Filter>
     </ClInclude>
@@ -212,10 +212,32 @@
     <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
       <Filter>component_script</Filter>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Transpose_mk2.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\VertexResource.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\CompileShader.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer_mk2.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Renderor.h">
+      <Filter>component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\HLSL\triangle.hlsl">
       <Filter>hlsl</Filter>
+    </None>
+    <None Include="NeoCarrot_Graphics\ModelBuilder.inl">
+      <Filter>model</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

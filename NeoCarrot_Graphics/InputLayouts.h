@@ -10,7 +10,7 @@ namespace graphics
 //
 // 구조체 버퍼
 //
-struct ConstantBuffer
+struct ContWorldViewProj
 {
     DirectX::XMMATRIX WorldViewProj;
 };

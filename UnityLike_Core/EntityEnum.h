@@ -30,9 +30,9 @@ enum class GameObect
     GRID,
     AXIS,
     BOX,
-    BOX2,
     TRIANGLE,
     RAINBOWBOX,
+    COLOREDBOX,
 
     GAMEOBJECT_COUNT
 };

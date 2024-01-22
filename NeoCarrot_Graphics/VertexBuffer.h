@@ -70,7 +70,6 @@ inline void VertexBuffer<V>::Awake()
     D3D11_SUBRESOURCE_DATA vinitData;
     vinitData.pSysMem = _vertices.data();
     _d3device->GetDevice()->CreateBuffer(&vbd, &vinitData, _vb.GetAddressOf());
-
 }
 
 template <typename V>

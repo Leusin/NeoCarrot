@@ -1,7 +1,6 @@
 #include "BoxScript.h"
 
 #include "FbxLoader.h"
-
 #include "components.h"
 
 #include <memory>

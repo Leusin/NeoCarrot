@@ -81,6 +81,26 @@ ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
     return *this;
 }
 
+ModelBuilder ModelBuilder::AddTransform_mk2(Camera3D* camera)
+{
+
+    _entity->AddComponent<Transpose_mk2>(camera);
+
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddIndexBuffer_mk2()
+{
+    _entity->AddComponent<IndexBuffer_mk2>(_entity);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddRenderor()
+{
+    _entity->AddComponent<Renderor>(_entity);
+    return *this;
+}
+
 ModelBuilder ModelBuilder::AddAxisScript()
 {
     _entity->AddComponent<AxisScript>(_entity);

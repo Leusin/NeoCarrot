@@ -23,6 +23,7 @@
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\CompileShader.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -59,7 +60,9 @@
     <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer_mk2.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\RainbowBoxScript.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Renderor.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ResourceManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -67,8 +70,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Shader.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Texture.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Transpose_mk2.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Transpose.h" />
     <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp" />
@@ -79,6 +82,8 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h" />
+    <ClInclude Include="NeoCarrot_Graphics\CompileShader.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -115,8 +120,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\ModelManager.h" />
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer_mk2.h" />
     <ClInclude Include="NeoCarrot_Graphics\RainbowBoxScript.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Renderor.h" />
     <ClInclude Include="NeoCarrot_Graphics\RenderStates.h" />
     <ClInclude Include="NeoCarrot_Graphics\ResourceManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -125,17 +131,19 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ResourceView.h" />
-    <ClInclude Include="NeoCarrot_Graphics\Shader.h" />
     <ClInclude Include="NeoCarrot_Graphics\Texture.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Transpose_mk2.h" />
     <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h" />
-    <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\VertexResource.h" />
+    <ClInclude Include="PixelShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NeoCarrot_Graphics\HLSL\triangle.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </None>
+    <None Include="NeoCarrot_Graphics\ModelBuilder.inl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Penguin_FBXLoader\Penguin_FBXLoader.vcxproj">
