@@ -12,6 +12,7 @@
 #include "Texture.h"
 #include "RainbowBoxScript.h"
 #include "Renderor.h"
+#include "FbxLoad.h"
 
 #include "GridScript.h"
 #include "BoxScript.h"

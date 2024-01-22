@@ -13,9 +13,6 @@
     <Filter Include="component">
       <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="component_script">
-      <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="fx">
       <UniqueIdentifier>{1c851177-b3cd-44fe-9460-14899340ee95}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,9 @@
     </Filter>
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component_script">
+      <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +127,9 @@
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Renderor.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp">
       <Filter>component</Filter>
     </ClCompile>
   </ItemGroup>
@@ -229,6 +232,9 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Renderor.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h">
       <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>

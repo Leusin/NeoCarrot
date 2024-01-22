@@ -43,7 +43,7 @@ private:
     Microsoft::WRL::ComPtr<ID3D11Buffer> _indexBuffer{ nullptr };
 
 public:
-    // 아래 변수는 언젠가 사용하겠지?
+    // _indices 설정 시 같이 세팅해야 한다.
     std::vector<unsigned int> _indexOffset;
     std::vector<unsigned int> _indexCount;
     unsigned int _totalIndexCount{ 0 };

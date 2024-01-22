@@ -7,6 +7,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <d3dcommon.h>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -55,7 +56,9 @@ public:
     template<typename T>
     ModelBuilder AddContantBuffer();
 
-    ModelBuilder AddRenderor();
+    ModelBuilder AddFbxLoad(loader::FbxLoader* fbxLodaer, std::string shaderFile);
+
+    ModelBuilder AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
 
     /// 스크립트
     ModelBuilder AddAxisScript();

@@ -41,6 +41,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Effect.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -101,6 +102,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Effect.h" />
+    <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h" />
     <ClInclude Include="NeoCarrot_Graphics\FontType.h" />
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">

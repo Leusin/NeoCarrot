@@ -1,10 +1,9 @@
 #include "ModelBuilder.h"
 
+#include "Camera3D.h"
 #include "D3D11Context_mk2.h"
 #include "Devices.h"
-#include "Camera3D.h"
 #include "FBXLoader.h"
-
 #include "components.h"
 
 #ifdef _DEBUG
@@ -14,15 +13,20 @@
 
 namespace graphics
 {
-    
-ModelBuilder::ModelBuilder(const size_t&& id, const char* name, core::Tag&& tag, core::Layer&& layer) :
-_entity(std::make_shared<core::Entity<core::Tag, core::Layer>>(std::forward<const size_t>(id),
-                                                               std::move(name),
-                                                               std::move(tag),
-                                                               std::move(layer)))
+
+ModelBuilder::ModelBuilder(const size_t&& id,
+                           const char* name,
+                           core::Tag&& tag,
+                           core::Layer&& layer)
+    : _entity(std::make_shared<
+              core::Entity<core::Tag, core::Layer>>(std::forward<const size_t>(id),
+                                                    std::move(name),
+                                                    std::move(tag),
+                                                    std::move(layer)))
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", " << static_cast<int>(id) << " ) \n";
+    std::cout << "\t\t\tCreate Graphics Entity ( " << name << ", "
+              << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
 }
 ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
@@ -53,7 +57,8 @@ ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc)
+ModelBuilder ModelBuilder::AddVertexLayout(
+    const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc)
 {
     _entity->AddComponent<InputLayout>(_entity, desc);
 
@@ -62,7 +67,7 @@ ModelBuilder ModelBuilder::AddVertexLayout(const std::vector<D3D11_INPUT_ELEMENT
 
 ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
 {
-    _entity->AddComponent<CameraPtr>(_entity,camera);
+    _entity->AddComponent<CameraPtr>(_entity, camera);
 
     return *this;
 }
@@ -88,9 +93,16 @@ ModelBuilder ModelBuilder::AddIndexBuffer_mk2()
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddRenderor()
+ModelBuilder ModelBuilder::AddFbxLoad(loader::FbxLoader* fbxLodaer,
+                                      std::string shaderFile)
 {
-    _entity->AddComponent<Renderor>(_entity, D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    _entity->AddComponent <FbxLoad> (_entity, fbxLodaer, shaderFile);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology)
+{
+    _entity->AddComponent<Renderor>(_entity, primitiveTopology);
     return *this;
 }
 

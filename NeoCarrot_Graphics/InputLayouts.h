@@ -20,28 +20,28 @@ struct Pos
     DirectX::XMFLOAT3 Pos;
 };
 
-struct PosCol
+struct PosCol: public Pos
 {
-    DirectX::XMFLOAT3 Pos;
+    //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT4 Color;
 };
 
-struct PosNormal
+struct PosNormal: public Pos
 {
-    DirectX::XMFLOAT3 Pos;
+    //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT3 Normal;
 };
 
-struct PosNormalTex
+struct PosNormalTex: public Pos
 {
-    DirectX::XMFLOAT3 Pos;
+    //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT3 Normal;
     DirectX::XMFLOAT2 Tex;
 };
 
-struct PosNormalTexWeightsBoneidx
+struct PosNormalTexWeightsBoneidx: public Pos
 {
-    DirectX::XMFLOAT3 Pos;
+    //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT3 Normal;
     DirectX::XMFLOAT2 Tex;
     DirectX::XMFLOAT3 Weights;

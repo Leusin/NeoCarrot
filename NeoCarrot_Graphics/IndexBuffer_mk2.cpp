@@ -1,5 +1,8 @@
 #include "IndexBuffer_mk2.h"
+
 #include "D3Devices.h"
+
+#include <cassert>
 
 #ifdef _DEBUG
 #include <iostream>
@@ -12,6 +15,8 @@ graphics::IndexBuffer_mk2::IndexBuffer_mk2(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
     , _d3devices{ GetComponent<graphics::D3Devices>() }
 {
+    assert(_d3devices && "IndexBuffer_mk2 는 _d3devices를 필요로함");
+
 #ifdef _DEBUG
     std::cout << "\t\t\t\tAdd IndexBuffer_mk2 Component\n";
 #endif // _DEBUG;
