@@ -42,7 +42,7 @@ void graphics::Grid::Render()
 	_d3dImmediateContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
 	// WVP TM등을 셋팅
-	DirectX::XMMATRIX worldViewProj = _transpose.WorldViewProj();
+	DirectX::XMMATRIX worldViewProj = _transpose.GetWorldViewProj();
 	_fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 
 	// 렌더스테이트

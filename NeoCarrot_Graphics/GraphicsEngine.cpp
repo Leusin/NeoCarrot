@@ -54,9 +54,7 @@ void graphics::GraphicsEngine::BeginRender()
 
 void graphics::GraphicsEngine::Render()
 {
-	_font->DrawTest();
     _modelManager->Update(_dt);
-
     DrawStatus();
 }
 
@@ -83,6 +81,8 @@ void graphics::GraphicsEngine::OnResize(int clientWidth, int clientHeight)
 
 void GraphicsEngine::DrawStatus()
 {
+    _font->DrawTest();
+
     // 피처 레벨
     int xPad   = 44;
     int yPad   = 44;

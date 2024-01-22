@@ -156,6 +156,7 @@ void Camera3D::SetLens(float fovY, float aspect, float zn, float zf)
     auto farWindowHeight = 2.0f * _farZ * tanf(0.5f * _fovY);
 
     XMMATRIX P = XMMatrixPerspectiveFovLH(_fovY, _aspect, _nearZ, _farZ);
+    ;
     XMStoreFloat4x4(&_proj, P);
 }
 

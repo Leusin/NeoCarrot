@@ -20,6 +20,9 @@ namespace graphics
 		DirectX::XMMATRIX GetProj();
 		DirectX::XMMATRIX GetObj();
 		
+		DirectX::XMMATRIX GetWorldViewProj();
+		// world, view, proj 곱을 반환
+
 		void SetWorld(const DirectX::XMMATRIX& w);
 		void SetView(const DirectX::XMMATRIX& v);
 		void SetProj(const DirectX::XMMATRIX& p);
@@ -27,9 +30,6 @@ namespace graphics
 
 		// world, view, proj 를 한꺼번에 초기화
 		void SetTM(const DirectX::XMMATRIX& world, const DirectX::XMMATRIX& view, const DirectX::XMMATRIX& proj);
-
-		DirectX::XMMATRIX WorldViewProj();
-		// world, view, proj 곱을 반환
 
 		// 카메라 위치
         DirectX::XMFLOAT3 _eyePosW; 

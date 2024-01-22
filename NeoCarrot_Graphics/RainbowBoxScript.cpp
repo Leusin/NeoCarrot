@@ -36,7 +36,7 @@ void RainbowBoxScript::Awake()
 
     Microsoft::WRL::ComPtr<ID3DBlob> pVSBlob{nullptr};
 
-    //
+    // 
     // CreateVertexShader
     //
 
@@ -65,7 +65,7 @@ void RainbowBoxScript::Awake()
 
             assert(_vertexShader.Get());
         }
-    }
+    }   
 
     //
     // CreateInputLayout
@@ -130,21 +130,21 @@ void RainbowBoxScript::Awake()
 
     // AwakeCreateVertexBuffer
 
-    std::vector<PosCol> vertices = 
+    std::vector<Pos> vertices = 
     {
-        {DirectX::XMFLOAT3(-1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(0.0f, 0.0f, 1.0f, 1.0f)},
-        {DirectX::XMFLOAT3(1.0f, 1.0f, -1.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 0.0f, 1.0f)},
-        {DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(0.0f, 1.0f, 1.0f, 1.0f)},
-        {DirectX::XMFLOAT3(-1.0f, 1.0f, 1.0f), DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f)},
-        {DirectX::XMFLOAT3(-1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.0f, 0.0f, 1.0f, 1.0f)},
-        {DirectX::XMFLOAT3(1.0f, -1.0f, -1.0f), DirectX::XMFLOAT4(1.0f, 1.0f, 0.0f, 1.0f)},
-        {DirectX::XMFLOAT3(1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f)},
-        {DirectX::XMFLOAT3(-1.0f, -1.0f, 1.0f), DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f)},
+        {DirectX::XMFLOAT3(-1.0f, 1.0f, -1.0f)},
+        {DirectX::XMFLOAT3(1.0f, 1.0f, -1.0f)},
+        {DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f)},
+        {DirectX::XMFLOAT3(-1.0f, 1.0f, 1.0f)},
+        {DirectX::XMFLOAT3(-1.0f, -1.0f, -1.0f)},
+        {DirectX::XMFLOAT3(1.0f, -1.0f, -1.0f)},
+        {DirectX::XMFLOAT3(1.0f, -1.0f, 1.0f)},
+        {DirectX::XMFLOAT3(-1.0f, -1.0f, 1.0f)}
     };
 
     D3D11_BUFFER_DESC bd = {};
     bd.Usage             = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth         = sizeof(PosCol) * static_cast<unsigned int>(vertices.size());
+    bd.ByteWidth         = sizeof(Pos) * 8;
     bd.BindFlags         = D3D11_BIND_VERTEX_BUFFER;
     bd.CPUAccessFlags    = 0;
 
@@ -153,17 +153,11 @@ void RainbowBoxScript::Awake()
     hr                              = device->CreateBuffer(&bd, &InitData, _vertexBuffer.GetAddressOf());
 
     assert(_vertexBuffer.Get());
-    
-    UINT stride = sizeof(PosCol);
-    UINT offset = 0;
-    deviceContext->IASetVertexBuffers(0, 1, &_vertexBuffer, &stride, &offset);
-
 
     //
     // CreateIndexBuffer
     //
-
-    std::vector<int> indices =
+    std::vector<WORD> indices =
     {
         3,1,0,
         2,1,3,
@@ -181,20 +175,16 @@ void RainbowBoxScript::Awake()
         3,7,2,
 
         6,4,5,
-        7,4,6,
+        7,4,6
     };
 
-    D3D11_BUFFER_DESC ibd;
-    ibd.Usage = D3D11_USAGE_DEFAULT;
-    ibd.ByteWidth = sizeof(WORD) * static_cast<int>(indices.size()); // 36 vertices needed for 12 triangles in a triangle list
-    ibd.BindFlags     = D3D11_BIND_INDEX_BUFFER;
-    ibd.CPUAccessFlags = 0;
+    bd.Usage = D3D11_USAGE_DEFAULT;
+    bd.ByteWidth = sizeof(WORD) * 36; // 36 vertices needed for 12 triangles in a triangle list
+    bd.BindFlags      = D3D11_BIND_INDEX_BUFFER;
+    bd.CPUAccessFlags = 0;
     InitData.pSysMem = indices.data();
-    hr = device->CreateBuffer( &ibd, &InitData, _indexBuffer.GetAddressOf() );
+    hr = device->CreateBuffer( &bd, &InitData, _indexBuffer.GetAddressOf() );
     
-    //deviceContext->IASetIndexBuffer(_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
-    //deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); 
-
     //
     // AwakeCreateConstant buffer
     //
@@ -210,28 +200,25 @@ void RainbowBoxScript::Update(float dt)
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
 
-    { // UpdateInputAssemBler
-            UINT stride = sizeof(PosCol);
-            UINT offset = 0;
-            deviceContext->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
-            deviceContext->IASetIndexBuffer(_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
-    }
+    //
+    // UpdateInputAssemBler
+    //
+    deviceContext->IASetInputLayout(_vertexLayout.Get());
 
+    UINT stride = sizeof(Pos);
+    UINT offset = 0;
+    deviceContext->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
+
+    deviceContext->IASetIndexBuffer(_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
     deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); 
-
-    //
-    // UpdateAnimate 
-    //
-    auto* Trans = GetComponent<Transpose>();
-    //Trans->SetWorld(DirectX::XMMatrixRotationY( dt ));
 
     //
     // Update variables
     //
     ConstantBuffer cb;
-    cb.world      = XMMatrixTranspose(Trans->GetWorld());
-    cb.view       = XMMatrixTranspose(Trans->GetView());
-    cb.projection = XMMatrixTranspose(Trans->GetProj());
+    auto* Trans = GetComponent<Transpose>();
+    cb.WorldViewProj = XMMatrixTranspose(Trans->GetWorldViewProj());
+
     deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &cb, 0, 0);
 
     //
@@ -240,7 +227,7 @@ void RainbowBoxScript::Update(float dt)
     deviceContext->VSSetShader(_vertexShader.Get(), nullptr, 0);
     deviceContext->VSSetConstantBuffers(0, 1, _constantBuffer.GetAddressOf());
     deviceContext->PSSetShader(_pixelShader.Get(), nullptr, 0);
-    deviceContext->Draw(36, 0);
+    deviceContext->DrawIndexed(36, 0, 0);
 }
 
 HRESULT RainbowBoxScript::CompileShaderFromFile(const WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut)

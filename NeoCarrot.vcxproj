@@ -133,9 +133,7 @@
     <ClInclude Include="NeoCarrot_Graphics\StructedBuffer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NeoCarrot_Graphics\FX\color.cso" />
-    <None Include="NeoCarrot_Graphics\FX\color.fxo" />
-    <None Include="NeoCarrot_Graphics\HLSL\triangle.fxh">
+    <None Include="NeoCarrot_Graphics\HLSL\triangle.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </None>
   </ItemGroup>

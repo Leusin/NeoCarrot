@@ -156,7 +156,6 @@
     <ClInclude Include="WindowInfo.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ForGraphics.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector4.inl" />

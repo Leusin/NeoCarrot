@@ -76,7 +76,7 @@ void AxisScript::Update(float dt)
     _vertexBuffer->SetBuffers(offset);
     _indexBuffer->SetBuffers();
 
-    auto worldViewProj   = GetComponent<Transpose>()->WorldViewProj();
+    auto worldViewProj   = GetComponent<Transpose>()->GetWorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 

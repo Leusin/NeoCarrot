@@ -26,12 +26,12 @@ CameraPtr::CameraPtr(EntityPtr entityPtr, Camera3D* camera)
 
 void CameraPtr::Update(float dt)
 {
+    auto world = _transpose->GetWorld();
     auto view = _camera->View();
     auto proj = _camera->Proj();
-    auto eye  = _camera->GetPosition();
+    _transpose->SetTM(world, view, proj);
     
-    _transpose->SetTM(DirectX::XMMatrixIdentity(), view, proj);
-    _transpose->_eyePosW = eye;
+    _transpose->_eyePosW = _camera->GetPosition();
 }
 
 } // namespace graphics

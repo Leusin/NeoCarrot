@@ -51,6 +51,11 @@ DirectX::XMMATRIX graphics::Transpose::GetObj()
     return DirectX::XMLoadFloat4x4(&_objWorld);
 }
 
+DirectX::XMMATRIX graphics::Transpose::GetWorldViewProj()
+{
+    return GetWorld() * GetView() * GetProj();
+}
+
 void graphics::Transpose::SetWorld(const DirectX::XMMATRIX& w)
 {
     DirectX::XMStoreFloat4x4(&_world, w);
@@ -76,9 +81,4 @@ void graphics::Transpose::SetTM(const DirectX::XMMATRIX& world, const DirectX::X
     DirectX::XMStoreFloat4x4(&_world, world);
     DirectX::XMStoreFloat4x4(&_view, view);
     DirectX::XMStoreFloat4x4(&_proj, proj);
-}
-
-DirectX::XMMATRIX graphics::Transpose::WorldViewProj()
-{
-    return GetWorld() * GetView() * GetProj();
 }

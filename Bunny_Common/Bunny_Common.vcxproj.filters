@@ -53,9 +53,6 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>math</Filter>
     </ClCompile>
-    <ClCompile Include="ForGraphics.cpp">
-      <Filter>data</Filter>
-    </ClCompile>
     <ClCompile Include="Vector4.inl">
       <Filter>math</Filter>
     </ClCompile>

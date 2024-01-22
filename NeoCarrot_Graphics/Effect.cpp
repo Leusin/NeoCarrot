@@ -80,7 +80,7 @@ void Effect::AwakeGetTechniqueByName()
 
 void Effect::UpdateSetWorldViewProj()
 {
-    auto worldViewProj = GetComponent<Transpose>()->WorldViewProj();
+    auto worldViewProj = GetComponent<Transpose>()->GetWorldViewProj();
     _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 }
 

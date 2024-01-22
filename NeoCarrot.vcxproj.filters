@@ -214,21 +214,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="NeoCarrot_Graphics\HLSL\triangle.fxh">
+    <None Include="NeoCarrot_Graphics\HLSL\triangle.hlsl">
       <Filter>hlsl</Filter>
-    </None>
-    <None Include="NeoCarrot_Graphics\FX\color.cso">
-      <Filter>fx</Filter>
-    </None>
-    <None Include="NeoCarrot_Graphics\FX\color.fxo">
-      <Filter>fx</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="NeoCarrot_Graphics\HLSL\PixelShader.hlsl">
-      <Filter>hlsl</Filter>
-    </FxCompile>
-    <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox.hlsl">
       <Filter>hlsl</Filter>
     </FxCompile>
     <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox_vs.hlsl">
@@ -243,8 +234,11 @@
     <FxCompile Include="NeoCarrot_Graphics\HLSL\VertexShader.hlsl">
       <Filter>hlsl</Filter>
     </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\rainbowbox.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
     <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
-      <Filter>fx</Filter>
+      <Filter>hlsl</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

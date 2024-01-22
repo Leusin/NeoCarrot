@@ -38,6 +38,9 @@ void GridScript::Awake()
 
 void GridScript::Update(float dt)
 {
+    auto* Trans = GetComponent<Transpose>();
+
+
     auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
     // InputLayout::SetInputLayout();
     GetComponent<D3Devices>()->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
@@ -48,7 +51,7 @@ void GridScript::Update(float dt)
     _indexBuffer->SetBuffers();
 
     // WVP TM등을 셋팅
-    auto worldViewProj   = GetComponent<Transpose>()->WorldViewProj();
+    auto worldViewProj   = GetComponent<Transpose>()->GetWorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 
