@@ -39,33 +39,33 @@ void RainbowBoxScript::Awake()
     // 
     // CreateVertexShader
     //
+    { // AwakeCompileShader
 
-    {
-        { // AwakeCompileShader
+        hr = CompileShaderFromFile(fxhFilename.c_str(),
+                                   "VS",
+                                   "vs_5_0",
+                                   pVSBlob.GetAddressOf());
 
-            hr = CompileShaderFromFile(fxhFilename.c_str(), "VS", "vs_5_0", pVSBlob.GetAddressOf());
-
-            if (FAILED(hr))
-            {
-                std::cout << "\t\t\t\t¼ÎÀÌ´õ°¡ ÄÄÆÄÀÏ ¾ÈµÊ --- !\n";
-            }
-
-            assert(pVSBlob.Get());
+        if (FAILED(hr))
+        {
+            std::cout << "\t\t\t\t¼ÎÀÌ´õ°¡ ÄÄÆÄÀÏ ¾ÈµÊ --- !\n";
         }
 
-        { // AwakeCreateVertexShader
-            hr = device->CreateVertexShader(pVSBlob->GetBufferPointer(),
-                                            pVSBlob->GetBufferSize(),
-                                            nullptr,
-                                            _vertexShader.GetAddressOf());
-            if (FAILED(hr))
-            {
-                std::cout << "\t\t\t\t¹öÅØ½º ¼ÎÀÌ´õ°¡ »ý¼º ¾ÈµÊ --- !\n";
-            }
+        assert(pVSBlob.Get());
+    }
 
-            assert(_vertexShader.Get());
+    { // AwakeCreateVertexShader
+        hr = device->CreateVertexShader(pVSBlob->GetBufferPointer(),
+                                        pVSBlob->GetBufferSize(),
+                                        nullptr,
+                                        _vertexShader.GetAddressOf());
+        if (FAILED(hr))
+        {
+            std::cout << "\t\t\t\t¹öÅØ½º ¼ÎÀÌ´õ°¡ »ý¼º ¾ÈµÊ --- !\n";
         }
-    }   
+
+        assert(_vertexShader.Get());
+    }
 
     //
     // CreateInputLayout
@@ -198,6 +198,15 @@ void RainbowBoxScript::Awake()
 
 void RainbowBoxScript::Update(float dt)
 {
+    auto* Trans = GetComponent<Transpose>();
+
+    //
+    // Update Animation
+    //
+    static float t = 0.0f;
+    t += dt;
+    Trans->SetWorld(DirectX::XMMatrixRotationY(t));
+
     auto* deviceContext = _d3devices->GetDeviceContext();
 
     //
@@ -216,7 +225,6 @@ void RainbowBoxScript::Update(float dt)
     // Update variables
     //
     ConstantBuffer cb;
-    auto* Trans = GetComponent<Transpose>();
     cb.WorldViewProj = XMMatrixTranspose(Trans->GetWorldViewProj());
 
     deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &cb, 0, 0);
