@@ -137,7 +137,7 @@ EntityPtr ModelFactory::CreateColoredBox(const size_t&& id, const char* name)
                    .AddTransform_mk2(_camera)
                    .AddVertexResource<Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
                    .AddIndexBuffer_mk2()
-                   .AddContantBuffer<ContWorldViewProj>()
+                   .AddContantBufferWVP()
                    .AddFbxLoad(_fbxLoader.get(), "../NeoCarrot_Graphics/FBX/a.fbx")
                    .AddRenderor(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
                    .Build();

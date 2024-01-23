@@ -24,6 +24,7 @@
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CompileShader.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ConstBufferWVP.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -85,6 +86,7 @@
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h" />
     <ClInclude Include="NeoCarrot_Graphics\CompileShader.h" />
     <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ConstBufferWVP.h" />
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

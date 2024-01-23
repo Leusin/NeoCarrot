@@ -39,10 +39,10 @@ private:
 private:
     D3Devices* _d3devices;
 
-    std::vector<WORD> _indices;
     Microsoft::WRL::ComPtr<ID3D11Buffer> _indexBuffer{ nullptr };
 
 public:
+    std::vector<WORD> _indices;
     // _indices 설정 시 같이 세팅해야 한다.
     std::vector<unsigned int> _indexOffset;
     std::vector<unsigned int> _indexCount;

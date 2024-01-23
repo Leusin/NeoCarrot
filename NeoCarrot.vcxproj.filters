@@ -132,6 +132,9 @@
     <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp">
       <Filter>component</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ConstBufferWVP.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
@@ -235,6 +238,9 @@
       <Filter>component</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstBufferWVP.h">
       <Filter>component</Filter>
     </ClInclude>
   </ItemGroup>

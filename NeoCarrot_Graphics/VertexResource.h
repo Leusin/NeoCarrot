@@ -172,7 +172,7 @@ inline void VertexResource<StructB>::CreateVertexBuffer()
     InitData.pSysMem                = _vertices.data();
     device->CreateBuffer(&bd, &InitData, _vertexBuffer.GetAddressOf());
 
-    //assert(_vertexBuffer.Get() && "버텍스 버퍼에 암것도 없음");
+    assert(_vertexBuffer.Get() && "버텍스 버퍼에 암것도 없음");
 }
 
 template<typename StructB>

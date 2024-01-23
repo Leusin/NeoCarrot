@@ -28,7 +28,11 @@ private:
     void SetVertexBuffer(model::Mesh& data);
     void SetIndexBuffer(model::Mesh& data);
 
+    void PushBackPosition(const model::Mesh& data, unsigned int i);
+
 private:
+    std::vector<model::Mesh> _meshes;
+
     D3Devices* _devices;
     IndexBuffer_mk2* _indexBuffer;
     VertexResource<Pos>* _vertexResource;

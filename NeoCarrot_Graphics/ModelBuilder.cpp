@@ -93,6 +93,12 @@ ModelBuilder ModelBuilder::AddIndexBuffer_mk2()
     return *this;
 }
 
+ModelBuilder ModelBuilder::AddContantBufferWVP()
+{
+    _entity->AddComponent<ConstBufferWVP>(_entity);
+    return *this;
+}
+
 ModelBuilder ModelBuilder::AddFbxLoad(loader::FbxLoader* fbxLodaer,
                                       std::string shaderFile)
 {

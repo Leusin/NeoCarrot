@@ -21,6 +21,7 @@ inline ModelBuilder ModelBuilder::AddVertexResource(
     return *this;
 }
 
+/*
 //////////////////////////////////////////////////////////////////////
 template<typename T>
 inline ModelBuilder ModelBuilder::AddContantBuffer()
@@ -28,5 +29,6 @@ inline ModelBuilder ModelBuilder::AddContantBuffer()
     _entity->AddComponent<ConstantBuffer<T>>(_entity);
     return *this;
 }
+*/
 
 } // namespace graphics

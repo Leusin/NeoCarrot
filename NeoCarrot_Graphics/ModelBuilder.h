@@ -53,8 +53,9 @@ public:
 
     ModelBuilder AddIndexBuffer_mk2();
 
-    template<typename T>
-    ModelBuilder AddContantBuffer();
+    //template<typename T>
+    //ModelBuilder AddContantBuffer();
+    ModelBuilder AddContantBufferWVP();
 
     ModelBuilder AddFbxLoad(loader::FbxLoader* fbxLodaer, std::string shaderFile);
 

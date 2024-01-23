@@ -21,15 +21,16 @@ namespace graphics
 {
 
 template<typename CB>
-class ConstantBuffer: public core::IComponent, virtual core::GetEntity
+class ConstantBuffer: public core::IComponent, public core::GetEntity
 {
-public:
+ protected:
     ConstantBuffer(EntityPtr entityPtr);
 
+public:
     void Awake() override;
     void Update(float dt) override;
 
-private:
+protected:
     D3Devices* _d3devices{ nullptr };
 
     Microsoft::WRL::ComPtr<ID3D11Buffer> _constantBuffer{ nullptr };

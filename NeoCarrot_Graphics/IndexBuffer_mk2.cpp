@@ -44,8 +44,8 @@ void IndexBuffer_mk2::InitilaizeVertexBuffer()
 {
     D3D11_BUFFER_DESC bd = {};
     bd.Usage             = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(WORD) * static_cast<unsigned int>(_indices.size());
-    bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+    bd.ByteWidth         = sizeof(WORD) * static_cast<WORD>(_indices.size());
+    bd.BindFlags         = D3D11_BIND_INDEX_BUFFER;
     bd.CPUAccessFlags = 0;
 
     D3D11_SUBRESOURCE_DATA InitData = {};
