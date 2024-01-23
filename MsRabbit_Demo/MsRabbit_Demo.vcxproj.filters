@@ -40,5 +40,6 @@
   <ItemGroup>
     <None Include="..\.clang-format" />
     <None Include="README.md" />
+    <None Include="JOURNAL.md" />
   </ItemGroup>
 </Project>

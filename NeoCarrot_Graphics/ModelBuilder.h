@@ -45,20 +45,17 @@ public:
     ModelBuilder AddCamera(Camera3D* camera);
     ModelBuilder AddTexture(std::wstring filename);
 
-    ModelBuilder AddTransform_mk2(Camera3D* camera);
+    //
+    // 리메이크한 컴포넌트들
+    // 2024-01-23
 
+    ModelBuilder AddTransform_mk2(Camera3D* camera);
     template<typename T>
     ModelBuilder AddVertexResource(std::wstring shaderFile,
                                      const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc);
-
     ModelBuilder AddIndexBuffer_mk2();
-
-    //template<typename T>
-    //ModelBuilder AddContantBuffer();
     ModelBuilder AddContantBufferWVP();
-
     ModelBuilder AddFbxLoad(loader::FbxLoader* fbxLodaer, std::string shaderFile);
-
     ModelBuilder AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
 
     /// 스크립트
