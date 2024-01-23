@@ -29,11 +29,13 @@ enum class GameObect
     CAMERA,
     GRID,
     AXIS,
-    BOX,
-    TRIANGLE,
-    RAINBOWBOX,
-    COLOREDBOX1,
-    COLOREDBOX2,
+    //BOX,
+    //TRIANGLE,
+    //RAINBOWBOX,
+    TUTORIAL04,
+    TUTORIAL05,
+    //LIGHTBOX1,
+    TUTIRIAL06,
 
     GAMEOBJECT_COUNT
 };

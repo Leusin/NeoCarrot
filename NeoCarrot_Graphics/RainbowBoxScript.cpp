@@ -2,6 +2,7 @@
 
 #include "D3Devices.h"
 #include "components.h"
+#include "Transpose_mk2.h"
 
 #include <fstream>
 #include <memory>
@@ -187,7 +188,7 @@ void RainbowBoxScript::Awake()
     // AwakeCreateConstant buffer
     //
     bd.Usage          = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth      = sizeof(ContWorldViewProj);
+    bd.ByteWidth      = sizeof(ConstBuffWorldViewProj);
     bd.BindFlags      = D3D11_BIND_CONSTANT_BUFFER;
     bd.CPUAccessFlags = 0;
     hr                = device->CreateBuffer(&bd, nullptr, _constantBuffer.GetAddressOf());
@@ -198,7 +199,7 @@ void RainbowBoxScript::Awake()
 
 void RainbowBoxScript::Update(float dt)
 {
-    auto* Trans = GetComponent<Transpose>();
+    auto* Trans = GetComponent<Transpose_mk2>();
     auto* deviceContext = _d3devices->GetDeviceContext();
 
     //
@@ -221,7 +222,7 @@ void RainbowBoxScript::Update(float dt)
     //
     // Update variables
     //
-    ContWorldViewProj cb;
+    ConstBuffWorldViewProj cb;
     cb.WorldViewProj = XMMatrixTranspose(Trans->GetWorldViewProj());
 
     deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &cb, 0, 0);

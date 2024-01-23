@@ -14,7 +14,7 @@ namespace graphics
 template <typename V>
 class VertexBuffer;
 class IndexBuffer;
-struct PosCol;
+struct Col;
 
 // º»¹®
 class AxisScript : public core::IComponent, virtual core::GetEntity
@@ -27,7 +27,7 @@ public:
 
 private:
     IndexBuffer*          _indexBuffer;
-    VertexBuffer<PosCol>* _vertexBuffer;
+    VertexBuffer<Col>* _vertexBuffer;
 };
 
 } // namespace graphics

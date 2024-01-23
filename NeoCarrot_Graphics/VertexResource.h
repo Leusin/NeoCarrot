@@ -33,6 +33,8 @@ public:
 public:
     void GetVerteices(const std::vector<StructB>& vertices);
 
+    Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShader{ nullptr };
+
 private:
     // 1. 컴파일로 셰이더 생성
     // 2. 디바이스로 버텍스 버퍼 생성
@@ -46,18 +48,17 @@ private:
     void UpdateInputAssemBler();
     void SetShader();
 
-private:
-    D3Devices* _d3devices;
-
-    Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShader{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer{ nullptr };
-
 public:
     std::vector<StructB> _vertices;
     std::vector<unsigned int> _vertexOffset;
     unsigned int _totalVertexCount{ 0 };
+
+private:
+    D3Devices* _d3devices;
+
+    Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer{ nullptr };
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -175,6 +176,7 @@ inline void VertexResource<StructB>::CreateVertexBuffer()
     assert(_vertexBuffer.Get() && "버텍스 버퍼에 암것도 없음");
 }
 
+//////////////////////////////////////////////////////////////////////
 template<typename StructB>
 inline void VertexResource<StructB>::UpdateInputAssemBler()
 {
@@ -186,6 +188,7 @@ inline void VertexResource<StructB>::UpdateInputAssemBler()
     deviceContext->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
 }
 
+//////////////////////////////////////////////////////////////////////
 template<typename StructB>
 inline void VertexResource<StructB>::SetShader()
 {

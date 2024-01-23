@@ -36,12 +36,13 @@ ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddTransform()
-{
-    _entity->AddComponent<Transpose>();
 
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddTransform()
+//{
+//    _entity->AddComponent<Transpose>();
+//
+//    return *this;
+//}
 
 ModelBuilder ModelBuilder::AddIndexBuffer()
 {
@@ -65,19 +66,19 @@ ModelBuilder ModelBuilder::AddVertexLayout(
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
-{
-    _entity->AddComponent<CameraPtr>(_entity, camera);
+//ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
+//{
+//    _entity->AddComponent<CameraPtr>(_entity, camera);
+//
+//    return *this;
+//}
 
-    return *this;
-}
-
-ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
-{
-    _entity->AddComponent<Texture>(_entity, filename);
-
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
+//{
+//    _entity->AddComponent<Texture>(_entity, filename);
+//
+//    return *this;
+//}
 
 ModelBuilder ModelBuilder::AddTranspose_mk2(Camera3D* camera)
 {
@@ -87,22 +88,48 @@ ModelBuilder ModelBuilder::AddTranspose_mk2(Camera3D* camera)
     return *this;
 }
 
+ModelBuilder ModelBuilder::AddVertexResourceNol(std::wstring shaderFile)
+{
+    _entity->AddComponent<VertexResource<Nol>>(_entity, shaderFile, PosColorDesc);
+
+     return *this;
+}
+
+ModelBuilder ModelBuilder::AddVertexResourcePos(std::wstring shaderFile)
+{
+     _entity->AddComponent<VertexResource<Pos>>(_entity, shaderFile, PosColorDesc);
+
+     return *this;
+}
+
 ModelBuilder ModelBuilder::AddIndexBuffer_mk2()
 {
     _entity->AddComponent<IndexBuffer_mk2>(_entity);
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddContantBufferWVP()
+ModelBuilder ModelBuilder::AddContantBufferTutorial05()
 {
-    _entity->AddComponent<ConstBufferWVP>(_entity);
+    _entity->AddComponent<ConstBufferTutorial05>(_entity);
     return *this;
 }
+
+ModelBuilder ModelBuilder::AddContantBufferTutorial06()
+{
+    _entity->AddComponent<ConstBufferTutorial06>(_entity);
+    return *this;
+}
+
+//ModelBuilder ModelBuilder::AddContantBufferLight()
+//{
+//    _entity->AddComponent<ConstBufferLight>(_entity);
+//    return *this;
+//}
 
 ModelBuilder ModelBuilder::AddFbxLoad(loader::FbxLoader* fbxLodaer,
                                       std::string shaderFile)
 {
-    _entity->AddComponent <FbxLoad> (_entity, fbxLodaer, shaderFile);
+    _entity->AddComponent<FbxLoad>(_entity, fbxLodaer, shaderFile);
     return *this;
 }
 
@@ -124,6 +151,13 @@ ModelBuilder ModelBuilder::AddAinmateRotateZ(float speed)
     return *this;
 }
 
+ModelBuilder ModelBuilder::GetAddFbxMesh(loader::FbxLoader* fbxLodaer,
+                                         std::string shaderFile)
+{
+    _entity->AddComponent<GetFbxMesh>(fbxLodaer, shaderFile);
+    return *this;
+}
+
 ModelBuilder ModelBuilder::AddAxisScript()
 {
     _entity->AddComponent<AxisScript>(_entity);
@@ -138,17 +172,17 @@ ModelBuilder ModelBuilder::AddGridScript()
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddBoxScript(loader::FbxLoader* fbxLodaer)
-{
-    _entity->AddComponent<BoxScript>(_entity, fbxLodaer);
-    return *this;
-}
-
-ModelBuilder ModelBuilder::AddTriangleScript()
-{
-    _entity->AddComponent<TriangleScript>(_entity);
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddBoxScript(loader::FbxLoader* fbxLodaer)
+//{
+//    _entity->AddComponent<BoxScript>(_entity, fbxLodaer);
+//    return *this;
+//}
+//
+//ModelBuilder ModelBuilder::AddTriangleScript()
+//{
+//    _entity->AddComponent<TriangleScript>(_entity);
+//    return *this;
+//}
 
 ModelBuilder ModelBuilder::AddRainbowScript()
 {
@@ -162,10 +196,15 @@ ModelBuilder ModelBuilder::AddColoredBox2Script()
     return *this;
 }
 
+//ModelBuilder ModelBuilder::AddLightBox1Script()
+//{
+//    _entity->AddComponent<LightBox1Script>(_entity);
+//    return *this;
+//}
+
 EntityPtr ModelBuilder::Build()
 {
 #ifdef _DEBUG
-    std::cout << "\t\t\t\tEnd build\n";
 #endif // _DEBUG
 
     return _entity;

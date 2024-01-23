@@ -1,4 +1,4 @@
-#include "ConstBufferWVP.h"
+#include "ConstBufferTutorial05.h"
 
 #include "InputLayouts.h"
 #include "Transpose_mk2.h"
@@ -8,31 +8,31 @@
 
 namespace graphics
 {
-ConstBufferWVP::ConstBufferWVP(EntityPtr entityPtr)
-    : ConstantBuffer<ContWorldViewProj>(EntityPtr(entityPtr))
+ConstBufferTutorial05::ConstBufferTutorial05(EntityPtr entityPtr)
+    : ConstantBuffer<ConstBuffWorldViewProj>(EntityPtr(entityPtr))
 {
 }
 
-void ConstBufferWVP::Awake()
+void ConstBufferTutorial05::Awake()
 {
-    ConstantBuffer<ContWorldViewProj>::Awake();
+    ConstantBuffer<ConstBuffWorldViewProj>::Awake();
 }
 
-void ConstBufferWVP::Update(float dt)
+void ConstBufferTutorial05::Update(float dt)
 {
     UpdateVariable();
-    ConstantBuffer<ContWorldViewProj>::Update(dt);
+    ConstantBuffer<ConstBuffWorldViewProj>::Update(dt);
 }
 
 //////////////////////////////////////////////////////////////////////
-void ConstBufferWVP::UpdateVariable()
+void ConstBufferTutorial05::UpdateVariable()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
     auto* Trans         = GetComponent<Transpose_mk2>();
 
     assert(Trans);
 
-    ContWorldViewProj cb;
+    ConstBuffWorldViewProj cb;
     cb.WorldViewProj = DirectX::XMMatrixTranspose(Trans->GetWorldViewProj());
     deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &cb, 0, 0);
 }

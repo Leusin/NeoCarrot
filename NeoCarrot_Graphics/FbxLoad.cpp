@@ -19,8 +19,8 @@ FbxLoad::FbxLoad(EntityPtr entityPtr, loader::FbxLoader* fbxLoader, std::string 
     , _vertexResource{ GetComponent<graphics::VertexResource<Pos>>() }
 {
     assert(_devices && "FbxLoad 는 D3Devices 를 필요로함");
-    assert(_vertexResource && "FbxLoad 는 IndexBuffer_mk2 를 필요로함");
-    assert(_indexBuffer && "FbxLoad 는 VertexResource 를 필요로함");
+    assert(_vertexResource && "FbxLoad 는 Vertex Resource 를 필요로함");
+    assert(_indexBuffer && "FbxLoad 는 Index Buffer 를 필요로함");
 
     _meshes = fbxLoader->GetMeshAll(file.c_str());
     for (auto& mesh : _meshes)

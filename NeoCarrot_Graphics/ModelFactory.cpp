@@ -33,20 +33,20 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
     {
         case core::GameObect::AXIS:
             return CreateAxis(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::BOX:
-            return CreateBox(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::GRID:
             return CreateGrid(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::TRIANGLE:
-            return CreateTriangle(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::RAINBOWBOX:
-            return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::COLOREDBOX1:
-            return CreateColoredBox1(std::forward<const size_t>(id),
-                                     std::move(name));
-        case core::GameObect::COLOREDBOX2:
-            return CreateColoredBox2(std::forward<const size_t>(id),
-                                     std::move(name));
+        // case core::GameObect::BOX:
+        //     return CreateBox(std::forward<const size_t>(id), std::move(name));
+        // case core::GameObect::TRIANGLE:
+        //     return CreateTriangle(std::forward<const size_t>(id), std::move(name));
+        // case core::GameObect::RAINBOWBOX:
+        //     return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::TUTORIAL04:
+            return CreateTutorial04(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::TUTORIAL05:
+            return CreateTutorial05(std::forward<const size_t>(id), std::move(name));
+        // case core::GameObect::LIGHTBOX1:
+        //     return CreateLightBox1(std::forward<const size_t>(id), std::move(name));
         default:
             break;
     }
@@ -62,9 +62,8 @@ EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
                                 core::Layer::DEBUGINFO);
 
     auto grid = builder.AddD3Device(_d3d11context)
-                    .AddTransform()
-                    .AddCamera(_camera)
-                    .AddVertexBuffer<PosCol>()
+                    .AddTranspose_mk2(_camera)
+                    .AddVertexBuffer<Col>()
                     .AddIndexBuffer()
                     .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
                     .AddVertexLayout(&PosColorDesc)
@@ -82,9 +81,8 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
                                 core::Layer::DEBUGINFO);
 
     auto axis = builder.AddD3Device(_d3d11context)
-                    .AddTransform()
-                    .AddCamera(_camera)
-                    .AddVertexBuffer<PosCol>()
+                    .AddTranspose_mk2(_camera)
+                    .AddVertexBuffer<Col>()
                     .AddIndexBuffer()
                     .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
                     .AddVertexLayout(&PosColorDesc)
@@ -94,27 +92,27 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
     return axis;
 }
 
-EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
-{
-    auto builder = ModelBuilder(std::forward<const size_t>(id),
-                                std::move(name),
-                                core::Tag::MESHOBJ,
-                                core::Layer::FORGROUND);
+// EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
+//{
+//     auto builder = ModelBuilder(std::forward<const size_t>(id),
+//                                 std::move(name),
+//                                 core::Tag::MESHOBJ,
+//                                 core::Layer::FORGROUND);
+//
+//     auto box = builder.AddD3Device(_d3d11context)
+//                    .AddTranspose_mk2(_camera)
+//                    .AddVertexBuffer<Col>()
+//                    .AddIndexBuffer()
+//                    .AddEffect({ L"../NeoCarrot_Graphics/FX/color.cso" })
+//                    .AddVertexLayout(&PosColorDesc)
+//                    //.AddTexture(L"../NeoCarrot_Graphics/Texture/WoodCrate01.dds")
+//                    .AddBoxScript(_fbxLoader.get())
+//                    .Build();
+//
+//     return box;
+// }
 
-    auto box = builder.AddD3Device(_d3d11context)
-                   .AddTransform()
-                   .AddCamera(_camera)
-                   .AddVertexBuffer<PosCol>()
-                   .AddIndexBuffer()
-                   .AddEffect({ L"../NeoCarrot_Graphics/FX/color.cso" })
-                   .AddVertexLayout(&PosColorDesc)
-                   //.AddTexture(L"../NeoCarrot_Graphics/Texture/WoodCrate01.dds")
-                   .AddBoxScript(_fbxLoader.get())
-                   .Build();
-
-    return box;
-}
-
+/*
 EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id),
@@ -130,8 +128,9 @@ EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 
     return box;
 }
+*/
 
-EntityPtr ModelFactory::CreateColoredBox1(const size_t&& id, const char* name)
+EntityPtr ModelFactory::CreateTutorial04(const size_t&& id, const char* name)
 {
 
     auto builder = ModelBuilder(std::forward<const size_t>(id),
@@ -141,10 +140,9 @@ EntityPtr ModelFactory::CreateColoredBox1(const size_t&& id, const char* name)
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTranspose_mk2(_camera)
-                   .AddVertexResource<
-                       Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
+                   .AddVertexResourcePos(L"../NeoCarrot_Graphics/HLSL/Tutoroal04.hlsl")
                    .AddIndexBuffer_mk2()
-                   .AddContantBufferWVP()
+                   .AddContantBufferTutorial05()
                    .AddFbxLoad(_fbxLoader.get(),
                                "../NeoCarrot_Graphics/FBX/a.fbx")
                    .AddAinmateRotateY(1.f)
@@ -154,7 +152,48 @@ EntityPtr ModelFactory::CreateColoredBox1(const size_t&& id, const char* name)
     return box;
 }
 
-EntityPtr ModelFactory::CreateColoredBox2(const size_t&& id, const char* name)
+EntityPtr ModelFactory::CreateTutorial05(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
+
+    auto box = builder.AddD3Device(_d3d11context)
+                   .AddTranspose_mk2(_camera)
+                   .AddVertexResourcePos(L"../NeoCarrot_Graphics/HLSL/Tutoroal04.hlsl")
+                   .AddIndexBuffer_mk2()
+                   .AddContantBufferTutorial05()
+                   .AddFbxLoad(_fbxLoader.get(),
+                               "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .AddColoredBox2Script()
+                   .AddRenderor(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+                   .Build();
+
+    return box;
+}
+
+EntityPtr ModelFactory::CreateTutorial06(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
+
+    auto box = builder.AddD3Device(_d3d11context)
+                   .AddTranspose_mk2(_camera)
+                   .AddVertexResourceNol(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl")
+                   .AddIndexBuffer_mk2()
+                   .AddContantBufferTutorial06()
+                   .AddFbxLoad(_fbxLoader.get(),
+                               "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .Build();
+
+    return box;
+}
+
+/*
+EntityPtr ModelFactory::CreateLightBox1(const size_t&& id, const char* name)
 {
     auto builder = ModelBuilder(std::forward<const size_t>(id),
                                 std::move(name),
@@ -164,13 +203,13 @@ EntityPtr ModelFactory::CreateColoredBox2(const size_t&& id, const char* name)
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTranspose_mk2(_camera)
                    .AddVertexResource<
-                       Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
-                   .AddIndexBuffer_mk2()
-                   .AddContantBufferWVP()
-                   .AddFbxLoad(_fbxLoader.get(),
+                       Col>(L"../NeoCarrot_Graphics/HLSL/Lighting.hlsl",
+PosNormalDesc) .AddIndexBuffer_mk2() .AddContantBufferWVP()
+                   .AddContantBufferLight()
+                   .GetAddFbxMesh(_fbxLoader.get(),
                                "../NeoCarrot_Graphics/FBX/a.fbx")
-                   .AddColoredBox2Script()
-                   .AddRenderor(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+                   .AddAinmateRotateY(1.f)
+                   .AddLightBox1Script()
                    .Build();
 
     return box;
@@ -191,5 +230,6 @@ EntityPtr ModelFactory::CreateTriangle(const size_t&& id, const char* name)
 
     return triangle;
 }
+*/
 
 } // namespace graphics

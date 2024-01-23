@@ -1,13 +1,6 @@
 #include "GridScript.h"
 
-#include "D3Devices.h"
-#include "Effect.h"
-#include "Entity.h"
-#include "IndexBuffer.h"
-#include "Transpose.h"
-#include "VertexBuffer.h"
-#include "InputLayout.h"
-#include "InputLayouts.h"
+#include "components.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>
@@ -22,7 +15,7 @@ namespace graphics
 {
 GridScript::GridScript(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
-    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosCol>>()}
+    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::Col>>()}
     , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
 {
     SetVertexBuffer();
@@ -38,7 +31,7 @@ void GridScript::Awake()
 
 void GridScript::Update(float dt)
 {
-    auto* Trans = GetComponent<Transpose>();
+    auto* Trans = GetComponent<Transpose_mk2>();
 
 
     auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
@@ -51,7 +44,7 @@ void GridScript::Update(float dt)
     _indexBuffer->SetBuffers();
 
     // WVP TM등을 셋팅
-    auto worldViewProj   = GetComponent<Transpose>()->GetWorldViewProj();
+    auto worldViewProj   = GetComponent<Transpose_mk2>()->GetWorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 

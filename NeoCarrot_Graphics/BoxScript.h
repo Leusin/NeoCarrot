@@ -42,7 +42,7 @@ private:
 
     D3Devices*               _devices;
     IndexBuffer*             _indexBuffer;
-    VertexBuffer<PosCol>*    _vertexBuffer;
+    VertexBuffer<Col>*    _vertexBuffer;
     Effect*                  _effect;
 };
 

@@ -41,11 +41,12 @@ void ModelManager::CreateEnity()
 {
     CreateEnity(core::GameObect::AXIS, "axis");
     CreateEnity(core::GameObect::GRID, "grid");
-    // CreateEnity(core::GameObect::BOX, "box");
-    // CreateEnity(core::GameObect::TRIANGLE, "triangle");
-    //CreateEnity(core::GameObect::RAINBOWBOX, "rainbow");
-    CreateEnity(core::GameObect::COLOREDBOX1, "colored box1");
-    CreateEnity(core::GameObect::COLOREDBOX2, "colored box2");
+
+    //CreateEnity(core::GameObect::BOX, "box");
+    CreateEnity(core::GameObect::TUTORIAL04, "colored box1");
+    CreateEnity(core::GameObect::TUTORIAL05, "colored box2");
+    //CreateEnity(core::GameObect::LIGHTBOX1, "light box1");
+    //CreateEnity(core::GameObect::TUTIRIAL06, "light box1");
 }
 
 void ModelManager::CreateEnity(const core::GameObect&& enumTypeEntity,

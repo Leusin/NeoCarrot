@@ -1,7 +1,6 @@
 #include "Effect.h"
 
-#include "D3Devices.h"
-#include "Transpose.h"
+#include "components.h"
 
 #include <d3dcompiler.h>
 #include <fstream>
@@ -80,7 +79,7 @@ void Effect::AwakeGetTechniqueByName()
 
 void Effect::UpdateSetWorldViewProj()
 {
-    auto worldViewProj = GetComponent<Transpose>()->GetWorldViewProj();
+    auto worldViewProj = GetComponent<Transpose_mk2>()->GetWorldViewProj();
     _fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 }
 

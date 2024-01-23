@@ -1,12 +1,6 @@
 #include "AxisScript.h"
 
-#include "D3Devices.h"
-#include "Effect.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "Transpose.h"
-#include "InputLayout.h"
-#include "InputLayouts.h"
+#include "components.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>
@@ -17,7 +11,7 @@ namespace graphics
 
 AxisScript::AxisScript(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
-    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosCol>>()}
+    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::Col>>()}
     , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
 {
     _vertexBuffer->_vertices.push_back({
@@ -76,7 +70,7 @@ void AxisScript::Update(float dt)
     _vertexBuffer->SetBuffers(offset);
     _indexBuffer->SetBuffers();
 
-    auto worldViewProj   = GetComponent<Transpose>()->GetWorldViewProj();
+    auto worldViewProj   = GetComponent<Transpose_mk2>()->GetWorldViewProj();
     auto fxWorldViewProj = GetComponent<Effect>()->_fxWorldViewProj;
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 

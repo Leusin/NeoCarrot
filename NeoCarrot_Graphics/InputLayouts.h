@@ -10,26 +10,44 @@ namespace graphics
 //
 // 구조체 버퍼
 //
-struct ContWorldViewProj
+
+struct ConstBuffWorldViewProj
 {
     DirectX::XMMATRIX WorldViewProj;
 };
+
+struct ConstBuffLit
+{
+    DirectX::XMMATRIX mWorld;
+    DirectX::XMMATRIX mView;
+    DirectX::XMMATRIX mProjection;
+    DirectX::XMFLOAT4 vLightDir[2];
+    DirectX::XMFLOAT4 vLightColor[2];
+    DirectX::XMFLOAT4 vOutputColor;
+};
+
 
 struct Pos
 {
     DirectX::XMFLOAT3 Pos;
 };
 
-struct PosCol: public Pos
+struct Col: public Pos
 {
     //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT4 Color;
 };
 
-struct PosNormal: public Pos
+struct Nol: public Pos
 {
     //DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT3 Normal;
+};
+
+struct PosTex: public Pos
+{
+    // DirectX::XMFLOAT3 Pos;
+    DirectX::XMFLOAT2 Tex;
 };
 
 struct PosNormalTex: public Pos

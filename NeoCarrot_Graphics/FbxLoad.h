@@ -3,6 +3,7 @@
 #include "GetEntity.h"
 #include "IComponent.h"
 #include "Mesh.h"
+#include "InputLayouts.h"
 
 namespace loader{class FbxLoader;}
 namespace model{struct Mesh;}
@@ -14,7 +15,6 @@ class D3Devices;
 class IndexBuffer_mk2;
 template<typename V>
 class VertexResource;
-struct Pos;
 
 class FbxLoad: public core::IComponent, virtual core::GetEntity
 {

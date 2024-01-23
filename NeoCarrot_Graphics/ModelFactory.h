@@ -1,4 +1,3 @@
-#pragma once
 
 #include "IFactory.h"
 
@@ -28,11 +27,13 @@ public:
 private:
     EntityPtr CreateGrid(const size_t&& id, const char* name);
     EntityPtr CreateAxis(const size_t&& id, const char* name);
-    EntityPtr CreateBox(const size_t&& id, const char* name);
-    EntityPtr CreateTriangle(const size_t&& id, const char* name);
-    EntityPtr CreateRainbowBox(const size_t&& id, const char* name);
-    EntityPtr CreateColoredBox1(const size_t&& id, const char* name);
-    EntityPtr CreateColoredBox2(const size_t&& id, const char* name);
+    //EntityPtr CreateBox(const size_t&& id, const char* name);
+    //EntityPtr CreateTriangle(const size_t&& id, const char* name);
+    //EntityPtr CreateRainbowBox(const size_t&& id, const char* name);
+    EntityPtr CreateTutorial04(const size_t&& id, const char* name);
+    EntityPtr CreateTutorial05(const size_t&& id, const char* name);
+    //tityPtr CreateLightBox1(const size_t&& id, const char* name);
+    EntityPtr CreateTutorial06(const size_t&& id, const char* name);
 
     D3D11Context_mk2* _d3d11context;
     Camera3D*        _camera;

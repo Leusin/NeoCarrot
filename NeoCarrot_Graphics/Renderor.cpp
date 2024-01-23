@@ -42,7 +42,6 @@ void Renderor::UpdateRender()
     auto* indexBuf = GetComponent<IndexBuffer_mk2>();
     auto* vetexBuf = GetComponent<VertexResource<Pos>>();
 
-
     for (unsigned int i = 0; i < vetexBuf->_vertexOffset.size(); ++i)
     {
         deviceContext->DrawIndexed(indexBuf->_indexCount[i], // 인덱스 개수

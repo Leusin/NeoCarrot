@@ -14,7 +14,7 @@ namespace graphics
 BoxScript::BoxScript(EntityPtr entityPtr, loader::FbxLoader* fbxLoader)
     : GetEntity(EntityPtr(entityPtr))
     , _devices{GetComponent<graphics::D3Devices>()}
-    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::PosCol>>()}
+    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::Col>>()}
     , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
     , _effect{GetComponent<graphics::Effect>()}
 {
@@ -69,7 +69,7 @@ void BoxScript::SetVertexBuffer(model::Mesh& data)
     for (unsigned int i = 0; i < vcount; i++)
     {
         _vertexBuffer->_vertices.emplace_back(
-            PosCol{
+            Col{
                 DirectX::XMFLOAT3{
                 data.vertices[i].position.x,
                 data.vertices[i].position.y,

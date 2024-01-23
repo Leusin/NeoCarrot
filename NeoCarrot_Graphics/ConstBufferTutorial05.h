@@ -4,12 +4,12 @@
 
 namespace graphics
 {
-struct ContWorldViewProj;
+struct ConstBuffWorldViewProj;
 
-class ConstBufferWVP: public ConstantBuffer<ContWorldViewProj>
+class ConstBufferTutorial05: public ConstantBuffer<ConstBuffWorldViewProj>
 {
 public:
-    ConstBufferWVP(EntityPtr entityPtr);
+    ConstBufferTutorial05(EntityPtr entityPtr);
 
     void Awake();
     void Update(float dt) override;
