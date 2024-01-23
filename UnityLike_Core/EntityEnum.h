@@ -35,7 +35,7 @@ enum class GameObect
     TUTORIAL04,
     TUTORIAL05,
     //LIGHTBOX1,
-    TUTIRIAL06,
+    TUTORIAL06,
 
     GAMEOBJECT_COUNT
 };

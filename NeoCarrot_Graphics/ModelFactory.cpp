@@ -45,9 +45,10 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
             return CreateTutorial04(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::TUTORIAL05:
             return CreateTutorial05(std::forward<const size_t>(id), std::move(name));
-        // case core::GameObect::LIGHTBOX1:
-        //     return CreateLightBox1(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::TUTORIAL06:
+            return CreateTutorial06(std::forward<const size_t>(id), std::move(name));
         default:
+            assert(true && "메시를 만들 수 있는 개체가 아님");
             break;
     }
 
@@ -182,11 +183,12 @@ EntityPtr ModelFactory::CreateTutorial06(const size_t&& id, const char* name)
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTranspose_mk2(_camera)
-                   .AddVertexResourceNol(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl")
-                   .AddIndexBuffer_mk2()
-                   .AddContantBufferTutorial06()
-                   .AddFbxLoad(_fbxLoader.get(),
-                               "../NeoCarrot_Graphics/FBX/a.fbx")
+                   //.AddVertexResourceNol(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl")
+                   //.AddIndexBuffer_mk2()
+                   //.AddContantBufferTutorial06()
+                   //.GetAddFbxMeshNol(_fbxLoader.get(),
+                   //            "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .AddScriptTutorial06()
                    .Build();
 
     return box;

@@ -151,12 +151,19 @@ ModelBuilder ModelBuilder::AddAinmateRotateZ(float speed)
     return *this;
 }
 
-ModelBuilder ModelBuilder::GetAddFbxMesh(loader::FbxLoader* fbxLodaer,
-                                         std::string shaderFile)
+ModelBuilder ModelBuilder::GetAddFbxMeshNol(loader::FbxLoader* fbxLodaer,
+                                            std::string shaderFile)
 {
-    _entity->AddComponent<GetFbxMesh>(fbxLodaer, shaderFile);
+    _entity->AddComponent<GetFbxMeshNol>(_entity, fbxLodaer, shaderFile);
     return *this;
 }
+
+//ModelBuilder ModelBuilder::GetAddFbxMesh(loader::FbxLoader* fbxLodaer,
+//                                         std::string shaderFile)
+//{
+//    _entity->AddComponent<GetFbxMesh>(fbxLodaer, shaderFile);
+//    return *this;
+//}
 
 ModelBuilder ModelBuilder::AddAxisScript()
 {
@@ -193,6 +200,12 @@ ModelBuilder ModelBuilder::AddRainbowScript()
 ModelBuilder ModelBuilder::AddColoredBox2Script()
 {
     _entity->AddComponent<ColoredBox2Script>(_entity);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddScriptTutorial06()
+{
+    _entity->AddComponent<ScriptTutorial06>(_entity);
     return *this;
 }
 

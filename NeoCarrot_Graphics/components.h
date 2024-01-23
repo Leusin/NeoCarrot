@@ -14,19 +14,20 @@
 #include "ConstBufferTutorial06.h"
 #include "AnimateRotateY.h"
 #include "AnimateRotateZ.h"
-#include "GetFbxMesh.h"
 #include "LightBox1Script.h"
 #include "VertexResource.h"
 #include "Devices.h"
+#include "GetFbxMeshNol.h"
+//#include "GetFbxMesh.h"
+//#include "Texture.h"
+//#include "ConstBufferLight.h"
+//#include "Transpose.h"
+//#include "CameraPtr.h"
 
 // 스크립트
 
 #include "GridScript.h"
 #include "ColoredBox2Script.h"
+#include "ScriptTutorial06.h"
 //#include "BoxScript.h"
 //#include "TriangleScript.h"
-
-//#include "Texture.h"
-//#include "ConstBufferLight.h"
-//#include "Transpose.h"
-//#include "CameraPtr.h"

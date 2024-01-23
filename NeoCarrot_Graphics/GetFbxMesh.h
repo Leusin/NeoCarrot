@@ -1,10 +1,11 @@
-/// FbxLoader 컴포넌트와 다르게 메시만 가져오는 클래스
+/// GetFbxMesh.h
 ///
 /// 2024-01-23
 
 
 #pragma once
 
+#include "GetEntity.h"
 #include "IComponent.h"
 #include "Mesh.h"
 
@@ -14,12 +15,13 @@ namespace loader{class FbxLoader;}
 namespace graphics
 {
 
-class GetFbxMesh: public core::IComponent
+class GetFbxMesh: public core::IComponent, public core::GetEntity
 {
 public:
-    GetFbxMesh(loader::FbxLoader* fbxLoader, std::string file);
+    GetFbxMesh(EntityPtr entityPtr, loader::FbxLoader* fbxLoader, std::string file);
 
-    std::vector<model::Mesh> _meshes;
+    virtual void SetVertexBuffer(model::Mesh& data) abstract;
+    void SetIndexBuffer(model::Mesh& data);
 };
 
 } // namespace graphics

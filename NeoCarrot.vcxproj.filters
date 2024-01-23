@@ -156,6 +156,12 @@
     <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
       <Filter>hlsl</Filter>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
@@ -284,6 +290,12 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
       <Filter>hlsl</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ScriptTutorial06.h">
+      <Filter>component_script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

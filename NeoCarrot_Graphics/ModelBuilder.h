@@ -56,7 +56,7 @@ public:
     ModelBuilder AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
     ModelBuilder AddAinmateRotateY(float speed);
     ModelBuilder AddAinmateRotateZ(float speed);
-    ModelBuilder GetAddFbxMesh(loader::FbxLoader* fbxLodaer, std::string shaderFile);
+    ModelBuilder GetAddFbxMeshNol(loader::FbxLoader* fbxLodaer, std::string shaderFile);
     // ModelBuilder AddContantBufferLight();
 
     /// 스크립트
@@ -64,6 +64,7 @@ public:
     ModelBuilder AddGridScript();
     ModelBuilder AddRainbowScript();
     ModelBuilder AddColoredBox2Script();
+    ModelBuilder AddScriptTutorial06();
     //ModelBuilder AddLightBox1Script();
     //ModelBuilder AddBoxScript(loader::FbxLoader* fbxLodaer);
     //ModelBuilder AddTriangleScript();

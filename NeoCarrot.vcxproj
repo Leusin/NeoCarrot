@@ -53,7 +53,11 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\Effect.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\GetFbxMesh.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMesh.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -97,6 +101,7 @@
     <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h" />
@@ -135,8 +140,12 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\Effect.h" />
     <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h" />
-    <ClInclude Include="NeoCarrot_Graphics\GetFbxMesh.h" />
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMesh.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FontType.h" />
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h" />
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -171,6 +180,7 @@
     <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ScriptTutorial06.h" />
     <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

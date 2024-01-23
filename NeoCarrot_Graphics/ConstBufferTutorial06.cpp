@@ -4,6 +4,7 @@
 #include "components.h"
 
 #include <directxmath.h>
+
 #include <cassert>
 
 namespace graphics
@@ -30,16 +31,12 @@ void ConstBufferTutorial06::Update(float dt)
 //////////////////////////////////////////////////////////////////////
 void ConstBufferTutorial06::InitializeVariable()
 {
-    vLightDirs = 
-    {
+    vLightDirs = {
         DirectX::XMFLOAT4(-0.577f, 0.577f, -0.577f, 1.0f),
         DirectX::XMFLOAT4(0.0f, 0.0f, -1.0f, 1.0f),
     };
-    vLightColors = 
-    { 
-        DirectX::XMFLOAT4(0.5f, 0.5f, 0.5f, 1.0f),
-        DirectX::XMFLOAT4(0.5f, 0.0f, 0.0f, 1.0f) 
-    };
+    vLightColors = { DirectX::XMFLOAT4(0.5f, 0.5f, 0.5f, 1.0f),
+                     DirectX::XMFLOAT4(0.5f, 0.0f, 0.0f, 1.0f) };
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -65,8 +62,8 @@ void ConstBufferTutorial06::UpdateVariable()
 
     ConstBuffLit cb;
     cb.mWorld         = XMMatrixTranspose(Trans->GetWorld());
-    cb.mView         = XMMatrixTranspose(Trans->GetView());
-    cb.mProjection   = XMMatrixTranspose(Trans->GetProj());
+    cb.mView          = XMMatrixTranspose(Trans->GetView());
+    cb.mProjection    = XMMatrixTranspose(Trans->GetProj());
     cb.vLightDir[0]   = vLightDirs[0];
     cb.vLightDir[1]   = vLightDirs[1];
     cb.vLightColor[0] = vLightColors[0];
@@ -81,22 +78,28 @@ void ConstBufferTutorial06::RenderLight()
     auto* deviceContext = _d3devices->GetDeviceContext();
     auto vertexResource = GetComponent<VertexResource<Nol>>();
 
-    //for (int m = 0; m < 2; m++)
-    //{
-    //    DirectX::XMMATRIX mLight = DirectX::XMMatrixTranslationFromVector(
-    //        5.0f * XMLoadFloat4(&vLightDirs[m]));
-    //
-    //    DirectX::XMMATRIX mLightScale = DirectX::XMMatrixScaling(0.2f, 0.2f, 0.2f);
-    //    mLight               = mLightScale * mLight;
-    //
-    //    // Update the world variable to reflect the current light
-    //    _cb.mWorld       = XMMatrixTranspose(mLight);
-    //    _cb.vOutputColor = vLightColors[m];
-    //    deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &_cb, 0, 0);
-    //
-    //    deviceContext->PSSetShader(vertexResource->_pixelShader.Get(), nullptr, 0);
-    //    deviceContext->DrawIndexed(36, 0, 0);
-    //}
+    for (int m = 0; m < 2; m++)
+    {
+        float scalar = 0.5f;
+        vLightDirs[m].x *= scalar;
+        vLightDirs[m].y *= scalar;
+        vLightDirs[m].z *= scalar;
+        vLightDirs[m].w *= scalar;
+
+        DirectX::XMMATRIX mLight = DirectX::XMMatrixTranslationFromVector(
+            XMLoadFloat4(&vLightDirs[m]));
+
+        DirectX::XMMATRIX mLightScale = DirectX::XMMatrixScaling(0.2f, 0.2f, 0.2f);
+        mLight = mLightScale * mLight;
+
+        // Update the world variable to reflect the current light
+        _cb.mWorld       = XMMatrixTranspose(mLight);
+        _cb.vOutputColor = vLightColors[m];
+        deviceContext->UpdateSubresource(_constantBuffer.Get(), 0, nullptr, &_cb, 0, 0);
+
+        deviceContext->PSSetShader(vertexResource->_pixelShader.Get(), nullptr, 0);
+        deviceContext->DrawIndexed(36, 0, 0);
+    }
 }
 
 } // namespace graphics

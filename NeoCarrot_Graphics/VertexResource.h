@@ -110,7 +110,7 @@ inline void VertexResource<StructB>::InitilaizeVertexBuffer(
 
     Microsoft::WRL::ComPtr<ID3DBlob> pPSBlob{ nullptr };
     CompileShaderFromFile(shaderFile.c_str(), "PS", "ps_5_0", pPSBlob.GetAddressOf());
-    assert(pPSBlob.Get());
+    assert(pPSBlob.Get() && "ID3DBlob 가 안 맹글어짐");
 
     //
     // 2. CreateShader
@@ -122,7 +122,7 @@ inline void VertexResource<StructB>::InitilaizeVertexBuffer(
                                nullptr,
                                _vertexShader.GetAddressOf());
 
-    assert(_vertexShader.Get());
+    assert(_vertexShader.Get() && "ID3D11VertexShader 가 안 맹글어짐");
 
     //
     // 3. CreateInputLayout
@@ -135,12 +135,15 @@ inline void VertexResource<StructB>::InitilaizeVertexBuffer(
 
     assert(_vertexLayout.Get());
 
+    //
+    // 4. CreatePixelShader
+    //
     device->CreatePixelShader(pPSBlob->GetBufferPointer(),
                               pPSBlob->GetBufferSize(),
                               nullptr,
                               _pixelShader.GetAddressOf());
 
-    assert(_pixelShader.Get());
+    assert(_pixelShader.Get() && "ID3D11PixelShader 가 안 맹글어짐");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -149,7 +152,7 @@ inline void VertexResource<StructB>::GetVerteices(
     const std::vector<StructB>& vertices)
 {
     //
-    // 4.  어딘가에서 _vertices 를 채워넣는다
+    // 5.  어딘가에서 _vertices 를 채워넣는다
     //
     _vertices = vertices;
 }
@@ -159,7 +162,7 @@ template<typename StructB>
 inline void VertexResource<StructB>::CreateVertexBuffer()
 {
     //
-    // 5.CreateVertexBuffer
+    // 6.CreateVertexBuffer
     //
     auto* device = _d3devices->GetDevice();
 
