@@ -32,7 +32,8 @@ enum class GameObect
     BOX,
     TRIANGLE,
     RAINBOWBOX,
-    COLOREDBOX,
+    COLOREDBOX1,
+    COLOREDBOX2,
 
     GAMEOBJECT_COUNT
 };

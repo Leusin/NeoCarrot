@@ -4,6 +4,8 @@
 #include "Entity.h"
 #include "FbxLoader.h"
 #include "ModelBuilder.h"
+
+// 임시로 여기둔다.. 이거 열면 래핑한 이유가 없어진다...
 #include "components.h"
 
 #ifdef _DEBUG
@@ -39,8 +41,12 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
             return CreateTriangle(std::forward<const size_t>(id), std::move(name));
         case core::GameObect::RAINBOWBOX:
             return CreateRainbowBox(std::forward<const size_t>(id), std::move(name));
-        case core::GameObect::COLOREDBOX:
-            return CreateColoredBox(std::forward<const size_t>(id), std::move(name));
+        case core::GameObect::COLOREDBOX1:
+            return CreateColoredBox1(std::forward<const size_t>(id),
+                                     std::move(name));
+        case core::GameObect::COLOREDBOX2:
+            return CreateColoredBox2(std::forward<const size_t>(id),
+                                     std::move(name));
         default:
             break;
     }
@@ -125,7 +131,7 @@ EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
     return box;
 }
 
-EntityPtr ModelFactory::CreateColoredBox(const size_t&& id, const char* name)
+EntityPtr ModelFactory::CreateColoredBox1(const size_t&& id, const char* name)
 {
 
     auto builder = ModelBuilder(std::forward<const size_t>(id),
@@ -134,11 +140,36 @@ EntityPtr ModelFactory::CreateColoredBox(const size_t&& id, const char* name)
                                 core::Layer::FORGROUND);
 
     auto box = builder.AddD3Device(_d3d11context)
-                   .AddTransform_mk2(_camera)
-                   .AddVertexResource<Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
+                   .AddTranspose_mk2(_camera)
+                   .AddVertexResource<
+                       Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
                    .AddIndexBuffer_mk2()
                    .AddContantBufferWVP()
-                   .AddFbxLoad(_fbxLoader.get(), "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .AddFbxLoad(_fbxLoader.get(),
+                               "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .AddAinmateRotateY(1.f)
+                   .AddRenderor(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
+                   .Build();
+
+    return box;
+}
+
+EntityPtr ModelFactory::CreateColoredBox2(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::MESHOBJ,
+                                core::Layer::FORGROUND);
+
+    auto box = builder.AddD3Device(_d3d11context)
+                   .AddTranspose_mk2(_camera)
+                   .AddVertexResource<
+                       Pos>(L"../NeoCarrot_Graphics/HLSL/rainbowbox.hlsl", PosColorDesc)
+                   .AddIndexBuffer_mk2()
+                   .AddContantBufferWVP()
+                   .AddFbxLoad(_fbxLoader.get(),
+                               "../NeoCarrot_Graphics/FBX/a.fbx")
+                   .AddColoredBox2Script()
                    .AddRenderor(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
                    .Build();
 

@@ -4,10 +4,10 @@
 #include "Entity.h"
 #include "EntityEnum.h"
 
+#include <d3dcommon.h>
 #include <memory>
 #include <string>
 #include <vector>
-#include <d3dcommon.h>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -16,10 +16,7 @@ struct ID3D11RasterizerState;
 
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
-namespace loader
-{
-class FbxLoader;
-}
+namespace loader{ class FbxLoader; }
 
 namespace graphics
 {
@@ -49,14 +46,16 @@ public:
     // 리메이크한 컴포넌트들
     // 2024-01-23
 
-    ModelBuilder AddTransform_mk2(Camera3D* camera);
+    ModelBuilder AddTranspose_mk2(Camera3D* camera);
     template<typename T>
     ModelBuilder AddVertexResource(std::wstring shaderFile,
-                                     const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc);
+                                   const std::vector<D3D11_INPUT_ELEMENT_DESC>& desc);
     ModelBuilder AddIndexBuffer_mk2();
     ModelBuilder AddContantBufferWVP();
     ModelBuilder AddFbxLoad(loader::FbxLoader* fbxLodaer, std::string shaderFile);
     ModelBuilder AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology);
+    ModelBuilder AddAinmateRotateY(float speed);
+    ModelBuilder AddAinmateRotateZ(float speed);
 
     /// 스크립트
     ModelBuilder AddAxisScript();
@@ -64,6 +63,7 @@ public:
     ModelBuilder AddBoxScript(loader::FbxLoader* fbxLodaer);
     ModelBuilder AddTriangleScript();
     ModelBuilder AddRainbowScript();
+    ModelBuilder AddColoredBox2Script();
 
     // 제품 반환
     EntityPtr Build();

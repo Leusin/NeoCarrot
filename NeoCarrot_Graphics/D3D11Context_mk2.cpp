@@ -173,6 +173,9 @@ void D3D11Context_mk2::BeginRender(const float* color) const
     _devices->ImmediateContext()->ClearRenderTargetView(_resourceView->renderTargetView.Get(), color);
     //깊이버퍼를 1.0f, 스텐실 버퍼를 0 으로 지움
     _devices->ImmediateContext()->ClearDepthStencilView(_resourceView->depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+    _devices->ImmediateContext()
+        ->OMSetDepthStencilState(_renderState->normalDSS.Get(),
+                                 0); // 안하면 뒤의 것이 앞으로 그려짐)
 }
 
 void D3D11Context_mk2::EndRender() const

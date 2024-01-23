@@ -10,12 +10,6 @@
     <Filter Include="model">
       <UniqueIdentifier>{9fcb012e-b537-47ff-ab16-f42706e85164}</UniqueIdentifier>
     </Filter>
-    <Filter Include="component">
-      <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="fx">
-      <UniqueIdentifier>{1c851177-b3cd-44fe-9460-14899340ee95}</UniqueIdentifier>
-    </Filter>
     <Filter Include="hlsl">
       <UniqueIdentifier>{71c4945c-ad5d-4bed-8513-f23b7afde191}</UniqueIdentifier>
     </Filter>
@@ -33,6 +27,9 @@
     </Filter>
     <Filter Include="component_script">
       <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component">
+      <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +131,15 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ConstBufferWVP.cpp">
       <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateY.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ColoredBox2Script.cpp">
+      <Filter>component_script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +248,15 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ConstBufferWVP.h">
       <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h">
+      <Filter>component_script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,9 @@
 
 #include "Camera3D.h"
 
+// 임시로 인클루드함...
+#include "components.h"
+
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -41,7 +44,8 @@ void ModelManager::CreateEnity()
     // CreateEnity(core::GameObect::BOX, "box");
     // CreateEnity(core::GameObect::TRIANGLE, "triangle");
     //CreateEnity(core::GameObect::RAINBOWBOX, "rainbow");
-    CreateEnity(core::GameObect::COLOREDBOX, "colored box");
+    CreateEnity(core::GameObect::COLOREDBOX1, "colored box1");
+    CreateEnity(core::GameObect::COLOREDBOX2, "colored box2");
 }
 
 void ModelManager::CreateEnity(const core::GameObect&& enumTypeEntity,

@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateY.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\ColoredBox2Script.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\CompileShader.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\ConstBufferWVP.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
@@ -80,10 +83,13 @@
     <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h" />
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h" />
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\Camera3D.h" />
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h" />
     <ClInclude Include="NeoCarrot_Graphics\CompileShader.h" />
     <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h" />
     <ClInclude Include="NeoCarrot_Graphics\ConstBufferWVP.h" />

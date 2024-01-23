@@ -14,7 +14,10 @@
 #include "Renderor.h"
 #include "FbxLoad.h"
 #include "ConstBufferWVP.h"
+#include "AnimateRotateY.h"
+#include "AnimateRotateZ.h"
 
 #include "GridScript.h"
 #include "BoxScript.h"
 #include "TriangleScript.h"
+#include "ColoredBox2Script.h"

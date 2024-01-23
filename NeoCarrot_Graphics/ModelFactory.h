@@ -12,7 +12,6 @@ class Entity;
 using EntityPtr = std::shared_ptr<core::Entity<core::Tag, core::Layer>>;
 
 namespace loader{ class FbxLoader; }
-
 namespace graphics
 {
 class Camera3D;
@@ -32,11 +31,11 @@ private:
     EntityPtr CreateBox(const size_t&& id, const char* name);
     EntityPtr CreateTriangle(const size_t&& id, const char* name);
     EntityPtr CreateRainbowBox(const size_t&& id, const char* name);
-    EntityPtr CreateColoredBox(const size_t&& id, const char* name);
+    EntityPtr CreateColoredBox1(const size_t&& id, const char* name);
+    EntityPtr CreateColoredBox2(const size_t&& id, const char* name);
 
     D3D11Context_mk2* _d3d11context;
     Camera3D*        _camera;
-
     std::unique_ptr<loader::FbxLoader> _fbxLoader;
 };
 

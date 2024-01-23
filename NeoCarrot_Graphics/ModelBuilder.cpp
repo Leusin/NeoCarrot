@@ -79,7 +79,7 @@ ModelBuilder ModelBuilder::AddTexture(std::wstring filename)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddTransform_mk2(Camera3D* camera)
+ModelBuilder ModelBuilder::AddTranspose_mk2(Camera3D* camera)
 {
 
     _entity->AddComponent<Transpose_mk2>(camera);
@@ -112,6 +112,18 @@ ModelBuilder ModelBuilder::AddRenderor(D3D_PRIMITIVE_TOPOLOGY primitiveTopology)
     return *this;
 }
 
+ModelBuilder ModelBuilder::AddAinmateRotateY(float speed)
+{
+    _entity->AddComponent<AnimateRotateY>(_entity, speed);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddAinmateRotateZ(float speed)
+{
+    _entity->AddComponent<AnimateRotateZ>(_entity, speed);
+    return *this;
+}
+
 ModelBuilder ModelBuilder::AddAxisScript()
 {
     _entity->AddComponent<AxisScript>(_entity);
@@ -141,6 +153,12 @@ ModelBuilder ModelBuilder::AddTriangleScript()
 ModelBuilder ModelBuilder::AddRainbowScript()
 {
     _entity->AddComponent<RainbowBoxScript>(_entity);
+    return *this;
+}
+
+ModelBuilder ModelBuilder::AddColoredBox2Script()
+{
+    _entity->AddComponent<ColoredBox2Script>(_entity);
     return *this;
 }
 
