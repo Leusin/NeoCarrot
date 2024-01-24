@@ -14,7 +14,7 @@ namespace graphics
 class D3Devices;
 
 // º»¹®
-class RainbowBoxScript : public core::IComponent, virtual core::GetEntity
+class RainbowBoxScript: public core::IComponent, virtual core::GetEntity
 {
 
 public:
@@ -24,7 +24,10 @@ public:
     void Update(float dt) override;
 
 private:
-    HRESULT CompileShaderFromFile(const WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
+    HRESULT CompileShaderFromFile(const WCHAR* szFileName,
+                                  LPCSTR szEntryPoint,
+                                  LPCSTR szShaderModel,
+                                  ID3DBlob** ppBlobOut);
     void AwakeCheckVaildFile(const std::wstring& file);
 
     // BindVSResource
@@ -38,14 +41,14 @@ private:
     // BindBone
 
 private:
-    D3Devices* _d3devices{nullptr};
+    D3Devices* _d3devices{ nullptr };
 
-    Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{nullptr};
-    Microsoft::WRL::ComPtr<ID3D11PixelShader>  _pixelShader{nullptr};
-    Microsoft::WRL::ComPtr<ID3D11InputLayout>  _vertexLayout{nullptr};
-    Microsoft::WRL::ComPtr<ID3D11Buffer>       _vertexBuffer{nullptr};
-    Microsoft::WRL::ComPtr<ID3D11Buffer>       _indexBuffer{nullptr};
-    Microsoft::WRL::ComPtr<ID3D11Buffer>       _constantBuffer{nullptr};
+    Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShader{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _indexBuffer{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11Buffer> _constantBuffer{ nullptr };
 };
 
 } // namespace graphics

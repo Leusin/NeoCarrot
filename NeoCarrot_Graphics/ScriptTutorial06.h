@@ -1,13 +1,12 @@
 #pragma once
 
+#include "AllBufferStruct.h"
 #include "CompileShader.h"
 #include "ConstantBufferStruct.h"
 #include "D3Devices.h"
 #include "GetEntity.h"
 #include "IComponent.h"
-#include "InputLayoutStruct.h"
 #include "Mesh.h"
-#include "VertexBufferStruct.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -19,6 +18,12 @@ namespace graphics
 {
 class ScriptTutorial06: public core::IComponent, public core::GetEntity, CompileShader
 {
+
+private:
+    struct PosNol: public Pos, public Nol
+    {
+    };
+
 public:
     template<typename T>
     struct VertexBufferInfo
@@ -74,11 +79,15 @@ private:
     ID3D11DeviceContext* _deviceContext;
 
     Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
+
     Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShader{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShaderSolid{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
+
     Microsoft::WRL::ComPtr<ID3D11Buffer> _vertexBuffer{ nullptr };
+
     Microsoft::WRL::ComPtr<ID3D11Buffer> _indexBuffer{ nullptr };
+
     Microsoft::WRL::ComPtr<ID3D11Buffer> _constantBuffer{ nullptr };
 
     VertexBufferInfo<Nol> _vbInfo;

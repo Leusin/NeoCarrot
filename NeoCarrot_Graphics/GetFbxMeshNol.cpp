@@ -1,8 +1,6 @@
 #include "GetFbxMeshNol.h"
 
-#include "FbxLoader.h"
 #include "InputLayoutStruct.h"
-#include "VertexBufferStruct.h"
 #include "VertexResource.h"
 
 namespace graphics
@@ -24,7 +22,7 @@ void GetFbxMeshNol::SetVertexBuffer(model::Mesh& data)
 {
     // 읽고 있는 메시의 정점 크기
 
-    auto rs = GetComponent<VertexResource<Nol>>();
+    auto rs = GetComponent<VertexResource<PosNol>>();
 
     // 읽고 있는 매시가 시작될 정점 숫자
     rs->_vertexOffset.emplace_back(rs->_totalVertexCount);
@@ -36,7 +34,7 @@ void GetFbxMeshNol::SetVertexBuffer(model::Mesh& data)
 
     for (unsigned int i = 0; i < vcount; i++)
     {
-        rs->_vertices.emplace_back(Nol{
+        rs->_vertices.emplace_back(PosNol{
             DirectX::XMFLOAT3{ data.vertices[i].position.x,
                                data.vertices[i].position.y,
                                data.vertices[i].position.z },

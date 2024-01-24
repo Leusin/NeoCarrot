@@ -53,6 +53,8 @@ void ScriptTutorial06::Update(float dt)
     Render();
 }
 
+#pragma region Awake
+
 void ScriptTutorial06::CreateVertexShader()
 {
     //
@@ -170,7 +172,7 @@ void ScriptTutorial06::LoadVertexBuffer(model::Mesh& data)
 
     for (unsigned int i = 0; i < vcount; i++)
     {
-        _vbInfo.vertices.emplace_back(Nol{
+        _vbInfo.vertices.emplace_back(PosNol{
             DirectX::XMFLOAT3{ data.vertices[i].position.x,
                                data.vertices[i].position.y,
                                data.vertices[i].position.z },
@@ -260,6 +262,10 @@ void ScriptTutorial06::CreateConstantBuffer()
 
     assert(_constantBuffer.Get() && "상수 버퍼에 암것도 없음");
 }
+
+#pragma endregion Awake
+
+#pragma region Update
 
 void ScriptTutorial06::SetInputLayout()
 {
@@ -376,5 +382,7 @@ void ScriptTutorial06::Render()
         }
     }
 }
+
+#pragma endregion Update
 
 } // namespace graphics

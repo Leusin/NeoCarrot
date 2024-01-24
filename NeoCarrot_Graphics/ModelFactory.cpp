@@ -62,7 +62,7 @@ EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
 
     auto grid = builder.AddD3Device(_d3d11context)
                     .AddTranspose_mk2(_camera)
-                    .AddVertexBuffer<Col>()
+                    .AddVertexBuffer<PosCol>()
                     .AddIndexBuffer()
                     .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
                     .AddVertexLayout(&PosColorDesc)
@@ -81,10 +81,6 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 
     auto axis = builder.AddD3Device(_d3d11context)
                     .AddTranspose_mk2(_camera)
-                    .AddVertexBuffer<Col>()
-                    .AddIndexBuffer()
-                    .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
-                    .AddVertexLayout(&PosColorDesc)
                     .AddAxisScript()
                     .Build();
 
@@ -181,11 +177,6 @@ EntityPtr ModelFactory::CreateTutorial06(const size_t&& id, const char* name)
 
     auto box = builder.AddD3Device(_d3d11context)
                    .AddTranspose_mk2(_camera)
-                   //.AddVertexResourceNol(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl")
-                   //.AddIndexBuffer_mk2()
-                   //.AddContantBufferTutorial06()
-                   //.GetAddFbxMeshNol(_fbxLoader.get(),
-                   //            "../NeoCarrot_Graphics/FBX/a.fbx")
                    .AddScriptTutorial06()
                    .Build();
 

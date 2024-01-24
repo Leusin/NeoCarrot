@@ -2,6 +2,7 @@
 
 #include "GetEntity.h"
 #include "IComponent.h"
+#include "VertexBufferStruct.h"
 
 namespace graphics
 {
@@ -9,11 +10,15 @@ namespace graphics
 template <typename V>
 class VertexBuffer;
 class IndexBuffer;
-struct Col;
 
 // º»¹®
 class GridScript : public core::IComponent, virtual core::GetEntity
 {
+private:
+    struct PosCol : public Pos, public Col
+    {
+    };
+
 public:
     GridScript(EntityPtr entityPtr);
 
@@ -22,7 +27,7 @@ public:
 
 private:
     IndexBuffer*          _indexBuffer;
-    VertexBuffer<Col>* _vertexBuffer;
+    VertexBuffer<PosCol>* _vertexBuffer;
 
     void SetVertexBuffer();
     void SetIndexBuffer();

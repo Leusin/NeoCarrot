@@ -147,17 +147,17 @@
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <Filter>deprecated</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\LightBox1Script.cpp">
-      <Filter>hlsl</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
-      <Filter>hlsl</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
       <Filter>component</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp">
       <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\LightBox1Script.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
+      <Filter>deprecated</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -279,12 +279,6 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <Filter>deprecated</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\LightBox1Script.h">
-      <Filter>hlsl</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
-      <Filter>hlsl</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
       <Filter>component</Filter>
     </ClInclude>
@@ -299,6 +293,12 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\AllBufferStruct.h">
       <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\LightBox1Script.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
+      <Filter>deprecated</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

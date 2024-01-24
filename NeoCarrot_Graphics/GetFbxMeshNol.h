@@ -5,16 +5,22 @@
 
 #pragma once
 
+#include "FbxLoader.h"
 #include "GetFbxMesh.h"
+#include "VertexBufferStruct.h"
 
 #include <string>
-namespace loader{class FbxLoader;}
 
 namespace graphics
 {
 
 class GetFbxMeshNol: public GetFbxMesh
 {
+private:
+    struct PosNol: public Pos, public Nol
+    {
+    };
+
 public:
     GetFbxMeshNol(EntityPtr entityPtr, loader::FbxLoader* fbxLoader, std::string file);
 

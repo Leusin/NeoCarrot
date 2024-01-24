@@ -14,7 +14,7 @@ namespace graphics
 {
 GridScript::GridScript(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
-    , _vertexBuffer{ GetComponent<graphics::VertexBuffer<graphics::Col>>() }
+    , _vertexBuffer{ GetComponent<graphics::VertexBuffer<PosCol>>() }
     , _indexBuffer{ GetComponent<graphics::IndexBuffer>() }
 {
     SetVertexBuffer();
@@ -65,7 +65,7 @@ void GridScript::SetVertexBuffer()
     for (int i = 0; i < 100; i++)
     {
         _vertexBuffer->_vertices[i]
-            .Pos = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f,
+            .Position = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f,
                                      -0.f,
                                      static_cast<float>(i / 10) - 5.0f);
         _vertexBuffer->_vertices[i].Color = DirectX::XMFLOAT4(

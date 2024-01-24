@@ -1,5 +1,5 @@
 /// 버텍스 버퍼 구조체
-/// 
+///
 /// 2024-01-24
 
 #pragma once
@@ -11,41 +11,36 @@ namespace graphics
 {
 struct Pos
 {
-    DirectX::XMFLOAT3 Pos;
+    DirectX::XMFLOAT3 Position;
 };
 
-struct Col: public Pos
+struct Col
 {
-    // DirectX::XMFLOAT3 Pos;
     DirectX::XMFLOAT4 Color;
 };
 
-struct Nol: public Pos
+struct PosCol: public Pos, public Col
 {
-    // DirectX::XMFLOAT3 Pos;
+};
+
+struct Nol
+{
     DirectX::XMFLOAT3 Normal;
 };
 
-struct PosTex: public Pos
+struct Tex
 {
-    // DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT2 Tex;
+    DirectX::XMFLOAT2 Texture;
 };
 
-struct PosNormalTex: public Pos
+struct Weights
 {
-    // DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT3 Normal;
-    DirectX::XMFLOAT2 Tex;
-};
-
-struct PosNormalTexWeightsBoneidx: public Pos
-{
-    // DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT3 Normal;
-    DirectX::XMFLOAT2 Tex;
     DirectX::XMFLOAT3 Weights;
+};
+
+struct Boneidx
+{
     int BoneIndices;
 };
 
-}
+} // namespace graphics
