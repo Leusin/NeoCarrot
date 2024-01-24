@@ -4,12 +4,12 @@
 
 namespace graphics
 {
-template<typename T>
-inline ModelBuilder ModelBuilder::AddVertexBuffer()
-{
-    _entity->AddComponent<VertexBuffer<T>>(_entity);
-    return *this;
-}
+//template<typename T>
+//inline ModelBuilder ModelBuilder::AddVertexBuffer()
+//{
+//    _entity->AddComponent<VertexBuffer<T>>(_entity);
+//    return *this;
+//}
 
 //////////////////////////////////////////////////////////////////////
 template<typename T>

@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NeoCarrot_Graphics\AnimateRotateY.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -51,13 +53,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Effect.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\Effect.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\GetFbxMesh.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -72,7 +78,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\VertexBufferStruct.h" />
     <ClCompile Include="NeoCarrot_Graphics\LightBox1Script.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -106,7 +114,9 @@
   <ItemGroup>
     <ClInclude Include="NeoCarrot_Graphics\AllBufferStruct.h" />
     <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h" />
-    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h" />
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -140,14 +150,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\Effect.h" />
+    <ClInclude Include="NeoCarrot_Graphics\Effect.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h" />
     <ClInclude Include="NeoCarrot_Graphics\GetFbxMesh.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\FontType.h" />
-    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h" />
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h" />
     <ClInclude Include="NeoCarrot_Graphics\Grid.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -156,7 +170,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GridScript.h" />
-    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\InputLayoutStruct.h" />
     <ClInclude Include="NeoCarrot_Graphics\LightBox1Script.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

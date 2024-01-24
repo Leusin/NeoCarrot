@@ -128,7 +128,6 @@ EntityPtr ModelFactory::CreateRainbowBox(const size_t&& id, const char* name)
 
 EntityPtr ModelFactory::CreateTutorial04(const size_t&& id, const char* name)
 {
-
     auto builder = ModelBuilder(std::forward<const size_t>(id),
                                 std::move(name),
                                 core::Tag::MESHOBJ,

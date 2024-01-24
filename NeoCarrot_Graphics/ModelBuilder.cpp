@@ -29,6 +29,7 @@ ModelBuilder::ModelBuilder(const size_t&& id,
               << static_cast<int>(id) << " ) \n";
 #endif // _DEBUG
 }
+
 ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
 {
     _entity->AddComponent<D3Devices>(d3d11context);
@@ -44,27 +45,27 @@ ModelBuilder ModelBuilder::AddD3Device(const D3D11Context_mk2* d3d11context)
 //    return *this;
 //}
 
-ModelBuilder ModelBuilder::AddIndexBuffer()
-{
-    _entity->AddComponent<IndexBuffer>(_entity);
+//ModelBuilder ModelBuilder::AddIndexBuffer()
+//{
+//    _entity->AddComponent<IndexBuffer>(_entity);
+//
+//    return *this;
+//}
 
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
+//{
+//    _entity->AddComponent<Effect>(_entity, fileName);
+//
+//    return *this;
+//}
 
-ModelBuilder ModelBuilder::AddEffect(std::wstring fileName)
-{
-    _entity->AddComponent<Effect>(_entity, fileName);
-
-    return *this;
-}
-
-ModelBuilder ModelBuilder::AddVertexLayout(
-    const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc)
-{
-    _entity->AddComponent<InputLayout>(_entity, desc);
-
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddVertexLayout(
+//    const std::vector<D3D11_INPUT_ELEMENT_DESC>* desc)
+//{
+//    _entity->AddComponent<InputLayout>(_entity, desc);
+//
+//    return *this;
+//}
 
 //ModelBuilder ModelBuilder::AddCamera(Camera3D* camera)
 //{
@@ -145,18 +146,18 @@ ModelBuilder ModelBuilder::AddAinmateRotateY(float speed)
     return *this;
 }
 
-ModelBuilder ModelBuilder::AddAinmateRotateZ(float speed)
-{
-    _entity->AddComponent<AnimateRotateZ>(_entity, speed);
-    return *this;
-}
+//ModelBuilder ModelBuilder::AddAinmateRotateZ(float speed)
+//{
+//    _entity->AddComponent<AnimateRotateZ>(_entity, speed);
+//    return *this;
+//}
 
-ModelBuilder ModelBuilder::GetAddFbxMeshNol(loader::FbxLoader* fbxLodaer,
-                                            std::string shaderFile)
-{
-    _entity->AddComponent<GetFbxMeshNol>(_entity, fbxLodaer, shaderFile);
-    return *this;
-}
+//ModelBuilder ModelBuilder::GetAddFbxMeshNol(loader::FbxLoader* fbxLodaer,
+//                                            std::string shaderFile)
+//{
+//    _entity->AddComponent<GetFbxMeshNol>(_entity, fbxLodaer, shaderFile);
+//    return *this;
+//}
 
 //ModelBuilder ModelBuilder::GetAddFbxMesh(loader::FbxLoader* fbxLodaer,
 //                                         std::string shaderFile)

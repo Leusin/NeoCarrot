@@ -11,12 +11,6 @@
 
 namespace graphics
 {
-// 전방 선언
-template<typename V>
-class VertexBuffer;
-class IndexBuffer;
-
-// 본문
 class GridScript: public core::IComponent, core::GetEntity, CompileShader
 {
 private:

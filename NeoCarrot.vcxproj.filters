@@ -16,9 +16,6 @@
     <Filter Include="d3d11">
       <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
     </Filter>
-    <Filter Include="d3d11\mk1">
-      <UniqueIdentifier>{72d22b04-fd94-4a4d-a408-7bbc0392ad5e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="component_script">
       <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
     </Filter>
@@ -53,18 +50,6 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3Devices.cpp">
       <Filter>component</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\Effect.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
-      <Filter>d3d11\mk1</Filter>
-    </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
-      <Filter>d3d11\mk1</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\D3D11Context_mk2.cpp">
       <Filter>d3d11</Filter>
@@ -114,9 +99,6 @@
     <ClCompile Include="NeoCarrot_Graphics\AnimateRotateY.cpp">
       <Filter>component</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ColoredBox2Script.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
@@ -147,9 +129,6 @@
     <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
       <Filter>deprecated</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
-      <Filter>component</Filter>
-    </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
@@ -157,6 +136,24 @@
       <Filter>deprecated</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Effect.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
       <Filter>deprecated</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,18 +181,6 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
       <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">
-      <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\Effect.h">
-      <Filter>component</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
-      <Filter>d3d11\mk1</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
-      <Filter>d3d11\mk1</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\D3D11Context_mk2.h">
       <Filter>d3d11</Filter>
@@ -252,9 +237,6 @@
     <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h">
       <Filter>component</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h">
       <Filter>component_script</Filter>
     </ClInclude>
@@ -279,9 +261,6 @@
     <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
       <Filter>deprecated</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
-      <Filter>component</Filter>
-    </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ScriptTutorial06.h">
       <Filter>component_script</Filter>
     </ClInclude>
@@ -298,6 +277,24 @@
       <Filter>deprecated</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Effect.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
       <Filter>deprecated</Filter>
     </ClInclude>
   </ItemGroup>
