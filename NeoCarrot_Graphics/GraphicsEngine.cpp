@@ -48,8 +48,9 @@ void graphics::GraphicsEngine::Update(float deltaTime)
 
 void graphics::GraphicsEngine::BeginRender()
 {
-    const float Carrot[4] = {0.999f, 0.444f, 0.f, 1.0f};
-    _d3d11context->BeginRender(Carrot);
+    //const float Carrot[4] = {0.999f, 0.444f, 0.f, 1.0f};
+    const float Dark[4] = {0.128f, 0.121f, 0.121f, 1.0f};
+    _d3d11context->BeginRender(Dark);
 }
 
 void graphics::GraphicsEngine::Render()

@@ -187,10 +187,15 @@ void D3D11Context_mk2::OnResize(int width, int height)
 
 void D3D11Context_mk2::BeginRender(const float* color) const
 {
-    // 후면 버퍼를 지정돤 색으로 지움
+    //
+    // 백 버퍼를 지정돤 색으로 지움
+    //
     _devices->ImmediateContext()
         ->ClearRenderTargetView(_resourceView->renderTargetView.Get(), color);
-    // 깊이버퍼를 1.0f, 스텐실 버퍼를 0 으로 지움
+
+    //
+    // 뎁스 버퍼를 1.0f(최대값), 스텐실 버퍼를 0으로 초기화
+    //
     _devices->ImmediateContext()
         ->ClearDepthStencilView(_resourceView->depthStencilView.Get(),
                                 D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL,

@@ -21,17 +21,23 @@ public:
     template<typename T>
     struct VertexBufferInfo
     {
+        // 초기화할 때 사용
         std::vector<T> vertices;
-        std::vector<unsigned int> vertexOffset;
         unsigned int totalVertexCount{ 0 };
+
+        // 랜더 할 때 사용
+        std::vector<unsigned int> vertexOffset;
     };
 
     struct IndexBufferInfo
     {
+        // 초기화할 때 사용 
         std::vector<WORD> indices;
+        unsigned int totalIndexCount{ 0 };
+
+        // 랜더 할 때 사용
         std::vector<unsigned int> indexOffset;
         std::vector<unsigned int> indexCount;
-        unsigned int totalIndexCount{ 0 };
     };
 
 
@@ -45,16 +51,18 @@ private:
     void CreateVertexShader();
     void CreatePixelShader();
     void LoadFbxMeshData();
-    void SetVertexBuffer(model::Mesh& data);
-    void SetIndexBuffer(model::Mesh& data);
+    void LoadVertexBuffer(model::Mesh& data);
+    void LoadIndexBuffer(model::Mesh& data);
     void CreateVertexBuffer();
     void CreateIndexBuffer();
     void CreateConstantBuffer();
 
     void SetInputLayout();
-    void SetVertexBuffer();
-    void SetIndexBuffer();
+    void SetVertexBuffers();
+    void SetIndexBuffers();
     void SetPrimitiveTopology();
+
+    void SetParameter();
 
     void UpdateTransformAnimation(float dt);
     void UpdateConstantVariable();
@@ -76,8 +84,6 @@ private:
 
     std::vector<DirectX::XMFLOAT4> vLightDirs;
     std::vector<DirectX::XMFLOAT4> vLightColors;
-    //DirectX::XMFLOAT4 vLightDirs[2];
-    //DirectX::XMFLOAT4 vLightColors[2];
 
     ConstBuffLit _cb;
 };

@@ -4,9 +4,8 @@
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>
-#include <vector>
-
 #include <memory>
+#include <vector>
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -15,8 +14,8 @@ namespace graphics
 {
 GridScript::GridScript(EntityPtr entityPtr)
     : GetEntity(EntityPtr(entityPtr))
-    , _vertexBuffer{GetComponent<graphics::VertexBuffer<graphics::Col>>()}
-    , _indexBuffer{GetComponent<graphics::IndexBuffer>()}
+    , _vertexBuffer{ GetComponent<graphics::VertexBuffer<graphics::Col>>() }
+    , _indexBuffer{ GetComponent<graphics::IndexBuffer>() }
 {
     SetVertexBuffer();
     SetIndexBuffer();
@@ -32,14 +31,13 @@ void GridScript::Awake()
 void GridScript::Update(float dt)
 {
     auto* Trans = GetComponent<Transpose_mk2>();
-
-
-    auto* dc          = GetComponent<D3Devices>()->GetDeviceContext();
+    auto* dc    = GetComponent<D3Devices>()->GetDeviceContext();
     // InputLayout::SetInputLayout();
-    GetComponent<D3Devices>()->SetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
+    GetComponent<D3Devices>()->SetPrimitiveTopology(
+        D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 
     // 버퍼 디바이스에 묶기
-     UINT offset = 0;
+    UINT offset = 0;
     _vertexBuffer->SetBuffers(offset);
     _indexBuffer->SetBuffers();
 
@@ -49,7 +47,7 @@ void GridScript::Update(float dt)
     fxWorldViewProj->SetMatrix(reinterpret_cast<float*>(&worldViewProj));
 
     D3DX11_TECHNIQUE_DESC techDesc;
-    auto                  tech = GetComponent<Effect>()->_tech;
+    auto tech = GetComponent<Effect>()->_tech;
     tech->GetDesc(&techDesc);
 
     for (UINT p = 0; p < techDesc.Passes; ++p)
@@ -67,13 +65,15 @@ void GridScript::SetVertexBuffer()
     for (int i = 0; i < 100; i++)
     {
         _vertexBuffer->_vertices[i]
-            .Pos = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f, -0.f, static_cast<float>(i / 10) - 5.0f);
-        _vertexBuffer->_vertices[i].Color = DirectX::XMFLOAT4((const float*)&DirectX::Colors::Orange);
-
+            .Pos = DirectX::XMFLOAT3(static_cast<float>(i % 10) - 5.0f,
+                                     -0.f,
+                                     static_cast<float>(i / 10) - 5.0f);
+        _vertexBuffer->_vertices[i].Color = DirectX::XMFLOAT4(
+            (const float*)&DirectX::Colors::Gray);
     }
 
-    _vertexBuffer->_totalVertexCount = static_cast<UINT>(_vertexBuffer->_vertices.size());
-
+    _vertexBuffer->_totalVertexCount = static_cast<UINT>(
+        _vertexBuffer->_vertices.size());
 }
 void GridScript::SetIndexBuffer()
 {
@@ -82,17 +82,18 @@ void GridScript::SetIndexBuffer()
     _indexBuffer->_indices.resize(40);
     for (int i = 0; i < 10; i++)
     {
-        _indexBuffer->_indices[i * 2] = i;
+        _indexBuffer->_indices[i * 2]     = i;
         _indexBuffer->_indices[i * 2 + 1] = i + 90;
     }
 
     for (int i = 0; i < 10; i++)
     {
-        _indexBuffer->_indices[20 + (i * 2)] = i * 10;
+        _indexBuffer->_indices[20 + (i * 2)]     = i * 10;
         _indexBuffer->_indices[20 + (i * 2) + 1] = i * 10 + 9;
     }
 
-     _indexBuffer->_indexCount.emplace_back(static_cast<UINT>(_indexBuffer->_indices.size()));
+    _indexBuffer->_indexCount.emplace_back(
+        static_cast<UINT>(_indexBuffer->_indices.size()));
 }
 
 } // namespace graphics
