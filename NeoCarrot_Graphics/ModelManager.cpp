@@ -40,7 +40,7 @@ void ModelManager::CreateEnity()
     CreateEnity(core::GameObect::GRID, "grid");
 
     //CreateEnity(core::GameObect::TUTORIAL04, "colored box1");
-    //CreateEnity(core::GameObect::TUTORIAL05, "colored box2");
+    CreateEnity(core::GameObect::TUTORIAL05, "colored box2");
     CreateEnity(core::GameObect::TUTORIAL06, "light box");
 }
 

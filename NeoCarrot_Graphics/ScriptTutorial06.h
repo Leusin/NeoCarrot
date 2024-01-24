@@ -2,7 +2,6 @@
 
 #include "AllBufferStruct.h"
 #include "CompileShader.h"
-#include "ConstantBufferStruct.h"
 #include "D3Devices.h"
 #include "GetEntity.h"
 #include "IComponent.h"
@@ -11,6 +10,7 @@
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <directxmath.h>
+#include <string>
 #include <vector>
 #include <wrl.h>
 
@@ -47,7 +47,6 @@ public:
         std::vector<unsigned int> indexCount;
     };
 
-
 public:
     ScriptTutorial06(EntityPtr entityPtr);
 
@@ -55,17 +54,17 @@ public:
     void Update(float dt) override;
 
 private:
-    void CreateVertexShader();
-    void CreatePixelShader();
+    void CreateVertexShader(const std::wstring& file);
+    void CreatePixelShader(const std::wstring& file);
     void LoadFbxMeshData();
-    void LoadVertexBuffer(model::Mesh& data);
+    void LoadVertexBuffer(model::Mesh& data); // 구조체 버퍼 확인 할 것**
     void LoadIndexBuffer(model::Mesh& data);
-    void CreateVertexBuffer();
+    void CreateVertexBuffer(); // 구조체 버퍼 확인 할 것**
     void CreateIndexBuffer();
     void CreateConstantBuffer();
 
     void SetInputLayout();
-    void SetVertexBuffers();
+    void SetVertexBuffers();  // 구조체 버퍼 확인 할 것**
     void SetIndexBuffers();
     void SetPrimitiveTopology();
 
@@ -90,7 +89,7 @@ private:
 
     Microsoft::WRL::ComPtr<ID3D11Buffer> _constantBuffer{ nullptr };
 
-    VertexBufferInfo<Nol> _vbInfo;
+    VertexBufferInfo<PosNol> _vbInfo;  // 구조체 버퍼 확인 할 것**
     IndexBufferInfo _ibInfo;
 
     std::vector<DirectX::XMFLOAT4> vLightDirs;

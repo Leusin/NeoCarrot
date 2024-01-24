@@ -22,7 +22,6 @@ GridScript::GridScript(EntityPtr entityPtr)
 
 void GridScript::Awake()
 {
-
     const std::wstring file = L"../NeoCarrot_Graphics/HLSL/color.fx";
 
     CreateVertexShader(file);

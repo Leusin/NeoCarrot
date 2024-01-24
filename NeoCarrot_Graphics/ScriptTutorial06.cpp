@@ -29,8 +29,10 @@ ScriptTutorial06::ScriptTutorial06(EntityPtr entityPtr)
 
 void ScriptTutorial06::Awake()
 {
-    CreateVertexShader();
-    CreatePixelShader();
+    const std::wstring file = L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl";
+
+    CreateVertexShader(file);
+    CreatePixelShader(file);
 
     LoadFbxMeshData();
 
@@ -55,17 +57,14 @@ void ScriptTutorial06::Update(float dt)
 
 #pragma region Awake
 
-void ScriptTutorial06::CreateVertexShader()
+void ScriptTutorial06::CreateVertexShader(const std::wstring& file)
 {
     //
     // 1. CompileVertexShader
     //
     Microsoft::WRL::ComPtr<ID3DBlob> pVSBlob{ nullptr };
 
-    CompileShaderFromFile(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl",
-                          "VS",
-                          "vs_5_0",
-                          pVSBlob.GetAddressOf());
+    CompileShaderFromFile(file.c_str(), "VS", "vs_5_0", pVSBlob.GetAddressOf());
 
     assert(pVSBlob.Get());
 
@@ -93,14 +92,14 @@ void ScriptTutorial06::CreateVertexShader()
     assert(_vertexLayout.Get());
 }
 
-void ScriptTutorial06::CreatePixelShader()
+void ScriptTutorial06::CreatePixelShader(const std::wstring& file)
 {
     //
     // 4. CompilePxielShader
     //
     Microsoft::WRL::ComPtr<ID3DBlob> pPSBlob{ nullptr };
 
-    CompileShaderFromFile(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl",
+    CompileShaderFromFile(file.c_str(),
                           "PS",
                           "ps_5_0",
                           pPSBlob.GetAddressOf());
@@ -124,7 +123,7 @@ void ScriptTutorial06::CreatePixelShader()
     //
     pPSBlob->Release();
 
-    CompileShaderFromFile(L"../NeoCarrot_Graphics/HLSL/Tutoroal06.hlsl",
+    CompileShaderFromFile(file.c_str(),
                           "PSSolid",
                           "ps_5_0",
                           pPSBlob.GetAddressOf());
@@ -213,7 +212,7 @@ void ScriptTutorial06::CreateVertexBuffer()
 
     D3D11_BUFFER_DESC bd = {};
     bd.Usage             = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(Nol) * static_cast<unsigned int>(_vbInfo.vertices.size());
+    bd.ByteWidth = sizeof(PosNol) * static_cast<unsigned int>(_vbInfo.vertices.size());
     bd.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
     bd.CPUAccessFlags = 0;
 
@@ -274,7 +273,7 @@ void ScriptTutorial06::SetInputLayout()
 
 void ScriptTutorial06::SetVertexBuffers()
 {
-    UINT stride = sizeof(Nol);
+    UINT stride = sizeof(PosNol);
     UINT offset = 0;
     _deviceContext
         ->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
