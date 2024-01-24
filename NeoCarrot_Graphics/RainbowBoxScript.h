@@ -1,5 +1,7 @@
 #pragma once
 
+#include "AllComponents.h"
+#include "AllBufferStruct.h"
 #include "GetEntity.h"
 #include "IComponent.h"
 
@@ -16,6 +18,9 @@ class D3Devices;
 // º»¹®
 class RainbowBoxScript: public core::IComponent, virtual core::GetEntity
 {
+    struct PosCol: public Pos, public Col
+    {
+    };
 
 public:
     RainbowBoxScript(EntityPtr entityPtr);

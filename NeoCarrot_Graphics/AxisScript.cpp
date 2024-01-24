@@ -18,40 +18,42 @@ AxisScript::AxisScript(EntityPtr entityPtr)
 
 void AxisScript::Awake()
 {
-    CreateVertexShader();
-    CreatePixelShader();
+    const std::wstring file = L"../NeoCarrot_Graphics/HLSL/Tutoroal04.hlsl";
+
+    CreateVertexShader(file);
+    CreatePixelShader(file);
     CreateVertexBuffer();
-    CreateIndexBuffer();
+    //CreateIndexBuffer();
     CreateConstantBuffer();
 }
 
 void AxisScript::Update(float dt)
 {
-    BindInputLayout();
-    BindVertexBuffers();
-    BindIndexBuffers();
+    SetInputLayout();
+    SetVertexBuffers();
+    SetIndexBuffers();
     SetPrimitiveTopology();
 
-    BindConstantVariable();
+    SetConstantVariable();
 
     UpdateRender();
 }
 
 #pragma region Awake
 
-void AxisScript::CreateVertexShader()
+void AxisScript::CreateVertexShader(const std::wstring& file)
 {
     //
     // 1. CompileVertexShader
     //
     Microsoft::WRL::ComPtr<ID3DBlob> pVSBlob{ nullptr };
 
-    CompileShaderFromFile(L"../NeoCarrot_Graphics/HLSL/Tutoroal04.hlsl",
+    CompileShaderFromFile(file.c_str(),
                           "VS",
                           "vs_5_0",
                           pVSBlob.GetAddressOf());
 
-    assert(pVSBlob.Get());
+    assert(pVSBlob.Get() && "pVSBlob °¡ ¾È ¸Í±Û¾îÁü");
 
     //
     // 2. CreateVertexShader
@@ -77,14 +79,14 @@ void AxisScript::CreateVertexShader()
     assert(_vertexLayout.Get() && "ID3D11InputLayout °¡ ¾È ¸Í±Û¾îÁü");
 }
 
-void AxisScript::CreatePixelShader()
+void AxisScript::CreatePixelShader(const std::wstring& file)
 {
     //
     // 4. CompilePxielShader
     //
     Microsoft::WRL::ComPtr<ID3DBlob> pPSBlob{ nullptr };
 
-    CompileShaderFromFile(L"../NeoCarrot_Graphics/HLSL/Tutoroal04.hlsl",
+    CompileShaderFromFile(file.c_str(),
                           "PS",
                           "ps_5_0",
                           pPSBlob.GetAddressOf());
@@ -100,31 +102,33 @@ void AxisScript::CreatePixelShader()
                               pPSBlob->GetBufferSize(),
                               nullptr,
                               _pixelShader.GetAddressOf());
+
+    assert(_pixelShader.Get() && "ID3D11PixelShader °¡ ¾È ¸Í±Û¾îÁü");
 }
 
 void AxisScript::CreateVertexBuffer()
 {
     //
-    // 7. CreateVertexBuffer
+    // 6. CreateVertexBuffer
     //
     std::vector<PosCol> vertices = {
         { DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f),
           DirectX::XMFLOAT4((const float*)&DirectX::Colors::Crimson) },
 
         { DirectX::XMFLOAT3(4.0f, 0.0f, 0.0f),
-          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow) },
+          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Red) },
 
         { DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f),
           DirectX::XMFLOAT4((const float*)&DirectX::Colors::SeaGreen) },
 
         { DirectX::XMFLOAT3(0.0f, 4.0f, 0.0f),
-          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow) },
+          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Green) },
 
         { DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f),
           DirectX::XMFLOAT4((const float*)&DirectX::Colors::RoyalBlue) },
 
         { DirectX::XMFLOAT3(0.0f, 0.0f, 4.0f),
-          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Snow) },
+          DirectX::XMFLOAT4((const float*)&DirectX::Colors::Blue) },
     };
 
     auto* device = _d3devices->GetDevice();
@@ -145,7 +149,7 @@ void AxisScript::CreateVertexBuffer()
 void AxisScript::CreateIndexBuffer()
 {
     //
-    // 8. CreateIndexBuffer
+    // 7. CreateIndexBuffer
     //
     std::vector<WORD> indices = {
         // xÃà
@@ -179,7 +183,7 @@ void AxisScript::CreateIndexBuffer()
 void AxisScript::CreateConstantBuffer()
 {
     //
-    // 9. CreateConstantBuffer
+    // 8. CreateConstantBuffer
     //
     auto* device = _d3devices->GetDevice();
 
@@ -198,14 +202,14 @@ void AxisScript::CreateConstantBuffer()
 
 #pragma region Update
 
-void AxisScript::BindInputLayout()
+void AxisScript::SetInputLayout()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
 
     _d3devices->GetDeviceContext()->IASetInputLayout(_vertexLayout.Get());
 }
 
-void AxisScript::BindVertexBuffers()
+void AxisScript::SetVertexBuffers()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
 
@@ -215,7 +219,7 @@ void AxisScript::BindVertexBuffers()
         ->IASetVertexBuffers(0, 1, _vertexBuffer.GetAddressOf(), &stride, &offset);
 }
 
-void AxisScript::BindIndexBuffers()
+void AxisScript::SetIndexBuffers()
 {
     auto* deviceContext = _d3devices->GetDeviceContext();
 
@@ -229,7 +233,7 @@ void AxisScript::SetPrimitiveTopology()
     deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINELIST);
 }
 
-void AxisScript::BindConstantVariable()
+void AxisScript::SetConstantVariable()
 {
     //
     // BindWVPMatrix
@@ -252,8 +256,7 @@ void AxisScript::UpdateRender()
    deviceContext->VSSetConstantBuffers(0, 1, _constantBuffer.GetAddressOf());
    deviceContext->PSSetShader(_pixelShader.Get(), nullptr, 0);
 
-   //deviceContext->Draw(6, 0);
-   deviceContext->DrawIndexed(6, 0, 0);
+   deviceContext->Draw(6, 0);
 }
 
 #pragma endregion Update

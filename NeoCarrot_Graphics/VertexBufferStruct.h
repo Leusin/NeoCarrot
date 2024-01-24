@@ -19,10 +19,6 @@ struct Col
     DirectX::XMFLOAT4 Color;
 };
 
-struct PosCol: public Pos, public Col
-{
-};
-
 struct Nol
 {
     DirectX::XMFLOAT3 Normal;

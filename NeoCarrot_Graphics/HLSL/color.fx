@@ -31,11 +31,6 @@ VertexOut VS(VertexIn vin)
 	// Just pass vertex color into the pixel shader.
     vout.Color = vin.Color;
 
-    vout.Color.x = 1.0f;
-    vout.Color.y = 0;
-    vout.Color.z = 0;
-    vout.Color.w = 1.0f;
-
     return vout;
 }
 

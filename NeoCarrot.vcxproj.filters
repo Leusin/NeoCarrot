@@ -310,10 +310,10 @@
     <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal04.hlsl">
       <Filter>hlsl</Filter>
     </FxCompile>
-    <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal06.hlsl">
       <Filter>hlsl</Filter>
     </FxCompile>
-    <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal06.hlsl">
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\color.fx">
       <Filter>hlsl</Filter>
     </FxCompile>
   </ItemGroup>

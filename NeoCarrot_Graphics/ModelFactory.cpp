@@ -53,24 +53,7 @@ EntityPtr ModelFactory::CreateEntity(core::GameObect enumTypeEntity,
     return nullptr;
 }
 
-EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
-{
-    auto builder = ModelBuilder(std::forward<const size_t>(id),
-                                std::move(name),
-                                core::Tag::GIZMO,
-                                core::Layer::DEBUGINFO);
-
-    auto grid = builder.AddD3Device(_d3d11context)
-                    .AddTranspose_mk2(_camera)
-                    .AddVertexBuffer<PosCol>()
-                    .AddIndexBuffer()
-                    .AddEffect({ L"../NeoCarrot_Graphics/FX/color.fxo" })
-                    .AddVertexLayout(&PosColorDesc)
-                    .AddGridScript()
-                    .Build();
-
-    return grid;
-}
+#pragma region Gizmo
 
 EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 {
@@ -86,6 +69,24 @@ EntityPtr ModelFactory::CreateAxis(const size_t&& id, const char* name)
 
     return axis;
 }
+
+
+EntityPtr ModelFactory::CreateGrid(const size_t&& id, const char* name)
+{
+    auto builder = ModelBuilder(std::forward<const size_t>(id),
+                                std::move(name),
+                                core::Tag::GIZMO,
+                                core::Layer::DEBUGINFO);
+
+    auto grid = builder.AddD3Device(_d3d11context)
+                    .AddTranspose_mk2(_camera)
+                    .AddGridScript()
+                    .Build();
+
+    return grid;
+}
+
+#pragma endregion Gizmo
 
 // EntityPtr ModelFactory::CreateBox(const size_t&& id, const char* name)
 //{

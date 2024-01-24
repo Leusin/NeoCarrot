@@ -1,8 +1,6 @@
 #include "RainbowBoxScript.h"
 
 #include "D3Devices.h"
-#include "AllComponents.h"
-#include "AllBufferStruct.h"
 
 #include <fstream>
 #include <memory>

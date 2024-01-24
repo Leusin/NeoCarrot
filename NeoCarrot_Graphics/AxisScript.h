@@ -1,25 +1,24 @@
+/// 2024-01-24
+
+
 #pragma once
 
+#include "AllComponents.h"
 #include "CompileShader.h"
 #include "GetEntity.h"
 #include "IComponent.h"
 #include "VertexBufferStruct.h"
-#include "AllComponents.h"
 
 #include <memory>
+#include <string>
+
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
 
 namespace graphics
 {
-// 전방 선언
-template<typename V>
-class VertexBuffer;
-class IndexBuffer;
-
-// 본문
-class AxisScript: public core::IComponent, public core::GetEntity, CompileShader
+class AxisScript: public core::IComponent, core::GetEntity, CompileShader
 {
 private:
     struct PosCol: public Pos, public Col
@@ -33,18 +32,23 @@ public:
     void Update(float dt) override;
 
 private:
-    void CreateVertexShader();
-    void CreatePixelShader();
+
+    // 생성 및 바인딩
+
+    void CreateVertexShader(const std::wstring& file);
+    void CreatePixelShader(const std::wstring& file);
     void CreateVertexBuffer();
     void CreateIndexBuffer();
     void CreateConstantBuffer();
 
-    void BindInputLayout();
-    void BindVertexBuffers();
-    void BindIndexBuffers();
+    // 업데이트 할 때 디바이스에 세팅
+
+    void SetInputLayout();
+    void SetVertexBuffers();
+    void SetIndexBuffers();
     void SetPrimitiveTopology();
 
-    void BindConstantVariable();
+    void SetConstantVariable();
     void UpdateRender();
 
 private:

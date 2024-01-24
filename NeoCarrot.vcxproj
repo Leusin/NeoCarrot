@@ -202,7 +202,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="NeoCarrot_Graphics\FX\color.fx">
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\color.fx">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal06.hlsl">
