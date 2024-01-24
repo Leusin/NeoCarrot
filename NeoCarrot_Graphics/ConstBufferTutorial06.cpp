@@ -1,7 +1,7 @@
 #include "ConstBufferTutorial06.h"
 
 #include "Transpose_mk2.h"
-#include "components.h"
+#include "AllComponents.h"
 
 #include <directxmath.h>
 

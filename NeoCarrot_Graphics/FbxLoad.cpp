@@ -3,7 +3,6 @@
 #include "D3Devices.h"
 #include "FbxLoader.h"
 #include "IndexBuffer_mk2.h"
-#include "InputLayouts.h"
 #include "VertexResource.h"
 
 #ifdef _DEBUG

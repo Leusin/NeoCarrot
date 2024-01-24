@@ -2,9 +2,6 @@
 
 #include "Camera3D.h"
 
-// 임시로 인클루드함...
-#include "components.h"
-
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG

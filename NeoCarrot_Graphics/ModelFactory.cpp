@@ -4,9 +4,7 @@
 #include "Entity.h"
 #include "FbxLoader.h"
 #include "ModelBuilder.h"
-
-// 임시로 여기둔다.. 이거 열면 래핑한 이유가 없어진다...
-#include "components.h"
+#include "AllBufferStruct.h"
 
 #ifdef _DEBUG
 #include <iostream>

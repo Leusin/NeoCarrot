@@ -3,7 +3,8 @@
 #include "GetEntity.h"
 #include "IComponent.h"
 #include "Mesh.h"
-#include "InputLayouts.h"
+#include "VertexBufferStruct.h"
+#include "InputLayoutStruct.h"
 
 namespace loader{class FbxLoader;}
 namespace model{struct Mesh;}

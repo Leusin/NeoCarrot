@@ -4,7 +4,7 @@
 #include "D3D11Context_mk2.h"
 #include "Devices.h"
 #include "FBXLoader.h"
-#include "components.h"
+#include "AllComponents.h"
 
 #ifdef _DEBUG
 #include <iostream>

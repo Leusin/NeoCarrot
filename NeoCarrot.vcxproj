@@ -73,7 +73,7 @@
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp" />
     <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp" />
-    <ClCompile Include="NeoCarrot_Graphics\InputLayouts.cpp" />
+    <ClCompile Include="NeoCarrot_Graphics\VertexBufferStruct.h" />
     <ClCompile Include="NeoCarrot_Graphics\LightBox1Script.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -104,6 +104,7 @@
     <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NeoCarrot_Graphics\AllBufferStruct.h" />
     <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h" />
     <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h" />
     <ClInclude Include="NeoCarrot_Graphics\AxisScript.h" />
@@ -116,8 +117,9 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h" />
     <ClInclude Include="NeoCarrot_Graphics\CompileShader.h" />
-    <ClInclude Include="NeoCarrot_Graphics\components.h" />
+    <ClInclude Include="NeoCarrot_Graphics\AllComponents.h" />
     <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h" />
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBufferStruct.h" />
     <ClInclude Include="NeoCarrot_Graphics\ConstBufferTutorial06.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -155,7 +157,7 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GridScript.h" />
     <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h" />
-    <ClInclude Include="NeoCarrot_Graphics\InputLayouts.h" />
+    <ClInclude Include="NeoCarrot_Graphics\InputLayoutStruct.h" />
     <ClInclude Include="NeoCarrot_Graphics\LightBox1Script.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>

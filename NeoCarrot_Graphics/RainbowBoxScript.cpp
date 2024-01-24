@@ -1,7 +1,7 @@
 #include "RainbowBoxScript.h"
 
 #include "D3Devices.h"
-#include "components.h"
+#include "AllComponents.h"
 #include "Transpose_mk2.h"
 
 #include <fstream>

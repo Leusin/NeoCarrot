@@ -1,6 +1,6 @@
 #include "GridScript.h"
 
-#include "components.h"
+#include "AllComponents.h"
 
 #include <DirectXColors.h>
 #include <DirectXMath.h>

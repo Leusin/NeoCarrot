@@ -1,7 +1,8 @@
 #pragma once
 
 #include "ConstantBuffer.h"
-#include "InputLayouts.h"
+#include "InputLayoutStruct.h"
+#include "ConstantBufferStruct.h"
 
 #include <directxmath.h>
 

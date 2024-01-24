@@ -1,6 +1,6 @@
 #include "Effect.h"
 
-#include "components.h"
+#include "AllComponents.h"
 
 #include <d3dcompiler.h>
 #include <fstream>

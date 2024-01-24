@@ -1,7 +1,7 @@
 #include "ScriptTutorial06.h"
 
+#include "AllComponents.h"
 #include "FbxLoader.h"
-#include "components.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -286,14 +286,12 @@ void ScriptTutorial06::SetPrimitiveTopology()
 
 void ScriptTutorial06::SetParameter()
 {
-    vLightDirs = 
-    {
+    vLightDirs = {
         DirectX::XMFLOAT4(-0.577f, 0.577f, -0.577f, 1.0f),
         DirectX::XMFLOAT4(0.0f, 0.0f, -1.0f, 1.0f),
     };
 
-    vLightColors = 
-    {
+    vLightColors = {
         DirectX::XMFLOAT4(0.9f, 0.6f, 0.3f, 1.0f),
         DirectX::XMFLOAT4(0.3f, 0.6f, 0.9f, 1.0f),
     };

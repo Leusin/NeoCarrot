@@ -1,7 +1,8 @@
 #include "GetFbxMeshNol.h"
 
 #include "FbxLoader.h"
-#include "InputLayouts.h"
+#include "InputLayoutStruct.h"
+#include "VertexBufferStruct.h"
 #include "VertexResource.h"
 
 namespace graphics

@@ -1,78 +1,13 @@
+/// ÀÎÇ² ·¹ÀÌ¾Æ¿ô
+/// 
+/// 2024-01-24
+
+
 #pragma once
 
 #include <d3dx11effect.h>
 #include <directxmath.h>
 #include <vector>
-
-namespace graphics
-{
-
-//
-// ±¸Á¶Ã¼ ¹öÆÛ
-//
-
-struct ConstBuffWorldViewProj
-{
-    DirectX::XMMATRIX WorldViewProj;
-};
-
-struct ConstBuffLit
-{
-    DirectX::XMMATRIX mWorld;
-    DirectX::XMMATRIX mView;
-    DirectX::XMMATRIX mProjection;
-    DirectX::XMFLOAT4 vLightDir[2];
-    DirectX::XMFLOAT4 vLightColor[2];
-    DirectX::XMFLOAT4 vOutputColor;
-};
-
-
-struct Pos
-{
-    DirectX::XMFLOAT3 Pos;
-};
-
-struct Col: public Pos
-{
-    //DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT4 Color;
-};
-
-struct Nol: public Pos
-{
-    //DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT3 Normal;
-};
-
-struct PosTex: public Pos
-{
-    // DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT2 Tex;
-};
-
-struct PosNormalTex: public Pos
-{
-    //DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT3 Normal;
-    DirectX::XMFLOAT2 Tex;
-};
-
-struct PosNormalTexWeightsBoneidx: public Pos
-{
-    //DirectX::XMFLOAT3 Pos;
-    DirectX::XMFLOAT3 Normal;
-    DirectX::XMFLOAT2 Tex;
-    DirectX::XMFLOAT3 Weights;
-    int BoneIndices;
-};
-
-//
-// ÀÎÇ² ·¹ÀÌ¾Æ¿ô
-//
-
-static const std::vector<D3D11_INPUT_ELEMENT_DESC> posDesc = {
-    { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-};
 
 //
 // ½Ã¸àÆ½ ³×ÀÓ / ½Ã¸àÆ½ ÀÎµ¦½º / Æ÷¸ä / ÀÎÇ²½½·Ô / ¿ÀÇÁ¼Â / ÀÎÇ² ½½·Ô Å¬·¡½º /
@@ -89,6 +24,12 @@ static const std::vector<D3D11_INPUT_ELEMENT_DESC> posDesc = {
 // ³ª¸ÓÁö ÀÚ¼¼ÇÑ ¼³¸íÀº
 //    https://learn.microsoft.com/en-us/previous-versions//ff729719(v=vs.85)?redirectedfrom=MSDN
 //
+
+namespace graphics
+{
+static const std::vector<D3D11_INPUT_ELEMENT_DESC> posDesc = {
+    { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+};
 
 static const std::vector<D3D11_INPUT_ELEMENT_DESC> PosColorDesc = {
     { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },

@@ -1,17 +1,19 @@
 #pragma once
 
 #include "CompileShader.h"
+#include "ConstantBufferStruct.h"
 #include "D3Devices.h"
 #include "GetEntity.h"
 #include "IComponent.h"
-#include "InputLayouts.h"
+#include "InputLayoutStruct.h"
 #include "Mesh.h"
+#include "VertexBufferStruct.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
+#include <directxmath.h>
 #include <vector>
 #include <wrl.h>
-#include <directxmath.h>
 
 namespace graphics
 {
@@ -31,7 +33,7 @@ public:
 
     struct IndexBufferInfo
     {
-        // 초기화할 때 사용 
+        // 초기화할 때 사용
         std::vector<WORD> indices;
         unsigned int totalIndexCount{ 0 };
 

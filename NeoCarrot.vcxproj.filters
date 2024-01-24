@@ -31,9 +31,6 @@
     <Filter Include="camera">
       <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="component\all header">
-      <UniqueIdentifier>{48d716e2-6e18-46fe-8a5d-a8525ba72723}</UniqueIdentifier>
-    </Filter>
     <Filter Include="deprecated">
       <UniqueIdentifier>{a1b3853a-e55f-4ef3-82a1-fa4089f79589}</UniqueIdentifier>
     </Filter>
@@ -123,7 +120,7 @@
     <ClCompile Include="NeoCarrot_Graphics\ColoredBox2Script.cpp">
       <Filter>component_script</Filter>
     </ClCompile>
-    <ClCompile Include="NeoCarrot_Graphics\InputLayouts.cpp">
+    <ClCompile Include="NeoCarrot_Graphics\VertexBufferStruct.h">
       <Filter>struct</Filter>
     </ClCompile>
     <ClCompile Include="NeoCarrot_Graphics\GetFbxMesh.cpp">
@@ -261,7 +258,7 @@
     <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h">
       <Filter>component_script</Filter>
     </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\InputLayouts.h">
+    <ClInclude Include="NeoCarrot_Graphics\InputLayoutStruct.h">
       <Filter>struct</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\GetFbxMesh.h">
@@ -269,9 +266,6 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h">
       <Filter>deprecated</Filter>
-    </ClInclude>
-    <ClInclude Include="NeoCarrot_Graphics\components.h">
-      <Filter>component\all header</Filter>
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\InputLayout.h">
       <Filter>component</Filter>
@@ -296,6 +290,15 @@
     </ClInclude>
     <ClInclude Include="NeoCarrot_Graphics\ScriptTutorial06.h">
       <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBufferStruct.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AllComponents.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AllBufferStruct.h">
+      <Filter>struct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

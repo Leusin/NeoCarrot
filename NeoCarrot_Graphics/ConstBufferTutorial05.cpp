@@ -1,6 +1,6 @@
 #include "ConstBufferTutorial05.h"
 
-#include "InputLayouts.h"
+#include "InputLayoutStruct.h"
 #include "Transpose_mk2.h"
 
 #include <directxmath.h>

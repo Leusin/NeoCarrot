@@ -1,11 +1,10 @@
 #pragma once
 
 #include "ConstantBuffer.h"
+#include "ConstantBufferStruct.h"
 
 namespace graphics
 {
-struct ConstBuffWorldViewProj;
-
 class ConstBufferTutorial05: public ConstantBuffer<ConstBuffWorldViewProj>
 {
 public:
