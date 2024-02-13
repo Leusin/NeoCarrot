@@ -18,7 +18,7 @@ TabWidth: 4
 UseTab: Never
 
 # Alignment
-AlignAfterOpenBracket: Align
+AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveBitFields: Consecutive
 AlignConsecutiveDeclarations: false
@@ -28,14 +28,14 @@ AlignOperands: Align
 AlignTrailingComments: true
 
 # Allow
-AllowAllArgumentsOnNextLine: false
+AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
-AllowShortIfStatementsOnASingleLine: Never
+AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortLoopsOnASingleLine: false
 AllowShortLambdasOnASingleLine: All
 
@@ -44,7 +44,7 @@ AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: true
 AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeConceptDeclarations: true
-BreakBeforeTernaryOperators: true
+BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: BeforeComma
 BreakBeforeBinaryOperators: None
 BreakInheritanceList: AfterColon
@@ -117,7 +117,7 @@ IncludeCategories:
     Regex: '^<([^c](.+)|coroutine|charconv|chrono|complex|concepts|condition_variable)>$'
   - Priority: 11
     Regex: '^<c(.+)>$'
-SortIncludes: true
+SortIncludes: false
 SortUsingDeclarations: true
 
 # Penalties

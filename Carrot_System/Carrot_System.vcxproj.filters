@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sys">
+      <UniqueIdentifier>{3b4a829c-1753-49d5-a470-8ab16c0973a1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="System.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="System.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

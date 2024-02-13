@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{88cdd2ce-018b-46c3-a875-0faa155f0bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="model">
+      <UniqueIdentifier>{9fcb012e-b537-47ff-ab16-f42706e85164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hlsl">
+      <UniqueIdentifier>{71c4945c-ad5d-4bed-8513-f23b7afde191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="directXTK">
+      <UniqueIdentifier>{c5a16c50-cafb-4e9a-b604-465cbf71a38a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d11">
+      <UniqueIdentifier>{e9944d19-a028-4c49-890c-48c5f45bc088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component_script">
+      <UniqueIdentifier>{97afac4f-5057-4608-bfd2-f024be4308ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="component">
+      <UniqueIdentifier>{6a3e58c0-7163-4a18-97f2-00c9d15f85f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="struct">
+      <UniqueIdentifier>{cb8c9de6-899a-4efb-a731-40d63500bbe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="camera">
+      <UniqueIdentifier>{96041beb-6794-46d2-8d46-e7c94a19bac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deprecated">
+      <UniqueIdentifier>{a1b3853a-e55f-4ef3-82a1-fa4089f79589}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NeoCarrot_Graphics\GraphicsEngine.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\DXTKFont.cpp">
+      <Filter>directXTK</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Camera3D.cpp">
+      <Filter>camera</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelBuilder.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelFactory.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3Devices.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context_mk2.cpp">
+      <Filter>d3d11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Devices.cpp">
+      <Filter>d3d11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\RenderStates.cpp">
+      <Filter>d3d11</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Grid.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ModelManager.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AxisScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GridScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Model.cpp">
+      <Filter>model</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\RainbowBoxScript.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose_mk2.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\CompileShader.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer_mk2.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Renderor.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\FbxLoad.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ConstBufferTutorial05.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateY.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ColoredBox2Script.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\VertexBufferStruct.h">
+      <Filter>struct</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMesh.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\CameraPtr.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Transpose.h">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\InputLayout.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Texture.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ConstBufferTutorial06.cpp">
+      <Filter>component</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\BoxScript.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\ScriptTutorial06.cpp">
+      <Filter>component_script</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\LightBox1Script.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\TriangleScript.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\AnimateRotateZ.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\Effect.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\IndexBuffer.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\GetFbxMeshNol.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11Context.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="NeoCarrot_Graphics\D3D11RenderStates.cpp">
+      <Filter>deprecated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NeoCarrot_Graphics\DXTKFont.h">
+      <Filter>directXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Camera3D.h">
+      <Filter>camera</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\FontType.h">
+      <Filter>directXTK</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelBuilder.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ModelFactory.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GraphicsEngine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\VertexBuffer.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3Devices.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context_mk2.h">
+      <Filter>d3d11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Devices.h">
+      <Filter>d3d11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ResourceView.h">
+      <Filter>d3d11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\RenderStates.h">
+      <Filter>d3d11</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Grid.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AxisScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GridScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Model.h">
+      <Filter>model</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\RainbowBoxScript.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Transpose_mk2.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\VertexResource.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\CompileShader.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer_mk2.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBuffer.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Renderor.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\FbxLoad.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstBufferTutorial05.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateY.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ColoredBox2Script.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\InputLayoutStruct.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMesh.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\CameraPtr.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\InputLayout.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Texture.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstBufferTutorial06.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\BoxScript.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ScriptTutorial06.h">
+      <Filter>component_script</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\ConstantBufferStruct.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AllComponents.h">
+      <Filter>component</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AllBufferStruct.h">
+      <Filter>struct</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\LightBox1Script.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\TriangleScript.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\AnimateRotateZ.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\Effect.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\IndexBuffer.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\GetFbxMeshNol.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11Context.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="NeoCarrot_Graphics\D3D11RenderStates.h">
+      <Filter>deprecated</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NeoCarrot_Graphics\ModelBuilder.inl">
+      <Filter>model</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal04.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\Tutoroal06.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="NeoCarrot_Graphics\HLSL\color.fx">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
