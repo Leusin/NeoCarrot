@@ -87,6 +87,8 @@ public:
 
 private:
 
+    void InitializeBuffers(ID3D11Device* device);
+
     std::unique_ptr<DDSTexture> _ddsTexture{ nullptr };
 };
 
