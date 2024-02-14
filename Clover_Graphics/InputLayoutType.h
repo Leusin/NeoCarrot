@@ -5,7 +5,6 @@
 
 #pragma once
 
-#include <d3dx11effect.h>
 #include <directxmath.h>
 #include <vector>
 

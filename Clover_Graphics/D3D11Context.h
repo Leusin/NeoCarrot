@@ -13,7 +13,8 @@
 #include <dxgi.h>
 #include <memory>
 #include <wrl.h>
-#include <CommonStates.h>
+//#include <CommonStates.h>
+#include "./DirectXTK/Inc/CommonStates.h"
 
 namespace graphics
 {
