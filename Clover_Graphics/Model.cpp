@@ -19,10 +19,11 @@ Model::~Model()
 {
 }
 
-void Model::Initialize(ID3D11Device* device)
+void Model::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName)
 {
-
     InitializeBuffers(device);
+
+    LoadTexture(device, deviceContext, fileName);
 }
 
 void Model::Finalize()
@@ -33,9 +34,19 @@ void Model::LoadTexture(ID3D11Device* device,
     ID3D11DeviceContext* deviceContext,
     const WCHAR* fileName)
 {
-    _ddsTexture = std::unique_ptr<DDSTexture>();
+    _ddsTexture = std::make_shared<DDSTexture>();
 
     _ddsTexture->Initialize(device, deviceContext, fileName);
+}
+
+ID3D11ShaderResourceView* Model::GetTexture()
+{
+    if (_ddsTexture == nullptr)
+    {
+        return nullptr;
+    }
+
+    return _ddsTexture->GetTexture();
 }
 
 void Model::Render(ID3D11DeviceContext* deviceContext)
@@ -64,19 +75,22 @@ void Model::Render(ID3D11DeviceContext* deviceContext)
 
 void Model::InitializeBuffers(ID3D11Device* device)
 {
-    std::vector<DirectX::VertexPositionColor> vertices = 
+    std::vector<DirectX::VertexPositionColorTexture> vertices = 
     {
         { 
             DirectX::XMFLOAT3{ -1.0f, -1.0f, 0.0f },
-            DirectX::XMFLOAT4{ 1.0f, 0.0f, 0.0f, 1.0f } 
+            DirectX::XMFLOAT4{ 1.0f, 0.0f, 0.0f, 1.0f },
+            DirectX::XMFLOAT2{ 0.0f, 1.0f }
         },
         { 
             DirectX::XMFLOAT3{ 0.0f, 1.0f, 0.0f },
-            DirectX::XMFLOAT4{ 0.0f, 1.0f, 0.0f, 1.0f } 
+            DirectX::XMFLOAT4{ 0.0f, 1.0f, 0.0f, 1.0f } ,
+            DirectX::XMFLOAT2{ 0.5f, 0.f }
         },
         { 
             DirectX::XMFLOAT3{ 1.0f, -1.0f, 0.0f },
-            DirectX::XMFLOAT4{ 0.0f, 0.0f, 1.0f, 1.0f } 
+            DirectX::XMFLOAT4{ 0.0f, 0.0f, 1.0f, 1.0f },
+            DirectX::XMFLOAT2{ 1.0f, 1.0f}
         }
     };
 
@@ -91,7 +105,7 @@ void Model::InitializeBuffers(ID3D11Device* device)
     meshPart->indexCount = (uint32_t)indices.size();
     meshPart->startIndex;   // ??
     meshPart->vertexOffset; // = 0
-    meshPart->vertexStride  = sizeof(DirectX::VertexPositionColor);
+    meshPart->vertexStride  = sizeof(DirectX::VertexPositionColorTexture);
     meshPart->indexFormat   = DXGI_FORMAT_R32_UINT;
     meshPart->primitiveType = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
@@ -101,7 +115,7 @@ void Model::InitializeBuffers(ID3D11Device* device)
 
     D3D11_BUFFER_DESC bd = {};
     bd.Usage             = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth         = sizeof(DirectX::VertexPositionColor) *
+    bd.ByteWidth         = sizeof(DirectX::VertexPositionColorTexture) *
                    static_cast<unsigned int>(vertices.size());
     bd.BindFlags      = D3D11_BIND_VERTEX_BUFFER;
     bd.CPUAccessFlags = 0;

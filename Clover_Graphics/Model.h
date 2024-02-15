@@ -79,17 +79,18 @@ public:
 
     std::wstring name;
 
-    void Initialize(ID3D11Device* device);
+    void Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName);
     void Render(ID3D11DeviceContext* deviceContext);
     void Finalize();
 
     void LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, const WCHAR* fileName);
+    ID3D11ShaderResourceView* GetTexture();
 
 private:
 
     void InitializeBuffers(ID3D11Device* device);
 
-    std::unique_ptr<DDSTexture> _ddsTexture{ nullptr };
+    std::shared_ptr<DDSTexture> _ddsTexture{ nullptr };
 };
 
 } // namespace graphics

@@ -6,8 +6,11 @@
 
 #include "D3D11Context.h"
 #include "Camera.h"
-#include "ColorShader.h"
 #include "Model.h"
+
+// ºŒ¿Ã¥ı
+#include "ColorShader.h"
+#include "TextureShader.h"
 
 //#include <memory>
 #include <wrl.h>
@@ -35,7 +38,8 @@ private:
     std::unique_ptr<D3D11Context> _d3d11{ nullptr };
 
     std::unique_ptr<Model> _model{ nullptr };
-    std::unique_ptr<ColorShader> _colorShader{ nullptr };
+    //std::unique_ptr<ColorShader> _colorShader{ nullptr };
+    std::unique_ptr<TextureShader> _textureShader{ nullptr };
 
     //std::unique_ptr<DXTKFont>         _font;
 

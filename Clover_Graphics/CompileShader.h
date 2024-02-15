@@ -25,7 +25,7 @@ public:
                                   ID3DBlob** ppBlobOut);
 
 private:
-    void AwakeCheckVaildFile(const std::wstring& file);
+    void CheckVaildFile(const std::wstring& file);
 };
 
 } // namespace graphics

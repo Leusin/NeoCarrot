@@ -7,7 +7,8 @@ D3D11Renderor::D3D11Renderor(HINSTANCE& hinst, HWND hWnd, int clientWidth, int c
     : _d3d11{ std::make_unique<D3D11Context>(hinst, hWnd, clientWidth, clientHeight) }
     , _camera{ std::make_unique<Camera>() }
     , _model{ std::make_unique<Model>() }
-    , _colorShader{ std::make_unique<ColorShader>() }
+    //, _colorShader{ std::make_unique<ColorShader>() }
+    , _textureShader{ std::make_unique<TextureShader>() }
 {
     _camera->SetPosition(0.f, 0.f, -0.5f);
 }
@@ -22,8 +23,9 @@ D3D11Renderor::~D3D11Renderor()
 
 void D3D11Renderor::Initialize()
 {
-    _model->Initialize(_d3d11->GetDevice());
-    _colorShader->Initialize(_d3d11->GetDevice());
+    _model->Initialize(_d3d11->GetDevice(), _d3d11->GetDeviceContext(), L"../Resource/Texture/WoodCrate01.dds");
+    //_colorShader->Initialize(_d3d11->GetDevice());
+    _textureShader->Initialize(_d3d11->GetDevice());
 }
 
 void D3D11Renderor::Update(float deltaTime)
@@ -53,7 +55,9 @@ void D3D11Renderor::Render()
     DirectX::XMMATRIX view = _camera->GetViewMatrix();
     DirectX::XMMATRIX proj = _d3d11->GetProjectMatrix();
 
-    _colorShader->Render(_d3d11->GetDeviceContext(), 3, world, view, proj);
+    //_colorShader->Render(_d3d11->GetDeviceContext(), 3, world, view, proj);
+    _textureShader->Render(_d3d11->GetDeviceContext(), 3, world, view, proj, _model->GetTexture());
+    
     _model->Render(_d3d11->GetDeviceContext());
 
     _d3d11->EndRender();

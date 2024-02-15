@@ -13,7 +13,7 @@ HRESULT CompileShader::CompileShaderFromFile(const WCHAR* szFileName,
                                              LPCSTR szShaderModel,
                                              ID3DBlob** ppBlobOut)
 {
-    AwakeCheckVaildFile(szFileName);
+    CheckVaildFile(szFileName);
 
     HRESULT hr = S_OK;
 
@@ -52,7 +52,7 @@ HRESULT CompileShader::CompileShaderFromFile(const WCHAR* szFileName,
     return S_OK;
 }
 
-void CompileShader::AwakeCheckVaildFile(const std::wstring& file)
+void CompileShader::CheckVaildFile(const std::wstring& file)
 {
     std::ifstream fxhFin(file, std::ios::binary);
 

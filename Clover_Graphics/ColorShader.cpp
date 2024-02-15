@@ -36,6 +36,9 @@ void ColorShader::Render(ID3D11DeviceContext* deviceContext,
 
 void ColorShader::Finalize()
 {
+    _vertexShader->Release();
+    _pixelShader->Release();
+    _vertexLayout->Release();
 }
 
 void ColorShader::CreateShader(ID3D11Device* device,
