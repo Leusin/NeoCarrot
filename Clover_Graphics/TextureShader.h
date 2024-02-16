@@ -31,9 +31,9 @@ private:
     Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11PixelShader> _pixelShader{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11InputLayout> _vertexLayout{ nullptr };
+    Microsoft::WRL::ComPtr<ID3D11SamplerState> _sampleState{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11Buffer> _matirxBuffer{ nullptr };
 
-    Microsoft::WRL::ComPtr<ID3D11SamplerState> _sampleState{ nullptr };
 };
 
 } // namespace graphics

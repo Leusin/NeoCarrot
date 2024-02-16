@@ -9,11 +9,6 @@
 
 #include <directxmath.h>
 
-namespace data
-{
-struct CameraInfo;
-}
-
 namespace graphics
 {
 
@@ -35,13 +30,14 @@ public:
     void SetViewMatirx(DirectX::XMMATRIX& view);
 
 private:
-    DirectX::XMFLOAT3 _position;
-    DirectX::XMFLOAT3 _rotation;
-    DirectX::XMFLOAT4X4 _view;
+    DirectX::XMFLOAT3 _position{};
+    DirectX::XMFLOAT3 _rotation{};
+    DirectX::XMFLOAT4X4 _view{};
 
     // ±âÀú
-    DirectX::XMFLOAT3 _right; // x
-    DirectX::XMFLOAT3 _up;    // y
-    DirectX::XMFLOAT3 _look;  // z
+    DirectX::XMFLOAT3 _right{}; // x
+    DirectX::XMFLOAT3 _up{};    // y
+    DirectX::XMFLOAT3 _look{};  // z
 };
+
 } // namespace graphics

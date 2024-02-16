@@ -39,6 +39,7 @@ public:
 
     DirectX::XMMATRIX GetWorldMatrix();
     DirectX::XMMATRIX GetProjectMatrix();
+    DirectX::XMMATRIX GetOrthographicMatrix();
 
     void SetWorldMatrix(DirectX::XMMATRIX& world);
     void SetProjectionMatrix(DirectX::XMMATRIX& project);

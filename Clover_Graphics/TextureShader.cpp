@@ -79,13 +79,13 @@ void TextureShader::CreateShader(ID3D11Device* device,
     //
     // 3. 버텍스 인풋 레이아웃을 생성
     //
-    device->CreateInputLayout(PosColorTexDesc.data(),
-        static_cast<unsigned int>(PosColorTexDesc.size()),
+    device->CreateInputLayout(PosTexDesc.data(),
+        static_cast<unsigned int>(PosTexDesc.size()),
         pVSBlob->GetBufferPointer(),
         pVSBlob->GetBufferSize(),
         _vertexLayout.GetAddressOf());
 
-     assert(_vertexLayout.Get());
+     assert(_vertexLayout.Get() && "ID3D11InputLayout 가 안 맹글어짐");
 
     //
     // 4. 상수 버퍼 생성

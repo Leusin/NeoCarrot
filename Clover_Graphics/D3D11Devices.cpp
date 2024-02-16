@@ -12,17 +12,24 @@ Devices::Devices()
 
     // 4XMSAA의품질수준 체크
     UINT l4xMsaaQality;
-    _d3dDevice->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM, 4, &l4xMsaaQality);
+    _d3dDevice->CheckMultisampleQualityLevels(
+        DXGI_FORMAT_R8G8B8A8_UNORM, 4, &l4xMsaaQality);
     assert(l4xMsaaQality > 0); // 환된 수준값이 0보다 크도록 강제
 }
 
 Devices::~Devices()
 {
-    _d3dDeferredContext->ClearState();
-    _d3dDeferredContext->Flush();
+    if (_d3dImmdiateContext.Get() != nullptr)
+    {
+        _d3dImmdiateContext->ClearState();
+        _d3dImmdiateContext->Flush();
+    }
 
-    _d3dImmdiateContext->ClearState();
-    _d3dImmdiateContext->Flush();
+    if (_d3dDeferredContext.Get() != nullptr)
+    {
+        _d3dDeferredContext->ClearState();
+        _d3dDeferredContext->Flush();
+    }
 }
 
 ID3D11Device* Devices::Device() const
@@ -47,19 +54,19 @@ void Devices::CreateDeviceAndImmdiateContext()
     createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-    D3D_DRIVER_TYPE d3dDriverType{D3D_DRIVER_TYPE_HARDWARE};
+    D3D_DRIVER_TYPE d3dDriverType{ D3D_DRIVER_TYPE_HARDWARE };
 
     D3D_FEATURE_LEVEL featureLevel;
-    HRESULT           hr = D3D11CreateDevice(nullptr,
-                                   d3dDriverType,
-                                   nullptr,
-                                   createDeviceFlags,
-                                   nullptr,
-                                   0,
-                                   D3D11_SDK_VERSION,
-                                   _d3dDevice.GetAddressOf(),
-                                   &featureLevel,
-                                   _d3dImmdiateContext.GetAddressOf());
+    HRESULT hr = D3D11CreateDevice(nullptr,
+        d3dDriverType,
+        nullptr,
+        createDeviceFlags,
+        nullptr,
+        0,
+        D3D11_SDK_VERSION,
+        _d3dDevice.GetAddressOf(),
+        &featureLevel,
+        _d3dImmdiateContext.GetAddressOf());
 
     if (FAILED(hr))
     {

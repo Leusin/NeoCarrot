@@ -7,10 +7,12 @@
 #include "D3D11Context.h"
 #include "Camera.h"
 #include "Model.h"
+#include "Light.h"
 
 // ºŒ¿Ã¥ı
 #include "ColorShader.h"
 #include "TextureShader.h"
+#include "LightShader.h"
 
 //#include <memory>
 #include <wrl.h>
@@ -34,12 +36,14 @@ public:
 private:
     void Render();
 
-    std::unique_ptr<Camera> _camera{ nullptr };
     std::unique_ptr<D3D11Context> _d3d11{ nullptr };
-
+    std::unique_ptr<Camera> _camera{ nullptr };
+    std::unique_ptr<Light> _light{ nullptr };
     std::unique_ptr<Model> _model{ nullptr };
+
     //std::unique_ptr<ColorShader> _colorShader{ nullptr };
     std::unique_ptr<TextureShader> _textureShader{ nullptr };
+    std::unique_ptr<LightShader> _lightShader{ nullptr };
 
     //std::unique_ptr<DXTKFont>         _font;
 

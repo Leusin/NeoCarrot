@@ -18,7 +18,6 @@ public:
     ID3D11DeviceContext* DeferredContext() const;
 
 private:
-
     void CreateDeviceAndImmdiateContext();
     void CreateDeferredContext();
 

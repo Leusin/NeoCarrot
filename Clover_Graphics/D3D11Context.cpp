@@ -148,15 +148,15 @@ void D3D11Context::CreateDepthStencilState()
 
 void D3D11Context::InitializeMatrix(int width, int height)
 {
-    float fieldOfView{ 3.141592654f / 4.f };
+    float fieldOfView{ (float)DirectX::XM_PIDIV4 };
     float screenAspect{ (float)width / (float)height };
 
-    auto proj = DirectX::XMMatrixPerspectiveLH(
-        fieldOfView, screenAspect, 000.1f, 1000.f);
+    DirectX::XMMATRIX proj = DirectX::XMMatrixPerspectiveFovLH(
+        fieldOfView, screenAspect, 0000.1f, 10000.f);
     SetProjectionMatrix(proj);
     
-    auto ortho = DirectX::XMMatrixOrthographicLH(
-        fieldOfView, screenAspect, 000.1f, 1000.f);
+    DirectX::XMMATRIX ortho = DirectX::XMMatrixOrthographicLH(
+        fieldOfView, screenAspect, 0000.1f, 10000.f);
     SetOrthoMatrix(ortho);
 }
 
@@ -198,9 +198,14 @@ void D3D11Context::OnResize(int width, int height)
     depthStencilDesc.SampleDesc.Count   = 1;
     depthStencilDesc.SampleDesc.Quality = 0;
 
-    depthStencilDesc.Usage = D3D11_USAGE_DEFAULT; // 텍스처를 읽고 쓰는 방법 식별
-    depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL; // 파이프라인의 바인딩 플래그
+    // 텍스처를 읽고 쓰는 방법 식별
+
+    depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
     depthStencilDesc.CPUAccessFlags = 0; // CPU 접근 허용 유형 플래그 (사용하지 않아, 0)
+    // depthStencilDesc.Usage = D3D11_USAGE_DYNAMIC;
+    // depthStencilDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+
+    depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL; // 파이프라인의 바인딩 플래그
     depthStencilDesc.MiscFlags = 0; // 기타 리소스 옵션 플래그
 
     ///  뎁스 스텐실 버퍼 생성
@@ -253,7 +258,7 @@ void D3D11Context::BeginRender(const float* color) const
         _depthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
     // (안하면 뒤의 것이 앞으로 그려짐)
-    _devices->ImmediateContext()->OMSetDepthStencilState(_normalDSS.Get(), 0);
+    _devices->ImmediateContext()->OMSetDepthStencilState(_depthStencilState.Get(), 0);
 }
 
 void D3D11Context::EndRender() const
@@ -270,6 +275,11 @@ DirectX::XMMATRIX D3D11Context::GetWorldMatrix()
 DirectX::XMMATRIX D3D11Context::GetProjectMatrix()
 {
     return DirectX::XMLoadFloat4x4(&_projectionMatrix);
+}
+
+DirectX::XMMATRIX D3D11Context::GetOrthographicMatrix()
+{
+    return DirectX::XMLoadFloat4x4(&_orthoMatrix);
 }
 
 void D3D11Context::SetWorldMatrix(DirectX::XMMATRIX& world)

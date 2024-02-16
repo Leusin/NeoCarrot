@@ -29,6 +29,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="D3D11Devices.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LightShader.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Renderor.cpp" />
     <ClCompile Include="DDSTexture.cpp" />
@@ -47,6 +49,8 @@
     </ClInclude>
     <ClInclude Include="D3D11Devices.h" />
     <ClInclude Include="InputLayoutType.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="LightShader.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Renderor.h" />
     <ClInclude Include="DDSTexture.h" />
@@ -54,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Resource\HLSL\color.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\Resource\HLSL\light.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="..\Resource\HLSL\texture.hlsl">
