@@ -19,11 +19,7 @@ public:
     ~ColorShader();
 
     void Initialize(ID3D11Device* device);
-    void Render(ID3D11DeviceContext* deviceContext,
-        int indexCount,
-        DirectX::XMMATRIX world,
-        DirectX::XMMATRIX view,
-        DirectX::XMMATRIX proj);
+    void Render(ID3D11DeviceContext* deviceContext, int indexCount, DirectX::XMMATRIX world, DirectX::XMMATRIX view, DirectX::XMMATRIX proj);
     void Finalize();
 
 private:

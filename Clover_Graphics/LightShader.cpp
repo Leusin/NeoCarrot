@@ -83,6 +83,7 @@ void LightShader::CreateShader(ID3D11Device* device,
     //
     // 3. 버텍스 인풋 레이아웃을 생성
     //
+
     device->CreateInputLayout(PositionNormalTextureDesc.data(),
         static_cast<unsigned int>(PositionNormalTextureDesc.size()),
         pVSBlob->GetBufferPointer(),
@@ -118,7 +119,7 @@ void LightShader::CreateShader(ID3D11Device* device,
     //
     // 5. 상수 버퍼 생성
     //
-    D3D11_BUFFER_DESC matrixBufferDesc   = {};
+    D3D11_BUFFER_DESC matrixBufferDesc = {};
     matrixBufferDesc.Usage               = D3D11_USAGE_DYNAMIC;
     matrixBufferDesc.ByteWidth           = sizeof(MatrixBufferType);
     matrixBufferDesc.BindFlags           = D3D11_BIND_CONSTANT_BUFFER;
@@ -156,32 +157,40 @@ void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
     //
     MatrixBufferType matrixBuffer;
 
-    matrixBuffer.world      = XMMatrixTranspose(world);
-    matrixBuffer.view       = XMMatrixTranspose(view);
-    matrixBuffer.projection = XMMatrixTranspose(proj);
+    D3D11_MAPPED_SUBRESOURCE mappedResource;
+    deviceContext->Map(
+        _matirxBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 
-    //deviceContext->UpdateSubresource(
-    //    _matirxBuffer.Get(), 0, nullptr, &matrixBuffer, 0, 0);
-    
-    // 상수 버퍼 위치
+    MatrixBufferType* dataPtr = reinterpret_cast<MatrixBufferType*>(mappedResource.pData);
+
+    dataPtr->world      = XMMatrixTranspose(world);
+    dataPtr->view       = XMMatrixTranspose(view);
+    dataPtr->projection = XMMatrixTranspose(proj);
+
+    deviceContext->Unmap(_matirxBuffer.Get(), 0);
+
     unsigned int bufferNum{ 0 };
-    // 버텍스 셰이더와 상수 버퍼 설정
     deviceContext->VSSetConstantBuffers(bufferNum, 1, _matirxBuffer.GetAddressOf());
 
-    // 픽셀셰이더에서 셰이더 텍스처 리소스 설정
+    // 픽셀 셰이더에서 셰이더 텍스처 리소스 설정
     bufferNum = 0;
     deviceContext->PSSetShaderResources(bufferNum, 1, &texture);
 
     //
     // 2. 라이팅 상수 버퍼
     //
-    LightBufferType lightBuffer;
+    deviceContext->Map(
+        _lightBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 
-    lightBuffer.diffuseColor   = diffuse;
-    lightBuffer.lightDirection = lightDir;
-    lightBuffer.padding        = 0.f;
+    LightBufferType* dataPtr2 = reinterpret_cast<LightBufferType*>(mappedResource.pData);
 
-    bufferNum = 0;
+    dataPtr2->diffuseColor   = diffuse;
+    dataPtr2->lightDirection = lightDir;
+    dataPtr2->padding        = 0.f;
+
+    deviceContext->Unmap(_lightBuffer.Get(), 0);
+
+    bufferNum = 0; // 다른 버퍼 슬롯 사용
     deviceContext->PSSetConstantBuffers(bufferNum, 1, _lightBuffer.GetAddressOf());
 }
 

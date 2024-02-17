@@ -64,7 +64,6 @@ void Model::InitializeBuffers(ID3D11Device* device)
             DirectX::XMFLOAT2{ 1.0f, 1.0f }
         }
     };
-
     /*
     std::vector<DirectX::VertexPositionTexture> vertices =
     {

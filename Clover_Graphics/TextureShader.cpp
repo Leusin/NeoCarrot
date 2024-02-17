@@ -60,7 +60,6 @@ void TextureShader::CreateShader(ID3D11Device* device,
     assert(pVSBlob.Get() && "버텍스 셰이더의 ID3DBlob 가 안 맹글어짐");
     assert(pPSBlob.Get() && "픽셀 셰이더의 ID3DBlob 가 안 맹글어짐");
 
-
     //
     // 2. 셰이더 객체를 생성
     //

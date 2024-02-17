@@ -26,7 +26,7 @@ D3D11Renderor::~D3D11Renderor()
 void D3D11Renderor::Initialize()
 {
     //_colorShader->Initialize(_d3d11->GetDevice());
-    //_textureShader->Initialize(_d3d11->GetDevice());
+    _textureShader->Initialize(_d3d11->GetDevice());
     _lightShader->Initialize(_d3d11->GetDevice());
 
     _model->Initialize(_d3d11->GetDevice(),
