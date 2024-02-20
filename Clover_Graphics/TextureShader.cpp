@@ -1,7 +1,7 @@
 #include "TextureShader.h"
 #include "VertexTypes.h"
 #include "InputLayoutType.h"
-#include "ConstatntBuffer.h"
+#include "ConstatntBufferType.h"
 
 namespace graphics
 {

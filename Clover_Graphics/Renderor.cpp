@@ -33,7 +33,7 @@ void D3D11Renderor::Initialize()
         _d3d11->GetDeviceContext(),
         L"../Resource/Texture/WoodCrate01.dds");
 
-    _light->SetDiffuseColor(1.f, 0.f, 1.f, 1.f);
+    _light->SetDiffuseColor(1.f, 1.f, 1.f, 1.f);
     _light->SetDirection(0.f, 0.f, 1.f);
 }
 

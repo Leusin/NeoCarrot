@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="ConstatntBuffer.h" />
+    <ClInclude Include="ConstatntBufferType.h" />
     <ClInclude Include="ColorShader.h" />
     <ClInclude Include="CompileShader.h" />
     <ClInclude Include="D3D11Context.h">

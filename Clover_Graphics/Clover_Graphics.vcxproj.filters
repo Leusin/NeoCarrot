@@ -51,7 +51,7 @@
     <ClInclude Include="Renderor.h">
       <Filter>renderor</Filter>
     </ClInclude>
-    <ClInclude Include="ConstatntBuffer.h">
+    <ClInclude Include="ConstatntBufferType.h">
       <Filter>struct</Filter>
     </ClInclude>
     <ClInclude Include="ColorShader.h">
