@@ -20,7 +20,6 @@ D3D11Context::D3D11Context(HINSTANCE hinst, HWND hWnd, int clientWidth, int clie
     DirectX::XMStoreFloat4x4(&_projectionMatrix, identityMatrix);
     DirectX::XMStoreFloat4x4(&_orthoMatrix, identityMatrix);
 
-
     CreateSwapChain(hWnd, clientWidth, clientHeight);
     // CreateDepthStencilState();
 

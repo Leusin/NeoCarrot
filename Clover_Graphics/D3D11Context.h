@@ -78,22 +78,23 @@ private:
     /// </summary>
     Microsoft::WRL::ComPtr<ID3D11Texture2D> _depthStencilBuffer{ nullptr };
 
+    /// <summary>
+    /// 현재 뎁스/스텐실 리소스 속성을 정의한 인터페이스 객체.
+    /// </summary>
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilView> _depthStencilView{ nullptr };
+
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> _depthStencilState{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> _normalDSS{ nullptr }; // 폰트용
 
     // 나중에써야징
     std::unique_ptr<DirectX::CommonStates> _states;
 
-    /// <summary>
-    /// 현재 뎁스/스텐실 리소스 속성을 정의한 인터페이스 객체.
-    /// </summary>
-    Microsoft::WRL::ComPtr<ID3D11DepthStencilView> _depthStencilView{ nullptr };
-
     // ----------------------------------------------------------------------
 
    DirectX::XMFLOAT4X4 _worldMatrix;
    DirectX::XMFLOAT4X4 _projectionMatrix;
    DirectX::XMFLOAT4X4 _orthoMatrix;
+
 
 };
 
