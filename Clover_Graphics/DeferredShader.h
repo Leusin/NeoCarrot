@@ -10,12 +10,12 @@
 namespace graphics
 {
 
-class LightShader: public CompileShader
+class DeferredShader: public CompileShader
 {
 public:
-    LightShader();
-    LightShader(const LightShader&);
-    ~LightShader();
+    DeferredShader();
+    DeferredShader(const DeferredShader&);
+    ~DeferredShader();
 
     void Initialize(ID3D11Device* device);
     void Render(ID3D11DeviceContext* deviceContext,
@@ -23,9 +23,7 @@ public:
         DirectX::XMMATRIX world,
         DirectX::XMMATRIX view,
         DirectX::XMMATRIX proj,
-        ID3D11ShaderResourceView* texture,
-        DirectX::XMFLOAT3 lightDir,
-        DirectX::XMFLOAT4 diffuse);
+        ID3D11ShaderResourceView* texture);
     void Finalize();
 
 private:
@@ -35,9 +33,7 @@ private:
         DirectX::XMMATRIX world,
         DirectX::XMMATRIX view,
         DirectX::XMMATRIX proj,
-        ID3D11ShaderResourceView* texture,
-        DirectX::XMFLOAT3 lightDir,
-        DirectX::XMFLOAT4 diffuse);
+        ID3D11ShaderResourceView* texture);
 
     void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 
@@ -46,7 +42,6 @@ private:
     Microsoft::WRL::ComPtr<ID3D11InputLayout> _layout{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11SamplerState> _sampleState{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11Buffer> _matirxBuffer{ nullptr };
-    Microsoft::WRL::ComPtr<ID3D11Buffer> _lightBuffer{ nullptr };
 };
 
 } // namespace graphics

@@ -1,55 +1,54 @@
-#include "LightShader.h"
+#include "DeferredShader.h"
 #include "VertexTypes.h"
-#include "InputLayoutType.h"
 #include "ConstatntBufferType.h"
+#include "DeferredShader.h"
+
+#include <vector>
 
 namespace graphics
 {
 
-LightShader::LightShader()
+DeferredShader::DeferredShader()
 {
 }
 
-LightShader::LightShader(const LightShader&)
+DeferredShader::DeferredShader(const DeferredShader&)
 {
 }
 
-LightShader::~LightShader()
+DeferredShader::~DeferredShader()
 {
 }
 
-void LightShader::Initialize(ID3D11Device* device)
+void DeferredShader::Initialize(ID3D11Device* device)
 {
     CreateShader(
-        device, L"../Resource/HLSL/light.hlsl", L"../Resource/HLSL/light.hlsl");
+        device, L"../Resource/HLSL/deferred.hlsl", L"../Resource/HLSL/deferred.hlsl");
 }
 
-void LightShader::Render(ID3D11DeviceContext* deviceContext,
+void DeferredShader::Render(ID3D11DeviceContext* deviceContext,
     int indexCount,
     DirectX::XMMATRIX world,
     DirectX::XMMATRIX view,
     DirectX::XMMATRIX proj,
-    ID3D11ShaderResourceView* texture,
-    DirectX::XMFLOAT3 lightDir,
-    DirectX::XMFLOAT4 diffuse)
+    ID3D11ShaderResourceView* texture)
 {
     SetShaderParameters(
-        deviceContext, world, view, proj, texture, lightDir, diffuse);
+        deviceContext, world, view, proj, texture);
 
     RenderShader(deviceContext, indexCount);
 }
 
-void LightShader::Finalize()
+void DeferredShader::Finalize()
 {
     _vertexShader->Release();
     _pixelShader->Release();
     _layout->Release();
     _sampleState->Release();
     _matirxBuffer->Release();
-    _lightBuffer->Release();
 }
 
-void LightShader::CreateShader(ID3D11Device* device,
+void DeferredShader::CreateShader(ID3D11Device* device,
     const WCHAR* vsFile,
     const WCHAR* psFile)
 {
@@ -84,8 +83,15 @@ void LightShader::CreateShader(ID3D11Device* device,
     // 3. 버텍스 인풋 레이아웃을 생성
     //
 
-    device->CreateInputLayout(PositionNormalTextureDesc.data(),
-        static_cast<unsigned int>(PositionNormalTextureDesc.size()),
+    std::vector<D3D11_INPUT_ELEMENT_DESC> polygonLayout = 
+    {
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+        { "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+    };
+
+    device->CreateInputLayout(polygonLayout.data(),
+        static_cast<unsigned int>(polygonLayout.size()),
         pVSBlob->GetBufferPointer(),
         pVSBlob->GetBufferSize(),
         _layout.GetAddressOf());
@@ -130,32 +136,18 @@ void LightShader::CreateShader(ID3D11Device* device,
     device->CreateBuffer(&matrixBufferDesc, nullptr, _matirxBuffer.GetAddressOf());
 
     assert(_matirxBuffer.Get() && "상수 버퍼에 암것도 없음");
-
-    D3D11_BUFFER_DESC lightBufferDesc   = {};
-    lightBufferDesc.Usage               = D3D11_USAGE_DYNAMIC;
-    lightBufferDesc.ByteWidth           = sizeof(LightBufferType);
-    lightBufferDesc.BindFlags           = D3D11_BIND_CONSTANT_BUFFER;
-    lightBufferDesc.CPUAccessFlags      = D3D11_CPU_ACCESS_WRITE;
-    lightBufferDesc.MiscFlags           = 0;
-    lightBufferDesc.StructureByteStride = 0;
-
-    device->CreateBuffer(&lightBufferDesc, nullptr, _lightBuffer.GetAddressOf());
-
-    assert(_lightBuffer.Get() && "상수 버퍼에 암것도 없음");
 }
 
-void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
+void DeferredShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
     DirectX::XMMATRIX world,
     DirectX::XMMATRIX view,
     DirectX::XMMATRIX proj,
-    ID3D11ShaderResourceView* texture,
-    DirectX::XMFLOAT3 lightDir,
-    DirectX::XMFLOAT4 diffuse)
+    ID3D11ShaderResourceView* texture)
 {
     //
     // 1. 변환 행렬 상수 버퍼
     //
-    MatrixBufferType matrixBuffer;
+    //MatrixBufferType matrixBuffer;
 
     D3D11_MAPPED_SUBRESOURCE mappedResource;
     deviceContext->Map(
@@ -173,28 +165,10 @@ void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
     deviceContext->VSSetConstantBuffers(bufferNum, 1, _matirxBuffer.GetAddressOf());
 
     // 픽셀 셰이더에서 셰이더 텍스처 리소스 설정
-    bufferNum = 0;
-    deviceContext->PSSetShaderResources(bufferNum, 1, &texture);
-
-    //
-    // 2. 라이팅 상수 버퍼
-    //
-    deviceContext->Map(
-        _lightBuffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
-
-    LightBufferType* dataPtr2 = reinterpret_cast<LightBufferType*>(mappedResource.pData);
-
-    dataPtr2->diffuseColor   = diffuse;
-    dataPtr2->lightDirection = lightDir;
-    dataPtr2->padding        = 0.f;
-
-    deviceContext->Unmap(_lightBuffer.Get(), 0);
-
-    bufferNum = 0; // 다른 버퍼 슬롯 사용
-    deviceContext->PSSetConstantBuffers(bufferNum, 1, _lightBuffer.GetAddressOf());
+    deviceContext->PSSetShaderResources(0, 1, &texture);
 }
 
-void LightShader::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
+void DeferredShader::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
 {
     // 버텍스 레이아웃 설정
     deviceContext->IASetInputLayout(_layout.Get());

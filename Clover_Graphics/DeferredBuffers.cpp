@@ -1,6 +1,17 @@
 #include "DeferredBuffers.h"
 
+namespace graphics
+{
+
 DeferredBuffers::DeferredBuffers()
+{
+}
+
+DeferredBuffers::DeferredBuffers(const DeferredBuffers&)
+{
+}
+
+DeferredBuffers::~DeferredBuffers()
 {
 }
 
@@ -46,7 +57,7 @@ void DeferredBuffers::Initialize(ID3D11Device* device, int width, int height)
     {
         device->CreateRenderTargetView(_rtTextures[i].Get(),
             &renderTargetViewDesc,
-            _rtViews[i].ReleaseAndGetAddressOf());
+            _rtViews[i].GetAddressOf());
     }
 
     //
@@ -58,7 +69,7 @@ void DeferredBuffers::Initialize(ID3D11Device* device, int width, int height)
     shaderResourceViewDesc.Format        = textureDesc.Format;
     shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
     shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
-    shaderResourceViewDesc.Texture2D.MipLevels       = 0;
+    shaderResourceViewDesc.Texture2D.MipLevels       = 1;
 
     // 셰이더 리소스 뷰 생성
     for (unsigned i = 0; i < bufferCount; i++)
@@ -120,17 +131,17 @@ void DeferredBuffers::Initialize(ID3D11Device* device, int width, int height)
 void DeferredBuffers::Finalize()
 {
     _dsView->Release();
-
     _dsBuffer->Release();
-
+    /*
     for (auto& view : _srViews)
-        view->Release();
+        if (view.Get() != nullptr) view->Release();
 
     for (auto& view : _rtViews)
-        view->Release();
+        if (view.Get() != nullptr) view->Release();
 
     for (auto& view : _rtTextures)
-        view->Release();
+        if (view.Get() != nullptr) view->Release();
+    */
 }
 
 void DeferredBuffers::SetRenderTargets(ID3D11DeviceContext* deviceContext)
@@ -149,9 +160,9 @@ void DeferredBuffers::ClearRenderTargets(ID3D11DeviceContext* deviceContext)
     float color[4] = { 0.f, 0.f, 0.f, 0.f };
 
     // 랜더 타겟 버퍼 지우기
-    for (unsigned i = 0; i < bufferCount; i++)
+    for ( auto& view : _rtViews)
     {
-        deviceContext->ClearRenderTargetView(_rtViews[i].Get(), color);
+        deviceContext->ClearRenderTargetView(view.Get(), color);
     }
 
     // 뎁스 버퍼 지우기
@@ -167,3 +178,5 @@ ID3D11ShaderResourceView* DeferredBuffers::GetShaderResourceView(int view)
 
     return _srViews[view].Get();
 }
+
+} // namespace graphics

@@ -45,46 +45,45 @@ public:
     void SetProjectionMatrix(DirectX::XMMATRIX& project);
     void SetOrthoMatrix(DirectX::XMMATRIX& ortho);
 
+    void TurnZBufferOn();
+    void TurnZBufferOff();
+    //void TurnOnAlphaBlending();
+    //void TurnOffAlphaBlending();
+    //void TurnOnCulling();
+    //void TurnOffCulling();
+
+    void SetBackBufferRenderTarget();
+    void ResetViewport();
+
 private:
     void CreateSwapChain(HWND hWnd, int width, int height);
     void CreateDepthStencilState();
 
     void InitializeMatrix(int width, int height);
 
+
+    // 두 개 이상의 백버퍼를 관리하는 객체.
+    Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain{ nullptr };
+    
     // 디비이스와 디바이스 컨텍스트를 캡슐화한 객체
     std::unique_ptr<Devices> _devices{ nullptr };
 
-    /// <summary>
-    /// 두 개 이상의 백버퍼를 관리하는 객체.
-    /// </summary>
-    Microsoft::WRL::ComPtr<IDXGISwapChain> _swapChain{ nullptr };
-    
-    // ----------------------------------------------------------------------
-
-    /// <summary>
-    /// 랜더링의 대상의 현재 속성들을 정의한 객체.
-    /// 그래픽스 출력되는 것이 적혀 있음.
-    /// </summary>
+    // 랜더링의 대상의 현재 속성들을 정의한 객체.
+    // 그래픽스 출력되는 것이 적혀 있음.
     Microsoft::WRL::ComPtr<ID3D11RenderTargetView> _renderTargetView{ nullptr };
 
-    std::unique_ptr<D3D11RenderStates> _renderState{ nullptr };
-
-    // ----------------------------------------------------------------------
-
-    /// <summary>
-    /// HSV(hidden surface removal)에 사용되는 z-버퍼를 가진 그래픽스 리소스.
-    /// 2d에서는 사용되지 않고 3d에서 그려질 픽세들을 정렬하는데 사용한다.
-    /// 스텐실 버퍼에 대한 설정도 할 수 있다.
-    /// </summary>
+    // HSV(hidden surface removal)에 사용되는 z-버퍼를 가진 그래픽스 리소스.
+    // 2d에서는 사용되지 않고 3d에서 그려질 픽세들을 정렬하는데 사용한다.
+    // 스텐실 버퍼에 대한 설정도 할 수 있다.
     Microsoft::WRL::ComPtr<ID3D11Texture2D> _depthStencilBuffer{ nullptr };
-
-    /// <summary>
-    /// 현재 뎁스/스텐실 리소스 속성을 정의한 인터페이스 객체.
-    /// </summary>
-    Microsoft::WRL::ComPtr<ID3D11DepthStencilView> _depthStencilView{ nullptr };
 
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> _depthStencilState{ nullptr };
     Microsoft::WRL::ComPtr<ID3D11DepthStencilState> _normalDSS{ nullptr }; // 폰트용
+
+    // 현재 뎁스/스텐실 리소스 속성을 정의한 인터페이스 객체.
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilView> _depthStencilView{ nullptr };
+
+    std::unique_ptr<D3D11RenderStates> _renderState{ nullptr };
 
     // 나중에써야징
     std::unique_ptr<DirectX::CommonStates> _states;
@@ -95,6 +94,7 @@ private:
    DirectX::XMFLOAT4X4 _projectionMatrix;
    DirectX::XMFLOAT4X4 _orthoMatrix;
 
+   D3D11_VIEWPORT _viewport;
 
 };
 

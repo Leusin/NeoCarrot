@@ -55,6 +55,17 @@ D3D11RenderStates* D3D11Context::GetRenderStates() const
     return _renderState.get();
 }
 
+void D3D11Context::SetBackBufferRenderTarget()
+{
+    GetDeviceContext()->OMSetRenderTargets(
+        1, _renderTargetView.GetAddressOf(), _depthStencilView.Get());
+}
+
+void D3D11Context::ResetViewport()
+{
+    GetDeviceContext()->RSSetViewports(1, &_viewport);
+}
+
 void D3D11Context::CreateSwapChain(HWND hWnd, int width, int height)
 {
     /// 교환 사슬 설정
@@ -231,16 +242,14 @@ void D3D11Context::OnResize(int width, int height)
     assert(_renderTargetView.Get());
 
     /// 뷰포트 설정
-    D3D11_VIEWPORT screenViewport;
+    _viewport.TopLeftX = 0;
+    _viewport.TopLeftY = 0;
+    _viewport.Width    = static_cast<float>(width);
+    _viewport.Height   = static_cast<float>(height);
+    _viewport.MinDepth = 0.0f; // 최소 깊이 버퍼
+    _viewport.MaxDepth = 1.0f; // 최대 깊이 버퍼
 
-    screenViewport.TopLeftX = 0;
-    screenViewport.TopLeftY = 0;
-    screenViewport.Width    = static_cast<float>(width);
-    screenViewport.Height   = static_cast<float>(height);
-    screenViewport.MinDepth = 0.0f; // 최소 깊이 버퍼
-    screenViewport.MaxDepth = 1.0f; // 최대 깊이 버퍼
-
-    GetDeviceContext()->RSSetViewports(1, &screenViewport);
+    GetDeviceContext()->RSSetViewports(1, &_viewport);
 
     // 원근 투영 행렬 & 직교 투영 행렬 초기화
     InitializeMatrix(width, height);
@@ -294,6 +303,16 @@ void D3D11Context::SetProjectionMatrix(DirectX::XMMATRIX& project)
 void D3D11Context::SetOrthoMatrix(DirectX::XMMATRIX& ortho)
 {
     DirectX::XMStoreFloat4x4(&_orthoMatrix, ortho);
+}
+
+void D3D11Context::TurnZBufferOn()
+{
+    GetDeviceContext()->OMSetDepthStencilState(_depthStencilState.Get(), 1);
+}
+
+void D3D11Context::TurnZBufferOff()
+{
+    GetDeviceContext()->OMSetDepthStencilState(_depthStencilState.Get(), 1);
 }
 
 } // namespace graphics

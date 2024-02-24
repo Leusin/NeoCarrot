@@ -23,9 +23,9 @@ public:
         DirectX::XMMATRIX world,
         DirectX::XMMATRIX view,
         DirectX::XMMATRIX proj,
-        ID3D11ShaderResourceView* texture,
-        DirectX::XMFLOAT3 lightDir,
-        DirectX::XMFLOAT4 diffuse);
+        ID3D11ShaderResourceView* colorTexture,
+        ID3D11ShaderResourceView* normalTexture,
+        DirectX::XMFLOAT3 lightDir);
     void Finalize();
 
 private:
@@ -35,9 +35,9 @@ private:
         DirectX::XMMATRIX world,
         DirectX::XMMATRIX view,
         DirectX::XMMATRIX proj,
-        ID3D11ShaderResourceView* texture,
-        DirectX::XMFLOAT3 lightDir,
-        DirectX::XMFLOAT4 diffuse);
+        ID3D11ShaderResourceView* colorTexture,
+        ID3D11ShaderResourceView* normalTexture,
+        DirectX::XMFLOAT3 lightDir);
 
     void RenderShader(ID3D11DeviceContext* deviceContext, int indexCount);
 

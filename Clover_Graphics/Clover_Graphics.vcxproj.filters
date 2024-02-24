@@ -37,6 +37,12 @@
     <ClCompile Include="Light.cpp">
       <Filter>light</Filter>
     </ClCompile>
+    <ClCompile Include="DeferredShader.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferredBuffers.cpp">
+      <Filter>d3d11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D3D11Context.h">
@@ -81,6 +87,12 @@
     <ClInclude Include="Light.h">
       <Filter>light</Filter>
     </ClInclude>
+    <ClInclude Include="DeferredShader.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="DeferredBuffers.h">
+      <Filter>d3d11</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d11">
@@ -116,6 +128,9 @@
       <Filter>hlsl</Filter>
     </FxCompile>
     <FxCompile Include="..\Resource\HLSL\light.hlsl">
+      <Filter>hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\Resource\HLSL\deferred.hlsl">
       <Filter>hlsl</Filter>
     </FxCompile>
   </ItemGroup>

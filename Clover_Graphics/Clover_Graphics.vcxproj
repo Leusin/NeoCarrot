@@ -29,6 +29,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="D3D11Devices.cpp" />
+    <ClCompile Include="DeferredBuffers.cpp" />
+    <ClCompile Include="DeferredShader.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="LightShader.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -48,6 +50,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="D3D11Devices.h" />
+    <ClInclude Include="DeferredBuffers.h" />
+    <ClInclude Include="DeferredShader.h" />
     <ClInclude Include="InputLayoutType.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="LightShader.h" />
@@ -64,6 +68,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
     <FxCompile Include="..\Resource\HLSL\texture.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="..\Resource\HLSL\deferred.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </FxCompile>
   </ItemGroup>

@@ -14,6 +14,10 @@
 #include "TextureShader.h"
 #include "LightShader.h"
 
+// 디퍼드 랜더
+#include "DeferredBuffers.h"
+#include "DeferredShader.h"
+
 //#include <memory>
 #include <wrl.h>
 
@@ -35,6 +39,10 @@ public:
 
 private:
     void Render();
+    void RenderSceneToTexture();
+
+    int _width;
+    int _height;
 
     std::unique_ptr<D3D11Context> _d3d11{ nullptr };
     std::unique_ptr<Camera> _camera{ nullptr };
@@ -44,6 +52,9 @@ private:
     //std::unique_ptr<ColorShader> _colorShader{ nullptr };
     std::unique_ptr<TextureShader> _textureShader{ nullptr };
     std::unique_ptr<LightShader> _lightShader{ nullptr };
+
+    std::unique_ptr<DeferredBuffers> _deferredBuffer{ nullptr };
+    std::unique_ptr<DeferredShader> _deferredShader{ nullptr };
 
     //std::unique_ptr<DXTKFont>         _font;
 

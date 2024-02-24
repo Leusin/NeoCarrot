@@ -1,4 +1,5 @@
-// VS ??
+// Vertex Shader ------------------------------------------------------------
+
 cbuffer MatrixBuffer
 {
     //matrix gWorldViewProj; 
@@ -7,34 +8,21 @@ cbuffer MatrixBuffer
     matrix projectionMatrix;
 };
 
-// PS ??
-Texture2D shaderTexture;
-SamplerState SampleType;
-
-cbuffer LightBuffer
-{
-    float4 diffuseColor;
-    float3 lightDirection;
-    float padding;
-};
-
-struct VertexInput
+struct VertexIn
 {
     float4 pos : POSITION;
-    float3 nrl : NORMAL;
     float2 tex : TEXCOORD0;
 };
 
-struct VertexOut
+struct PixelIn
 {
     float4 pos : SV_POSITION;
-    float3 nrl : NORMAL; 
     float2 tex : TEXCOORD0;
 };
 
-VertexOut VS(VertexInput vin)
+PixelIn VS(VertexIn vin)
 {
-    VertexOut vout;
+    PixelIn vout;
 	
     vin.pos.w = 1.0f;
     vout.pos = mul(vin.pos, worldMatrix);
@@ -43,22 +31,36 @@ VertexOut VS(VertexInput vin)
 
     vout.tex = vin.tex;
 
-    vout.nrl = mul(vin.nrl, (float3x3)worldMatrix);
-    vout.nrl = normalize(vout.nrl);
-
     return vout;
 }
 
-float4 PS(VertexOut pin) : SV_Target
+// Pixel Shader ------------------------------------------------------------
+
+Texture2D colorTexture : register(t0);
+Texture2D normalTexture : register(t1);
+
+SamplerState SampleTypePoint : register(s0);
+
+cbuffer LightBuffer
 {
-    float4 textureColor = shaderTexture.Sample(SampleType, pin.tex);
+    float3 lightDirection;
+    float padding;
+};
 
-    float3 lightDir = -lightDirection;
+struct VertexOut
+{
+    float4 pos : SV_POSITION;
+    float2 tex : TEXCOORD0;
+};
 
-    float lightIntensity = saturate(dot(pin.nrl, lightDir));
 
-    float4 color = saturate(diffuseColor * lightIntensity);
-    color = color * textureColor;
+float4 PS(PixelIn pin) : SV_Target
+{
+    float4 colors = colorTexture.Sample(SampleTypePoint, pin.tex);
+    float4 normals = normalTexture.Sample(SampleTypePoint, pin.tex);
+    float3 lightDir = - lightDirection;
+    float lightIntensity = saturate(dot(normals.xyz, lightDir));
+    float4 outputColor = saturate(colors * lightIntensity);
 
-    return color;
+    return outputColor;
 }

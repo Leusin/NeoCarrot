@@ -3,6 +3,8 @@
 #include "InputLayoutType.h"
 #include "ConstatntBufferType.h"
 
+#include <vector>
+
 namespace graphics
 {
 
@@ -29,12 +31,12 @@ void LightShader::Render(ID3D11DeviceContext* deviceContext,
     DirectX::XMMATRIX world,
     DirectX::XMMATRIX view,
     DirectX::XMMATRIX proj,
-    ID3D11ShaderResourceView* texture,
-    DirectX::XMFLOAT3 lightDir,
-    DirectX::XMFLOAT4 diffuse)
+    ID3D11ShaderResourceView* colorTexture,
+    ID3D11ShaderResourceView* normalTexture,
+    DirectX::XMFLOAT3 lightDir)
 {
     SetShaderParameters(
-        deviceContext, world, view, proj, texture, lightDir, diffuse);
+        deviceContext, world, view, proj, colorTexture, normalTexture, lightDir);
 
     RenderShader(deviceContext, indexCount);
 }
@@ -84,8 +86,14 @@ void LightShader::CreateShader(ID3D11Device* device,
     // 3. 버텍스 인풋 레이아웃을 생성
     //
 
-    device->CreateInputLayout(PositionNormalTextureDesc.data(),
-        static_cast<unsigned int>(PositionNormalTextureDesc.size()),
+    std::vector<D3D11_INPUT_ELEMENT_DESC> polygonLayout = 
+    {
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+        { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+    };
+
+    device->CreateInputLayout(polygonLayout.data(),
+        static_cast<unsigned int>(polygonLayout.size()),
         pVSBlob->GetBufferPointer(),
         pVSBlob->GetBufferSize(),
         _layout.GetAddressOf());
@@ -148,14 +156,15 @@ void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
     DirectX::XMMATRIX world,
     DirectX::XMMATRIX view,
     DirectX::XMMATRIX proj,
-    ID3D11ShaderResourceView* texture,
-    DirectX::XMFLOAT3 lightDir,
-    DirectX::XMFLOAT4 diffuse)
+    ID3D11ShaderResourceView* colorTexture,
+    ID3D11ShaderResourceView* normalTexture,
+    DirectX::XMFLOAT3 lightDir
+)
 {
     //
     // 1. 변환 행렬 상수 버퍼
     //
-    MatrixBufferType matrixBuffer;
+    //MatrixBufferType matrixBuffer;
 
     D3D11_MAPPED_SUBRESOURCE mappedResource;
     deviceContext->Map(
@@ -173,8 +182,8 @@ void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
     deviceContext->VSSetConstantBuffers(bufferNum, 1, _matirxBuffer.GetAddressOf());
 
     // 픽셀 셰이더에서 셰이더 텍스처 리소스 설정
-    bufferNum = 0;
-    deviceContext->PSSetShaderResources(bufferNum, 1, &texture);
+    deviceContext->PSSetShaderResources(0, 1, &colorTexture);
+    deviceContext->PSSetShaderResources(1, 1, &normalTexture);
 
     //
     // 2. 라이팅 상수 버퍼
@@ -184,7 +193,6 @@ void LightShader::SetShaderParameters(ID3D11DeviceContext* deviceContext,
 
     LightBufferType* dataPtr2 = reinterpret_cast<LightBufferType*>(mappedResource.pData);
 
-    dataPtr2->diffuseColor   = diffuse;
     dataPtr2->lightDirection = lightDir;
     dataPtr2->padding        = 0.f;
 
